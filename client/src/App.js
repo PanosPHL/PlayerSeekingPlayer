@@ -8,7 +8,7 @@ import SignUpPage from './components/SignUpPage';
 
 function App({ apiKey }) {
     return (
-        <LoadScript googleMapsApiKey={apiKey}>
+        <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
         <BrowserRouter>
             <nav>
                 <ul>

@@ -26,13 +26,15 @@ const SignUpPage = ({ apiKey }) => {
             firstName,
             lastName,
             email,
-            dateOfBirth
+            dateOfBirth,
+            location
         },
         handlers: {
             setFirstName,
             setLastName,
             setEmail,
-            setDateOfBirth
+            setDateOfBirth,
+            setLocation
         }
     }
 
