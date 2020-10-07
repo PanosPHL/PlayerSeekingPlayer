@@ -21,14 +21,22 @@ const UserInfoSignUpForm = () => {
 
     return (
         <form method="" action="">
+            <p>
             <label htmlFor="firstName">First Name</label>
-            <input type="text" name="firstName" placeholder='i.e. John' value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+            </p>
+            <input type="text" name="firstName" placeholder='i.e. John' value={firstName} required="required" onChange={(e) => setFirstName(e.target.value)}/>
+            <p>
             <label htmlFor='lastName'>Last Name</label>
-            <input type="text" name="lastName" placeholder="i.e. Smith" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
-            <label htmlfor="email">Email</label>
-            <input type="email" name="email" placeholder='i.e. johnsmith@gmail.com' value={email} onChange={(e) => setEmail(e.target.value)}/>
+            </p>
+            <input type="text" name="lastName" placeholder="i.e. Smith" value={lastName} required="required" onChange={(e) => setLastName(e.target.value)}/>
+            <p>
+            <label htmlFor="email">Email</label>
+            </p>
+            <input type="email" name="email" placeholder='i.e. johnsmith@gmail.com' value={email} required="required" onChange={(e) => setEmail(e.target.value)}/>
+            <p>
             <label htmlFor="dateOfBirth">Date of Birth</label>
-            <DatePicker selected={dateOfBirth} onChange={date => setDateOfBirth(date)}/>
+            </p>
+            <DatePicker selected={dateOfBirth}  required="required" onChange={date => setDateOfBirth(date)}/>
         </form>
     )
 }

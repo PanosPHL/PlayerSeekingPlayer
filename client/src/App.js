@@ -1,30 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-import GoogleMapsContext from './contexts/GoogleMapsContext';
+import { LoadScript } from '@react-google-maps/api';
 import AuthRoute from './components/AuthRoute';
-
 import UserList from './components/UsersList';
 import SignUpPage from './components/SignUpPage';
 
 
-function App() {
-    let apiKey;
-
-    useEffect(() => {
-        const getApiKey  = async () => {
-            const res = await fetch('/api/session/map-api-token');
-            res.data = await res.json();
-            console.log(res);
-            if (res.ok) {
-                apiKey = res.data["api_key"];
-                console.log(apiKey);
-            }
-        }
-
-        getApiKey();
-    }, [])
-
+function App({ apiKey }) {
     return (
+        <LoadScript googleMapsApiKey={apiKey}>
         <BrowserRouter>
             <nav>
                 <ul>
@@ -37,13 +21,14 @@ function App() {
                     <UserList />
                 </Route>
                 <Route path='/signup'>
-                    <SignUpPage />
+                    <SignUpPage/>
                 </Route>
                 <AuthRoute path="/">
                     <h1>My Home Page</h1>
                 </AuthRoute>
             </Switch>
         </BrowserRouter>
+        </LoadScript>
     );
 }
 
