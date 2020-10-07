@@ -1,10 +1,5 @@
-.env
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Flask App ignores
-__pycache__/
-*.py[cod]
-
-# REACT APP ignores
 # dependencies
 /node_modules
 /.pnp
@@ -24,6 +19,7 @@ __pycache__/
 .env.production.local
 
 npm-debug.log*
-yarn.lock
 yarn-debug.log*
 yarn-error.log*
+
+yarn.lock
