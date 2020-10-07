@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import GoogleMapsContext from './contexts/GoogleMapsContext';
+import AuthRoute from './components/AuthRoute';
 
 import UserList from './components/UsersList';
 
@@ -23,7 +24,6 @@ function App() {
     }, [])
 
     return (
-        <GoogleMapsContext.Provider value={apiKey}>
         <BrowserRouter>
             <nav>
                 <ul>
@@ -35,13 +35,11 @@ function App() {
                 <Route path="/users">
                     <UserList />
                 </Route>
-
-                <Route path="/">
+                <AuthRoute path="/">
                     <h1>My Home Page</h1>
-                </Route>
+                </AuthRoute>
             </Switch>
         </BrowserRouter>
-        </GoogleMapsContext.Provider>
     );
 }
 
