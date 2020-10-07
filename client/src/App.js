@@ -4,6 +4,7 @@ import GoogleMapsContext from './contexts/GoogleMapsContext';
 import AuthRoute from './components/AuthRoute';
 
 import UserList from './components/UsersList';
+import SignUpPage from './components/SignUpPage';
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
             <Switch>
                 <Route path="/users">
                     <UserList />
+                </Route>
+                <Route path='/signup'>
+                    <SignUpPage />
                 </Route>
                 <AuthRoute path="/">
                     <h1>My Home Page</h1>
