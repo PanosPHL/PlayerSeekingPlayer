@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { displayUserInfoForm, displayMap } from '../store/ui/signUpForm';
-import { LoadScript } from '@react-google-maps/api';
+import { signup } from '../store/users';
 import UserInfoSignUpForm from './UserInfoSignUpForm';
 import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
 import SignUpContext from '../contexts/SignUpContext';
@@ -46,6 +46,12 @@ const SignUpPage = ({ apiKey }) => {
         dispatch(displayUserInfoForm());
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const res = await dispatch(signup(firstName, lastName, email, dateOfBirth, location));
+        console.log(res);
+    }
+
     return (
         <>
         <SignUpContext.Provider value={value}>
@@ -63,10 +69,10 @@ const SignUpPage = ({ apiKey }) => {
                     <div className={styles.bottomContainer}>
                         <button className={ map ? "" : "hidden" }onClick={handlePreviousClick}><span>&#8249;</span> Previous</button>
                         <div className={styles.circleContainer}>
-                            <div className={styles.activeDisplayCircle}></div>
-                            <div className={styles.inactiveDisplayCircle}></div>
+                            <div className={userInfo ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
+                            <div className={map ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
                         </div>
-                        { userInfo ? <button type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button type="button">Submit</button>}
+                        { userInfo ? <button type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button type="button" onClick={handleSubmit}>Submit</button>}
                     </div>
                 </div>
             </div>
