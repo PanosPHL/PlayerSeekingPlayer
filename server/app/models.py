@@ -29,3 +29,11 @@ class Profile(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   biography = db.Column(db.Text)
   location = db.Column(db.String(64), nullable=False)
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "user_id": self.user_id,
+      "biography": self.biography,
+      "location": self.location
+    }
