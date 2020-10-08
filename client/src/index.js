@@ -11,13 +11,17 @@ if (process.env.NODE_ENV !== 'production') {
   window.store = store;
 }
 
-let apiKey = fetch('/api/session/map-api-token').then(res => res.json()).then(data => apiKey = data['api_key']).then(() => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <Provider store={store}>
-      <App apiKey={apiKey}/>
-      </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
-  );
-});
+let apiKey = fetch('/api/session/map-api-token')
+    .then(res => res.json())
+    .then(data => apiKey = data['api_key'])
+    .then(() => fetch('/api/session/csrf'))
+    .then(() => {
+      ReactDOM.render(
+        <React.StrictMode>
+          <Provider store={store}>
+          <App apiKey={apiKey}/>
+          </Provider>
+        </React.StrictMode>,
+        document.getElementById('root')
+      );
+    });
