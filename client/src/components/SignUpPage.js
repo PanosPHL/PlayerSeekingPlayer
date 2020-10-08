@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { displayUserInfoForm, displayMap } from '../store/ui/signUpForm';
 import { signup } from '../store/users';
 import UserInfoSignUpForm from './UserInfoSignUpForm';
@@ -7,7 +8,7 @@ import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
 import SignUpContext from '../contexts/SignUpContext';
 import styles from '../css-modules/SignUpPage.module.css';
 
-const SignUpPage = ({ apiKey }) => {
+const SignUpPage = ({ apiKey, history }) => {
     const dispatch = useDispatch();
     const { userInfo, map } = useSelector(state => state.ui.signUpForm)
 
@@ -54,8 +55,11 @@ const SignUpPage = ({ apiKey }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await dispatch(signup(firstName, lastName, email, dateOfBirth, location));
+        const res = await dispatch(signup(firstName, lastName, email, password, confirmPassword, dateOfBirth, location));
         console.log(res);
+        if (res.ok) {
+            history.replace('/');
+        }
     }
 
     return (
@@ -87,4 +91,4 @@ const SignUpPage = ({ apiKey }) => {
     )
 }
 
-export default SignUpPage;
+export default withRouter(SignUpPage);

@@ -1,4 +1,7 @@
 import Cookie from 'js-cookie';
+import { login } from './session';
+
+const csrfToken = Cookie.get('XSRF-TOKEN');
 
 const SIGNUP_USER = 'users/SIGNUP_USER';
 
@@ -9,8 +12,7 @@ const addUser = (user) => {
     }
 }
 
-export const signup = (firstName, lastName, email, dateOfBirth, location) => {
-    const csrfToken = Cookie.get('XSRF-TOKEN');
+export const signup = (firstName, lastName, email, password, confirmPassword, dateOfBirth, location) => {
     return async dispatch => {
         const res = await fetch('/api/users/', {
             method: "POST",
@@ -18,13 +20,22 @@ export const signup = (firstName, lastName, email, dateOfBirth, location) => {
                 "Content-Type": 'application/json',
                 'X-CSRFToken': csrfToken
             },
-            body: JSON.stringify({ firstName, lastName, email, dateOfBirth: dateOfBirth.toISOString().split('T')[0], location, csrfToken })
+            body: JSON.stringify({
+                "first_name": firstName,
+                "last_name": lastName,
+                "email": email,
+                password,
+                "confirm_password": confirmPassword,
+                "date_of_birth": dateOfBirth.toISOString().split('T')[0],
+                location,
+                csrfToken })
         });
 
         res.data = await res.json();
 
         if (res.ok) {
             dispatch(addUser(res.data));
+            await dispatch(login(email, password));
         }
 
         return res;
