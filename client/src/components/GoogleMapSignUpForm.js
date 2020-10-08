@@ -17,9 +17,9 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
         height: '400px'
       };
 
-      let center = {
-        lat: -3.745,
-        lng: -38.523
+      const center = {
+        lat: 44.3148443,
+        lng: -85.60236429999999
       };
 
       const onLoad = useCallback((map) => {
@@ -39,8 +39,14 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
       const onPlaceChanged = () => {
           console.log(autocomplete);
           if (autocomplete) {
-              console.log(autocomplete.getPlace());
-              setLocation(`${autocomplete.getPlace().geometry.location.lat()}, ${autocomplete.getPlace().geometry.location.lng()}`)
+              const lat = autocomplete.getPlace().geometry.location.lat();
+              const lng = autocomplete.getPlace().geometry.location.lng();
+              console.log(lat, lng);
+              map.panTo({
+                  lng,
+                  lat
+              })
+              setLocation(`${lat}, ${lng}`)
           } else {
               console.log("Autocomplete is not loaded yet");
           }
@@ -51,11 +57,11 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
         <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={10}
+        zoom={20}
         onLoad={onLoad}
         unMount={unMount}>
             <Autocomplete onLoad={autocompleteOnLoad} onPlaceChanged={onPlaceChanged}>
-                <input type="text" placeholder="Enter your city here" value={residence} onChange={(e) => setResidence(e.target.value)}
+                <input type="text" placeholder="Enter your city here"
                 style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,

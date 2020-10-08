@@ -17,6 +17,7 @@ body {
 }
 
 .formContainer {
+    overflow: hidden;
     width: 25%;
     height: 65%;
     border-radius: 4px;
@@ -34,4 +35,23 @@ body {
     width: 8%;
     align-items: center;
     justify-content: space-between;
+}
+
+.contentContainer {
+    display: flex;
+    width: 120%;
+}
+
+.Onscreen {
+    transition: transform 0.5s;
+}
+
+.userInfoOffscreen {
+    transform: translateX(-200px);
+    transition: transform 0.5s;
+}
+
+.mapOffscreen {
+    transform: translateX(400px);
+    transition: transform 0.5s;
 }

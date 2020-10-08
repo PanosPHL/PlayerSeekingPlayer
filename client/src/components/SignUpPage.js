@@ -52,11 +52,13 @@ const SignUpPage = ({ apiKey }) => {
             <div style={{ width: "100vw", height: "100vh" }}>
                 <div className={styles.formContainer}>
                     <h1>Sign Up For Player Seeking Player</h1>
-                    <div className={ userInfo ? "" : "hidden" }>
+                    <div className={styles.contentContainer}>
+                    <div className={ userInfo ? styles.Onscreen : styles.userInfoOffscreen }>
                         <UserInfoSignUpForm />
                     </div>
-                    <div className={map ? "" : "hidden"}>
+                    <div className={map ? styles.Onscreen : styles.mapOffscreen}>
                         <GoogleMapsSignUpForm/>
+                    </div>
                     </div>
                     <div className={styles.bottomContainer}>
                         <button className={ map ? "" : "hidden" }onClick={handlePreviousClick}>Previous <span>&#8249;</span></button>
