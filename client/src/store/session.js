@@ -1,3 +1,13 @@
+const LOGIN = 'session/LOGIN'
+
+const addUserToSession = (userId) => {
+    return {
+        type: LOGIN,
+        userId
+    }
+}
+
+
 const initialSessionState = {
     userId: null
 };

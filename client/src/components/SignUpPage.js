@@ -18,6 +18,8 @@ const SignUpPage = ({ apiKey }) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
     const [location, setLocation] = useState('');
 
@@ -26,6 +28,8 @@ const SignUpPage = ({ apiKey }) => {
             firstName,
             lastName,
             email,
+            password,
+            confirmPassword,
             dateOfBirth,
             location
         },
@@ -33,6 +37,8 @@ const SignUpPage = ({ apiKey }) => {
             setFirstName,
             setLastName,
             setEmail,
+            setPassword,
+            setConfirmPassword,
             setDateOfBirth,
             setLocation
         }
