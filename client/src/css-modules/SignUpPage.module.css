@@ -39,19 +39,27 @@ body {
 
 .contentContainer {
     display: flex;
-    width: 120%;
+    height: 400px;
+    overflow: hidden;
 }
 
-.Onscreen {
+.userInfoOnscreen {
+    position: absolute;
     transition: transform 0.5s;
 }
 
+.mapOnscreen {
+    margin-left: 2em;
+    transition: transform 0.5s, margin-left 0.5s;
+}
+
 .userInfoOffscreen {
-    transform: translateX(-200px);
+    position: absolute;
+    transform: translateX(-400px);
     transition: transform 0.5s;
 }
 
 .mapOffscreen {
-    transform: translateX(400px);
-    transition: transform 0.5s;
+    transform: translateX(500px);
+    transition: transform 0.5s, margin-left 0.5s;
 }

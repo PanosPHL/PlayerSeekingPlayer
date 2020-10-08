@@ -4,7 +4,7 @@ import SignUpContext from '../contexts/SignUpContext';
 
 const GoogleMapSignUpForm = ({ apiKey }) => {
     const [map, setMap] = useState(null);
-    const [residence, setResidence] = useState('')
+    const [marker, setMarker] = useState(null);
     const [autocomplete, setAutoComplete] = useState(null);
     const {
         handlers: {
@@ -41,12 +41,9 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
           if (autocomplete) {
               const lat = autocomplete.getPlace().geometry.location.lat();
               const lng = autocomplete.getPlace().geometry.location.lng();
-              console.log(lat, lng);
-              map.panTo({
-                  lng,
-                  lat
-              })
               setLocation(`${lat}, ${lng}`)
+              setMarker(new window.google.maps.Marker({ position: { lat, lng }, map }));
+              map.panTo({ lat, lng })
           } else {
               console.log("Autocomplete is not loaded yet");
           }
@@ -57,7 +54,7 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
         <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        zoom={20}
+        zoom={10}
         onLoad={onLoad}
         unMount={unMount}>
             <Autocomplete onLoad={autocompleteOnLoad} onPlaceChanged={onPlaceChanged}>

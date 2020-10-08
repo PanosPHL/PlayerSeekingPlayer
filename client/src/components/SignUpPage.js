@@ -53,20 +53,20 @@ const SignUpPage = ({ apiKey }) => {
                 <div className={styles.formContainer}>
                     <h1>Sign Up For Player Seeking Player</h1>
                     <div className={styles.contentContainer}>
-                    <div className={ userInfo ? styles.Onscreen : styles.userInfoOffscreen }>
+                    <div className={ userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen }>
                         <UserInfoSignUpForm />
                     </div>
-                    <div className={map ? styles.Onscreen : styles.mapOffscreen}>
+                    <div className={map ? styles.mapOnscreen : styles.mapOffscreen}>
                         <GoogleMapsSignUpForm/>
                     </div>
                     </div>
                     <div className={styles.bottomContainer}>
-                        <button className={ map ? "" : "hidden" }onClick={handlePreviousClick}>Previous <span>&#8249;</span></button>
+                        <button className={ map ? "" : "hidden" }onClick={handlePreviousClick}><span>&#8249;</span> Previous</button>
                         <div className={styles.circleContainer}>
                             <div className={styles.activeDisplayCircle}></div>
                             <div className={styles.inactiveDisplayCircle}></div>
                         </div>
-                        <button type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button>
+                        { userInfo ? <button type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button type="button">Submit</button>}
                     </div>
                 </div>
             </div>
