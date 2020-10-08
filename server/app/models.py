@@ -20,3 +20,12 @@ class User(db.Model, UserMixin):
       "email": self.email,
       "dateOfBirth": self.DOB
     }
+
+
+class Profile(db.Model):
+  __tablename__ = 'profiles'
+
+  id = db.Column(db.Integer, primary_key=True)
+  user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+  biography = db.Column(db.Text)
+  location = db.Column(db.String(128), nullable=False)

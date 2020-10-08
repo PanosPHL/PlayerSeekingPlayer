@@ -2,24 +2,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app import app, db
-from app.models import User
+from app.models import User, Profile
 
 with app.app_context():
-  # db.drop_all()
+  db.drop_all()
   db.create_all()
 
-  ian = User(username = 'Ian', email = 'ian@aa.io')
-  javier = User(username = 'Javier', email = 'javier@aa.io')
-  dean = User(username = 'Dean', email = 'dean@aa.io')
-  angela = User(username = 'Angela', email = 'angela@aa.io')
-  soonmi = User(username = 'Soon-Mi', email = 'soonmi@aa.io')
-  alissa = User(username = 'Alissa', email = 'alissa@aa.io')
+  demo = User(first_name = 'Ian', last_name = 'ian@aa.io', email = "", DOB = "")
+  demo_profile = Profile(user_id = demo.to_dict()["id"], biography = "", location = "40.6589912, -74.3473717")
 
-  db.session.add(ian)
-  db.session.add(javier)
-  db.session.add(dean)
-  db.session.add(angela)
-  db.session.add(soonmi)
-  db.session.add(alissa)
+  db.session.add(demo)
+  db.session.add(demo_profile)
 
   db.session.commit()
