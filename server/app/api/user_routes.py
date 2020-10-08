@@ -26,3 +26,8 @@ def signup_user():
     db.session.commit()
     new_user_dict["profile_info"] = new_user_profile.to_dict()
     return new_user_dict
+  else:
+    errors = []
+    for error in form.errors:
+      errors += form.errors[error]
+    return { "errors": errors }

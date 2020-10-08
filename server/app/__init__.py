@@ -19,6 +19,7 @@ Migrate(app, db)
 
 ## Application Security
 CORS(app)
+CSRFProtect(app)
 @app.after_request
 def inject_csrf_token(response):
     response.set_cookie('csrf_token',

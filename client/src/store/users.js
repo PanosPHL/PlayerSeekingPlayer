@@ -1,3 +1,5 @@
+import Cookie from 'js-cookie';
+
 const SIGNUP_USER = 'users/SIGNUP_USER';
 
 const addUser = (user) => {
@@ -8,14 +10,16 @@ const addUser = (user) => {
 }
 
 export const signup = (firstName, lastName, email, dateOfBirth, location) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
     return async dispatch => {
         const res = await fetch('/api/users/', {
             method: "POST",
             headers: {
-                "Content-Type": 'application/json'
+                "Content-Type": 'application/json',
+                'X-CSRFToken': csrfToken
             },
-            body: JSON.stringify({ firstName, lastName, email, dateOfBirth: dateOfBirth.toISOString().split('T')[0], location })
-        })
+            body: JSON.stringify({ firstName, lastName, email, dateOfBirth: dateOfBirth.toISOString().split('T')[0], location, csrfToken })
+        });
 
         res.data = await res.json();
 

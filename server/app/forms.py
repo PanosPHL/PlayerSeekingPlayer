@@ -8,7 +8,7 @@ import datetime
 class SignUpForm(FlaskForm):
     first_name = StringField("First Name", validators=[InputRequired("Please provide a first name.")])
     last_name = StringField("Last Name", validators=[InputRequired("Please provide a last name.")])
-    email = EmailField("Email", validators=[InputRequired(), Email("Please provide a valid email address.")])
+    email = EmailField("Email", validators=[InputRequired("Please provide an email address."), Email("Please provide a valid email address.")])
     password = PasswordField("Password", validators=[InputRequired("Please provide a password."), EqualTo("confirm_password", message="Ensure that your password matches your confirmed password.")])
     confirm_password = PasswordField("Confirm Password", validators=[InputRequired("Please provide a confirmation of your password.")])
     date_of_birth = DateField("Date of Birth", validators=[InputRequired("Please provide a date of birth.")])
