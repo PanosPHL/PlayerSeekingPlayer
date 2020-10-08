@@ -28,4 +28,4 @@ class Profile(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   biography = db.Column(db.Text)
-  location = db.Column(db.String(128), nullable=False)
+  location = db.Column(db.String(64), nullable=False)
