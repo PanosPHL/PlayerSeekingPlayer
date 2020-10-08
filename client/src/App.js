@@ -7,6 +7,14 @@ import SignUpPage from './components/SignUpPage';
 
 
 function App({ apiKey }) {
+    useEffect(() => {
+        const getCSRF = async () => {
+            const res = await fetch('/api/session/csrf');
+        }
+
+        getCSRF();
+    }, []);
+
     return (
         <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
         <BrowserRouter>

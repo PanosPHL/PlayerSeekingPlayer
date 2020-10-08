@@ -7,6 +7,8 @@ const addUserToSession = (userId) => {
     }
 }
 
+// export const login = (email, password)
+
 
 const initialSessionState = {
     userId: null
