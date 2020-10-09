@@ -34,7 +34,7 @@ body {
 .formContainer {
     position: relative;
     overflow: hidden;
-    width: 25%;
+    width: 62%;
     height: 70%;
     border-radius: 4px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
@@ -119,7 +119,7 @@ body {
 }
 
 .labels {
-    font-size: 18px;
+    font-size: 17px;
     color: rgba(39, 39, 39, 0.7);
     font-weight: 600;
 }
@@ -132,4 +132,9 @@ body {
 .linkText {
     text-decoration: none;
     color: rgb(0, 117, 212);
+}
+
+.leftContainer {
+    background-image: url("https://makingmusicmag.com/wp-content/uploads/2015/07/guitar-907652_1280.jpg");
+    filter: grayscale(90%);
 }

@@ -74,33 +74,35 @@ const SignUpPage = ({ history }) => {
 
     return (
         <>
-        <SignUpContext.Provider value={value}>
-            <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
-                <div style={{width: "60vw"}}></div>
-                <div className={styles.formContainer}>
-                    <div className={styles.headerContainer}>
-                    <h1 className={styles.signUpHeader}>Sign Up For Player Seeking Player</h1>
-                    </div>
-                    <div className={styles.contentContainer}>
-                    <div className={ userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen }>
-                        <UserInfoSignUpForm />
-                    </div>
-                    <div className={map ? styles.mapOnscreen : styles.mapOffscreen}>
-                        <GoogleMapsSignUpForm/>
-                    </div>
-                    </div>
-                    <div className={styles.bottomContainer}>
-                        <button className={ map ? styles.bottomButton : styles.bottomButton + " hidden" }onClick={handlePreviousClick}><span>&#8249;</span> Previous</button>
-                        <div className={styles.circleContainer}>
-                            <div className={userInfo ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
-                            <div className={map ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
+            <SignUpContext.Provider value={value}>
+                <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
+                    <div className={styles.leftContainer} style={{ width: "60vw" }}></div>
+                    <div style={{width: "40vw", display: "flex", justifyContent: "center", alignItems: "center" }}>
+                        <div className={styles.formContainer}>
+                            <div className={styles.headerContainer}>
+                                <h1 className={styles.signUpHeader}>Sign Up For Player Seeking Player</h1>
+                            </div>
+                            <div className={styles.contentContainer}>
+                                <div className={userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen}>
+                                    <UserInfoSignUpForm />
+                                </div>
+                                <div className={map ? styles.mapOnscreen : styles.mapOffscreen}>
+                                    <GoogleMapsSignUpForm />
+                                </div>
+                            </div>
+                            <div className={styles.bottomContainer}>
+                                <button className={map ? styles.bottomButton : styles.bottomButton + " hidden"} onClick={handlePreviousClick}><span>&#8249;</span> Previous</button>
+                                <div className={styles.circleContainer}>
+                                    <div className={userInfo ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
+                                    <div className={map ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
+                                </div>
+                                {userInfo ? <button className={styles.bottomButton} type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button className={styles.bottomButton} type="button" onClick={handleSubmit}>Submit</button>}
+                            </div>
+                            <p className={styles.loginText}>Already have an account? <Link className={styles.linkText} to='/login'>Sign In</Link></p>
                         </div>
-                        { userInfo ? <button className={styles.bottomButton} type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button className={styles.bottomButton} type="button" onClick={handleSubmit}>Submit</button>}
                     </div>
-                    <p className={styles.loginText}>Already have an account? <Link className={styles.linkText} to='/login'>Sign In</Link></p>
                 </div>
-            </div>
-        </SignUpContext.Provider>
+            </SignUpContext.Provider>
         </>
     )
 }

@@ -4,6 +4,7 @@ import { LoadScript } from '@react-google-maps/api';
 import AuthRoute from './components/AuthRoute';
 import UserList from './components/UsersList';
 import SignUpPage from './components/SignUpPage';
+import LogInPage from './components/LogInPage';
 
 
 function App({ apiKey }) {
@@ -11,18 +12,12 @@ function App({ apiKey }) {
     return (
         <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
         <BrowserRouter>
-            <nav>
-                <ul>
-                    <li><NavLink to="/" activeclass="active">Home</NavLink></li>
-                    <li><NavLink to="/users" activeclass="active">Users</NavLink></li>
-                </ul>
-            </nav>
             <Switch>
                 <Route path="/users">
                     <UserList />
                 </Route>
                 <Route path='/login'>
-                    <SignUpPage />
+                    <LogInPage/>
                 </Route>
                 <Route path='/signup'>
                     <SignUpPage/>
