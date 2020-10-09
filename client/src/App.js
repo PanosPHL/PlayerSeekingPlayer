@@ -21,6 +21,9 @@ function App({ apiKey }) {
                 <Route path="/users">
                     <UserList />
                 </Route>
+                <Route path='/login'>
+                    <SignUpPage />
+                </Route>
                 <Route path='/signup'>
                     <SignUpPage/>
                 </Route>

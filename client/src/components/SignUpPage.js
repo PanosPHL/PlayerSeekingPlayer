@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import { displayUserInfoForm, displayMap } from '../store/ui/signUpForm';
 import { signup } from '../store/users';
 import UserInfoSignUpForm from './UserInfoSignUpForm';
@@ -75,7 +75,8 @@ const SignUpPage = ({ history }) => {
     return (
         <>
         <SignUpContext.Provider value={value}>
-            <div style={{ width: "100vw", height: "100vh" }}>
+            <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
+                <div style={{width: "60vw"}}></div>
                 <div className={styles.formContainer}>
                     <div className={styles.headerContainer}>
                     <h1 className={styles.signUpHeader}>Sign Up For Player Seeking Player</h1>
@@ -96,6 +97,7 @@ const SignUpPage = ({ history }) => {
                         </div>
                         { userInfo ? <button className={styles.bottomButton} type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button className={styles.bottomButton} type="button" onClick={handleSubmit}>Submit</button>}
                     </div>
+                    <p className={styles.loginText}>Already have an account? <Link className={styles.linkText} to='/login'>Sign In</Link></p>
                 </div>
             </div>
         </SignUpContext.Provider>
