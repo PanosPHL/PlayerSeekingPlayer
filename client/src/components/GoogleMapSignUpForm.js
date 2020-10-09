@@ -1,6 +1,7 @@
 import React, { useState, useContext, useCallback, memo } from 'react';
 import { GoogleMap, Autocomplete } from '@react-google-maps/api';
 import SignUpContext from '../contexts/SignUpContext';
+import styles from '../css-modules/SignUpPage.module.css';
 
 const GoogleMapSignUpForm = ({ apiKey }) => {
     const [map, setMap] = useState(null);
@@ -21,15 +22,15 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
     }
 
     const containerStyle = {
-        width: '400px',
-        height: '400px'
+        width: '450px',
+        height: '465px'
       };
 
       const onLoad = useCallback((map) => {
           const bounds = new window.google.maps.LatLngBounds();
           map.fitBounds(bounds);
           setMap(map);
-      });
+      }, []);
 
       const unMount = useCallback((map) => {
           setMap(null);
@@ -56,7 +57,7 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
       }
 
     return (
-        <div>
+        <div className={styles.mapContainer}>
         <GoogleMap
         mapContainerStyle={containerStyle}
         center={center || initialCenter}

@@ -8,7 +8,7 @@ import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
 import SignUpContext from '../contexts/SignUpContext';
 import styles from '../css-modules/SignUpPage.module.css';
 
-const SignUpPage = ({ apiKey, history }) => {
+const SignUpPage = ({ history }) => {
     const dispatch = useDispatch();
     const { userInfo, map } = useSelector(state => state.ui.signUpForm)
 
@@ -18,7 +18,7 @@ const SignUpPage = ({ apiKey, history }) => {
         return () => {
             dispatch(displayUserInfoForm());
         }
-    }, []);
+    }, [dispatch]);
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -77,7 +77,9 @@ const SignUpPage = ({ apiKey, history }) => {
         <SignUpContext.Provider value={value}>
             <div style={{ width: "100vw", height: "100vh" }}>
                 <div className={styles.formContainer}>
-                    <h1>Sign Up For Player Seeking Player</h1>
+                    <div className={styles.headerContainer}>
+                    <h1 className={styles.signUpHeader}>Sign Up For Player Seeking Player</h1>
+                    </div>
                     <div className={styles.contentContainer}>
                     <div className={ userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen }>
                         <UserInfoSignUpForm />
@@ -87,12 +89,12 @@ const SignUpPage = ({ apiKey, history }) => {
                     </div>
                     </div>
                     <div className={styles.bottomContainer}>
-                        <button className={ map ? "" : "hidden" }onClick={handlePreviousClick}><span>&#8249;</span> Previous</button>
+                        <button className={ map ? styles.bottomButton : styles.bottomButton + " hidden" }onClick={handlePreviousClick}><span>&#8249;</span> Previous</button>
                         <div className={styles.circleContainer}>
                             <div className={userInfo ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
                             <div className={map ? styles.activeDisplayCircle : styles.inactiveDisplayCircle}></div>
                         </div>
-                        { userInfo ? <button type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button type="button" onClick={handleSubmit}>Submit</button>}
+                        { userInfo ? <button className={styles.bottomButton} type="button" onClick={handleNextClick}>Next <span>&#8250;</span></button> : <button className={styles.bottomButton} type="button" onClick={handleSubmit}>Submit</button>}
                     </div>
                 </div>
             </div>

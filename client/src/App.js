@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
 import { LoadScript } from '@react-google-maps/api';
 import AuthRoute from './components/AuthRoute';
