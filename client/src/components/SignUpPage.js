@@ -14,6 +14,10 @@ const SignUpPage = ({ apiKey, history }) => {
 
     useEffect(() => {
         dispatch(displayUserInfoForm());
+
+        return () => {
+            dispatch(displayUserInfoForm());
+        }
     }, []);
 
     const [firstName, setFirstName] = useState('');
@@ -23,6 +27,8 @@ const SignUpPage = ({ apiKey, history }) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
     const [location, setLocation] = useState('');
+    const [lat, setLat] = useState(null);
+    const [lng, setLng] = useState(null);
 
     const value = {
         values: {
@@ -32,7 +38,9 @@ const SignUpPage = ({ apiKey, history }) => {
             password,
             confirmPassword,
             dateOfBirth,
-            location
+            location,
+            lat,
+            lng
         },
         handlers: {
             setFirstName,
@@ -41,7 +49,9 @@ const SignUpPage = ({ apiKey, history }) => {
             setPassword,
             setConfirmPassword,
             setDateOfBirth,
-            setLocation
+            setLocation,
+            setLat,
+            setLng
         }
     }
 
@@ -55,7 +65,7 @@ const SignUpPage = ({ apiKey, history }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await dispatch(signup(firstName, lastName, email, password, confirmPassword, dateOfBirth, location));
+        const res = await dispatch(signup(firstName, lastName, email, password, confirmPassword, dateOfBirth, location, lat, lng));
         console.log(res);
         if (res.ok) {
             history.replace('/');

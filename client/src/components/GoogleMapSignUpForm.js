@@ -9,7 +9,9 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
     const [autocomplete, setAutoComplete] = useState(null);
     const {
         handlers: {
-            setLocation
+            setLocation,
+            setLat,
+            setLng
         }
     } = useContext(SignUpContext);
 
@@ -38,13 +40,16 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
       }
 
       const onPlaceChanged = () => {
-          console.log(autocomplete);
+          console.log(autocomplete.getPlace());
           if (autocomplete) {
-              const lat = autocomplete.getPlace().geometry.location.lat();
-              const lng = autocomplete.getPlace().geometry.location.lng();
-              setLocation(`${lat}, ${lng}`)
-              setMarker(new window.google.maps.Marker({ position: { lat, lng }, map }));
-              setCenter({ lat, lng });
+              const newLat = autocomplete.getPlace().geometry.location.lat();
+              const newLng = autocomplete.getPlace().geometry.location.lng();
+              console.log(newLat, newLng)
+              setLat(newLat);
+              setLng(newLng);
+              setLocation(document.querySelector('#autocomplete').value);
+              setMarker(new window.google.maps.Marker({ position: { lat: newLat, lng: newLng }, map }));
+              setCenter({ lat: newLat, lng: newLng });
           } else {
               console.log("Autocomplete is not loaded yet");
           }
@@ -59,7 +64,7 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
         onLoad={onLoad}
         unMount={unMount}>
             <Autocomplete onLoad={autocompleteOnLoad} onPlaceChanged={onPlaceChanged}>
-                <input type="text" placeholder="Enter your city here"
+                <input id='autocomplete' type="text" placeholder="Enter your city here"
                 style={{
                     boxSizing: `border-box`,
                     border: `1px solid transparent`,

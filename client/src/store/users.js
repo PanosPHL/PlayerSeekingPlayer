@@ -12,7 +12,7 @@ const addUser = (user) => {
     }
 }
 
-export const signup = (firstName, lastName, email, password, confirmPassword, dateOfBirth, location) => {
+export const signup = (firstName, lastName, email, password, confirmPassword, dateOfBirth, location, lat, lng) => {
     return async dispatch => {
         const res = await fetch('/api/users/', {
             method: "POST",
@@ -28,6 +28,8 @@ export const signup = (firstName, lastName, email, password, confirmPassword, da
                 "confirm_password": confirmPassword,
                 "date_of_birth": dateOfBirth.toISOString().split('T')[0],
                 location,
+                lat,
+                lng,
                 csrfToken })
         });
 

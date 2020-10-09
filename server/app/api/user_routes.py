@@ -18,7 +18,7 @@ def signup_user():
   form = SignUpForm(data)
   if form.validate():
     data = request.json
-    new_user = User(first_name = data["first_name"], last_name = data["last_name"], email = data["email"], DOB = data["date_of_birth"], password=data["password"])
+    new_user = User(first_name = data["first_name"], last_name = data["last_name"], email = data["email"], DOB = data["date_of_birth"], password=data["password"], lat = data["lat"], lng = data["lng"])
     db.session.add(new_user)
     db.session.commit()
     new_user_dict = new_user.to_dict()

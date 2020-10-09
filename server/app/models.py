@@ -14,6 +14,8 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(256), nullable=False, unique=True)
   hashed_password = db.Column(db.String(256), nullable=False)
   DOB = db.Column(db.Date, nullable=False)
+  lat = db.Column(db.Float, nullable=False)
+  lng = db.Column(db.Float, nullable=False)
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
@@ -46,7 +48,7 @@ class Profile(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   biography = db.Column(db.Text)
-  location = db.Column(db.String(64), nullable=False)
+  location = db.Column(db.String(256), nullable=False)
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
