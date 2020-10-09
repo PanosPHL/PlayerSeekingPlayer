@@ -8,7 +8,7 @@ import UserInfoSignUpForm from './UserInfoSignUpForm';
 import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
 import AuthLeft from './AuthLeft';
 import SignUpContext from '../contexts/SignUpContext';
-import styles from '../css-modules/SignUpPage.module.css';
+import styles from '../css-modules/AuthPages.module.css';
 
 const SignUpPage = ({ history }) => {
     const dispatch = useDispatch();
@@ -32,6 +32,11 @@ const SignUpPage = ({ history }) => {
     const [location, setLocation] = useState('');
     const [lat, setLat] = useState(null);
     const [lng, setLng] = useState(null);
+    const [load, setLoad] = useState(true);
+
+    useEffect(() => {
+        setLoad(false);
+    }, []);
 
     useEffect(() => {
         dispatch(clearErrors());
@@ -103,7 +108,7 @@ const SignUpPage = ({ history }) => {
                                 <></>
                             }
                             <div className={styles.contentContainer}>
-                                <div className={userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen}>
+                                <div className={load ? styles.initialUserInfoOnscreen : userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen}>
                                     <UserInfoSignUpForm />
                                 </div>
                                 <div className={map ? styles.mapOnscreen : styles.mapOffscreen}>

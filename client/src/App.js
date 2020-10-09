@@ -8,7 +8,6 @@ import LogInPage from './components/LogInPage';
 
 
 function App({ apiKey }) {
-    window.onload = () => document.querySelector('body').classList.remove("preload");
 
     return (
         <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>

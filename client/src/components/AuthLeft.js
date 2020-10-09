@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../css-modules/SignUpPage.module.css';
+import styles from '../css-modules/AuthPages.module.css';
 
 const AuthLeft = () => {
     return (

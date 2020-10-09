@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import SignUpContext from '../contexts/SignUpContext';
-import styles from '../css-modules/SignUpPage.module.css';
+import styles from '../css-modules/AuthPages.module.css';
 import "react-datepicker/dist/react-datepicker.css";
 
 const UserInfoSignUpForm = () => {

@@ -1,7 +1,7 @@
 import React, { useState, useContext, useCallback, memo } from 'react';
 import { GoogleMap, Autocomplete } from '@react-google-maps/api';
 import SignUpContext from '../contexts/SignUpContext';
-import styles from '../css-modules/SignUpPage.module.css';
+import styles from '../css-modules/AuthPages.module.css';
 
 const GoogleMapSignUpForm = ({ apiKey }) => {
     const [map, setMap] = useState(null);

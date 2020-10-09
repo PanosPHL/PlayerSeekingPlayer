@@ -25,6 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 10%;
+    margin-top: 12%;
 }
 
 .activeDisplayCircle {
@@ -88,6 +89,19 @@ body {
     justify-content: center;
     position: absolute;
     transition: transform 0.3s;
+    transform: translateX(0);
+    left: 6.8%;
+    top: 14%;
+    width: 86%;
+    height: 90%;
+}
+
+.initialUserInfoOnscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    transform: translateX(0);
     left: 6.8%;
     top: 14%;
     width: 86%;
@@ -185,4 +199,48 @@ body {
 
 .authErrors li {
     margin-top: 2px;
+}
+
+.loginForm {
+    width: 80%;
+}
+
+.loginFormWrapper {
+    margin-top: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginSubmitWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%
+}
+
+.loginBottomText {
+    text-align: center;
+    margin-top: 12%;
+    font-size: 14px;
+}
+
+.loginErrors {
+    list-style: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+}
+
+.loginErrors li {
+    margin-top: 2%;
+}
+
+.loginErrorWrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 22%;
 }

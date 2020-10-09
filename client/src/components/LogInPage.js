@@ -4,7 +4,7 @@ import { login } from '../store/session';
 import { setErrors, clearErrors } from '../store/errors';
 import { Link, withRouter } from 'react-router-dom';
 import AuthLeft from './AuthLeft';
-import authStyles from '../css-modules/SignUpPage.module.css';
+import authStyles from '../css-modules/AuthPages.module.css';
 
 const LogInPage = ({ history }) => {
     const dispatch = useDispatch();
@@ -38,29 +38,37 @@ const LogInPage = ({ history }) => {
                     </div>
                     {
                         errors.length ?
-                        <ul>
+                        <div className={authStyles.loginErrorWrapper}>
+                        <ul className={authStyles.loginErrors}>
                             { errors.map((error, i) => {
                                 return (
                                 <li key={`error-${i + 1}`}>{error}</li>
                                 )
                             })}
-                        </ul> :
+                        </ul>
+                        </div> :
                         <></>
                     }
-                    <form method="" action="" onSubmit={handleSubmit}>
+                    <div className={authStyles.loginFormWrapper}>
+                    <form className={authStyles.loginForm} method="" action="" onSubmit={handleSubmit}>
+                        <div className="login-form-control-group">
                         <p>
-                            <label htmlFor="email">Email</label>
+                            <label className={authStyles.labels} htmlFor="email">Email</label>
                         </p>
-                        <input name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input className="form-control" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        </div>
+                        <div className="login-form-control-group">
                         <p>
-                            <label htmlFor="password">Password</label>
+                            <label className={authStyles.labels} htmlFor="password">Password</label>
                         </p>
-                        <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                        <div>
-                        <button type="submit">Sign In</button>
+                        <input className="form-control" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        </div>
+                        <div className={authStyles.loginSubmitWrapper}>
+                        <button className={authStyles.bottomButton} type="submit">Sign In</button>
                         </div>
                     </form>
-                <p>Don't have an account? <Link className={authStyles.linkText} to='/signup'>Sign up here</Link></p>
+                    </div>
+                <p className={authStyles.loginBottomText}>Don't have an account? <Link className={authStyles.linkText} to='/signup'>Sign up here</Link></p>
                 </div>
             </div>
         </div>
