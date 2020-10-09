@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/session';
+import { setErrors, clearErrors } from '../store/errors';
 import { Link, withRouter } from 'react-router-dom';
 import AuthLeft from './AuthLeft';
 import authStyles from '../css-modules/SignUpPage.module.css';
 
 const LogInPage = ({ history }) => {
     const dispatch = useDispatch();
+    const errors = useSelector(state => state.errors);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    useEffect(() => {
+        dispatch(clearErrors());
+    }, [email, password])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -18,6 +24,8 @@ const LogInPage = ({ history }) => {
         if (res.ok) {
             history.replace('/');
         }
+
+        dispatch(setErrors(res.data.errors));
     }
 
     return (

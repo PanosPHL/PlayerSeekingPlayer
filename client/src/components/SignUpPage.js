@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import { displayUserInfoForm, displayMap } from '../store/ui/signUpForm';
 import { signup } from '../store/users';
+import { setErrors, clearErrors } from '../store/errors';
 import UserInfoSignUpForm from './UserInfoSignUpForm';
 import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
 import AuthLeft from './AuthLeft';
@@ -11,7 +12,8 @@ import styles from '../css-modules/SignUpPage.module.css';
 
 const SignUpPage = ({ history }) => {
     const dispatch = useDispatch();
-    const { userInfo, map } = useSelector(state => state.ui.signUpForm)
+    const { userInfo, map } = useSelector(state => state.ui.signUpForm);
+    const errors = useSelector(state => state.errors);
 
     useEffect(() => {
         dispatch(displayUserInfoForm());
@@ -30,6 +32,10 @@ const SignUpPage = ({ history }) => {
     const [location, setLocation] = useState('');
     const [lat, setLat] = useState(null);
     const [lng, setLng] = useState(null);
+
+    useEffect(() => {
+        dispatch(clearErrors());
+    }, [firstName, lastName, email, password, confirmPassword, dateOfBirth, location]);
 
     const value = {
         values: {
@@ -62,6 +68,7 @@ const SignUpPage = ({ history }) => {
 
     const handlePreviousClick = () => {
         dispatch(displayUserInfoForm());
+        dispatch(clearErrors());
     }
 
     const handleSubmit = async (e) => {
@@ -71,6 +78,7 @@ const SignUpPage = ({ history }) => {
         if (res.ok) {
             history.replace('/');
         }
+        dispatch(setErrors(res.data.errors));
     }
 
     return (
@@ -83,6 +91,17 @@ const SignUpPage = ({ history }) => {
                             <div className={styles.signUpheaderContainer}>
                                 <h1 className={styles.signUpHeader}>Sign Up</h1>
                             </div>
+                            {
+                                errors.length ?
+                                <ul className={styles.authErrors}>
+                                    {errors.map((error, i) => {
+                                        return (
+                                            <li key={`error-${i + 1}`}>{error}</li>
+                                        )
+                                    })}
+                                </ul> :
+                                <></>
+                            }
                             <div className={styles.contentContainer}>
                                 <div className={userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen}>
                                     <UserInfoSignUpForm />

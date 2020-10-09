@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 import session from './session';
 import users from './users';
 import signUpForm from './ui/signUpForm';
+import errors from './errors';
 
 let storeEnhancer;
 
@@ -19,7 +20,8 @@ const ui = combineReducers({
 const rootReducer = combineReducers({
     session,
     entities,
-    ui
+    ui,
+    errors
 });
 
 if (process.env.NODE_ENV !== 'production') {
