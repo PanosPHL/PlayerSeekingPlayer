@@ -5,6 +5,7 @@ import { displayUserInfoForm, displayMap } from '../store/ui/signUpForm';
 import { signup } from '../store/users';
 import UserInfoSignUpForm from './UserInfoSignUpForm';
 import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
+import AuthLeft from './AuthLeft';
 import SignUpContext from '../contexts/SignUpContext';
 import styles from '../css-modules/SignUpPage.module.css';
 
@@ -76,11 +77,11 @@ const SignUpPage = ({ history }) => {
         <>
             <SignUpContext.Provider value={value}>
                 <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
-                    <div className={styles.leftContainer} style={{ width: "60vw" }}></div>
-                    <div style={{width: "40vw", display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <div className={styles.formContainer}>
-                            <div className={styles.headerContainer}>
-                                <h1 className={styles.signUpHeader}>Sign Up For Player Seeking Player</h1>
+                    <AuthLeft />
+                    <div className={styles.authRight}>
+                        <div className={styles.signUpformContainer}>
+                            <div className={styles.signUpheaderContainer}>
+                                <h1 className={styles.signUpHeader}>Sign Up</h1>
                             </div>
                             <div className={styles.contentContainer}>
                                 <div className={userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen}>

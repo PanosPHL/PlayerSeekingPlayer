@@ -4,17 +4,27 @@ body {
 }
 
 .signUpHeader {
+    position: absolute;
     font-size: 28px;
     color: rgba(24, 24, 24, 0.8);
+    bottom: 2%;
 }
 
-.headerContainer {
+.signUpheaderContainer {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    margin-top: 4%;
     margin-bottom: -10%;
+    height: 10%;
+}
+
+.loginHeaderContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
 }
 
 .activeDisplayCircle {
@@ -31,11 +41,20 @@ body {
     border-radius: 50%;
 }
 
-.formContainer {
+.signUpformContainer {
     position: relative;
     overflow: hidden;
     width: 62%;
-    height: 70%;
+    height: 85%;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+}
+
+.loginFormContainer {
+    position: relative;
+    overflow: hidden;
+    width: 62%;
+    height: 60%;
     border-radius: 4px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
 }
@@ -45,6 +64,7 @@ body {
     align-items: center;
     width: 100%;
     height: 10%;
+    margin-top: 8%;
     justify-content: space-evenly;
 }
 
@@ -58,7 +78,7 @@ body {
 .contentContainer {
     position: relative;
     display: flex;
-    height: 85%;
+    height: 75%;
     overflow: hidden;
 }
 
@@ -69,13 +89,13 @@ body {
     position: absolute;
     transition: transform 0.3s;
     left: 6.8%;
-    top: 9%;
+    top: 14%;
     width: 86%;
     height: 90%;
 }
 
 .mapOnscreen {
-    margin-top: 15%;
+    margin-top: 30%;
     margin-left: 3%;
     transition: transform 0.3s, margin-left 0.3s;
 }
@@ -86,7 +106,7 @@ body {
     justify-content: center;
     position: absolute;
     left: 6.8%;
-    top: 9%;
+    top: 14%;
     width: 86%;
     height: 90%;
     transform: translateX(-500px);
@@ -94,7 +114,7 @@ body {
 }
 
 .mapOffscreen {
-    margin-top: 315%;
+    margin-top: 30%;
     margin-left: 3%;
     transform: translateX(500px);
     transition: transform 0.3s, margin-left 0.3s;
@@ -110,7 +130,7 @@ body {
     font-size: 15px;
     font-weight: bold;
     width: 24%;
-    height: 70%;
+    height: 56%;
     padding: 12px 8px 12px 8px;
     border: none;
     background-color: rgb(14, 0, 47);
@@ -127,6 +147,7 @@ body {
 .loginText {
     text-align: center;
     font-size: 14px;
+    margin-top: 4%;
 }
 
 .linkText {
@@ -135,6 +156,15 @@ body {
 }
 
 .leftContainer {
+    width: 60vw;
+    height: 100vh;
     background-image: url("https://makingmusicmag.com/wp-content/uploads/2015/07/guitar-907652_1280.jpg");
     filter: grayscale(90%);
+}
+
+.authRight {
+    display: flex;
+    width: 40vw;
+    justify-content: center;
+    align-items: center;
 }

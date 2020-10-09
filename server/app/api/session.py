@@ -2,13 +2,13 @@ import os
 from flask import Blueprint, make_response, request
 from flask_wtf.csrf import generate_csrf
 from flask_login import login_user, current_user, logout_user
+from datetime import timedelta
 from werkzeug.datastructures import MultiDict
 from app.models import User
 from app.auth import login_manager
 from app.forms import LoginForm
 
 session_routes = Blueprint("session", __name__)
-
 
 @session_routes.route('/login', methods=["PUT"])
 def login():
@@ -17,7 +17,7 @@ def login():
     if form.validate():
         user = User.query.filter(User.email == data["email"]).first()
         if user and user.check_password(data["password"]):
-            login_user(user)
+            login_user(user, remember=True, duration=timedelta(days=7))
             return { "id": user.to_dict()["id"] }
         else:
             res = make_response({ "errors": ["Invalid credentials"] }, 401)

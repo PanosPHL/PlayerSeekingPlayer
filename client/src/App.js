@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { LoadScript } from '@react-google-maps/api';
 import AuthRoute from './components/AuthRoute';
 import UserList from './components/UsersList';
@@ -8,6 +8,7 @@ import LogInPage from './components/LogInPage';
 
 
 function App({ apiKey }) {
+    window.onload = () => document.querySelector('body').classList.remove("preload");
 
     return (
         <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
@@ -20,7 +21,7 @@ function App({ apiKey }) {
                     <LogInPage/>
                 </Route>
                 <Route path='/signup'>
-                    <SignUpPage/>
+                    <SignUpPage />
                 </Route>
                 <AuthRoute path="/">
                     <h1>My Home Page</h1>
