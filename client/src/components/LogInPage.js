@@ -36,6 +36,17 @@ const LogInPage = ({ history }) => {
                     <div className={authStyles.loginHeaderContainer}>
                         <h1 className={authStyles.signUpHeader}>Welcome back!</h1>
                     </div>
+                    {
+                        errors.length ?
+                        <ul>
+                            { errors.map((error, i) => {
+                                return (
+                                <li key={`error-${i + 1}`}>{error}</li>
+                                )
+                            })}
+                        </ul> :
+                        <></>
+                    }
                     <form method="" action="" onSubmit={handleSubmit}>
                         <p>
                             <label htmlFor="email">Email</label>
