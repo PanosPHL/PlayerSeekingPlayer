@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 import session from './session';
 import users from './users';
 import signUpForm from './ui/signUpForm';
+import navbar from './ui/navbar';
 import errors from './errors';
 
 let storeEnhancer;
@@ -14,7 +15,8 @@ const entities = combineReducers({
 });
 
 const ui = combineReducers({
-    signUpForm
+    signUpForm,
+    navbar
 });
 
 const rootReducer = combineReducers({

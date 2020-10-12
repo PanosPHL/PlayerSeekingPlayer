@@ -36,3 +36,7 @@
 .inactive {
     color: grey;
 }
+
+.active {
+    color: white;
+}
