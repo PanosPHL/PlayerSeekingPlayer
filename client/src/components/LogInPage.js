@@ -15,7 +15,7 @@ const LogInPage = ({ history }) => {
 
     useEffect(() => {
         dispatch(clearErrors());
-    }, [email, password])
+    }, [email, password, dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

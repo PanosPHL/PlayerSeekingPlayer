@@ -40,7 +40,7 @@ const SignUpPage = ({ history }) => {
 
     useEffect(() => {
         dispatch(clearErrors());
-    }, [firstName, lastName, email, password, confirmPassword, dateOfBirth, location]);
+    }, [firstName, lastName, email, password, confirmPassword, dateOfBirth, location, dispatch]);
 
     const value = {
         values: {
