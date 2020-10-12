@@ -1,0 +1,38 @@
+.nav {
+    background-color: rgba(0, 7, 105, 0.7);
+    height: 6.6vh;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+    height: inherit;
+}
+
+.profileImage {
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.leftContainer {
+    display: flex;
+    align-items: center;
+}
+
+.rightContainer {
+    width: 6vw;
+    display: flex;
+    align-items: center;
+}
+
+.profileDropdownArrow {
+    font-size: 24px;
+    margin-left: 6%;
+}
+
+.inactive {
+    color: grey;
+}

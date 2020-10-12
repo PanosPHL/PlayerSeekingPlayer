@@ -20,9 +20,10 @@ const LogInPage = ({ history }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await dispatch(login(email, password));
-
+        console.log(res);
         if (res.ok) {
-            history.replace('/');
+            history.replace(`/profiles/${res.data.id}`);
+            return;
         }
 
         dispatch(setErrors(res.data.errors));

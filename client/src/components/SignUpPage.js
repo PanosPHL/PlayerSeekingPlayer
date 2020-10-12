@@ -81,7 +81,8 @@ const SignUpPage = ({ history }) => {
         const res = await dispatch(signup(firstName, lastName, email, password, confirmPassword, dateOfBirth, location, lat, lng));
         console.log(res);
         if (res.ok) {
-            history.replace('/');
+            history.replace(`/profiles/${res.data.id}`);
+            return;
         }
         dispatch(setErrors(res.data.errors));
     }

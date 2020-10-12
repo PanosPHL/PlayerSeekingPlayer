@@ -61,3 +61,16 @@ class Profile(db.Model):
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }
+
+
+class Instrument(db.Model):
+  __tablename__ = "instruments"
+
+  id = db.Column(db.Integer, primary_key=True)
+
+
+
+class Recording(db.Model):
+  __tablename__ = "recordings"
+
+  id = db.Column(db.Integer, primary_key=True)
