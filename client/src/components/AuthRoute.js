@@ -8,7 +8,7 @@ const AuthRoute = ({ path, component }) => {
 
     if (!userId) {
         return (
-            <Redirect to='/signup' />
+            <Redirect to='/login' />
         )
     } else {
         return <Route path={path} component={component}/>
