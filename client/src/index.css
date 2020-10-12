@@ -1,1 +1,35 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.form-control {
+    width: 100%;
+    padding: 2%;
+    font-size: 16px;
+    margin-top: 2%;
+    border: 2px solid rgba(53, 57, 80, 0.4);
+    border-radius: 4px;
+    background-color: rgba(121, 111, 255, 0.1);
+}
+
+.form-control:focus {
+    background-color: none;
+    outline-color: rgb(59, 57, 92);
+}
+
+.form-control-group {
+    margin-top: 4%;
+}
+
+.login-form-control-group {
+    margin-top: 10%;
+}

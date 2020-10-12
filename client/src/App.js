@@ -1,45 +1,33 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom';
-import GoogleMapsContext from './contexts/GoogleMapsContext';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { LoadScript } from '@react-google-maps/api';
 import AuthRoute from './components/AuthRoute';
-
 import UserList from './components/UsersList';
+import SignUpPage from './components/SignUpPage';
+import LogInPage from './components/LogInPage';
 
 
-function App() {
-    let apiKey;
-
-    useEffect(() => {
-        const getApiKey  = async () => {
-            const res = await fetch('/api/session/map-api-token');
-            res.data = await res.json();
-            console.log(res);
-            if (res.ok) {
-                apiKey = res.data["api_key"];
-                console.log(apiKey);
-            }
-        }
-
-        getApiKey();
-    }, [])
+function App({ apiKey }) {
 
     return (
+        <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
         <BrowserRouter>
-            <nav>
-                <ul>
-                    <li><NavLink to="/" activeclass="active">Home</NavLink></li>
-                    <li><NavLink to="/users" activeclass="active">Users</NavLink></li>
-                </ul>
-            </nav>
             <Switch>
                 <Route path="/users">
                     <UserList />
+                </Route>
+                <Route path='/login'>
+                    <LogInPage/>
+                </Route>
+                <Route path='/signup'>
+                    <SignUpPage />
                 </Route>
                 <AuthRoute path="/">
                     <h1>My Home Page</h1>
                 </AuthRoute>
             </Switch>
         </BrowserRouter>
+        </LoadScript>
     );
 }
 

@@ -1,0 +1,246 @@
+body {
+    overflow: hidden;
+    font-family: 'Lato';
+}
+
+.signUpHeader {
+    position: absolute;
+    font-size: 28px;
+    color: rgba(24, 24, 24, 0.8);
+    bottom: 2%;
+}
+
+.signUpheaderContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -10%;
+    height: 10%;
+}
+
+.loginHeaderContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
+    margin-top: 12%;
+}
+
+.activeDisplayCircle {
+    width: 10px;
+    height: 10px;
+    background-color: grey;
+    border-radius: 50%;
+}
+
+.inactiveDisplayCircle {
+    width: 10px;
+    height: 10px;
+    background-color: #bdbdbd;
+    border-radius: 50%;
+}
+
+.signUpformContainer {
+    position: relative;
+    overflow: hidden;
+    width: 62%;
+    height: 85%;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+}
+
+.loginFormContainer {
+    position: relative;
+    overflow: hidden;
+    width: 62%;
+    height: 60%;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
+}
+
+.bottomContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    margin-top: 6%;
+    justify-content: space-evenly;
+}
+
+.circleContainer {
+    display: flex;
+    width: 8%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contentContainer {
+    position: relative;
+    display: flex;
+    height: 75%;
+    overflow: hidden;
+}
+
+.userInfoOnscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    transition: transform 0.3s;
+    transform: translateX(0);
+    left: 6.8%;
+    top: 14%;
+    width: 86%;
+    height: 90%;
+}
+
+.initialUserInfoOnscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    transform: translateX(0);
+    left: 6.8%;
+    top: 14%;
+    width: 86%;
+    height: 90%;
+}
+
+.mapOnscreen {
+    margin-top: 30%;
+    margin-left: 3%;
+    transition: transform 0.3s, margin-left 0.3s;
+}
+
+.userInfoOffscreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    left: 6.8%;
+    top: 14%;
+    width: 86%;
+    height: 90%;
+    transform: translateX(-500px);
+    transition: transform 0.3s;
+}
+
+.mapOffscreen {
+    margin-top: 30%;
+    margin-left: 3%;
+    transform: translateX(500px);
+    transition: transform 0.3s, margin-left 0.3s;
+}
+
+.userInfoForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.bottomButton {
+    font-size: 15px;
+    font-weight: bold;
+    width: 24%;
+    height: 56%;
+    padding: 12px 8px 12px 8px;
+    border: none;
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border-radius: 4px;
+}
+
+.labels {
+    font-size: 17px;
+    color: rgba(39, 39, 39, 0.7);
+    font-weight: 600;
+}
+
+.loginText {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 4%;
+}
+
+.linkText {
+    text-decoration: none;
+    color: rgb(0, 117, 212);
+}
+
+.leftContainer {
+    width: 60vw;
+    height: 100vh;
+    background-image: url("https://makingmusicmag.com/wp-content/uploads/2015/07/guitar-907652_1280.jpg");
+    filter: grayscale(90%);
+}
+
+.authRight {
+    display: flex;
+    width: 40vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.authErrors {
+    position: absolute;
+    top: 11%;
+    left: 2.4%;
+    width: 96%;
+    columns: 2;
+    list-style: none;
+    font-size: 12px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+    border-radius: 6px;
+    padding: 1%;
+}
+
+.authErrors li {
+    margin-top: 2px;
+}
+
+.loginForm {
+    width: 80%;
+}
+
+.loginFormWrapper {
+    margin-top: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginSubmitWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20%
+}
+
+.loginBottomText {
+    text-align: center;
+    margin-top: 12%;
+    font-size: 14px;
+}
+
+.loginErrors {
+    list-style: none;
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+}
+
+.loginErrors li {
+    margin-top: 2%;
+}
+
+.loginErrorWrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    top: 22%;
+}
