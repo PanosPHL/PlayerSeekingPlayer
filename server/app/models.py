@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
-  profile = db.relationship("Profile", back_populates="profiles")
+  profile = db.relationship("Profile", back_populates="user")
 
   @property
   def password(self):
@@ -74,7 +74,7 @@ class Profile(db.Model):
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
-  user = db.relationship("User", back_populates="users")
+  user = db.relationship("User", back_populates="profile")
   instruments = db.relationship("Instrument", secondary=profile_instruments)
   recordings = db.relationship("ProfileRecording")
   styles = db.relationship("Style", secondary=profile_styles)
