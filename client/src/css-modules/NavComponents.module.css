@@ -48,6 +48,10 @@
     text-align: center;
     list-style: none;
     height: inherit;
+
+    animation-duration: 0.5s;
+    animation-name: dropdown;
+    animation-direction: alternate;
 }
 
 .hidden {
@@ -67,6 +71,10 @@
     border-radius: 4px;
 
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+
+    animation-duration: 0.5s;
+    animation-name: dropdown;
+    animation-direction: alternate;
 }
 
 .dropdownListItem {
@@ -76,9 +84,35 @@
     width: 10vw;
     height: 4vh;
     transition: filter 0.2;
+
+    animation-duration: 0.5s;
+    animation-name: slideout;
+    animation-direction: alternate;
 }
 
 .dropdownListItem:hover {
     transition: filter 0.2s;
     filter: brightness(80%);
+}
+
+@keyframes slideout {
+    from {
+        margin-top: -25px;
+    }
+
+    to {
+        margin-top: 0;
+    }
+}
+
+@keyframes dropdown {
+    from {
+        height: 0;
+        overflow: hidden;
+    }
+
+    to {
+        height: 8vh;
+        overflow: none;
+    }
 }

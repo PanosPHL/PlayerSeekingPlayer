@@ -1,12 +1,19 @@
 import Cookie from 'js-cookie';
 const csrfToken = Cookie.get('XSRF-TOKEN');
 
-const LOGIN = 'session/LOGIN'
+const LOGIN = 'session/LOGIN';
+export const LOGOUT = 'session/LOGOUT';
 
 const addUserToSession = (userId) => {
     return {
         type: LOGIN,
         userId
+    }
+}
+
+const removeUserFromSession = () => {
+    return {
+        type: LOGOUT
     }
 }
 
@@ -30,6 +37,24 @@ export const login = (email, password) => {
     }
 }
 
+export const logout = () => {
+    return async dispatch => {
+        const res = await fetch('/api/session/logout', {
+            method: 'PUT',
+            headers: {
+                'X-CSRFToken': csrfToken,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (res.ok) {
+            dispatch(removeUserFromSession());
+        }
+
+        return res;
+    }
+}
+
 
 const initialSessionState = {
     userId: null
@@ -40,6 +65,9 @@ export default function sessionReducer(state = initialSessionState, action) {
     switch(action.type) {
         case LOGIN:
             newState.userId = action.userId;
+            return newState;
+        case LOGOUT:
+            newState.userId = null;
             return newState;
         default:
             return state;

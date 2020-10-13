@@ -29,6 +29,11 @@ def login():
         res = make_response({ "errors": errors }, 401)
         return res
 
+@session_routes.route('/logout', methods=["PUT"])
+def logout():
+    logout_user()
+    return { "message": "User successfully logged out" }
+
 
 @session_routes.route('/map-api-token', methods=["GET"])
 def map_api_token():
