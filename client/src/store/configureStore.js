@@ -4,21 +4,29 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import session from './session';
 import users from './users';
+import errors from './errors';
+import instruments from './instruments';
+import recordings from './recordings';
+import styles from './styles';
 import signUpForm from './ui/signUpForm';
 import navbar from './ui/navbar';
-import errors from './errors';
+import profilePage from './ui/profilePage';
 
 import { LOGOUT } from './session';
 
 let storeEnhancer;
 
 const entities = combineReducers({
-    users
+    users,
+    instruments,
+    recordings,
+    styles
 });
 
 const ui = combineReducers({
     signUpForm,
-    navbar
+    navbar,
+    profilePage
 });
 
 const appReducer = combineReducers({

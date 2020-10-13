@@ -1,4 +1,7 @@
 import { addUsers } from './users';
+import { addInstruments } from './instruments';
+import { addRecordings } from './recordings';
+import { addStyles } from './styles';
 
 import Cookie from 'js-cookie';
 const csrfToken = Cookie.get('XSRF-TOKEN');
@@ -63,9 +66,12 @@ export const getSessionData = () => {
         const res = await fetch('/api/session/data');
 
         res.data = await res.json();
-        console.log(res);
+
         if (res.ok) {
             dispatch(addUsers(res.data.users));
+            dispatch(addInstruments(res.data.instruments));
+            dispatch(addRecordings(res.data.recordings));
+            dispatch(addStyles(res.data.styles));
         }
 
         return res;
