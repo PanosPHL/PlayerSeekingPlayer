@@ -13,7 +13,7 @@ const addUser = (user) => {
     }
 }
 
-const addUsers = (users) => {
+export const addUsers = (users) => {
     return {
         type: SET_USERS,
         users
@@ -46,20 +46,6 @@ export const signup = (firstName, lastName, email, password, confirmPassword, da
         if (res.ok) {
             dispatch(addUser(res.data));
             await dispatch(login(email, password));
-        }
-
-        return res;
-    }
-}
-
-export const setUsers = () => {
-    return async dispatch => {
-        const res = await fetch('/api/users');
-
-        res.data = await res.json();
-        console.log(res);
-        if (res.ok) {
-            dispatch(addUsers(res.data.users));
         }
 
         return res;

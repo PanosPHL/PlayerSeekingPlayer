@@ -63,6 +63,14 @@ class ProfileRecording(db.Model):
   title = db.Column(db.String(256), unique=True, nullable=False)
   description = db.Column(db.Text)
 
+  def to_dict(self):
+    return {
+      "profile_id": self.profile_id,
+      "recording_id": self.recording_id,
+      "title": self.title,
+      "description": self.description
+    }
+
 
 class Profile(db.Model):
   __tablename__ = 'profiles'
@@ -85,12 +93,19 @@ class Profile(db.Model):
       "user_id": self.user_id,
       "biography": self.biography,
       "location": self.location,
-      "instruments": [instrument.to_dict() for instrument in self.instruments],
-      "recordings": [recording.to_dict() for recording in self.recordings],
-      "styles": [style.to_dict() for style in self.styles],
+      "instruments": [instrument.to_dict()["id"] for instrument in self.instruments],
+      "recordings": self.get_recording_data(self.recordings),
+      "styles": [style.to_dict()["id"] for style in self.styles],
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }
+
+  def get_recording_data(self, recordings):
+    recordings_dict = dict()
+    for recording in recordings:
+      rec_dict = recording.to_dict()
+      recordings_dict[rec_dict["recording_id"]] = rec_dict
+    return recordings_dict
 
 
 class Instrument(db.Model):

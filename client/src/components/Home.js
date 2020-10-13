@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as HomeRouter, Switch, Route, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setUsers } from '../store/users';
+import { getSessionData } from '../store/session'
 import ProfilePage from './ProfilePage';
 import TopBar from './TopBar';
 
@@ -10,10 +10,10 @@ const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const getUsers = async () => {
-            const res = await dispatch(setUsers());
+        const getData = async () => {
+            const res = await dispatch(getSessionData());
         }
-        getUsers();
+        getData();
     }, [dispatch])
 
     return (

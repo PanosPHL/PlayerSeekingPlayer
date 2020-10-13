@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app import app, db
-from app.models import User, Profile, Instrument, Style
+from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording
 
 with app.app_context():
   db.drop_all()
@@ -17,7 +17,13 @@ with app.app_context():
   # Instrument / Style seed data
   alto_sax = Instrument(name="Alto Saxophone")
   jazz = Style(name="Jazz")
+  ts = Recording(url='https://www.youtube.com/watch?v=pL9i0S8REeg')
   demo_profile.instruments.append(alto_sax)
   demo_profile.styles.append(jazz)
   db.session.add(demo_profile)
+  db.session.add(ts)
+  db.session.commit()
+
+  demo_ts = ProfileRecording(profile_id=demo_profile.to_dict()["id"], recording_id=ts.to_dict()["id"], title="TS with the Vibe Plus Five", description="")
+  db.session.add(demo_ts)
   db.session.commit()

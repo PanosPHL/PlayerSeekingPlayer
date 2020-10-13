@@ -1,5 +1,8 @@
+import { addUsers } from './users';
+
 import Cookie from 'js-cookie';
 const csrfToken = Cookie.get('XSRF-TOKEN');
+
 
 const LOGIN = 'session/LOGIN';
 export const LOGOUT = 'session/LOGOUT';
@@ -49,6 +52,20 @@ export const logout = () => {
 
         if (res.ok) {
             dispatch(removeUserFromSession());
+        }
+
+        return res;
+    }
+}
+
+export const getSessionData = () => {
+    return async dispatch => {
+        const res = await fetch('/api/session/data');
+
+        res.data = await res.json();
+        console.log(res);
+        if (res.ok) {
+            dispatch(addUsers(res.data.users));
         }
 
         return res;
