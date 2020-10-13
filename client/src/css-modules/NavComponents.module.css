@@ -27,6 +27,8 @@
     width: 4.2vw;
     display: flex;
     align-items: center;
+
+    cursor: pointer;
 }
 
 .profileDropdownArrow {
@@ -60,7 +62,7 @@
 
 .dropdownContainer {
     position: absolute;
-    top: 8vh;
+    top: 7vh;
     left: -3.8vw;
 
     width: 10vw;
@@ -93,15 +95,23 @@
 .dropdownListItem:hover {
     transition: filter 0.2s;
     filter: brightness(80%);
+    cursor: pointer;
+}
+
+.dropdownLink {
+    text-decoration: none;
+    color: black;
 }
 
 @keyframes slideout {
     from {
-        margin-top: -25px;
+        height: 0;
+        overflow: hidden;
+        margin-top: -10px;
     }
 
     to {
-        margin-top: 0;
+        height: 4vh;
     }
 }
 

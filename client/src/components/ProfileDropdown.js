@@ -20,7 +20,7 @@ const ProfileDropdown = ({ className, history }) => {
     return (
         <div className={className}>
         <ul className={navStyles.profileDropdown}>
-            <Link to={`/profiles/${userId}`}>
+            <Link className={navStyles.dropdownLink} to={`/profiles/${userId}`}>
             <li className={navStyles.dropdownListItem}>My Profile</li>
             </Link>
             <li className={navStyles.dropdownListItem} onClick={handleLogoutClick}>Logout</li>
