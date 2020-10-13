@@ -13,13 +13,11 @@ with app.app_context():
   db.session.add(demo)
   db.session.commit()
   demo_profile = Profile(user_id = demo.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA")
-  db.session.add(demo_profile)
 
   # Instrument / Style seed data
   alto_sax = Instrument(name="Alto Saxophone")
   jazz = Style(name="Jazz")
-  db.session.add(alto_sax)
-  db.session.add(jazz)
-
-
+  demo_profile.instruments.append(alto_sax)
+  demo_profile.styles.append(jazz)
+  db.session.add(demo_profile)
   db.session.commit()

@@ -50,18 +50,18 @@ profile_instruments = db.Table("profile_instruments",
 )
 
 
+profile_styles = db.Table("profile_styles",
+  db.Column("profile_id", db.Integer, db.ForeignKey("profiles.id"), primary_key=True, nullable=False),
+  db.Column("style_id", db.Integer, db.ForeignKey("styles.id"), primary_key=True, nullable=False)
+)
+
+
 class ProfileRecording(db.Model):
   __tablename__ = "profile_recordings"
   profile_id = db.Column(db.Integer, db.ForeignKey('profiles.id'), primary_key=True)
   recording_id = db.Column(db.Integer, db.ForeignKey('recordings.id'), primary_key=True)
   title = db.Column(db.String(256), unique=True, nullable=False)
   description = db.Column(db.Text)
-
-
-profile_styles = db.Table("profile_styles",
-  db.Column("profile_id", db.Integer, db.ForeignKey("profiles.id"), primary_key=True, nullable=False),
-  db.Column("style_id", db.Integer, db.ForeignKey("styles.id"), primary_key=True, nullable=False)
-)
 
 
 class Profile(db.Model):
@@ -76,8 +76,8 @@ class Profile(db.Model):
 
   user = db.relationship("User", back_populates="profile")
   instruments = db.relationship("Instrument", secondary=profile_instruments)
-  recordings = db.relationship("ProfileRecording")
   styles = db.relationship("Style", secondary=profile_styles)
+  recordings = db.relationship("ProfileRecording")
 
   def to_dict(self):
     return {
@@ -85,6 +85,9 @@ class Profile(db.Model):
       "user_id": self.user_id,
       "biography": self.biography,
       "location": self.location,
+      "instruments": [instrument.to_dict() for instrument in self.instruments],
+      "recordings": [recording.to_dict() for recording in self.recordings],
+      "styles": [style.to_dict() for style in self.styles],
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }
@@ -96,6 +99,12 @@ class Instrument(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(128), unique=True, nullable=False)
 
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "name": self.name
+    }
+
 
 class Recording(db.Model):
   __tablename__ = "recordings"
@@ -103,9 +112,21 @@ class Recording(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   url = db.Column(db.String(256), nullable=False)
 
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "url": self.url
+    }
+
 
 class Style(db.Model):
   __tablename__ = 'styles'
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(64), unique=True, nullable=False)
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "name": self.name
+    }
