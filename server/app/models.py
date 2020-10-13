@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
+  profile = db.relationship("Profile", back_populates="profiles")
+
   @property
   def password(self):
         return self.hashed_password
@@ -42,6 +44,26 @@ class User(db.Model, UserMixin):
     }
 
 
+profile_instruments = db.Table("profile_instruments",
+  db.Column("profile_id", db.Integer, db.ForeignKey("profiles.id"), primary_key=True, nullable=False),
+  db.Column("instrument_id", db.Integer, db.ForeignKey("instruments.id"), primary_key=True, nullable=False)
+)
+
+
+class ProfileRecording(db.Model):
+  __tablename__ = "profile_recordings"
+  profile_id = db.Column(db.Integer, db.ForeignKey('profiles.id'), primary_key=True)
+  recording_id = db.Column(db.Integer, db.ForeignKey('recordings.id'), primary_key=True)
+  title = db.Column(db.String(256), unique=True, nullable=False)
+  description = db.Column(db.Text)
+
+
+profile_styles = db.Table("profile_styles",
+  db.Column("profile_id", db.Integer, db.ForeignKey("profiles.id"), primary_key=True, nullable=False),
+  db.Column("style_id", db.Integer, db.ForeignKey("styles.id"), primary_key=True, nullable=False)
+)
+
+
 class Profile(db.Model):
   __tablename__ = 'profiles'
 
@@ -51,6 +73,11 @@ class Profile(db.Model):
   location = db.Column(db.String(256), nullable=False)
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
+
+  user = db.relationship("User", back_populates="users")
+  instruments = db.relationship("Instrument", secondary=profile_instruments)
+  recordings = db.relationship("ProfileRecording")
+  styles = db.relationship("Style", secondary=profile_styles)
 
   def to_dict(self):
     return {
@@ -67,10 +94,18 @@ class Instrument(db.Model):
   __tablename__ = "instruments"
 
   id = db.Column(db.Integer, primary_key=True)
-
+  name = db.Column(db.String(128), unique=True, nullable=False)
 
 
 class Recording(db.Model):
   __tablename__ = "recordings"
 
   id = db.Column(db.Integer, primary_key=True)
+  url = db.Column(db.String(256), nullable=False)
+
+
+class Style(db.Model):
+  __tablename__ = 'styles'
+
+  id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(64), unique=True, nullable=False)
