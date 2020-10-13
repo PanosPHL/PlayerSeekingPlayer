@@ -7,9 +7,14 @@ user_routes = Blueprint('users', __name__)
 
 @user_routes.route('/')
 def index():
-  response = User.query.all()
-  print("user route______")
-  return { "users": [user.to_dict() for user in response] }
+  users = User.query.all()
+  users_list = list()
+  for user in users:
+    user_dict = user.to_dict()
+    profile = Profile.query.filter(Profile.user_id == user_dict["id"]).first()
+    user_dict["profileInfo"] = profile.to_dict()
+    users_list.append(user_dict)
+  return { "users": users_list }
 
 @user_routes.route('/', methods=["POST"])
 def signup_user():
