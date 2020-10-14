@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styles from '../css-modules/YouTubePlayer.module.css';
 
 
 const YouTubePlayer = ({ videoId, i, height, width }) => {
     const [loading, setLoading] = useState(true);
-    const [player, setPlayer] = useState(null);
+    const player = useRef(null);
+
+    console.log(videoId);
 
     useEffect(() => {
-        setPlayer(new window.YT.Player(`player-${i}`, {
+        player.current = new window.YT.Player(`player-${i}`, {
             videoId: videoId,
             events: {
                 'onReady': onPlayerReady
             }
-        }));
+        });
     }, [i, videoId])
 
     const onPlayerReady = (event) => {

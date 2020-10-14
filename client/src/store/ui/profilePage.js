@@ -20,14 +20,14 @@ const initialProfilePageUIState = {
 
 export default function profilePageReducer(state = initialProfilePageUIState, action) {
     const newState = Object.assign({}, state);
-    switch(action.type) {
+    switch (action.type) {
         case ABOUT_ON:
-            newState.about = true;
             newState.recordings = false;
+            newState.about = true;
             return newState;
         case RECORDINGS_ON:
-            newState.recordings = true;
             newState.about = false;
+            newState.recordings = true;
             return newState;
         default:
             return state;
