@@ -1,3 +1,6 @@
+const TOGGLE_ABOUT = 'ui/TOGGLE_ABOUT';
+const TOGGLE_RECORDINGS = 'ui/TOGGLE_RECORDINGS';
+
 const initialProfilePageUIState = {
     about: true,
     recordings: false
