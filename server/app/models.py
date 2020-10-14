@@ -94,19 +94,11 @@ class Profile(db.Model):
       "biography": self.biography,
       "location": self.location,
       "instruments": [instrument.to_dict()["id"] for instrument in self.instruments],
-      "recordings": self.get_recording_data(self.recordings),
+      "recordings": [recording.to_dict() for recording in self.recordings],
       "styles": [style.to_dict()["id"] for style in self.styles],
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }
-
-  def get_recording_data(self, recordings):
-    recordings_dict = dict()
-    for recording in recordings:
-      rec_dict = recording.to_dict()
-      recordings_dict[rec_dict["recording_id"]] = rec_dict
-    return recordings_dict
-
 
 class Instrument(db.Model):
   __tablename__ = "instruments"
