@@ -1,16 +1,15 @@
 import React from 'react';
-import YouTube from 'react-youtube';
-
+import YouTubePlayer from './YouTubePlayer';
 
 const youtubeRegex = /www\.youtube\.com/g;
 
-const Recording = ({ recording }) => {
+const Recording = ({ recording, i }) => {
     const { id, title, description, url } = recording;
 
     return (
         <div>
             { youtubeRegex.test(url) ?
-            <YouTube videoId={url.split('v=')[1]}/> :
+                <YouTubePlayer videoId={url.split('v=')[1]} i={i} width="512" height="288"/> :
             <></>
         }
         </div>

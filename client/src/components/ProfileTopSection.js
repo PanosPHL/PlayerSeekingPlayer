@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useDispatch, connect } from 'react-redux';
 import { aboutOn, recordingsOn } from '../store/ui/profilePage';
 
@@ -10,7 +10,7 @@ const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments }
         dispatch(aboutOn());
     }
 
-    const handleRecordingsClick = () => {
+    const handleRecordingsClick = async () => {
         dispatch(recordingsOn());
     }
 

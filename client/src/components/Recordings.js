@@ -6,7 +6,7 @@ import Recording from './Recording';
 const Recordings = ({ isOwner, userProfile, recordings, className }) => {
     return (
         <div className={className}>
-            { recordings.map((recording, i) => <Recording key={`recording-${i + 1}`} recording={recording}/>)}
+            { recordings.map((recording, i) => <Recording key={`recording-${i + 1}`} recording={recording} i={i + 1}/>)}
         </div>
     )
 }

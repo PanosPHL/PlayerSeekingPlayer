@@ -11,7 +11,7 @@ const Home = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await dispatch(getSessionData());
+            await dispatch(getSessionData());
         }
         getData();
     }, [dispatch])

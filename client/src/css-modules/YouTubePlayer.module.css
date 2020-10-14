@@ -1,0 +1,8 @@
+.loadingPlayer {
+    background-color: rgba(146, 146, 146, 0.7);
+    filter: blur(12px);
+}
+
+.activePlayer {
+
+}

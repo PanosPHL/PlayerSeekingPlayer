@@ -9,7 +9,8 @@ const ProfileContent = ({ isOwner, userProfile }) => {
         <>
         {
             about ? <About isOwner={isOwner} userProfile={userProfile}/> :
-            <Recordings isOwner={isOwner} userProfile={userProfile} className={recordings ? "" : "actuallyHidden"}/>
+            recordings ? <Recordings isOwner={isOwner} userProfile={userProfile} /> :
+            <></>
         }
         </>
     )
