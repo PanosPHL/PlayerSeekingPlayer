@@ -12,7 +12,7 @@
 }
 
 .profileImage {
-    height: 56px;
+    height: 48px;
     border-radius: 50%;
     border: 3px solid white;
 }
@@ -32,13 +32,13 @@
 }
 
 .profileDropdownArrow {
-    font-size: 24px;
+    font-size: 20px;
     margin-left: 6%;
 }
 
 .inactive {
     color: grey;
-    transition: color 0.2s;
+    transition: color 0.1s;
 }
 
 .active {
@@ -101,6 +101,11 @@
 .dropdownLink {
     text-decoration: none;
     color: black;
+}
+
+.logo {
+    text-decoration: none;
+    color: white;
 }
 
 @keyframes slideout {

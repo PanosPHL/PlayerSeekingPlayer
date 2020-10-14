@@ -9,7 +9,8 @@ const ProfileContent = () => {
         <>
         {
             about ? <About /> :
-            <Recordings />
+            recordings ? <Recordings /> :
+            <></>
         }
         </>
     )

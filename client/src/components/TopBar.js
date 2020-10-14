@@ -17,7 +17,7 @@ const TopBar = () => {
         <div className={navStyles.nav}>
             <div className={navStyles.navContainer}>
             <div className={navStyles.leftContainer}>
-            <Link to='/'>
+            <Link className={navStyles.logo} to='/'>
             <h2>Player Seeking Player</h2>
             </Link>
             </div>
