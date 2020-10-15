@@ -1,5 +1,6 @@
 import Cookie from 'js-cookie';
 import { login } from './session';
+import { ADD_PROFILE_RECORDING } from './recordings';
 
 const csrfToken = Cookie.get('XSRF-TOKEN');
 
@@ -62,6 +63,12 @@ export default function usersReducer(state = {}, action) {
             for (const user of action.users) {
                 newState[user.id] = user;
             }
+            return newState;
+        case ADD_PROFILE_RECORDING:
+            const newProfileInfo = Object.assign({}, newState[[action.profileRecording["profile_id"]]].profileInfo);
+            const newRecordings = { [action.profileRecording.recording_id]: action.profileRecording, ...newProfileInfo.recordings };
+            newProfileInfo.recordings = newRecordings;
+            newState[[action.profileRecording["profile_id"]]].profileInfo = newProfileInfo;
             return newState;
         default:
             return state;

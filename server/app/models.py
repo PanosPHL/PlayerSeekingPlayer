@@ -65,6 +65,7 @@ class ProfileRecording(db.Model):
 
   def to_dict(self):
     return {
+      "profile_id": self.profile_id,
       "recording_id": self.recording_id,
       "title": self.title,
       "description": self.description

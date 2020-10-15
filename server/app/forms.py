@@ -39,3 +39,5 @@ class RecordingForm(FlaskForm):
         fetch_url = f"https://www.googleapis.com/youtube/v3/videos?id={field.data.split('v=')[1]}&key={YOUTUBE_API_KEY}"
         r = requests.get(fetch_url)
         r_json = r.json()
+        if not r.ok:
+            raise ValidationError("Please provide a valid YouTube URL.")

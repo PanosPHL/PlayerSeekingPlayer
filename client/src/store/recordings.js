@@ -2,11 +2,19 @@ import Cookie from 'js-cookie';
 
 const ADD_RECORDING = 'recordings/ADD_RECORDING';
 const SET_RECORDINGS = 'recordings/SET_RECORDINGS';
+export const ADD_PROFILE_RECORDING ='recordings/ADD_PROFILE_RECORDING';
 
 export const addRecording = (recording) => {
     return {
         type: ADD_RECORDING,
         recording
+    }
+}
+
+export const addProfileRecording = (profileRecording) => {
+    return {
+        type: ADD_PROFILE_RECORDING,
+        profileRecording
     }
 }
 
@@ -37,8 +45,10 @@ export const postAndAddRecording = (profileId, url, title, description) => {
         res.data = await res.json();
 
         console.log(res);
+
         if (res.ok) {
-            // dispatch(addRecording(res.data))
+            dispatch(addRecording(res.data.recording));
+            dispatch(addProfileRecording(res.data.profileRecording));
         }
 
         return res;
@@ -52,6 +62,9 @@ export default function recordingReducer(state = {}, action) {
             for (const recording of action.recordings) {
                 newState[recording.id] = recording;
             }
+            return newState;
+        case ADD_RECORDING:
+            newState[action.recording.id] = action.recording;
             return newState;
         default:
             return state;
