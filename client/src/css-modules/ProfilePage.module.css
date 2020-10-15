@@ -1,3 +1,17 @@
+.sectionContainer {
+    height: 38vh;
+    width: 70%;
+
+    margin: 0 auto;
+
+    background-color: rgb(255, 252, 252);
+
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
+}
+
 .defaultCoverPhoto {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
@@ -9,7 +23,7 @@
     background-position-y: -305px;
     background-position-x: -100px;
 
-    width: 80%;
+    width: 100%;
     height: 18vh;
 
     margin: 0 auto;
@@ -24,7 +38,7 @@
 
 .defaultProfilePicture {
     margin-top: 80px;
-    height: 20vh;
+    height: 16vh;
     border-radius: 50%;
     border: 6px solid white;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
@@ -33,11 +47,66 @@
 
 .defaultProfilePictureInnerBorder {
     position: absolute;
-    height: 20vh;
-    width: 20vh;
+    height: 16vh;
+    width: 16vh;
     border-radius: 50%;
     border: 2px solid rgba(0, 7, 75, 0.2);
-    transform: scale(0.95);
+    transform: scale(0.94);
     z-index: 1;
-    top: 80.6px;
+    top: 79.8px;
+}
+
+.toolbar {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+
+    width: 100%;
+
+    margin-top: 4.5%;
+
+    background-color: rgb(255, 252, 252);
+
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+
+    grid-column: 6 / 13;
+
+    background-color: rgb(255, 252, 252);
+}
+
+.button {
+    width: 25%;
+    height: 5vh;
+
+    font-family: 'Lato';
+    font-size: 16px;
+    color: white;
+
+    background-color: rgb(0, 10, 150, 0.6);
+
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.lastButton {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.button:hover, .activeButton {
+    background-color: rgba(0, 7, 100, 0.7);
+}
+
+.button:focus {
+    outline: none;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import { useDispatch, connect } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 import { aboutOn, recordingsOn } from '../store/ui/profilePage';
 import profStyles from '../css-modules/ProfilePage.module.css';
 
 
-const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments }) => {
+const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments, about, recordings }) => {
     const dispatch = useDispatch();
 
     const handleAboutClick = () => {
@@ -16,7 +16,7 @@ const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments }
     }
 
     return (
-        <div>
+        <div className={profStyles.sectionContainer}>
             <div className={profStyles.defaultCoverPhoto}>
                 <div className={profStyles.pictureContainer}>
                     <img className={profStyles.defaultProfilePicture} src='https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1218408229?b=1&k=6&m=1218408229&s=612x612&w=0&h=ljIOZzztvumhkaB5d9xLPuZ8cvckG527XCWZIKTCT0k=' alt='Profile' />
@@ -28,9 +28,12 @@ const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments }
                 <h3>{location}</h3>
                 <h4>{"Instruments: " + (instruments.length && instruments[0] ? instruments.map((instrument) => instrument.name).join(", ") : "")}</h4>
             </div>
-            <button>Invite</button>
-            <button onClick={handleAboutClick}>About</button>
-            <button onClick={handleRecordingsClick}>Recordings</button>
+            <div className={profStyles.toolbar}>
+                <div className={profStyles.buttonContainer}>
+                    <button className={profStyles.button + (about ? " " + profStyles.activeButton : "")} onClick={handleAboutClick}>About</button>
+                    <button className={profStyles.button + " " + profStyles.lastButton + (recordings ? " " + profStyles.activeButton : "")} onClick={handleRecordingsClick}>Recordings</button>
+                </div>
+            </div>
         </div>
     )
 }

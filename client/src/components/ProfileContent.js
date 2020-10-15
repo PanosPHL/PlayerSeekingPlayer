@@ -4,9 +4,8 @@ import { aboutOn, recordingsOn } from '../store/ui/profilePage';
 import About from './About';
 import Recordings from './Recordings';
 
-const ProfileContent = ({ isOwner, userProfile }) => {
+const ProfileContent = ({ isOwner, userProfile, about, recordings }) => {
     const dispatch = useDispatch();
-    const { about, recordings } = useSelector(state => state.ui.profilePage);
 
     useEffect(() => {
         dispatch(aboutOn())
