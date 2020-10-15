@@ -90,7 +90,7 @@ const SignUpPage = ({ history }) => {
     return (
         <>
             <SignUpContext.Provider value={value}>
-                <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
+                <div className={styles.body} style={{ display: "flex", width: "100vw", height: "100vh" }}>
                     <AuthLeft />
                     <div className={styles.authRight}>
                         <div className={styles.signUpformContainer}>

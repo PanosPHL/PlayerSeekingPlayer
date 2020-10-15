@@ -41,11 +41,9 @@ const GoogleMapSignUpForm = ({ apiKey }) => {
       }
 
       const onPlaceChanged = () => {
-          console.log(autocomplete.getPlace());
           if (autocomplete) {
               const newLat = autocomplete.getPlace().geometry.location.lat();
               const newLng = autocomplete.getPlace().geometry.location.lng();
-              console.log(newLat, newLng)
               setLat(newLat);
               setLng(newLng);
               setLocation(document.querySelector('#autocomplete').value);

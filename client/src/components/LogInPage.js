@@ -20,7 +20,7 @@ const LogInPage = ({ history }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await dispatch(login(email, password));
-        console.log(res);
+
         if (res.ok) {
             history.replace(`/profiles/${res.data.id}`);
             return;
@@ -30,7 +30,7 @@ const LogInPage = ({ history }) => {
     }
 
     return (
-        <div style={{display: "flex", height: "100vh", width: "100vw"}}>
+        <div className={authStyles.body} style={{display: "flex", height: "100vh", width: "100vw"}}>
             <AuthLeft />
             <div className={authStyles.authRight}>
                 <div className={authStyles.loginFormContainer}>
