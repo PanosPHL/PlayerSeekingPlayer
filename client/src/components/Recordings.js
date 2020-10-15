@@ -1,12 +1,20 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, connect } from 'react-redux';
+import { toggleRecordingModal } from '../store/ui/profilePage';
 import Recording from './Recording';
 
 
 const Recordings = ({ isOwner, userProfile, userRecordings, className }) => {
-    console.log(userRecordings);
+    const dispatch = useDispatch();
+
+    const handleNewRecordingClick = () => {
+        dispatch(toggleRecordingModal());
+        document.body.classList.add('noscroll');
+    }
+
     return (
         <div>
+            <button onClick={handleNewRecordingClick}><i className="fas fa-plus"></i><p>Add Recording</p></button>
             {
             userRecordings.map((recording, i) => <Recording key={`recording-${i + 1}`} recording={recording} i={i + 1}/>)
             }

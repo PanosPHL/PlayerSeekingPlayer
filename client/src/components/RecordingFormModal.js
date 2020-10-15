@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setRecordingFormId } from '../store/session';
 import { toggleRecordingModal } from '../store/ui/profilePage';
 import RecordingForm from './RecordingForm';
 
@@ -22,10 +23,19 @@ const RecordingFormModal = () => {
         }
     });
 
+    const dispatch = useDispatch();
+
+    const handleCloseClick = () => {
+        dispatch(toggleRecordingModal());
+        dispatch(setRecordingFormId(null));
+        document.body.classList.remove('noscroll');
+    }
+
     if (recordingFormModal) {
         return (
-            <div style={{height: "100vh", width: "100vw", backgroundColor: "rgba(0, 0, 0, 0.2)", zIndex: "1", position: "absolute"}}>
+            <div style={{height: "100vh", width: "100vw", backgroundColor: "rgba(0, 0, 0, 0.2)", zIndex: "1", position: "absolute", overflow: 'hidden'}}>
                 <div>
+                    <button onClick={handleCloseClick}><i className="far fa-window-close"></i></button>
                     <RecordingForm id={recordingFormId} recInfo={recInfo}/>
                 </div>
             </div>

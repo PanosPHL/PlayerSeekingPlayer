@@ -14,10 +14,9 @@ export const recordingsOn = () => {
     }
 }
 
-export const toggleRecordingModal = (id) => {
+export const toggleRecordingModal = () => {
     return {
-        type: TOGGLE_RECORDING_MODAL,
-        id
+        type: TOGGLE_RECORDING_MODAL
     }
 }
 

@@ -13,6 +13,7 @@ const Recording = ({ recording, i }) => {
     const handleEditClick = () => {
         dispatch(toggleRecordingModal());
         dispatch(setRecordingFormId(id));
+        document.body.classList.add('noscroll');
     }
 
     return (
