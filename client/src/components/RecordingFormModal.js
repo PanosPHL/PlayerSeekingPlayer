@@ -11,12 +11,14 @@ const RecordingFormModal = () => {
     let recInfo = useSelector(state => {
         if (!recordingFormId) {
             return {
+                profileId: state.session.userId,
                 recTitle: undefined,
                 recURL: undefined,
                 recDescription: undefined
             }
         }
         return {
+            profileId: state.session.userId,
             recTitle: state.entities.users[state.session.userId].profileInfo.recordings[recordingFormId].title,
             recURL: state.entities.recordings[recordingFormId].url,
             recDescription: state.entities.users[state.session.userId].profileInfo.recordings[recordingFormId].description

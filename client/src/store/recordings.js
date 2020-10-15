@@ -20,7 +20,7 @@ export const addRecordings = (recordings) => {
 export const postAndAddRecording = (profileId, url, title, description) => {
     const csrfToken = Cookie.get('XSRF-TOKEN')
     return async dispatch => {
-        const res = await fetch('/api/recordings', {
+        const res = await fetch('/api/recordings/', {
             method: "POST",
             headers: {
                 'X-CSRFToken': csrfToken,
