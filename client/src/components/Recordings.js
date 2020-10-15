@@ -4,6 +4,7 @@ import Recording from './Recording';
 
 
 const Recordings = ({ isOwner, userProfile, userRecordings, className }) => {
+    console.log(userRecordings);
     return (
         <div>
             {
@@ -15,7 +16,7 @@ const Recordings = ({ isOwner, userProfile, userRecordings, className }) => {
 
 const mapStateToProps = (state, { isOwner, userProfile }) => {
     return {
-        userRecordings: userProfile ? userProfile.profileInfo.recordings.map((recording) => {
+        userRecordings: userProfile ? Object.values(userProfile.profileInfo.recordings).map((recording) => {
             return {
                 id: recording.recording_id,
                 url: state.entities.recordings[recording.recording_id].url,

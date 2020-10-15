@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ProfileTopSection from './ProfileTopSection';
 import ProfileContent from './ProfileContent';
+import RecordingFormModal from './RecordingFormModal';
 
 
 const ProfilePage = ({ match }) => {
@@ -11,8 +12,8 @@ const ProfilePage = ({ match }) => {
 
     return (
         <>
-            <ProfileTopSection isOwner={isOwner} userProfile={userProfile}/>
-            <ProfileContent isOwner={isOwner} userProfile={userProfile}/>
+            <ProfileTopSection isOwner={isOwner} userProfile={userProfile} />
+            <ProfileContent isOwner={isOwner} userProfile={userProfile} />
         </>
     )
 }

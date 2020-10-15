@@ -9,6 +9,7 @@ const csrfToken = Cookie.get('XSRF-TOKEN');
 
 const LOGIN = 'session/LOGIN';
 export const LOGOUT = 'session/LOGOUT';
+const SET_RECORDING_FORM_ID = 'session/SET_RECORDING_FORM_ID'
 
 const addUserToSession = (userId) => {
     return {
@@ -20,6 +21,13 @@ const addUserToSession = (userId) => {
 const removeUserFromSession = () => {
     return {
         type: LOGOUT
+    }
+}
+
+export const setRecordingFormId = (id) => {
+    return {
+        type: SET_RECORDING_FORM_ID,
+        id
     }
 }
 
@@ -80,7 +88,8 @@ export const getSessionData = () => {
 
 
 const initialSessionState = {
-    userId: null
+    userId: null,
+    recordingFormId: null
 };
 
 export default function sessionReducer(state = initialSessionState, action) {
@@ -91,6 +100,9 @@ export default function sessionReducer(state = initialSessionState, action) {
             return newState;
         case LOGOUT:
             newState.userId = null;
+            return newState;
+        case SET_RECORDING_FORM_ID:
+            newState.recordingFormId = action.id;
             return newState;
         default:
             return state;

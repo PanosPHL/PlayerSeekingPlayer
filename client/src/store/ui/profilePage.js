@@ -1,5 +1,6 @@
 const ABOUT_ON = 'ui/ABOUT_ON';
 const RECORDINGS_ON = 'ui/RECORDINGS_ON';
+const TOGGLE_RECORDING_MODAL = 'ui/TOGGLE_RECORDING_MODAL';
 
 export const aboutOn = () => {
     return {
@@ -13,9 +14,17 @@ export const recordingsOn = () => {
     }
 }
 
+export const toggleRecordingModal = (id) => {
+    return {
+        type: TOGGLE_RECORDING_MODAL,
+        id
+    }
+}
+
 const initialProfilePageUIState = {
     about: true,
-    recordings: false
+    recordings: false,
+    recordingFormModal: false
 }
 
 export default function profilePageReducer(state = initialProfilePageUIState, action) {
@@ -28,6 +37,9 @@ export default function profilePageReducer(state = initialProfilePageUIState, ac
         case RECORDINGS_ON:
             newState.about = false;
             newState.recordings = true;
+            return newState;
+        case TOGGLE_RECORDING_MODAL:
+            newState.recordingFormModal = !newState.recordingFormModal;
             return newState;
         default:
             return state;
