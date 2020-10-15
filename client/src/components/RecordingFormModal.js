@@ -33,8 +33,8 @@ const RecordingFormModal = () => {
 
     if (recordingFormModal) {
         return (
-            <div style={{height: "100vh", width: "100vw", backgroundColor: "rgba(0, 0, 0, 0.2)", zIndex: "1", position: "absolute", overflow: 'hidden'}}>
-                <div>
+            <div style={{height: window.innerHeight, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.2)", zIndex: "1", position: "absolute", top: window.pageYOffset, overflow: 'hidden'}}>
+                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
                     <button onClick={handleCloseClick}><i className="far fa-window-close"></i></button>
                     <RecordingForm id={recordingFormId} recInfo={recInfo}/>
                 </div>
