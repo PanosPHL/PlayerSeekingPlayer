@@ -6,6 +6,10 @@ const RecordingForm = ({ id, recInfo: { recTitle, recDescription, recURL } }) =>
     const [url, setUrl] = useState(id ? recURL : '');
     const [description, setDescription] = useState(id ? recDescription : '');
 
+    const handleSubmit = () => {
+
+    }
+
     return (
         <form method="" action="">
             <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
