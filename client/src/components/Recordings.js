@@ -24,7 +24,7 @@ const Recordings = ({ isOwner, userProfile, userRecordings, className }) => {
 
 const mapStateToProps = (state, { isOwner, userProfile }) => {
     return {
-        userRecordings: userProfile ? Object.values(userProfile.profileInfo.recordings).map((recording) => {
+        userRecordings: userProfile && Object.keys(state.entities.recordings).length ? Object.values(userProfile.profileInfo.recordings).map((recording) => {
             return {
                 id: recording.recording_id,
                 url: state.entities.recordings[recording.recording_id].url,
