@@ -14,9 +14,9 @@ const Recordings = ({ isOwner, userProfile, userRecordings, className }) => {
 
     return (
         <div>
-            <button onClick={handleNewRecordingClick}><i className="fas fa-plus"></i><p>Add Recording</p></button>
+            {isOwner ? <button onClick={handleNewRecordingClick}><i className="fas fa-plus"></i><p>Add Recording</p></button> : <></>}
             {
-            userRecordings.map((recording, i) => <Recording key={`recording-${i + 1}`} recording={recording} i={i + 1}/>)
+            userRecordings.map((recording, i) => <Recording key={`recording-${i + 1}`} recording={recording} i={i + 1} isOwner={isOwner}/>)
             }
         </div>
     )

@@ -5,7 +5,7 @@ import { toggleRecordingModal } from '../store/ui/profilePage';
 import YouTubePlayer from './YouTubePlayer';
 
 
-const Recording = ({ recording, i }) => {
+const Recording = ({ recording, i, isOwner }) => {
     const dispatch = useDispatch();
     const { id, title, description, url } = recording;
     const youtubeRegex = /https:\/\/www\.youtube\.com/g;
@@ -19,9 +19,9 @@ const Recording = ({ recording, i }) => {
     return (
         <div>
             <h3>{title}</h3>
-            <button onClick={handleEditClick}>
+            { isOwner ? <button onClick={handleEditClick}>
             <i className="far fa-edit"></i>
-            </button>
+            </button> : <></>}
             { youtubeRegex.test(url) ?
                 <YouTubePlayer videoId={url.split('v=')[1]} i={i} width="512" height="288"/> :
             <></>

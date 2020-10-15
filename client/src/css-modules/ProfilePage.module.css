@@ -1,6 +1,6 @@
 .sectionContainer {
     height: 38vh;
-    width: 70%;
+    width: 65%;
 
     margin: 0 auto;
 
@@ -62,14 +62,14 @@
 
     width: 100%;
 
-    margin-top: 4.5%;
+    margin-top: 60px;
 
     background-color: rgb(255, 252, 252);
 
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .buttonContainer {
@@ -96,7 +96,7 @@
     border-bottom: none;
     border-right: none;
 
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
 
 .lastButton {
