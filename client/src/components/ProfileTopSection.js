@@ -4,7 +4,7 @@ import { aboutOn, recordingsOn } from '../store/ui/profilePage';
 import profStyles from '../css-modules/ProfilePage.module.css';
 
 
-const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments, about, recordings }) => {
+const ProfileTopSection = ({ userProfile, isOwner, name, location, about, recordings }) => {
     const dispatch = useDispatch();
 
     const handleAboutClick = () => {
@@ -26,7 +26,6 @@ const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments, 
             <div>
                 <h1>{name}</h1>
                 <h3>{location}</h3>
-                <h4>{"Instruments: " + (instruments.length && instruments[0] ? instruments.map((instrument) => instrument.name).join(", ") : "")}</h4>
             </div>
             <div className={profStyles.toolbar}>
                 <div className={profStyles.buttonContainer}>
@@ -41,8 +40,7 @@ const ProfileTopSection = ({ userProfile, isOwner, name, location, instruments, 
 const mapStateToProps = (state, { isOwner, userProfile }) => {
     return {
         name: userProfile ? userProfile.firstName + " " + userProfile.lastName : "",
-        location: userProfile ? userProfile.profileInfo.location.split(' ').slice(0, 3).join(" ") : "",
-        instruments: userProfile ? userProfile.profileInfo.instruments.map((instrumentId) => state.entities.instruments[instrumentId]) : ""
+        location: userProfile ? userProfile.profileInfo.location.split(' ').slice(0, 3).join(" ") : ""
     }
 }
 

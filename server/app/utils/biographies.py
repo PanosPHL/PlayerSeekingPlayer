@@ -1,0 +1,6 @@
+def kenny_garrett():
+    return """Kenny Garrett was born in Detroit, Michigan, on October 9, 1960. His father was a carpenter who played tenor saxophone as a hobby. Garrett's own career as a saxophonist took off when he joined the Duke Ellington Orchestra, under the leadership of Mercer Ellington, in 1978. Garrett also played and recorded with Art Blakey, Miles Davis, Freddie Hubbard, and Woody Shaw before developing his career as a leader.
+            In 1984, he recorded his first album as a bandleader, Introducing Kenny Garrett, on the CrissCross label. Garrett signed to the Warner Bros. Records label, and beginning with Black Hope, in 1992, he recorded eight albums for them. Garrett's music sometimes exhibits Asian influences, an aspect which is especially prevalent in his 2006 Grammy-nominated recording Beyond the Wall.
+            Garrett joined the "Five Peace Band" of Chick Corea, John McLaughlin, Christian McBride and Brian Blade/Vinnie Colaiuta around 2008. The CD Five Peace Band – Live won a Grammy Award in 2010.
+            In 2011, Garrett was presented with an Honorary Doctorate in Music from Berklee College of Music, Boston, Massachusetts.
+            """
