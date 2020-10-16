@@ -17,7 +17,7 @@ const Recordings = ({ isOwner, userProfile, userRecordings, className }) => {
         <div className={recordingStyles.recordingsContainer}>
             <div className={recordingStyles.recordingsHeaderContainer}>
                 <h2 className={recordingStyles.recordingsHeader}>Recordings</h2>
-            {isOwner ? <button className={recordingStyles.addRecordingButton} onClick={handleNewRecordingClick}><i className="fas fa-plus"></i><p>Add Recording</p></button> : <></>}
+            {isOwner ? <button className={recordingStyles.addRecordingButton} onClick={handleNewRecordingClick}><i className="fas fa-plus"></i><p className={recordingStyles.addRecording}>Add Recording</p></button> : <></>}
             </div>
             <div style={{
             display: "grid",

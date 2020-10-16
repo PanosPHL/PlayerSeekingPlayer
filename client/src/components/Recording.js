@@ -34,7 +34,7 @@ const Recording = ({ recording, i, isOwner }) => {
                 gridRow: `${i} / ${i + 1}`
             }}
                 className={(i === 1 ? recordingStyles.firstRecording : recordingStyles.recordingContainer) +
-                (loading ? " " + recordingStyles.loading : "")}>
+                    (loading ? " " + recordingStyles.loading : "")}>
                 <div className={recordingStyles.recordingInnerContainer}>
                     <div className={recordingStyles.recordingHeaderContainer}>
                         <h3>{title}</h3>
@@ -47,7 +47,14 @@ const Recording = ({ recording, i, isOwner }) => {
                             <YouTubePlayer videoId={url.split('v=')[1]} i={i} width="640" height="360" /> :
                             <></>
                         }
-                        <p className={recordingStyles.recordingDescription}>{description}</p>
+                        <div className={recordingStyles.recordingDescriptionContainer}>
+                            {description ?
+                                <>
+                                    <h4>About this recording:</h4>
+                                    <p className={recordingStyles.recordingDescription}>{description}</p>
+                                </>
+                                : <></>}
+                        </div>
                     </div>
                 </div>
             </div>

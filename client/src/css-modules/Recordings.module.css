@@ -33,6 +33,14 @@
 
 .addRecordingButton {
     margin-right: 8%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
 .loading {
@@ -44,8 +52,12 @@
     justify-content: space-between;
 }
 
-.recordingDescription {
+.recordingDescriptionContainer {
     width: 36%;
+}
+
+.recordingDescription {
+    width: 100%;
 }
 
 .recordingContainer {
@@ -66,4 +78,18 @@
 .recordingInnerContainer {
     width: 85%;
     margin: 3% auto 3% auto;
+}
+
+.addRecording {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.addRecordingButton:focus {
+    outline: none;
+}
+
+.addRecordingButton:active {
+    transform: scale(1.1);
+    filter: brightness(0.9);
 }
