@@ -110,36 +110,3 @@
 .button:focus {
     outline: none;
 }
-
-.aboutContainer {
-    width: 65%;
-
-    border-radius: 8px;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
-
-    margin: 4% auto 0 auto;
-
-    background-color: rgb(255, 252, 252);
-}
-
-.aboutHeaderContainer {
-    display: flex;
-    align-items: center;
-
-    height: 6vh;
-
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-
-    background-color: rgb(255, 252, 252);
-}
-
-.aboutHeader {
-    font-size: 30px;
-    margin-left: 8%;
-}
-
-.aboutInfoContainer {
-
-}

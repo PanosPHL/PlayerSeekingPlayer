@@ -17,16 +17,21 @@ const Recording = ({ recording, i, isOwner }) => {
     }
 
     return (
-        <div>
+        <div style={{
+            gridRow: `${i} / ${i + 1}`,
+            margin: "0 auto"
+        }}>
             <h3>{title}</h3>
             { isOwner ? <button onClick={handleEditClick}>
             <i className="far fa-edit"></i>
             </button> : <></>}
+        <div style={{display: "flex"}}>
             { youtubeRegex.test(url) ?
-                <YouTubePlayer videoId={url.split('v=')[1]} i={i} width="512" height="288"/> :
+                <YouTubePlayer videoId={url.split('v=')[1]} i={i} width="640" height="360"/> :
             <></>
         }
         <p>{description}</p>
+        </div>
         </div>
     )
 }
