@@ -1,10 +1,6 @@
 .recordingsContainer {
     width: 65%;
 
-    /* display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(6, 1fr); */
-
     border-radius: 8px;
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
 
@@ -37,4 +33,37 @@
 
 .addRecordingButton {
     margin-right: 8%;
+}
+
+.loading {
+    filter: blur(6px) brightness(90%);
+}
+
+.recordingHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recordingDescription {
+    width: 36%;
+}
+
+.recordingContainer {
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.firstRecording {
+    width: 100%;
+}
+
+.recordingContentContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4%;
+}
+
+.recordingInnerContainer {
+    width: 85%;
+    margin: 3% auto 3% auto;
 }

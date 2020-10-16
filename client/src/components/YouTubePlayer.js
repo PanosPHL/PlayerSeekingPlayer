@@ -1,9 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styles from '../css-modules/YouTubePlayer.module.css';
+import React, { useContext, useEffect, useRef } from 'react';
+import RecordingContext from '../contexts/RecordingContext';
 
 
 const YouTubePlayer = ({ videoId, i, height, width }) => {
-    const [loading, setLoading] = useState(true);
+    const {
+        get: {
+            loading
+        },
+        set: {
+            setLoading
+        }
+    } = useContext(RecordingContext);
     const player = useRef(null);
 
     useEffect(() => {
@@ -25,7 +32,6 @@ const YouTubePlayer = ({ videoId, i, height, width }) => {
     return (
         <iframe
         title={`Recording ${i}`}
-        className={loading ? styles.loadingPlayer : styles.activePlayer}
         width={width}
         height={height}
         src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
