@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setRecordingFormId } from '../store/session';
 import { toggleRecordingModal } from '../store/ui/profilePage';
 import RecordingForm from './RecordingForm';
+import recordingStyles from '../css-modules/Recordings.module.css';
 
 
 const RecordingFormModal = () => {
@@ -35,9 +36,9 @@ const RecordingFormModal = () => {
 
     if (recordingFormModal) {
         return (
-            <div style={{height: window.innerHeight, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.2)", zIndex: "1", position: "absolute", top: window.pageYOffset, overflow: 'hidden'}}>
-                <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}>
-                    <button onClick={handleCloseClick}><i className="far fa-window-close"></i></button>
+            <div style={{height: window.innerHeight, width: "100%", backgroundColor: "rgba(0, 0, 0, 0.3)", zIndex: "1", position: "absolute", top: window.pageYOffset, overflow: 'hidden'}}>
+                <div className={recordingStyles.modalFormContainer}>
+                    <button className={recordingStyles.modalFormClose} onClick={handleCloseClick}><i className="fas fa-times"></i></button>
                     <RecordingForm id={recordingFormId} recInfo={recInfo}/>
                 </div>
             </div>

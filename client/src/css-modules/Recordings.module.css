@@ -54,10 +54,14 @@
 
 .recordingDescriptionContainer {
     width: 36%;
+    height: 24vh;
+    margin: auto 0;
 }
 
 .recordingDescription {
     width: 100%;
+    font-size: 18px;
+    margin-top: 4%;
 }
 
 .recordingContainer {
@@ -72,7 +76,7 @@
 .recordingContentContainer {
     display: flex;
     justify-content: space-between;
-    margin-top: 4%;
+    margin-top: 2%;
 }
 
 .recordingInnerContainer {
@@ -93,3 +97,87 @@
     transform: scale(1.1);
     filter: brightness(0.9);
 }
+
+.recordingTitle {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.aboutRecordingHeader {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.editButton {
+    font-size: 30px;
+    color: rgb(86, 83, 128);
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 50%;
+
+    width: 2.4vw;
+    height: 2.4vw;
+}
+
+.editButton:hover {
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:active {
+    transform: scale(1.1);
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:focus {
+    outline: none;
+}
+
+.recordingFormModal {
+
+}
+
+.modalFormContainer {
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 50vh;
+
+    border-radius: 8px;
+
+    background-color: rgb(255, 252, 252);
+
+    animation-name: rec_modal;
+    animation-duration: 0.3s;
+}
+
+.modalFormClose {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+
+    padding: 4px 8px 4px 8px;
+
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 4px;
+}
+
+.modalFormClose:hover {
+    filter: brightness(80%);
+}
+
+.modalFormClose:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.modalFormClose:focus {
+    outline: none;
+}
+
+@keyframes rec_modal { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

@@ -15,12 +15,27 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
     }
 
     return (
+        <>
+        <h2>{ id ? "Edit Recording" : "Add Recording" }</h2>
         <form method="" action="" onSubmit={handleSubmit}>
+            <p>
+                <label htmlFor="title">Title</label>
+            </p>
             <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-            { id ? <></> : <input type="url" name="url" value={url} onChange={(e) => setUrl(e.target.value)} />}
-            <textarea name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            { id ? <></> :
+            <>
+            <p>
+                <label htmlFor="url">URL</label>
+            </p>
+            <input type="url" name="url" value={url} onChange={(e) => setUrl(e.target.value)} />
+            </> }
+            <p>
+                <label htmlFor="description">Description</label>
+            </p>
+            <textarea cols="60" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             <button>{id ? "Edit Recording" : "Add Recording"}</button>
         </form>
+        </>
     )
 }
 

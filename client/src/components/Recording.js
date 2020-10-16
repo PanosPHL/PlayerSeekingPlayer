@@ -37,9 +37,9 @@ const Recording = ({ recording, i, isOwner }) => {
                     (loading ? " " + recordingStyles.loading : "")}>
                 <div className={recordingStyles.recordingInnerContainer}>
                     <div className={recordingStyles.recordingHeaderContainer}>
-                        <h3>{title}</h3>
-                        {isOwner ? <button onClick={handleEditClick}>
-                            <i className="far fa-edit"></i>
+                        <h3 className={recordingStyles.recordingTitle}>{title}</h3>
+                        {isOwner ? <button className={recordingStyles.editButton} onClick={handleEditClick}>
+                        <i className="fas fa-pencil-alt"></i>
                         </button> : <></>}
                     </div>
                     <div className={recordingStyles.recordingContentContainer}>
@@ -49,10 +49,10 @@ const Recording = ({ recording, i, isOwner }) => {
                         }
                         <div className={recordingStyles.recordingDescriptionContainer}>
                             {description ?
-                                <>
-                                    <h4>About this recording:</h4>
+                                <div>
+                                    <h4 className={recordingStyles.aboutRecordingHeader}>About this recording:</h4>
                                     <p className={recordingStyles.recordingDescription}>{description}</p>
-                                </>
+                                </div>
                                 : <></>}
                         </div>
                     </div>
