@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postAndAddRecording } from '../store/recordings';
+import { postAndAddRecording, putAndUpdateRecording } from '../store/recordings';
 import authStyles from '../css-modules/AuthPages.module.css';
 import recordingStyles from '../css-modules/Recordings.module.css';
 
@@ -10,7 +10,7 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
     const [title, setTitle] = useState(id ? recTitle : '');
     const [url, setUrl] = useState(id ? recURL : '');
     const [description, setDescription] = useState(id ? recDescription : '');
-
+    console.log(id);
     const handleSubmit = async (e) => {
         e.preventDefault();
         let res;
@@ -18,7 +18,7 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
         if (!id) {
             res = await dispatch(postAndAddRecording(profileId, url, title, description));
         } else {
-
+            res = await dispatch(putAndUpdateRecording(profileId, id, url, title, description));
         }
 
         if (res.ok) {

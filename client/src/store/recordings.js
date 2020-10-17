@@ -3,6 +3,7 @@ import Cookie from 'js-cookie';
 const ADD_RECORDING = 'recordings/ADD_RECORDING';
 const SET_RECORDINGS = 'recordings/SET_RECORDINGS';
 export const ADD_PROFILE_RECORDING ='recordings/ADD_PROFILE_RECORDING';
+export const UPDATE_PROFILE_RECORDING = 'recordings/UPDATE_PROFILE_RECORDING';
 
 export const addRecording = (recording) => {
     return {
@@ -22,6 +23,13 @@ export const addRecordings = (recordings) => {
     return {
         type: SET_RECORDINGS,
         recordings
+    }
+}
+
+export const updateProfileRecording = (profileRecording) => {
+    return {
+        type: UPDATE_PROFILE_RECORDING,
+        profileRecording
     }
 }
 
@@ -49,6 +57,32 @@ export const postAndAddRecording = (profileId, url, title, description) => {
         if (res.ok) {
             dispatch(addRecording(res.data.recording));
             dispatch(addProfileRecording(res.data.profileRecording));
+        }
+
+        return res;
+    }
+}
+
+export const putAndUpdateRecording = (profileId, recordingId, url, title, description) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
+    return async dispatch => {
+        const res = await fetch(`/api/recordings/${recordingId}/profiles/${profileId}/`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({
+                url,
+                title,
+                description
+            })
+        });
+
+        res.data = await res.json();
+        console.log(res);
+        if (res.ok) {
+            dispatch(updateProfileRecording(res.data.profileRecording));
         }
 
         return res;

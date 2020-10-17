@@ -217,15 +217,15 @@
 .submitButton {
     position: absolute;
 
-    bottom: 5%;
-    right: 8%;
+    bottom: 8%;
+    right: 10%;
 
     background-color: rgb(14, 0, 47);
     color: white;
     border: none;
     border-radius: 6px;
     padding: 8px;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .submitButton:hover {

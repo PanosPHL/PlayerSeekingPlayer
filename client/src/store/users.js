@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie';
 import { login } from './session';
-import { ADD_PROFILE_RECORDING } from './recordings';
+import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING } from './recordings';
 
 const csrfToken = Cookie.get('XSRF-TOKEN');
 
@@ -55,6 +55,8 @@ export const signup = (firstName, lastName, email, password, confirmPassword, da
 
 export default function usersReducer(state = {}, action) {
     const newState = Object.assign({}, state);
+    let newProfileInfo;
+    let newRecordings;
     switch(action.type) {
         case SIGNUP_USER:
             newState[action.user.id] = action.user;
@@ -65,8 +67,16 @@ export default function usersReducer(state = {}, action) {
             }
             return newState;
         case ADD_PROFILE_RECORDING:
-            const newProfileInfo = Object.assign({}, newState[[action.profileRecording["profile_id"]]].profileInfo);
-            const newRecordings = { [action.profileRecording.recording_id]: action.profileRecording, ...newProfileInfo.recordings };
+            newProfileInfo = Object.assign({}, newState[[action.profileRecording["profile_id"]]].profileInfo);
+            newRecordings = { [action.profileRecording.recording_id]: action.profileRecording, ...newProfileInfo.recordings };
+            newProfileInfo.recordings = newRecordings;
+            newState[[action.profileRecording["profile_id"]]].profileInfo = newProfileInfo;
+            return newState;
+        case UPDATE_PROFILE_RECORDING:
+            newProfileInfo = Object.assign({}, newState[[action.profileRecording["profile_id"]]].profileInfo);
+            newRecordings = Object.assign({}, newProfileInfo.recordings);
+            console.log(action.profileRecording["recording_id"]);
+            newRecordings[action.profileRecording["recording_id"]] = action.profileRecording;
             newProfileInfo.recordings = newRecordings;
             newState[[action.profileRecording["profile_id"]]].profileInfo = newProfileInfo;
             return newState;
