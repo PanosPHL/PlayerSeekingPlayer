@@ -13,7 +13,13 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await dispatch(postAndAddRecording(profileId, url, title, description));
+        let res;
+
+        if (!id) {
+            res = await dispatch(postAndAddRecording(profileId, url, title, description));
+        } else {
+
+        }
 
         if (res.ok) {
             return;
@@ -23,7 +29,7 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
     return (
         <>
         <h2 className={recordingStyles.modalFormTitle}>{ id ? "Edit Recording" : "Add Recording" }</h2>
-        <form className={recordingStyles.recordingForm} method="" action="" onSubmit={handleSubmit}>
+        <form className={ id ? recordingStyles.editRecordingForm : recordingStyles.addRecordingForm} method="" action="" onSubmit={handleSubmit}>
             <div className="form-control-group">
             <p>
                 <label className={authStyles.labels} htmlFor="title">Title</label>
@@ -41,7 +47,7 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
             <p>
                 <label className={authStyles.labels} htmlFor="description">Description</label>
             </p>
-            <textarea className={recordingStyles.descriptionForm} cols="62" rows="10" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            <textarea className={recordingStyles.descriptionForm} cols="55" rows="8" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
             <button className={recordingStyles.submitButton}>{id ? "Edit Recording" : "Add Recording"}</button>
         </form>

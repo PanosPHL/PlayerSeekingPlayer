@@ -138,6 +138,8 @@
     top: 50%;
     left: 50%;
 
+    opacity: 100%;
+
     transform: translate(-50%, -50%);
 
     width: 30vw;
@@ -185,6 +187,8 @@
     background-color: rgba(121, 111, 255, 0.1);
 
     margin-top: 2%;
+    font-size: 16px;
+    font-family: 'Lato';
 }
 
 .descriptionForm:focus {
@@ -193,9 +197,14 @@
     outline-color: rgb(59, 57, 92);
 }
 
-.recordingForm {
+.addRecordingForm {
     width: 80%;
     margin: 0 auto;
+}
+
+.editRecordingForm {
+    width: 80%;
+    margin: 12% auto 0 auto;
 }
 
 .modalFormTitle {
@@ -209,7 +218,7 @@
     position: absolute;
 
     bottom: 5%;
-    right: 11%;
+    right: 8%;
 
     background-color: rgb(14, 0, 47);
     color: white;
