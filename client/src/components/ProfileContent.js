@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { aboutOn, recordingsOn } from '../store/ui/profilePage';
+import { useDispatch } from 'react-redux';
+import { aboutOn } from '../store/ui/profilePage';
 import About from './About';
 import Recordings from './Recordings';
 
@@ -9,7 +9,7 @@ const ProfileContent = ({ isOwner, userProfile, about, recordings, instruments }
 
     useEffect(() => {
         dispatch(aboutOn())
-    }, [])
+    }, [dispatch])
 
     return (
         <>

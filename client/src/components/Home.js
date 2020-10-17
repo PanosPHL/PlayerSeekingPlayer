@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as HomeRouter, Switch, Route, withRouter } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { getSessionData } from '../store/session'
 import ProfilePage from './ProfilePage';
 import TopBar from './TopBar';

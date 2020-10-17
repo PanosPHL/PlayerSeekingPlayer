@@ -132,10 +132,6 @@
     outline: none;
 }
 
-.recordingFormModal {
-
-}
-
 .modalFormContainer {
     position: relative;
 
@@ -145,7 +141,7 @@
     transform: translate(-50%, -50%);
 
     width: 30vw;
-    height: 50vh;
+    height: 56vh;
 
     border-radius: 8px;
 
@@ -154,6 +150,8 @@
     animation-name: rec_modal;
     animation-duration: 0.3s;
 }
+
+@keyframes rec_modal { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
 
 .modalFormClose {
     position: absolute;
@@ -180,4 +178,57 @@
     outline: none;
 }
 
-@keyframes rec_modal { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
+.descriptionForm {
+    resize: none;
+    border: 2px solid rgba(53, 57, 80, 0.4);
+    border-radius: 4px;
+    background-color: rgba(121, 111, 255, 0.1);
+
+    margin-top: 2%;
+}
+
+.descriptionForm:focus {
+    outline: none;
+    background-color: none;
+    outline-color: rgb(59, 57, 92);
+}
+
+.recordingForm {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.modalFormTitle {
+    color: rgba(39, 39, 39, 0.7);
+    vertical-align: center;
+    text-align: center;
+    padding-top: 4%;
+}
+
+.submitButton {
+    position: absolute;
+
+    bottom: 5%;
+    right: 11%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 20px;
+}
+
+.submitButton:hover {
+    filter: brightness(80%);
+    transform: scale(1.02);
+}
+
+.submitButton:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.submitButton:focus {
+    outline: none;
+}

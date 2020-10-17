@@ -4,9 +4,6 @@ import RecordingContext from '../contexts/RecordingContext';
 
 const YouTubePlayer = ({ videoId, i, height, width }) => {
     const {
-        get: {
-            loading
-        },
         set: {
             setLoading
         }
@@ -14,6 +11,10 @@ const YouTubePlayer = ({ videoId, i, height, width }) => {
     const player = useRef(null);
 
     useEffect(() => {
+        const onPlayerReady = () => {
+            setLoading(false);
+        }
+
         player.current = new window.YT.Player(`player-${i}`, {
             videoId: videoId,
             playerVars: {
@@ -23,11 +24,7 @@ const YouTubePlayer = ({ videoId, i, height, width }) => {
                 'onReady': onPlayerReady
             }
         });
-    }, [i, videoId])
-
-    const onPlayerReady = (event) => {
-        setLoading(false);
-    }
+    }, [i, videoId, setLoading])
 
     return (
         <iframe
