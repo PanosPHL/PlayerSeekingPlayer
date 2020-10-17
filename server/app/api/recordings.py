@@ -1,9 +1,11 @@
 import requests
 import os
-from flask import Blueprint, request
+from flask import Blueprint, request, make_response
 from app.models import db, Recording, ProfileRecording
 from app.forms import RecordingForm
 from werkzeug.datastructures import MultiDict
+
+from app.utils.errors import format_errors
 
 recording_routes = Blueprint('recordings', __name__)
 
@@ -21,7 +23,8 @@ def create_recording():
         db.session.commit()
         return { "recording": new_recording.to_dict(), "profileRecording": new_pr.to_dict() }
     else:
-        return { "Hi": "mom" }
+        r = make_response({ "errors": format_errors(form.errors) }, 401)
+        return r
 
 
 @recording_routes.route('/<int:recording_id>/profiles/<int:profile_id>/', methods=["PUT"])
@@ -39,4 +42,5 @@ def update_profile_recording(recording_id, profile_id):
         print(profile_recording.to_dict())
         return { "profileRecording": profile_recording.to_dict() }
     else:
-        return { "Hi": "mom" }
+        r = make_response({ "errors": format_errors(form.errors) }, 401)
+        return r

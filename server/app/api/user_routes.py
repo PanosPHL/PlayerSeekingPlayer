@@ -3,6 +3,8 @@ from app.models import db, User, Profile
 from app.forms import SignUpForm
 from werkzeug.datastructures import MultiDict
 
+from app.utils.errors import format_errors
+
 user_routes = Blueprint('users', __name__)
 
 @user_routes.route('/')
@@ -33,8 +35,6 @@ def signup_user():
     new_user_dict["profile_info"] = new_user_profile.to_dict()
     return new_user_dict
   else:
-    errors = []
-    for error in form.errors:
-      errors += form.errors[error]
-    res = make_response({ "errors": errors }, 401)
+    print(form.errors)
+    res = make_response({ "errors": format_errors(form.errors) }, 401)
     return res
