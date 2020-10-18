@@ -14,7 +14,7 @@ const ProfilePage = ({ match }) => {
     const styles = useSelector(state => {
         return userProfile ? userProfile.profileInfo.styles.map((styleId) => state.entities.styles[styleId]) : null;
     })
-    const { about, recordings } = useSelector(state => state.ui.profilePage);
+    const { about: { display: about }, recordings } = useSelector(state => state.ui.profilePage);
 
     return (
         <>
