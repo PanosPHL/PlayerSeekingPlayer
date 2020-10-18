@@ -23,9 +23,8 @@ const ProfileTopSection = ({ userProfile, isOwner, name, location, about, record
                     <div className={profStyles.defaultProfilePictureInnerBorder}></div>
                 </div>
             </div>
-            <div className={profStyles.nameAndLocation}>
+            <div className={profStyles.name}>
                 <h1>{name}</h1>
-                <h3>{location}</h3>
             </div>
             <div className={profStyles.toolbar}>
                 <div className={profStyles.buttonContainer}>

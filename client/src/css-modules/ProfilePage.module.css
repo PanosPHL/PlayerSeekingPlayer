@@ -110,10 +110,10 @@
     outline: none;
 }
 
-.nameAndLocation {
+.name {
     position: absolute;
-    bottom: 26%;
-    left: 30%;
+    bottom: 30%;
+    left: 28%;
 
     color: rgba(0, 0, 0, 0.45);
 }
