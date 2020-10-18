@@ -52,7 +52,6 @@ export const postAndAddRecording = (profileId, url, title, description) => {
 
         res.data = await res.json();
 
-        console.log(res);
 
         if (res.ok) {
             dispatch(addRecording(res.data.recording));
@@ -80,7 +79,7 @@ export const putAndUpdateRecording = (profileId, recordingId, url, title, descri
         });
 
         res.data = await res.json();
-        console.log(res);
+
         if (res.ok) {
             dispatch(updateProfileRecording(res.data.profileRecording));
         }

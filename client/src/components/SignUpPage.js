@@ -79,7 +79,7 @@ const SignUpPage = ({ history }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await dispatch(signup(firstName, lastName, email, password, confirmPassword, dateOfBirth, location, lat, lng));
-        console.log(res);
+
         if (res.ok) {
             history.replace(`/profiles/${res.data.id}`);
             return;

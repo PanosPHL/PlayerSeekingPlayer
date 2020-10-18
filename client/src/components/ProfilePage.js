@@ -11,12 +11,20 @@ const ProfilePage = ({ match }) => {
     const instruments = useSelector(state => {
         return userProfile ? userProfile.profileInfo.instruments.map((instrumentId) => state.entities.instruments[instrumentId]) : null;
     });
+    const styles = useSelector(state => {
+        return userProfile ? userProfile.profileInfo.styles.map((styleId) => state.entities.styles[styleId]) : null;
+    })
     const { about, recordings } = useSelector(state => state.ui.profilePage);
 
     return (
         <>
             <ProfileTopSection isOwner={isOwner} userProfile={userProfile} about={about} recordings={recordings}/>
-            <ProfileContent isOwner={isOwner} userProfile={userProfile} about={about} recordings={recordings} instruments={instruments}/>
+            <ProfileContent isOwner={isOwner}
+            userProfile={userProfile}
+            about={about}
+            recordings={recordings}
+            instruments={instruments}
+            styles={styles}/>
         </>
     )
 }

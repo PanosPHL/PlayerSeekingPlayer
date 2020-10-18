@@ -4,7 +4,7 @@ import { aboutOn } from '../store/ui/profilePage';
 import About from './About';
 import Recordings from './Recordings';
 
-const ProfileContent = ({ isOwner, userProfile, about, recordings, instruments }) => {
+const ProfileContent = ({ isOwner, userProfile, about, recordings, instruments, styles }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -14,8 +14,8 @@ const ProfileContent = ({ isOwner, userProfile, about, recordings, instruments }
     return (
         <>
         {
-            about ? <About isOwner={isOwner} userProfile={userProfile} instruments={instruments}/> :
-            <Recordings isOwner={isOwner} userProfile={userProfile}/>
+            about ? <About isOwner={isOwner} userProfile={userProfile} instruments={instruments} styles={styles}/> :
+           recordings ?  <Recordings isOwner={isOwner} userProfile={userProfile}/> : <></>
         }
         </>
     )

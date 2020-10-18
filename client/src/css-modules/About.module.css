@@ -1,6 +1,6 @@
 .aboutContainer {
     width: 65%;
-    height: 80vh;
+    height: 60vh;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -33,4 +33,5 @@
 .aboutHeader {
     font-size: 30px;
     margin-left: 8%;
+    color: rgba(0, 0, 0, 0.45);
 }

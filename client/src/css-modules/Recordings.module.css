@@ -29,6 +29,7 @@
 .recordingsHeader {
     font-size: 30px;
     margin-left: 8%;
+    color: rgba(0, 0, 0, 0.45);
 }
 
 .addRecordingButton {
@@ -132,7 +133,7 @@
     outline: none;
 }
 
-.modalFormContainer {
+.addModalFormContainer {
     position: relative;
 
     top: 50%;
@@ -151,6 +152,27 @@
 
     animation-name: rec_modal;
     animation-duration: 0.3s;
+}
+
+.editModalFormContainer {
+        position: relative;
+
+        top: 50%;
+        left: 50%;
+
+        opacity: 100%;
+
+        transform: translate(-50%, -50%);
+
+        width: 30vw;
+        height: 50vh;
+
+        border-radius: 8px;
+
+        background-color: rgb(255, 252, 252);
+
+        animation-name: rec_modal;
+        animation-duration: 0.3s;
 }
 
 @keyframes rec_modal { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
@@ -204,7 +226,7 @@
 
 .editRecordingForm {
     width: 80%;
-    margin: 12% auto 0 auto;
+    margin: 10% auto 0 auto;
 }
 
 .modalFormTitle {
@@ -215,11 +237,8 @@
 }
 
 .submitButton {
-    position: absolute;
-
-    bottom: 8%;
-    right: 10%;
-
+    margin-top: 14px;
+    margin-left: 76%;
     background-color: rgb(14, 0, 47);
     color: white;
     border: none;
