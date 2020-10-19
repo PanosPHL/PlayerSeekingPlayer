@@ -3,6 +3,7 @@ const RECORDINGS_ON = 'ui/RECORDINGS_ON';
 const TOGGLE_RECORDING_MODAL = 'ui/TOGGLE_RECORDING_MODAL';
 const ABOUT_OVERVIEW_ON = 'ui/ABOUT_OVERVIEW_ON';
 const ABOUT_BIO_ON = 'ui/ABOUT_BIO_ON';
+const TOGGLE_OVERVIEW_MODAL = 'ui/TOGGLE_OVERVIEW_MODAL';
 
 export const aboutOn = () => {
     return {
@@ -34,6 +35,12 @@ export const aboutBiographyOn = () => {
     }
 }
 
+export const toggleOverviewModal = () => {
+    return {
+        type: TOGGLE_OVERVIEW_MODAL
+    }
+}
+
 const initialProfilePageUIState = {
     about: {
         display: true,
@@ -41,7 +48,8 @@ const initialProfilePageUIState = {
         biography: false
     },
     recordings: false,
-    recordingFormModal: false
+    recordingFormModal: false,
+    overviewFormModal: false
 }
 
 export default function profilePageReducer(state = initialProfilePageUIState, action) {
@@ -76,6 +84,9 @@ export default function profilePageReducer(state = initialProfilePageUIState, ac
             newAbout.overview = false;
             newAbout.biography = true;
             newState.about = newAbout;
+            return newState;
+        case TOGGLE_OVERVIEW_MODAL:
+            newState.overviewFormModal = !newState.overviewFormModal;
             return newState;
         default:
             return state;

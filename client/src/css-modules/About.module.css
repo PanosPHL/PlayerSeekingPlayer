@@ -1,13 +1,13 @@
 .aboutContainer {
     width: 65%;
-    height: 50vh;
+    height: 55vh;
 
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(6, 1fr);
 
     border-radius: 8px;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
 
     margin: 4% auto 0 auto;
 
@@ -32,41 +32,106 @@
 
 .aboutHeader {
     font-size: 30px;
-    margin-left: 8%;
+    margin-left: 7%;
     color: rgba(0, 0, 0, 0.45);
 }
 
-.overviewContainer {
-    grid-column: 3 / 5;
+.aboutSectionContainer {
     grid-row: 2 / 7;
-
-    margin-bottom: 2%;
-    margin-left: 16%;
-    margin-right: -16%;
-
-    border-radius: 8px;
-
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    grid-column: 2 / 6;
 }
 
-.overview {
-    width: 80%;
-    margin: 12% auto;
+.aboutSectionInnerContainer {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
 }
 
-.bioContainer {
-    grid-column: 3 / 6;
+.aboutSelector {
     grid-row: 2 / 7;
+    grid-column: 1 / 2;
 
-    margin-right: 10%;
-    margin-bottom: 2%;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
 
-    border-radius: 8px;
+    margin-top: -12%;
 
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+    list-style: none;
+    text-align: center;
 }
 
-.bio {
-    width: 80%;
-    margin: 6% auto;
+.aboutSelector li {
+    padding: 4% 0;
+
+    cursor: pointer;
+
+    background-color: rgb(255, 252, 252);
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.aboutSelector li:hover, .aboutSelector li:active {
+    filter: brightness(90%);
+}
+
+.aboutSelector li:active {
+    filter: brightness(80%);
+}
+
+.aboutSectionHeader {
+    font-size: 24px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.45);
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
+
+.overviewList {
+    position: relative;
+    list-style-type: "\1D160";
+    list-style-position: inside;
+    font-size: 22px;
+    width: 50%;
+    margin: 0 30%;
+}
+
+.overviewList li {
+    line-height: 3;
+}
+
+.overviewList > li > span {
+    position: absolute;
+    left: 50px;
+}
+
+.bioContent {
+    font-size: 18px;
+}
+
+.editButton {
+    position: absolute;
+    top: -16px;
+    right: 0px;
+
+    font-size: 30px;
+    color: rgb(86, 83, 128);
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 50%;
+
+    width: 2.4vw;
+    height: 2.4vw;
+}
+
+.editButton:hover {
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:active {
+    transform: scale(1.1);
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:focus {
+    outline: none;
 }

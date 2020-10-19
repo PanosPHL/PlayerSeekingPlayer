@@ -19,10 +19,12 @@ const About = ({ userProfile, instruments, styles }) => {
                 <h2 className={aboutStyles.aboutHeader}>About</h2>
             </div>
             <AboutSectionPicker />
+            <div className={aboutStyles.aboutSectionContainer}>
             {
                 overview ? <Overview age={age} instrumentNames={instrumentNames} styleNames={styleNames} userProfile={userProfile} /> :
                 biography ? <Bio userProfile={userProfile} /> : <></>
             }
+            </div>
             </div>
     )
 }
