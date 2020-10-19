@@ -135,3 +135,83 @@
 .editButton:focus {
     outline: none;
 }
+
+.overviewFormModalContainer {
+        position: relative;
+
+        top: 50%;
+        left: 50%;
+
+        opacity: 100%;
+
+        transform: translate(-50%, -50%);
+
+        width: 30vw;
+        height: 76vh;
+
+        border-radius: 8px;
+
+        background-color: rgb(255, 252, 252);
+
+        animation-name: modal_entry;
+        animation-duration: 0.3s;
+}
+
+.closedInstrumentDropdown, .closedStyleDropdown {
+    height: 0;
+    overflow: hidden;
+}
+
+.downInstrumentTriangle {
+    position: absolute;
+    top: 1px;
+    left: 16%;
+
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+}
+
+.rightInstrumentTriangle {
+    position: absolute;
+    top: 1px;
+    left: 16%;
+
+    transform: rotate(0deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+}
+
+.downStyleTriangle {
+    position: absolute;
+    top: 1px;
+    left: 8%;
+
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+}
+
+.rightStyleTriangle {
+    position: absolute;
+    top: 1px;
+    left: 8%;
+
+    transform: rotate(0deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+}
+
+@keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

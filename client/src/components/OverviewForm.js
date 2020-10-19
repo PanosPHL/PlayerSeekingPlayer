@@ -1,9 +1,12 @@
 import React, { useReducer } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Datepicker from 'react-datepicker';
 import OverviewFormContext from '../contexts/OverviewFormContext';
 import GoogleMapOverviewForm from './GoogleMapOverviewForm';
 import InstrumentDropdown from './InstrumentDropdown';
 import StylesDropdown from './StylesDropdown';
+import { toggleInstrumentDropdown, toggleStyleDropdown } from '../store/ui/profilePage';
+import aboutStyles from '../css-modules/About.module.css';
 
 const SET_DOB = 'SET_DOB';
 const ADD_INSTRUMENT = 'ADD_INSTRUMENT';
@@ -12,7 +15,7 @@ const ADD_STYLE = 'ADD_STYLE';
 const REMOVE_STYLE = 'REMOVE_STYLE';
 const SET_LOCATION = 'SET_LOCATION';
 
-const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, styles }) => {
+const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, styles, userInstruments, userStyles }) => {
 
     const initialState = {
         DOB: new Date(initDOB),
@@ -59,7 +62,10 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         }
     }
 
+    const dispatch = useDispatch();
     const [state, localDispatch] = useReducer(overviewReducer, initialState);
+
+    const { instrumentDropdown, styleDropdown } = useSelector(state => state.ui.profilePage.overviewFormModal)
 
     const onInstrumentChange = (e) => {
         if (e.target.checked) {
@@ -86,6 +92,14 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         });
     }
 
+    const styleDropdownClick = () => {
+        dispatch(toggleStyleDropdown());
+    }
+
+    const instrumentDropdownClick = () => {
+        dispatch(toggleInstrumentDropdown());
+    }
+
     const value = {
         onInstrumentChange,
         onStyleChange,
@@ -100,16 +114,25 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
             </p>
             <Datepicker selected={state.DOB} onChange={date => localDispatch({ type: SET_DOB, DOB: new Date(date) })} />
             <div>
-                <p>
-                    <label>Instruments <span>&#9654;</span></label>
+                <p style={{position: 'relative'}}>
+                    <label onClick={instrumentDropdownClick}>Instruments <span
+                    className={instrumentDropdown ? aboutStyles.downInstrumentTriangle : aboutStyles.rightInstrumentTriangle}>&#9654;</span>
+                    </label>
                 </p>
-                <InstrumentDropdown instruments={instruments} />
+                <InstrumentDropdown
+                className={instrumentDropdown ? aboutStyles.openInstrumentDropdown : aboutStyles.closedInstrumentDropdown}
+                instruments={instruments}
+                userInstruments={userInstruments}/>
             </div>
             <div>
-                <p>
-                    <label>Styles <span>&#9654;</span></label>
+                <p style={{position: 'relative'}}>
+                    <label onClick={styleDropdownClick}>Styles <span
+                    className={styleDropdown ? aboutStyles.downStyleTriangle : aboutStyles.rightStyleTriangle}>&#9654;</span></label>
                 </p>
-                <StylesDropdown styles={styles} />
+                <StylesDropdown
+                className={styleDropdown ? aboutStyles.openStyleDropdown : aboutStyles.closedStyleDropdown}
+                styles={styles}
+                userStyles={userStyles}/>
             </div>
             <div>
                 <GoogleMapOverviewForm

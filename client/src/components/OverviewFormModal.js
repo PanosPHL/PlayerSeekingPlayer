@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toggleOverviewModal } from '../store/ui/profilePage';
 import OverviewForm from './OverviewForm';
+import aboutStyles from '../css-modules/About.module.css';
 
 const OverviewFormModal = ({ location }) => {
     const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const OverviewFormModal = ({ location }) => {
                 top: window.pageYOffset,
                 overflow: 'hidden'
             }}>
-                <div>
+                <div className={aboutStyles.overviewFormModalContainer}>
                     <button onClick={handleCloseClick}><i className="fas fa-times"></i></button>
                     <OverviewForm
                     initDOB={user ? user.dateOfBirth : null}

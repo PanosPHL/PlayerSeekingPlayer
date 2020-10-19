@@ -4,6 +4,8 @@ const TOGGLE_RECORDING_MODAL = 'ui/TOGGLE_RECORDING_MODAL';
 const ABOUT_OVERVIEW_ON = 'ui/ABOUT_OVERVIEW_ON';
 const ABOUT_BIO_ON = 'ui/ABOUT_BIO_ON';
 const TOGGLE_OVERVIEW_MODAL = 'ui/TOGGLE_OVERVIEW_MODAL';
+const TOGGLE_INSTRUMENT_DROPDOWN = 'ui/TOGGLE_INSTRUMENT_DROPDOWN';
+const TOGGLE_STYLE_DROPDOWN = 'ui/TOGGLE_STYLE_DROPDOWN';
 
 export const aboutOn = () => {
     return {
@@ -38,6 +40,18 @@ export const aboutBiographyOn = () => {
 export const toggleOverviewModal = () => {
     return {
         type: TOGGLE_OVERVIEW_MODAL
+    }
+}
+
+export const toggleInstrumentDropdown = () => {
+    return {
+        type: TOGGLE_INSTRUMENT_DROPDOWN
+    }
+}
+
+export const toggleStyleDropdown = () => {
+    return {
+        type: TOGGLE_STYLE_DROPDOWN
     }
 }
 
@@ -92,6 +106,14 @@ export default function profilePageReducer(state = initialProfilePageUIState, ac
             return newState;
         case TOGGLE_OVERVIEW_MODAL:
             newOverviewModal.display = !newOverviewModal.display;
+            newState.overviewFormModal = newOverviewModal;
+            return newState;
+        case TOGGLE_INSTRUMENT_DROPDOWN:
+            newOverviewModal.instrumentDropdown = !newOverviewModal.instrumentDropdown;
+            newState.overviewFormModal = newOverviewModal;
+            return newState;
+        case TOGGLE_STYLE_DROPDOWN:
+            newOverviewModal.styleDropdown = !newOverviewModal.styleDropdown;
             newState.overviewFormModal = newOverviewModal;
             return newState;
         default:
