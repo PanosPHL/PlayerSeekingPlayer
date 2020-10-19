@@ -49,12 +49,17 @@ const initialProfilePageUIState = {
     },
     recordings: false,
     recordingFormModal: false,
-    overviewFormModal: false
+    overviewFormModal: {
+        display: false,
+        instrumentDropdown: false,
+        styleDropdown: false
+    }
 }
 
 export default function profilePageReducer(state = initialProfilePageUIState, action) {
     const newState = Object.assign({}, state);
     let newAbout = Object.assign({}, newState.about);
+    let newOverviewModal = Object.assign({}, newState.overviewFormModal)
     switch (action.type) {
         case ABOUT_ON:
             newState.recordings = false;
@@ -86,7 +91,8 @@ export default function profilePageReducer(state = initialProfilePageUIState, ac
             newState.about = newAbout;
             return newState;
         case TOGGLE_OVERVIEW_MODAL:
-            newState.overviewFormModal = !newState.overviewFormModal;
+            newOverviewModal.display = !newOverviewModal.display;
+            newState.overviewFormModal = newOverviewModal;
             return newState;
         default:
             return state;

@@ -39,6 +39,8 @@ class User(db.Model, UserMixin):
       "lastName": self.last_name,
       "email": self.email,
       "dateOfBirth": self.DOB,
+      "lat": self.lat,
+      "lng": self.lng,
       "createdAt": self.created_at,
       "updatedAt": self.updated_at
     }

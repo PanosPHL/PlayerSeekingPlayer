@@ -20,22 +20,26 @@ with app.app_context():
   alto_sax = Instrument(name="Alto Saxophone")
   keyboard = Instrument(name="Keyboard / Piano")
   e_guitar = Instrument(name="Electric Guitar")
+  db.session.add(e_guitar)
   tenor_sax = Instrument(name="Tenor Sax")
 
 
   jazz = Style(name="Jazz")
   funk = Style(name="Funk")
-  asian = Style(name="Asian")
+  classical = Style(name="Classical")
+
+  db.session.add(classical)
 
   run_for_cover = Recording(url='https://www.youtube.com/watch?v=rqqEHV-5F6E')
   sing_a_song_of_song = Recording(url='https://www.youtube.com/watch?v=pn8Cs-PZfX8')
   night_and_day = Recording(url='https://www.youtube.com/watch?v=UYCI_vJg2hw')
+
   demo_profile.instruments.append(alto_sax)
   demo_profile.instruments.append(keyboard)
-  demo_profile.instruments.append(tenor_sax)
+
   demo_profile.styles.append(jazz)
   demo_profile.styles.append(funk)
-  demo_profile.styles.append(asian)
+
   db.session.add(demo_profile)
   db.session.add(run_for_cover)
   db.session.add(sing_a_song_of_song)
