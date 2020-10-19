@@ -90,16 +90,16 @@
     position: relative;
     list-style-type: "\1D160";
     list-style-position: inside;
-    font-size: 22px;
-    width: 50%;
-    margin: 0 30%;
+    font-size: 16px;
+    width: 90%;
+    margin: 0 20%;
 }
 
 .overviewList li {
     line-height: 3;
 }
 
-.overviewList > li > span {
+.bulletSpan {
     position: absolute;
     left: 50px;
 }
