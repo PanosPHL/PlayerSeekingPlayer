@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext, memo, useEffect } from 'react';
+import React, { useState, useCallback, useContext, memo} from 'react';
 import { GoogleMap, Autocomplete } from '@react-google-maps/api';
 import OverviewFormContext from '../contexts/OverviewFormContext';
 
@@ -30,7 +30,7 @@ const GoogleMapOverviewForm = ({ initLocation, initLat, initLng }) => {
         }));
 
         map.panTo(center);
-    }, [initLat, initLng]);
+    }, [initLat, initLng, center]);
 
     const unMount = useCallback((map) => {
         setMap(null);

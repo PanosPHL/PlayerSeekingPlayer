@@ -36,7 +36,8 @@ const OverviewFormModal = ({ location }) => {
                     userStyles={user ? user.profileInfo.styles : null}
                     initLocation={user ? user.profileInfo.location : null}
                     initLat={user ? user.lat : null}
-                    initLng={user ? user.lng : null}/>
+                    initLng={user ? user.lng : null}
+                    userId={user ? user.id : null}/>
                 </div>
             </div>
         )

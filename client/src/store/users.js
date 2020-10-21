@@ -2,10 +2,16 @@ import Cookie from 'js-cookie';
 import { login } from './session';
 import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING } from './recordings';
 
-const csrfToken = Cookie.get('XSRF-TOKEN');
-
 const SIGNUP_USER = 'users/SIGNUP_USER';
 const SET_USERS = 'users/SET_USERS';
+const UPDATE_OVERVIEW = 'users/UPDATE_OVERVIEW';
+
+const updateOverview = (userInfo) => {
+    return {
+        type: UPDATE_OVERVIEW,
+        userInfo
+    }
+}
 
 const addUser = (user) => {
     return {
@@ -22,6 +28,7 @@ export const addUsers = (users) => {
 }
 
 export const signup = (firstName, lastName, email, password, confirmPassword, dateOfBirth, location, lat, lng) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
     return async dispatch => {
         const res = await fetch('/api/users/', {
             method: "POST",
@@ -53,8 +60,37 @@ export const signup = (firstName, lastName, email, password, confirmPassword, da
     }
 }
 
+export const putAndUpdateOverview = (userId, dateOfBirth, instruments, styles, location, lat, lng) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
+    return async dispatch => {
+        const res = await fetch(`/api/users/${userId}/overview/`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({
+                date_of_birth: dateOfBirth.toISOString().split('T')[0],
+                instruments,
+                styles,
+                location,
+                lat,
+                lng })
+        });
+
+        res.data = await res.json();
+        console.log(res);
+        if (res.ok) {
+            dispatch(updateOverview(res.data));
+        }
+
+        return res;
+    }
+}
+
 export default function usersReducer(state = {}, action) {
     const newState = Object.assign({}, state);
+    let newUser;
     let newProfileInfo;
     let newRecordings;
     switch(action.type) {
@@ -75,10 +111,25 @@ export default function usersReducer(state = {}, action) {
         case UPDATE_PROFILE_RECORDING:
             newProfileInfo = Object.assign({}, newState[[action.profileRecording["profile_id"]]].profileInfo);
             newRecordings = Object.assign({}, newProfileInfo.recordings);
-            console.log(action.profileRecording["recording_id"]);
             newRecordings[action.profileRecording["recording_id"]] = action.profileRecording;
             newProfileInfo.recordings = newRecordings;
             newState[[action.profileRecording["profile_id"]]].profileInfo = newProfileInfo;
+            return newState;
+        case UPDATE_OVERVIEW:
+            newUser = Object.assign({}, newState[[action.userInfo["user_id"]]]);
+            newProfileInfo = Object.assign({}, newUser.profileInfo);
+
+            newUser.dateOfBirth = action.userInfo["DOB"];
+            newUser.lat = action.userInfo["lat"];
+            newUser.lng = action.userInfo["lng"];
+
+            newProfileInfo.location = action.userInfo["location"];
+            newProfileInfo.recordings = action.userInfo["recordings"];
+            newProfileInfo.styles = action.userInfo["styles"];
+
+            newUser.profileInfo = newProfileInfo;
+
+            newState[[action.userInfo["user_id"]]] = newUser;
             return newState;
         default:
             return state;

@@ -4,7 +4,6 @@ import { postAndAddRecording, putAndUpdateRecording } from '../store/recordings'
 import { setErrors } from '../store/errors';
 import { toggleRecordingModal } from '../store/ui/profilePage';
 import RecordingFormErrors from './RecordingFormErrors';
-import authStyles from '../css-modules/AuthPages.module.css';
 import recordingStyles from '../css-modules/Recordings.module.css';
 
 

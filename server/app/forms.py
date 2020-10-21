@@ -1,11 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, FloatField, SelectMultipleField
 from wtforms.fields.html5 import EmailField, DateField, URLField
 from wtforms.validators import InputRequired, Email, EqualTo, URL, ValidationError
 import os
 import requests
 import datetime
-
 
 class SignUpForm(FlaskForm):
     first_name = StringField("First Name", validators=[InputRequired("Enter a first name.")])
@@ -41,3 +40,12 @@ class RecordingForm(FlaskForm):
         r_json = r.json()
         if not r.ok:
             raise ValidationError("Please provide a valid YouTube URL.")
+
+
+class OverviewForm(FlaskForm):
+    date_of_birth = StringField("Date of Birth", validators=[InputRequired("Enter a date of birth.")])
+    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4"])
+    styles = SelectMultipleField("Styles", choices=["1", "2", "3"])
+    location = StringField("Location", validators=[InputRequired("Please provide a location.")])
+    lat = FloatField("Latitude", validators=[InputRequired("Please provide a latitude.")])
+    lng = FloatField("Longitude", validators=[InputRequired("Please provide a longitude.")])

@@ -6,6 +6,7 @@ import GoogleMapOverviewForm from './GoogleMapOverviewForm';
 import InstrumentDropdown from './InstrumentDropdown';
 import StylesDropdown from './StylesDropdown';
 import { toggleInstrumentDropdown, toggleStyleDropdown } from '../store/ui/profilePage';
+import { putAndUpdateOverview } from '../store/users';
 import aboutStyles from '../css-modules/About.module.css';
 
 const SET_DOB = 'SET_DOB';
@@ -15,12 +16,12 @@ const ADD_STYLE = 'ADD_STYLE';
 const REMOVE_STYLE = 'REMOVE_STYLE';
 const SET_LOCATION = 'SET_LOCATION';
 
-const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, styles, userInstruments, userStyles }) => {
+const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, styles, userInstruments, userStyles, userId }) => {
 
     const initialState = {
         DOB: new Date(initDOB),
-        instruments: [],
-        styles: [],
+        instruments: userInstruments,
+        styles: userStyles,
         location: {
             location: initLocation,
             lat: initLat,
@@ -34,7 +35,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         let slicePoint;
         switch (action.type) {
             case SET_DOB:
-                newState.DOB = action.DOB;
+                newState.DOB = new Date(action.DOB);
                 return newState;
             case ADD_INSTRUMENT:
                 newState.instruments = [...newState.instruments, action.instrumentId]
@@ -92,6 +93,14 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         });
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const res = await dispatch(putAndUpdateOverview(userId, state.DOB,
+            state.instruments, state.styles, state.location.location,
+            state.location.lat, state.location.lng));
+        return res;
+    }
+
     const styleDropdownClick = () => {
         dispatch(toggleStyleDropdown());
     }
@@ -103,16 +112,17 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
     const value = {
         onInstrumentChange,
         onStyleChange,
-        onLocationChange
+        onLocationChange,
     }
 
     return (
         <OverviewFormContext.Provider value={value}>
-        <form method="" action="">
+            <h2>Edit Overview</h2>
+        <form method="" action="" onSubmit={handleSubmit}>
             <p>
                 <label className="labels">Date of Birth</label>
             </p>
-            <Datepicker className="form-control" selected={state.DOB} onChange={date => localDispatch({ type: SET_DOB, DOB: new Date(date) })} />
+            <Datepicker className="form-control" selected={state.DOB} onChange={date => localDispatch({ type: SET_DOB, DOB: date })} />
             <div>
                 <p style={{position: 'relative'}}>
                     <label className="labels" onClick={instrumentDropdownClick}>Instruments <span
@@ -140,6 +150,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
                 initLat={state.location.lat}
                 initLng={state.location.lng}/>
             </div>
+            <button type="submit">Submit</button>
         </form>
         </OverviewFormContext.Provider>
     )

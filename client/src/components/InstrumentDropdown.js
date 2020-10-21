@@ -7,6 +7,7 @@ const InstrumentDropdown = ({ instruments, userInstruments, className }) => {
     return (
         <ul className={className}>
             {instruments && instruments.length ? instruments.map((instrument, i) => {
+                let includes = userInstruments.includes(instrument.id);
                 return (
                     <li className={aboutStyles.dropdownListItem} key={`instrument-${i + 1}`}>
                         <label className={aboutStyles.dropdownLabel} htmlFor={`instrument-${i + 1}`}>{instrument.name}</label>
@@ -14,7 +15,7 @@ const InstrumentDropdown = ({ instruments, userInstruments, className }) => {
                         name={`instrument-${i + 1}`}
                         value={instrument.id}
                         onChange={onInstrumentChange}
-                        checked={userInstruments.includes(instrument.id) ? true : false}/>
+                        checked={includes}/>
                     </li>
                 )
             }) : <></>}
