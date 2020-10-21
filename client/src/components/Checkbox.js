@@ -13,7 +13,7 @@ const Checkbox = ({ i, initCheck, type, name, value }) => {
         localDispatch
     } = useContext(OverviewFormContext);
 
-    const onClick = (e) => {
+    const handleChange = (e) => {
         if (e.target.checked) {
             setChecked(true);
             if (type === 'instrument') {
@@ -32,7 +32,7 @@ const Checkbox = ({ i, initCheck, type, name, value }) => {
     }
 
     return (
-        <input type="checkbox" name={name} value={value} onClick={onClick} checked={checked} />
+        <input type="checkbox" name={name} value={value} onChange={handleChange} checked={checked} />
     )
 }
 

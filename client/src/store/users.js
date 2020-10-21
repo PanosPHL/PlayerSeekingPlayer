@@ -130,7 +130,6 @@ export default function usersReducer(state = {}, action) {
 
             newUser.profileInfo = newProfileInfo;
             newState[[action.userInfo.id]] = newUser;
-            debugger;
             return newState;
         default:
             return state;

@@ -122,13 +122,16 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
 
     return (
         <OverviewFormContext.Provider value={value}>
+            <div className={aboutStyles.overviewFormContainer}>
             <h2>Edit Overview</h2>
-        <form method="" action="" onSubmit={handleSubmit}>
+        <form className={aboutStyles.overviewForm} method="" action="" onSubmit={handleSubmit}>
+            <div className="form-control-group">
             <p>
                 <label className="labels">Date of Birth</label>
             </p>
             <Datepicker className="form-control" selected={state.DOB} onChange={date => localDispatch({ type: SET_DOB, DOB: date })} />
-            <div>
+            </div>
+            <div className={aboutStyles.dropdownContainer}>
                 <p style={{position: 'relative'}}>
                     <label className="labels" onClick={instrumentDropdownClick}>Instruments <span
                     className={instrumentDropdown ? aboutStyles.downInstrumentTriangle : aboutStyles.rightInstrumentTriangle}>&#9654;</span>
@@ -139,7 +142,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
                 instruments={instruments}
                 userInstruments={userInstruments}/>
             </div>
-            <div>
+            <div className={aboutStyles.dropdownContainer}>
                 <p style={{position: 'relative'}}>
                     <label className="labels" onClick={styleDropdownClick}>Styles <span
                     className={styleDropdown ? aboutStyles.downStyleTriangle : aboutStyles.rightStyleTriangle}>&#9654;</span></label>
@@ -149,14 +152,15 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
                 styles={styles}
                 userStyles={userStyles}/>
             </div>
-            <div>
+            <div className={"form-control-group" + " " + aboutStyles.mapContainer}>
                 <GoogleMapOverviewForm
                 initLocation={state.location.location}
                 initLat={state.location.lat}
                 initLng={state.location.lng}/>
             </div>
-            <button type="submit">Submit</button>
+            <button className={aboutStyles.overviewSubmitButton} type="submit">Submit</button>
         </form>
+            </div>
         </OverviewFormContext.Provider>
     )
 }

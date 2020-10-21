@@ -21,7 +21,6 @@ def index():
 @user_routes.route('/', methods=["POST"])
 def signup_user():
   data = MultiDict(mapping=request.json)
-  print(data)
   form = SignUpForm(data)
   if form.validate():
     data = request.json
@@ -34,17 +33,14 @@ def signup_user():
     new_user_dict = new_user.to_dict()
     return new_user_dict
   else:
-    print(form.errors)
     res = make_response({ "errors": format_errors(form.errors) }, 401)
     return res
 
 @user_routes.route('/<int:user_id>/overview/', methods=["PUT"])
 def update_overview(user_id):
-  print(request.json)
   data = MultiDict(mapping=request.json)
   form = OverviewForm(data)
   if form.validate():
-    print(data)
     data = request.json
     user = User.query.get(user_id)
     user.DOB = data["date_of_birth"]
@@ -57,9 +53,7 @@ def update_overview(user_id):
     profile.styles = db.session.query(Style).filter(Style.id.in_(data["styles"])).all()
 
     db.session.commit()
-    print(user.to_dict())
     return user.to_dict()
   else:
-    print(form.errors)
     res = make_response({ "errors": format_errors(form.errors) }, 401)
     return res
