@@ -53,8 +53,8 @@ def update_overview(user_id):
 
     profile = Profile.query.filter(Profile.user_id == user_id).first()
     profile.location = data["location"]
-    profile.instruments = [Instrument.query.get(int(instrument_id)) for instrument_id in data["instruments"]]
-    profile.styles = [Style.query.get(int(style_id)) for style_id in data["styles"]]
+    profile.instruments = db.session.query(Instrument).filter(Instrument.id.in_(data["instruments"])).all()
+    profile.styles = db.session.query(Style).filter(Style.id.in_(data["styles"])).all()
 
     db.session.commit()
     print(user.to_dict())
