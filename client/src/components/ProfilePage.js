@@ -9,10 +9,10 @@ const ProfilePage = ({ match }) => {
     const isOwner = useSelector(state => state.session.userId === parseInt(match.params.id));
     const userProfile = useSelector(state => state.entities.users[parseInt(match.params.id)]);
     const instruments = useSelector(state => {
-        return userProfile ? userProfile.profileInfo.instruments.map((instrumentId) => state.entities.instruments[instrumentId]) : null;
+        return userProfile && userProfile.profileInfo ? userProfile.profileInfo.instruments.map((instrumentId) => state.entities.instruments[instrumentId]) : null;
     });
     const styles = useSelector(state => {
-        return userProfile ? userProfile.profileInfo.styles.map((styleId) => state.entities.styles[styleId]) : null;
+        return userProfile && userProfile.profileInfo ? userProfile.profileInfo.styles.map((styleId) => state.entities.styles[styleId]) : null;
     })
     const { about: { display: about }, recordings } = useSelector(state => state.ui.profilePage);
 

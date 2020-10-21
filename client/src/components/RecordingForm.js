@@ -44,20 +44,20 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
         <form className={ id ? recordingStyles.editRecordingForm : recordingStyles.addRecordingForm} method="" action="" onSubmit={handleSubmit}>
             <div className="form-control-group">
             <p>
-                <label className={authStyles.labels} htmlFor="title">Title</label>
+                <label className="labels" htmlFor="title">Title</label>
             </p>
             <input className="form-control" type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
             { id ? <></> :
             <div className="form-control-group">
             <p>
-                <label className={authStyles.labels} htmlFor="url">URL</label>
+                <label className="labels" htmlFor="url">URL</label>
             </p>
             <input className="form-control" type="url" name="url" value={url} onChange={(e) => setUrl(e.target.value)} />
             </div> }
             <div className="form-control-group">
             <p>
-                <label className={authStyles.labels} htmlFor="description">Description</label>
+                <label className="labels" htmlFor="description">Description</label>
             </p>
             <textarea className={recordingStyles.descriptionForm} cols="55" rows="8" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>

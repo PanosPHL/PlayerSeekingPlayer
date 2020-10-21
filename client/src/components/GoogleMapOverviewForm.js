@@ -1,10 +1,10 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback, useContext, memo, useEffect } from 'react';
 import { GoogleMap, Autocomplete } from '@react-google-maps/api';
 import OverviewFormContext from '../contexts/OverviewFormContext';
 
 const GoogleMapOverviewForm = ({ initLocation, initLat, initLng }) => {
     const [map, setMap] = useState(null);
-    const [center, setCenter] = useState(null);
+    const [center, setCenter] = useState({ lat: initLat, lng: initLng});
     const [marker, setMarker] = useState(null);
     const [autocomplete, setAutoComplete] = useState(null);
     const [location, setLocation] = useState(initLocation ? initLocation : null);
@@ -29,9 +29,7 @@ const GoogleMapOverviewForm = ({ initLocation, initLat, initLng }) => {
             map
         }));
 
-        const initCenter = new window.google.maps.LatLng(initLat, initLng);
-        setCenter(initCenter);
-        map.panTo(initCenter);
+        map.panTo(center);
     }, [initLat, initLng]);
 
     const unMount = useCallback((map) => {
@@ -87,4 +85,4 @@ const GoogleMapOverviewForm = ({ initLocation, initLat, initLng }) => {
     )
 }
 
-export default GoogleMapOverviewForm;
+export default memo(GoogleMapOverviewForm);

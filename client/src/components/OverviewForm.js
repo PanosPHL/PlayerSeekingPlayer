@@ -110,12 +110,12 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         <OverviewFormContext.Provider value={value}>
         <form method="" action="">
             <p>
-                <label>Date of Birth</label>
+                <label className="labels">Date of Birth</label>
             </p>
-            <Datepicker selected={state.DOB} onChange={date => localDispatch({ type: SET_DOB, DOB: new Date(date) })} />
+            <Datepicker className="form-control" selected={state.DOB} onChange={date => localDispatch({ type: SET_DOB, DOB: new Date(date) })} />
             <div>
                 <p style={{position: 'relative'}}>
-                    <label onClick={instrumentDropdownClick}>Instruments <span
+                    <label className="labels" onClick={instrumentDropdownClick}>Instruments <span
                     className={instrumentDropdown ? aboutStyles.downInstrumentTriangle : aboutStyles.rightInstrumentTriangle}>&#9654;</span>
                     </label>
                 </p>
@@ -126,7 +126,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
             </div>
             <div>
                 <p style={{position: 'relative'}}>
-                    <label onClick={styleDropdownClick}>Styles <span
+                    <label className="labels" onClick={styleDropdownClick}>Styles <span
                     className={styleDropdown ? aboutStyles.downStyleTriangle : aboutStyles.rightStyleTriangle}>&#9654;</span></label>
                 </p>
                 <StylesDropdown

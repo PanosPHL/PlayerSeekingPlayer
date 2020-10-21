@@ -54,13 +54,13 @@ const LogInPage = ({ history }) => {
                     <form className={authStyles.loginForm} method="" action="" onSubmit={handleSubmit}>
                         <div className="login-form-control-group">
                         <p>
-                            <label className={authStyles.labels} htmlFor="email">Email</label>
+                            <label className="labels" htmlFor="email">Email</label>
                         </p>
                         <input className="form-control" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </div>
                         <div className="login-form-control-group">
                         <p>
-                            <label className={authStyles.labels} htmlFor="password">Password</label>
+                            <label className="labels" htmlFor="password">Password</label>
                         </p>
                         <input className="form-control" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </div>
