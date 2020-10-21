@@ -43,7 +43,8 @@ class User(db.Model, UserMixin):
       "lat": self.lat,
       "lng": self.lng,
       "createdAt": self.created_at,
-      "updatedAt": self.updated_at
+      "updatedAt": self.updated_at,
+      "profileInfo": self.profile[0].to_dict()
     }
 
 

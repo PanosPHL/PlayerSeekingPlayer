@@ -110,9 +110,14 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
     }
 
     const value = {
-        onInstrumentChange,
-        onStyleChange,
+        actionTypes: {
+            ADD_INSTRUMENT,
+            REMOVE_INSTRUMENT,
+            ADD_STYLE,
+            REMOVE_STYLE
+        },
         onLocationChange,
+        localDispatch
     }
 
     return (

@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request, make_response
-from app.models import db, User, Profile
+from app.models import db, User, Profile, Instrument, Style
 from app.forms import SignUpForm, OverviewForm
 from werkzeug.datastructures import MultiDict
 
@@ -28,11 +28,10 @@ def signup_user():
     new_user = User(first_name = data["first_name"], last_name = data["last_name"], email = data["email"], DOB = data["date_of_birth"], password=data["password"], lat = data["lat"], lng = data["lng"])
     db.session.add(new_user)
     db.session.commit()
-    new_user_dict = new_user.to_dict()
     new_user_profile = Profile(user_id = new_user_dict["id"], biography = "", location = data["location"])
     db.session.add(new_user_profile)
     db.session.commit()
-    new_user_dict["profile_info"] = new_user_profile.to_dict()
+    new_user_dict = new_user.to_dict()
     return new_user_dict
   else:
     print(form.errors)
@@ -45,8 +44,21 @@ def update_overview(user_id):
   data = MultiDict(mapping=request.json)
   form = OverviewForm(data)
   if form.validate():
+    print(data)
     data = request.json
     user = User.query.get(user_id)
+    user.DOB = data["date_of_birth"]
+    user.lat = data["lat"]
+    user.lng = data["lng"]
+
+    profile = Profile.query.filter(Profile.user_id == user_id).first()
+    profile.location = data["location"]
+    profile.instruments = [instrument.to_dict("id") for instrument in Instrument.query.filter(Instrument.id in data["instruments"]).all()]
+    profile.styles = [style.to_dict("id") for style in Style.query.filter(Style.id in data["styles"]).all()]
+
+    db.session.commit()
+    print(user.to_dict())
+    return user.to_dict()
   else:
     print(form.errors)
     res = make_response({ "errors": format_errors(form.errors) }, 401)

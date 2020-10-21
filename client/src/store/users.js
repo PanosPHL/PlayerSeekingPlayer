@@ -116,20 +116,21 @@ export default function usersReducer(state = {}, action) {
             newState[[action.profileRecording["profile_id"]]].profileInfo = newProfileInfo;
             return newState;
         case UPDATE_OVERVIEW:
-            newUser = Object.assign({}, newState[[action.userInfo["user_id"]]]);
+            newUser = Object.assign({}, newState[[action.userInfo.id]]);
             newProfileInfo = Object.assign({}, newUser.profileInfo);
 
-            newUser.dateOfBirth = action.userInfo["DOB"];
-            newUser.lat = action.userInfo["lat"];
-            newUser.lng = action.userInfo["lng"];
+            newUser.dateOfBirth = action.userInfo.dateOfBirth;
+            newUser.lat = action.userInfo.lat;
+            newUser.lng = action.userInfo.lng;
 
-            newProfileInfo.location = action.userInfo["location"];
-            newProfileInfo.recordings = action.userInfo["recordings"];
-            newProfileInfo.styles = action.userInfo["styles"];
+            newProfileInfo.location = action.userInfo.profileInfo.location
+            newProfileInfo.recordings = action.userInfo.profileInfo.recordings
+            newProfileInfo.styles = action.userInfo.profileInfo.styles;
+            newProfileInfo.instruments = action.userInfo.profileInfo.instruments;
 
             newUser.profileInfo = newProfileInfo;
-
-            newState[[action.userInfo["user_id"]]] = newUser;
+            newState[[action.userInfo.id]] = newUser;
+            debugger;
             return newState;
         default:
             return state;

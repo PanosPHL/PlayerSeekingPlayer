@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Checkbox from './Checkbox';
 import OverviewFormContext from '../contexts/OverviewFormContext';
 import aboutStyles from '../css-modules/About.module.css';
 
@@ -11,11 +12,10 @@ const InstrumentDropdown = ({ instruments, userInstruments, className }) => {
                 return (
                     <li className={aboutStyles.dropdownListItem} key={`instrument-${i + 1}`}>
                         <label className={aboutStyles.dropdownLabel} htmlFor={`instrument-${i + 1}`}>{instrument.name}</label>
-                        <input type="checkbox"
-                        name={`instrument-${i + 1}`}
+                        <Checkbox name={`instrument-${i + 1}`}
                         value={instrument.id}
-                        onChange={onInstrumentChange}
-                        checked={includes}/>
+                        initCheck={includes}
+                        type="instrument"/>
                     </li>
                 )
             }) : <></>}

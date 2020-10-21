@@ -33,15 +33,6 @@ CSRFProtect(app)
 #         httponly=True)
 #     return response
 
-def get_instrument_and_style_ids():
-    with app.app_context():
-        instrument_ids = [instrument.to_dict()["id"] for instrument in Instrument.query.all()]
-        style_ids = [style.to_dict()["id"] for style in Style.query.all()]
-        return {
-            "instrument_ids": instrument_ids,
-            "style_ids": style_ids
-        }
-
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def react_root(path):
