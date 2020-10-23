@@ -5,7 +5,7 @@ import OverviewFormContext from '../contexts/OverviewFormContext';
 import GoogleMapOverviewForm from './GoogleMapOverviewForm';
 import InstrumentDropdown from './InstrumentDropdown';
 import StylesDropdown from './StylesDropdown';
-import { toggleInstrumentDropdown, toggleStyleDropdown } from '../store/ui/profilePage';
+import { toggleInstrumentDropdown, toggleStyleDropdown, toggleOverviewModal } from '../store/ui/profilePage';
 import { putAndUpdateOverview } from '../store/users';
 import { setErrors, clearErrors } from '../store/errors';
 import aboutStyles from '../css-modules/About.module.css';
@@ -79,7 +79,6 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
     }, [state, dispatch]);
 
     const { instrumentDropdown, styleDropdown } = useSelector(state => state.ui.profilePage.overviewFormModal)
-    const errors = useSelector(state => state.errors);
 
     const onInstrumentChange = (e) => {
         if (e.target.checked) {
@@ -113,6 +112,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
             state.instruments, state.styles, state.location.location,
             state.location.lat, state.location.lng, state.location.validLocation));
         if (res.ok) {
+            dispatch(toggleOverviewModal());
             return res;
         }
         dispatch(setErrors(res.data.errors));

@@ -364,4 +364,23 @@
     outline: none;
 }
 
+.overviewErrors {
+    width: 100%;
+    list-style: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+}
+
+.overviewErrorWrapper {
+    position: absolute;
+
+    top: 8%;
+    left: 16.8%;
+
+    width: 384px;
+}
+
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

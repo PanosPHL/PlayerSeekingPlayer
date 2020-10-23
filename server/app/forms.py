@@ -47,10 +47,17 @@ class OverviewForm(FlaskForm):
     instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6"])
     styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5"])
     location = StringField("Location", validators=[InputRequired("Please provide a location.")])
-    isValidLocation = BooleanField("is_valid_location")
+    validLocation = BooleanField("is_valid_location")
     lat = FloatField("Latitude", validators=[InputRequired("Please provide a latitude.")])
     lng = FloatField("Longitude", validators=[InputRequired("Please provide a longitude.")])
 
-    def validate_isValidLocation(form, field):
+    def validate_validLocation(form, field):
         if not field.data:
             raise ValidationError("Please use the autocomplete field to provide your location")
+
+    def validate_date_of_birth(form, field):
+        year = datetime.timedelta(days=365)
+        sixteen_years = year * 16
+        today = datetime.date.today()
+        if (datetime.date.fromisoformat(field.data)) > (today - sixteen_years):
+            raise ValidationError("You must be 16 years or older use this site.")

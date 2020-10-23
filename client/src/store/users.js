@@ -60,7 +60,7 @@ export const signup = (firstName, lastName, email, password, confirmPassword, da
     }
 }
 
-export const putAndUpdateOverview = (userId, dateOfBirth, instruments, styles, location, lat, lng, isValidLocation) => {
+export const putAndUpdateOverview = (userId, dateOfBirth, instruments, styles, location, lat, lng, validLocation) => {
     const csrfToken = Cookie.get('XSRF-TOKEN');
     return async dispatch => {
         const res = await fetch(`/api/users/${userId}/overview/`, {
@@ -74,7 +74,7 @@ export const putAndUpdateOverview = (userId, dateOfBirth, instruments, styles, l
                 instruments,
                 styles,
                 location,
-                isValidLocation,
+                validLocation,
                 lat,
                 lng })
         });
