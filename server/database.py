@@ -18,17 +18,29 @@ with app.app_context():
 
   # Instrument / Style seed data
   alto_sax = Instrument(name="Alto Saxophone")
+  tenor_sax = Instrument(name="Tenor Saxophone")
+  drum_kit = Instrument(name="Drum Kit")
+  e_bass = Instrument(name="Electric Bass")
   keyboard = Instrument(name="Keyboard / Piano")
   e_guitar = Instrument(name="Electric Guitar")
-  db.session.add(e_guitar)
   tenor_sax = Instrument(name="Tenor Sax")
+
+  db.session.add(e_guitar)
+  db.session.add(tenor_sax)
+  db.session.add(e_bass)
+  db.session.add(drum_kit)
 
 
   jazz = Style(name="Jazz")
   funk = Style(name="Funk")
   classical = Style(name="Classical")
+  bluegress = Style(name="Bluegress")
+  country = Style(name="Country")
+
 
   db.session.add(classical)
+  db.session.add(bluegress)
+  db.session.add(country)
 
   run_for_cover = Recording(url='https://www.youtube.com/watch?v=rqqEHV-5F6E')
   sing_a_song_of_song = Recording(url='https://www.youtube.com/watch?v=pn8Cs-PZfX8')

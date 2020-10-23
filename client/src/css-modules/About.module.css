@@ -160,33 +160,43 @@
 .closedInstrumentDropdown, .closedStyleDropdown {
     position: absolute;
     display: flex;
-    height: 0;
+    flex-wrap: wrap;
+    max-height: 0;
     overflow: hidden;
     transition: 0.3s;
     list-style: none;
+    z-index: 2;
+
+    background-color: rgb(255, 252, 252);
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .openInstrumentDropdown, .openStyleDropdown {
     position: absolute;
     display: flex;
-    list-style: none;
-    height: 20px;
+    flex-wrap: wrap;
+    max-height: 400px;
     overflow: hidden;
     transition: 0.3s;
+    list-style: none;
+    z-index: 2;
+
+    background-color: rgb(255, 252, 252);
+
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .dropdownListItem {
+    display: block;
     margin-right: 12px;
-}
-
-.dropdownLabel {
-    margin-right: 6px;
 }
 
 .downInstrumentTriangle {
     position: absolute;
     top: 1px;
-    left: 24%;
+    left: 26%;
 
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
@@ -208,7 +218,7 @@
 .rightInstrumentTriangle {
     position: absolute;
     top: 1px;
-    left: 24%;
+    left: 26%;
 
     transform: rotate(0deg);
 
@@ -226,7 +236,7 @@
 .downStyleTriangle {
     position: absolute;
     top: 1px;
-    left: 12.4%;
+    left: 14.4%;
 
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
@@ -248,7 +258,7 @@
 .rightStyleTriangle {
     position: absolute;
     top: 1px;
-    left: 12.4%;
+    left: 14.4%;
 
     -moz-transform: rotate(0deg);
     -ms-transform: rotate(0deg);
@@ -268,28 +278,26 @@
 }
 
 .dropdownContainer {
-    margin-top: 4%;
-    margin-left: 9%;
+    margin: 5% 0px;
 }
 
 .overviewFormContainer {
-    width: 80%;
+    width: 384px;
     margin: 0 auto;
-}
-
-.mapContainer {
-    margin-left: 9%;
-    margin-right: 9%;
 }
 
 .overviewSubmitButton {
     position: absolute;
-    bottom: 5%;
+    bottom: 3%;
     right: 8%;
 }
 
 .overviewForm {
-    margin-top: 10%;
+    margin-top: 16%;
+}
+
+.dropdownLabel {
+    margin-right: 8px;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
