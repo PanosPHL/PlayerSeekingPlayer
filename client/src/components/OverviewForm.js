@@ -108,14 +108,10 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!state.location.validLocation) {
-            dispatch(setErrors(["Please provide a valid location in the autocomplete field."]));
-            return;
-        }
 
         const res = await dispatch(putAndUpdateOverview(userId, state.DOB,
             state.instruments, state.styles, state.location.location,
-            state.location.lat, state.location.lng));
+            state.location.lat, state.location.lng, state.location.validLocation));
         if (res.ok) {
             return res;
         }

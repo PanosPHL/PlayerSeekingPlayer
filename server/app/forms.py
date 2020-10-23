@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, FloatField, SelectMultipleField
+from wtforms import StringField, PasswordField, FloatField, SelectMultipleField, BooleanField
 from wtforms.fields.html5 import EmailField, DateField, URLField
 from wtforms.validators import InputRequired, Email, EqualTo, URL, ValidationError
 import os
@@ -47,5 +47,10 @@ class OverviewForm(FlaskForm):
     instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6"])
     styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5"])
     location = StringField("Location", validators=[InputRequired("Please provide a location.")])
+    isValidLocation = BooleanField("is_valid_location")
     lat = FloatField("Latitude", validators=[InputRequired("Please provide a latitude.")])
     lng = FloatField("Longitude", validators=[InputRequired("Please provide a longitude.")])
+
+    def validate_isValidLocation(form, field):
+        if not field.data:
+            raise ValidationError("Please use the autocomplete field to provide your location")

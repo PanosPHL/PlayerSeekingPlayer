@@ -39,6 +39,7 @@ def signup_user():
 @user_routes.route('/<int:user_id>/overview/', methods=["PUT"])
 def update_overview(user_id):
   data = MultiDict(mapping=request.json)
+  print(data)
   form = OverviewForm(data)
   if form.validate():
     data = request.json
