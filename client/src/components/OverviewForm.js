@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Datepicker from 'react-datepicker';
 import OverviewFormContext from '../contexts/OverviewFormContext';
@@ -7,6 +7,7 @@ import InstrumentDropdown from './InstrumentDropdown';
 import StylesDropdown from './StylesDropdown';
 import { toggleInstrumentDropdown, toggleStyleDropdown } from '../store/ui/profilePage';
 import { putAndUpdateOverview } from '../store/users';
+import { setErrors, clearErrors } from '../store/errors';
 import aboutStyles from '../css-modules/About.module.css';
 
 const SET_DOB = 'SET_DOB';
@@ -15,6 +16,7 @@ const REMOVE_INSTRUMENT = 'REMOVE_INSTRUMENT';
 const ADD_STYLE = 'ADD_STYLE';
 const REMOVE_STYLE = 'REMOVE_STYLE';
 const SET_LOCATION = 'SET_LOCATION';
+const UNSET_VALID_LOCATION = "UNSET_VALID_LOCATION";
 
 const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, styles, userInstruments, userStyles, userId }) => {
 
@@ -25,7 +27,8 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         location: {
             location: initLocation,
             lat: initLat,
-            lng: initLng
+            lng: initLng,
+            validLocation: initLocation ? true : false
         }
     }
 
@@ -56,6 +59,11 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
                 newLocationData.location = newLocation;
                 newLocationData.lat = newLat;
                 newLocationData.lng = newLng;
+                newLocationData.validLocation = true;
+                newState.location = newLocationData;
+                return newState;
+            case UNSET_VALID_LOCATION:
+                newLocationData.validLocation = false;
                 newState.location = newLocationData;
                 return newState;
             default:
@@ -66,7 +74,12 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
     const dispatch = useDispatch();
     const [state, localDispatch] = useReducer(overviewReducer, initialState);
 
+    useEffect(() => {
+        dispatch(clearErrors());
+    }, [state, dispatch]);
+
     const { instrumentDropdown, styleDropdown } = useSelector(state => state.ui.profilePage.overviewFormModal)
+    const errors = useSelector(state => state.errors);
 
     const onInstrumentChange = (e) => {
         if (e.target.checked) {
@@ -95,10 +108,18 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!state.location.validLocation) {
+            dispatch(setErrors(["Please provide a valid location in the autocomplete field."]));
+            return;
+        }
+
         const res = await dispatch(putAndUpdateOverview(userId, state.DOB,
             state.instruments, state.styles, state.location.location,
             state.location.lat, state.location.lng));
-        return res;
+        if (res.ok) {
+            return res;
+        }
+        dispatch(setErrors(res.data.errors));
     }
 
     const styleDropdownClick = () => {
@@ -114,7 +135,8 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
             ADD_INSTRUMENT,
             REMOVE_INSTRUMENT,
             ADD_STYLE,
-            REMOVE_STYLE
+            REMOVE_STYLE,
+            UNSET_VALID_LOCATION
         },
         onLocationChange,
         localDispatch

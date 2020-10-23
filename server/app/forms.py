@@ -44,8 +44,8 @@ class RecordingForm(FlaskForm):
 
 class OverviewForm(FlaskForm):
     date_of_birth = StringField("Date of Birth", validators=[InputRequired("Enter a date of birth.")])
-    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4"])
-    styles = SelectMultipleField("Styles", choices=["1", "2", "3"])
+    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6"])
+    styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5"])
     location = StringField("Location", validators=[InputRequired("Please provide a location.")])
     lat = FloatField("Latitude", validators=[InputRequired("Please provide a latitude.")])
     lng = FloatField("Longitude", validators=[InputRequired("Please provide a longitude.")])
