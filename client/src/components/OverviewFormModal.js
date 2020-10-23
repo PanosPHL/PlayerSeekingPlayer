@@ -27,7 +27,7 @@ const OverviewFormModal = ({ location }) => {
                 overflow: 'hidden'
             }}>
                 <div className={aboutStyles.overviewFormModalContainer}>
-                    <button onClick={handleCloseClick}><i className="fas fa-times"></i></button>
+                    <button className={aboutStyles.modalFormClose} onClick={handleCloseClick}><i className="fas fa-times"></i></button>
                     <OverviewForm
                     initDOB={user ? user.dateOfBirth : null}
                     instruments={instruments ? instruments : null}

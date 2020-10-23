@@ -159,38 +159,60 @@
 
 .closedInstrumentDropdown, .closedStyleDropdown {
     position: absolute;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
     max-height: 0;
-    overflow: hidden;
-    transition: 0.3s;
+
     list-style: none;
+    overflow: hidden;
     z-index: 2;
 
     background-color: rgb(255, 252, 252);
+
     border-radius: 4px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+
+    transition: 0.3s;
 }
 
 .openInstrumentDropdown, .openStyleDropdown {
     position: absolute;
-    display: flex;
-    flex-wrap: wrap;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    height: auto;
     max-height: 400px;
-    overflow: hidden;
-    transition: 0.3s;
+
+    padding: 8px 0;
+
     list-style: none;
+    overflow: hidden;
     z-index: 2;
 
     background-color: rgb(255, 252, 252);
 
     border-radius: 4px;
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+
+    transition: 0.3s;
+}
+
+.closedInstrumentDropdown, .openInstrumentDropdown {
+    left: 14%;
+    top: 24px;
+}
+
+.closedStyleDropdown, .openStyleDropdown {
+    left: 10%;
+    top: 26px;
 }
 
 .dropdownListItem {
     display: block;
     margin-right: 12px;
+    padding-left: 10px;
 }
 
 .downInstrumentTriangle {
@@ -279,25 +301,67 @@
 
 .dropdownContainer {
     margin: 5% 0px;
+    position: relative;
 }
 
 .overviewFormContainer {
+    position: relative;
     width: 384px;
     margin: 0 auto;
 }
 
 .overviewSubmitButton {
     position: absolute;
-    bottom: 3%;
-    right: 8%;
+    bottom: -7.6%;
+    right: -10%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
 }
 
 .overviewForm {
-    margin-top: 16%;
+    margin-top: 14%;
 }
 
 .dropdownLabel {
     margin-right: 8px;
+}
+
+.modalFormTitle {
+    padding-top: 6%;
+
+    color: rgba(39, 39, 39, 0.7);
+    vertical-align: center;
+    text-align: center;
+}
+
+.modalFormClose {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+
+    padding: 4px 8px 4px 8px;
+
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 4px;
+}
+
+.modalFormClose:hover {
+    filter: brightness(80%);
+}
+
+.modalFormClose:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.modalFormClose:focus {
+    outline: none;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

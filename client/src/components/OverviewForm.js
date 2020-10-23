@@ -123,7 +123,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
     return (
         <OverviewFormContext.Provider value={value}>
             <div className={aboutStyles.overviewFormContainer}>
-            <h2>Edit Overview</h2>
+            <h2 className={aboutStyles.modalFormTitle}>Edit Overview</h2>
         <form className={aboutStyles.overviewForm} method="" action="" onSubmit={handleSubmit}>
             <div className="form-control-group">
             <p>
