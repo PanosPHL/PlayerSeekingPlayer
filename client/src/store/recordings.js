@@ -55,7 +55,8 @@ export const postAndAddRecording = (profileId, url, title, description) => {
                 profileId,
                 url,
                 title,
-                description
+                description,
+                csrfToken
             })
         });
 
@@ -83,7 +84,8 @@ export const putAndUpdateRecording = (profileId, recordingId, url, title, descri
             body: JSON.stringify({
                 url,
                 title,
-                description
+                description,
+                csrfToken
             })
         });
 
@@ -109,7 +111,7 @@ export const removeRecording = (recordingId, profileId) => {
         });
 
         res.data = await res.json();
-        console.log(res);
+
         if (res.ok) {
             const { recordingId, profileId } = res.data;
             dispatch(deleteRecording(recordingId, profileId));

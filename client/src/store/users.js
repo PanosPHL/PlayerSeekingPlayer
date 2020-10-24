@@ -54,7 +54,8 @@ export const signup = (firstName, lastName, email, password, confirmPassword, da
                 location,
                 lat,
                 lng,
-                csrfToken })
+                csrfToken
+            })
         });
 
         res.data = await res.json();
@@ -84,7 +85,9 @@ export const putAndUpdateOverview = (userId, dateOfBirth, instruments, styles, l
                 location,
                 validLocation,
                 lat,
-                lng })
+                lng,
+                csrfToken
+            })
         });
 
         res.data = await res.json();
@@ -106,7 +109,7 @@ export const putAndUpdateBio = (userId, bio) => {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrfToken
             },
-            body: JSON.stringify({ bio })
+            body: JSON.stringify({ bio, csrfToken })
         });
 
         res.data = await res.json();
@@ -124,7 +127,7 @@ export default function usersReducer(state = {}, action) {
     let newUser;
     let newProfileInfo;
     let newRecordings;
-    switch(action.type) {
+    switch (action.type) {
         case SIGNUP_USER:
             newState[action.user.id] = action.user;
             return newState;
