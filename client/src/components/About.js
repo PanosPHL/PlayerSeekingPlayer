@@ -6,7 +6,7 @@ import AboutSectionPicker from './AboutSectionPicker';
 import aboutStyles from '../css-modules/About.module.css';
 
 
-const About = ({ userProfile, instruments, styles }) => {
+const About = ({ userProfile, instruments, styles, isOwner }) => {
     const age = userProfile ? Math.abs(new Date(new Date(userProfile.dateOfBirth).getTime() - Date.now()).getUTCFullYear() - 1969) : null;
     const instrumentNames = instruments && instruments.length ? instruments.map((instrument) => instrument ? instrument.name : "") : null;
     const styleNames = styles && styles.length ? styles.map((style) => style ? style.name : "") : null;
@@ -21,8 +21,8 @@ const About = ({ userProfile, instruments, styles }) => {
             <AboutSectionPicker />
             <div className={aboutStyles.aboutSectionContainer}>
             {
-                overview ? <Overview age={age} instrumentNames={instrumentNames} styleNames={styleNames} userProfile={userProfile} /> :
-                biography ? <Bio userProfile={userProfile} /> : <></>
+                overview ? <Overview isOwner={isOwner} age={age} instrumentNames={instrumentNames} styleNames={styleNames} userProfile={userProfile} /> :
+                biography ? <Bio isOwner={isOwner} userProfile={userProfile} /> : <></>
             }
             </div>
             </div>

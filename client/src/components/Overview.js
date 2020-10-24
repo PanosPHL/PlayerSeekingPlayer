@@ -3,10 +3,12 @@ import { useDispatch } from 'react-redux';
 import { toggleOverviewModal } from '../store/ui/profilePage';
 import InstrumentBullet from './InstrumentBullet';
 import StylesBullet from './StylesBullet';
+import OverviewEditButton from './OverviewEditButton';
+import OverviewContext from '../contexts/OverviewContext';
 import aboutStyles from '../css-modules/About.module.css';
 
 
-const Overview = ({ age, instrumentNames, styleNames, userProfile }) => {
+const Overview = ({ age, instrumentNames, styleNames, userProfile, isOwner }) => {
     const dispatch = useDispatch();
     const locationRegex = /\s\d+/;
 
@@ -15,9 +17,14 @@ const Overview = ({ age, instrumentNames, styleNames, userProfile }) => {
         document.body.classList.add('noscroll');
     }
 
+    const value = {
+        handleEditClick
+    }
+
     return (
+        <OverviewContext.Provider value={value}>
         <div className={aboutStyles.aboutSectionInnerContainer}>
-            <button onClick={handleEditClick} className={aboutStyles.editButton}><i className="fas fa-pencil-alt"></i></button>
+            <OverviewEditButton isOwner={isOwner}/>
             <div className={aboutStyles.overview}>
                 <h3 className={aboutStyles.aboutSectionHeader}>Player Overview</h3>
                 <ul className={aboutStyles.overviewList}>
@@ -30,6 +37,7 @@ const Overview = ({ age, instrumentNames, styleNames, userProfile }) => {
                 </ul>
             </div>
         </div>
+        </OverviewContext.Provider>
     )
 }
 
