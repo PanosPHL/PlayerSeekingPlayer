@@ -299,3 +299,22 @@
     color: rgba(0, 0, 0, 0.45);
     margin: 10% 0;
 }
+
+.deleteRecordingButton {
+    position: absolute;
+    bottom: 7%;
+    left: 10%;
+
+    background-color: rgb(165, 0, 0);
+    color: rgb(47, 0, 0);
+
+    border: none;
+
+    border-radius: 4px;
+
+    width: 10%;
+    padding: 4px 0px;
+
+    font-size: 20px;
+
+}

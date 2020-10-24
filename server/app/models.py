@@ -67,6 +67,9 @@ class ProfileRecording(db.Model):
   title = db.Column(db.String(256), unique=True, nullable=False)
   description = db.Column(db.Text)
 
+  profile = db.relationship("Profile")
+  recording = db.relationship("Recording")
+
   def to_dict(self):
     return {
       "profile_id": self.profile_id,
@@ -89,7 +92,7 @@ class Profile(db.Model):
   user = db.relationship("User", back_populates="profile")
   instruments = db.relationship("Instrument", secondary=profile_instruments)
   styles = db.relationship("Style", secondary=profile_styles)
-  recordings = db.relationship("ProfileRecording")
+  recordings = db.relationship("ProfileRecording", back_populates="profile")
 
   def to_dict(self):
     return {
@@ -129,6 +132,8 @@ class Recording(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   url = db.Column(db.String(256), nullable=False)
+
+  profiles = db.relationship("ProfileRecording", back_populates="recording")
 
   def to_dict(self):
     return {

@@ -47,7 +47,7 @@ const mapStateToProps = (state, { isOwner, userProfile }) => {
         userRecordings: userProfile && Object.keys(state.entities.recordings).length ? Object.values(userProfile.profileInfo.recordings).map((recording) => {
             return {
                 id: recording.recording_id,
-                url: state.entities.recordings[recording.recording_id].url,
+                url: state.entities.recordings[recording.recording_id] ? state.entities.recordings[recording.recording_id].url : null,
                 title: recording.title,
                 description: recording.description
             }

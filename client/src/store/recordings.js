@@ -4,6 +4,15 @@ const ADD_RECORDING = 'recordings/ADD_RECORDING';
 const SET_RECORDINGS = 'recordings/SET_RECORDINGS';
 export const ADD_PROFILE_RECORDING ='recordings/ADD_PROFILE_RECORDING';
 export const UPDATE_PROFILE_RECORDING = 'recordings/UPDATE_PROFILE_RECORDING';
+export const DELETE_PROFILE_RECORDING = 'recordings/DELETE_PROFILE_RECORDING';
+
+export const deleteRecording = (recordingId, userId) => {
+    return {
+        type: DELETE_PROFILE_RECORDING,
+        recordingId,
+        userId
+    }
+}
 
 export const addRecording = (recording) => {
     return {
@@ -82,6 +91,28 @@ export const putAndUpdateRecording = (profileId, recordingId, url, title, descri
 
         if (res.ok) {
             dispatch(updateProfileRecording(res.data.profileRecording));
+        }
+
+        return res;
+    }
+}
+
+export const removeRecording = (recordingId, profileId) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
+    return async dispatch => {
+        const res = await fetch(`/api/recordings/${recordingId}/profile/${profileId}/`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            }
+        });
+
+        res.data = await res.json();
+        console.log(res);
+        if (res.ok) {
+            const { recordingId, profileId } = res.data;
+            dispatch(deleteRecording(recordingId, profileId));
         }
 
         return res;

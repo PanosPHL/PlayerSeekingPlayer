@@ -1,6 +1,7 @@
 import requests
 import os
 from flask import Blueprint, request, make_response
+from sqlalchemy import and_
 from app.models import db, Recording, ProfileRecording
 from app.forms import RecordingForm
 from werkzeug.datastructures import MultiDict
@@ -41,3 +42,12 @@ def update_profile_recording(recording_id, profile_id):
     else:
         r = make_response({ "errors": format_errors(form.errors) }, 401)
         return r
+
+@recording_routes.route('/<int:recording_id>/profile/<int:profile_id>/', methods=["DELETE"])
+def delete_recording(recording_id, profile_id):
+    profile_recording = ProfileRecording.query.filter(and_(ProfileRecording.recording_id == recording_id, ProfileRecording.profile_id == profile_id)).one()
+    db.session.delete(profile_recording)
+    return {
+        "recordingId": recording_id,
+        "profileId": profile_id
+        }

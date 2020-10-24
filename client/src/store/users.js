@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie';
 import { login } from './session';
-import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING } from './recordings';
+import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING, DELETE_PROFILE_RECORDING } from './recordings';
 
 const SIGNUP_USER = 'users/SIGNUP_USER';
 const SET_USERS = 'users/SET_USERS';
@@ -170,6 +170,17 @@ export default function usersReducer(state = {}, action) {
             newUser.profileInfo = newProfileInfo;
 
             newState[[action.userInfo.id]] = newUser;
+            return newState
+        case DELETE_PROFILE_RECORDING:
+            newUser = Object.assign({}, newState[[action.userId]]);
+            newProfileInfo = Object.assign({}, newUser.profileInfo);
+            newRecordings = Object.assign({}, newProfileInfo.recordings);
+
+            delete newRecordings[action.recordingId];
+
+            newProfileInfo.recordings = newRecordings;
+            newUser.profileInfo = newProfileInfo;
+            newState[[action.userId]] = newUser;
             return newState;
         default:
             return state;
