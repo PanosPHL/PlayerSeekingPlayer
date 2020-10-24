@@ -410,4 +410,34 @@
     animation-duration: 0.3s;
 }
 
+.bioForm {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 2%;
+}
+
+.bioTextarea {
+    resize: none;
+    font-family: 'Lato';
+    font-size: 16px;
+}
+
+.bioModalFormClose {
+    top: 10%;
+    right: 10%;
+}
+
+.bioSubmitButton {
+    position: absolute;
+    bottom: 6%;
+    right: 9%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

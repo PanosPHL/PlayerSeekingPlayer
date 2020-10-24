@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { putAndUpdateBio } from '../store/users';
 import { setErrors, clearErrors } from '../store/errors';
 import { toggleBioModal } from '../store/ui/profilePage'
+import aboutStyles from '../css-modules/About.module.css';
 
 const BioForm = ({ initBio, userId }) => {
     const dispatch = useDispatch();
@@ -26,13 +27,13 @@ const BioForm = ({ initBio, userId }) => {
     }
 
     return (
-            <form method="" action="" onSubmit={handleSubmit}>
-                <h2>Edit Bio</h2>
+            <form className={aboutStyles.bioForm} method="" action="" onSubmit={handleSubmit}>
+                <h2 className={aboutStyles.modalFormTitle}>Edit Bio</h2>
                 <p>
-                <label>Bio</label>
+                <label className="labels">Bio</label>
                 </p>
-                <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
-                <button type="submit">Submit</button>
+                <textarea className={aboutStyles.bioTextarea + " form-control"} rows="12" value={bio} onChange={(e) => setBio(e.target.value)} />
+                <button className={aboutStyles.bioSubmitButton} type="submit">Submit</button>
             </form>
     )
 }
