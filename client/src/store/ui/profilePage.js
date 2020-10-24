@@ -6,6 +6,7 @@ const ABOUT_BIO_ON = 'ui/ABOUT_BIO_ON';
 const TOGGLE_OVERVIEW_MODAL = 'ui/TOGGLE_OVERVIEW_MODAL';
 const TOGGLE_INSTRUMENT_DROPDOWN = 'ui/TOGGLE_INSTRUMENT_DROPDOWN';
 const TOGGLE_STYLE_DROPDOWN = 'ui/TOGGLE_STYLE_DROPDOWN';
+const TOGGLE_BIO_MODAL = 'ui/TOGGLE_BIO_MODAL';
 
 export const aboutOn = () => {
     return {
@@ -55,6 +56,12 @@ export const toggleStyleDropdown = () => {
     }
 }
 
+export const toggleBioModal = () => {
+    return {
+        type: TOGGLE_BIO_MODAL
+    }
+}
+
 const initialProfilePageUIState = {
     about: {
         display: true,
@@ -67,7 +74,8 @@ const initialProfilePageUIState = {
         display: false,
         instrumentDropdown: false,
         styleDropdown: false
-    }
+    },
+    bioModal: false
 }
 
 export default function profilePageReducer(state = initialProfilePageUIState, action) {
@@ -115,6 +123,9 @@ export default function profilePageReducer(state = initialProfilePageUIState, ac
         case TOGGLE_STYLE_DROPDOWN:
             newOverviewModal.styleDropdown = !newOverviewModal.styleDropdown;
             newState.overviewFormModal = newOverviewModal;
+            return newState;
+        case TOGGLE_BIO_MODAL:
+            newState.bioModal = !newState.bioModal;
             return newState;
         default:
             return state;

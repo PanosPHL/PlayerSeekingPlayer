@@ -61,3 +61,6 @@ class OverviewForm(FlaskForm):
         today = datetime.date.today()
         if (datetime.date.fromisoformat(field.data)) > (today - sixteen_years):
             raise ValidationError("You must be 16 years or older use this site.")
+
+class BioForm(FlaskForm):
+    bio = StringField("Biography")

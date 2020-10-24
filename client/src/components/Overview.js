@@ -12,6 +12,7 @@ const Overview = ({ age, instrumentNames, styleNames, userProfile }) => {
 
     const handleEditClick = () => {
         dispatch(toggleOverviewModal());
+        document.body.classList.add('noscroll');
     }
 
     return (

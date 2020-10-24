@@ -7,6 +7,7 @@ import TopBar from './TopBar';
 import RecordingFormModal from './RecordingFormModal';
 import Footer from './Footer';
 import OverviewFormModal from './OverviewFormModal';
+import BioFormModal from './BioFormModal';
 
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
         <>
         <TopBar />
         <HomeRouter>
+        <BioFormModal />
         <OverviewFormModal />
         <RecordingFormModal />
             <Switch>

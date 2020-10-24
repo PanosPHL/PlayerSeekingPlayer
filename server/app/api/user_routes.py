@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, make_response
 from app.models import db, User, Profile, Instrument, Style
-from app.forms import SignUpForm, OverviewForm
+from app.forms import SignUpForm, OverviewForm, BioForm
 from werkzeug.datastructures import MultiDict
 
 from app.utils.errors import format_errors
@@ -39,7 +39,6 @@ def signup_user():
 @user_routes.route('/<int:user_id>/overview/', methods=["PUT"])
 def update_overview(user_id):
   data = MultiDict(mapping=request.json)
-  print(data)
   form = OverviewForm(data)
   if form.validate():
     data = request.json
@@ -55,6 +54,20 @@ def update_overview(user_id):
 
     db.session.commit()
     return user.to_dict()
+  else:
+    res = make_response({ "errors": format_errors(form.errors) }, 401)
+    return res
+
+@user_routes.route('/<int:user_id>/bio/', methods=["PUT"])
+def update_bio(user_id):
+  data = MultiDict(mapping=request.json)
+  form = BioForm(data)
+  if form.validate():
+    data = request.json
+    profile = Profile.query.filter(Profile.user_id == user_id).one()
+    profile.biography = data["bio"]
+    db.session.commit()
+    return profile.user.to_dict()
   else:
     res = make_response({ "errors": format_errors(form.errors) }, 401)
     return res

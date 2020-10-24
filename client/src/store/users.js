@@ -5,6 +5,14 @@ import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING } from './recordings';
 const SIGNUP_USER = 'users/SIGNUP_USER';
 const SET_USERS = 'users/SET_USERS';
 const UPDATE_OVERVIEW = 'users/UPDATE_OVERVIEW';
+const UPDATE_BIO = 'users/UPDATE_BIO';
+
+const updateBio = (userInfo) => {
+    return {
+        type: UPDATE_BIO,
+        userInfo
+    }
+}
 
 const updateOverview = (userInfo) => {
     return {
@@ -80,9 +88,31 @@ export const putAndUpdateOverview = (userId, dateOfBirth, instruments, styles, l
         });
 
         res.data = await res.json();
-        console.log(res);
+
         if (res.ok) {
             dispatch(updateOverview(res.data));
+        }
+
+        return res;
+    }
+}
+
+export const putAndUpdateBio = (userId, bio) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
+    return async dispatch => {
+        const res = await fetch(`/api/users/${userId}/bio/`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ bio })
+        });
+
+        res.data = await res.json();
+
+        if (res.ok) {
+            dispatch(updateBio(res.data));
         }
 
         return res;
@@ -130,6 +160,15 @@ export default function usersReducer(state = {}, action) {
             newProfileInfo.instruments = action.userInfo.profileInfo.instruments;
 
             newUser.profileInfo = newProfileInfo;
+            newState[[action.userInfo.id]] = newUser;
+            return newState;
+        case UPDATE_BIO:
+            newUser = Object.assign({}, newState[[action.userInfo.id]]);
+            newProfileInfo = Object.assign({}, newUser.profileInfo);
+
+            newProfileInfo.biography = action.userInfo.profileInfo.biography;
+            newUser.profileInfo = newProfileInfo;
+
             newState[[action.userInfo.id]] = newUser;
             return newState;
         default:

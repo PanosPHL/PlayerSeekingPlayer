@@ -1,3 +1,5 @@
+/* About Section Styles */
+
 .aboutContainer {
     width: 65%;
     height: 55vh;
@@ -135,6 +137,8 @@
 .editButton:focus {
     outline: none;
 }
+
+/* Overview Form and Modal Styles */
 
 .overviewFormModalContainer {
         position: relative;
@@ -381,6 +385,29 @@
     left: 16.8%;
 
     width: 384px;
+}
+
+/* Bio Form and Modal Styles */
+
+.bioFormModalContainer {
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+
+    opacity: 100%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 46vh;
+
+    border-radius: 8px;
+
+    background-color: rgb(255, 252, 252);
+
+    animation-name: modal_entry;
+    animation-duration: 0.3s;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
