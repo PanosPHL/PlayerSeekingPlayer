@@ -7,6 +7,7 @@ import { setErrors, clearErrors } from '../store/errors';
 import UserInfoSignUpForm from './UserInfoSignUpForm';
 import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
 import AuthLeft from './AuthLeft';
+import Errors from './Errors';
 import SignUpContext from '../contexts/SignUpContext';
 import styles from '../css-modules/AuthPages.module.css';
 
@@ -99,14 +100,10 @@ const SignUpPage = ({ history }) => {
                             </div>
                             {
                                 errors.length ?
-                                <ul className={styles.authErrors}>
-                                    {errors.map((error, i) => {
-                                        return (
-                                            <li key={`error-${i + 1}`}>{error}</li>
-                                        )
-                                    })}
-                                </ul> :
-                                <></>
+                                <Errors
+                                errors={errors}
+                                className={styles.authErrors}/>
+                                : <></>
                             }
                             <div className={styles.contentContainer}>
                                 <div className={load ? styles.initialUserInfoOnscreen : userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen}>

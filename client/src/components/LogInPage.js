@@ -4,6 +4,7 @@ import { login } from '../store/session';
 import { setErrors, clearErrors } from '../store/errors';
 import { Link, withRouter } from 'react-router-dom';
 import AuthLeft from './AuthLeft';
+import Errors from './Errors';
 import authStyles from '../css-modules/AuthPages.module.css';
 
 const LogInPage = ({ history }) => {
@@ -39,15 +40,11 @@ const LogInPage = ({ history }) => {
                     </div>
                     {
                         errors.length ?
-                        <div className={authStyles.loginErrorWrapper}>
-                        <ul className={authStyles.loginErrors}>
-                            { errors.map((error, i) => {
-                                return (
-                                <li key={`error-${i + 1}`}>{error}</li>
-                                )
-                            })}
-                        </ul>
-                        </div> :
+                        <Errors
+                        errors={errors}
+                        divStyle={authStyles.loginErrorWrapper}
+                        className={authStyles.loginErrors}/>
+                         :
                         <></>
                     }
                     <div className={authStyles.loginFormWrapper}>
