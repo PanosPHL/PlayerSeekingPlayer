@@ -22,7 +22,7 @@ const LogInPage = ({ history }) => {
         const res = await dispatch(login(email, password));
 
         if (res.ok) {
-            history.replace(`/profiles/${res.data.id}`);
+            history.replace(`/profiles/${1}`);
             return;
         }
 
