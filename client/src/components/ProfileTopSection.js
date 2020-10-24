@@ -39,7 +39,7 @@ const ProfileTopSection = ({ userProfile, isOwner, name, location, about, record
 const mapStateToProps = (state, { isOwner, userProfile }) => {
     return {
         name: userProfile ? userProfile.firstName + " " + userProfile.lastName : "",
-        location: userProfile && userProfile.profileInfo ? userProfile.profileInfo.location.split(' ').slice(0, 3).join(" ") : ""
+        location: userProfile && userProfile.profileInfo && userProfile.profileInfo.location ? userProfile.profileInfo.location.split(' ').slice(0, 3).join(" ") : ""
     }
 }
 

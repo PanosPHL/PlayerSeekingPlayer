@@ -37,7 +37,6 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
         }
 
         dispatch(setErrors(res.data.errors));
-        return;
     }
 
     return (

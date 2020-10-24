@@ -27,10 +27,10 @@ def signup_user():
     new_user = User(first_name = data["first_name"], last_name = data["last_name"], email = data["email"], DOB = data["date_of_birth"], password=data["password"], lat = data["lat"], lng = data["lng"])
     db.session.add(new_user)
     db.session.commit()
+    new_user_dict = new_user.to_dict()
     new_user_profile = Profile(user_id = new_user_dict["id"], biography = "", location = data["location"])
     db.session.add(new_user_profile)
     db.session.commit()
-    new_user_dict = new_user.to_dict()
     return new_user_dict
   else:
     res = make_response({ "errors": format_errors(form.errors) }, 401)

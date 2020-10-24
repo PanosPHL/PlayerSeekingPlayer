@@ -114,6 +114,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         if (res.ok) {
             dispatch(toggleOverviewModal());
             document.body.classList.remove('noscroll');
+            return;
         }
         dispatch(setErrors(res.data.errors));
     }
