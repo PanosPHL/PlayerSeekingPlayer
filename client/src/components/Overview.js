@@ -21,8 +21,8 @@ const Overview = ({ age, instrumentNames, styleNames, userProfile }) => {
             <div className={aboutStyles.overview}>
                 <h3 className={aboutStyles.aboutSectionHeader}>Player Overview</h3>
                 <ul className={aboutStyles.overviewList}>
-                    <li><span className={aboutStyles.bulletSpan}><span>{age ? age.toString() : ""}</span> years old</span></li>
-                    <li><span className={aboutStyles.bulletSpan}>Lives in <span>{userProfile && userProfile.profileInfo ? userProfile.profileInfo.location.split(locationRegex)[0] : ""}</span></span></li>
+                    <li>{age ? age.toString() : ""} years old</li>
+                    <li>Lives in {userProfile && userProfile.profileInfo ? userProfile.profileInfo.location.split(locationRegex)[0] : ""}</li>
                     <InstrumentBullet instrumentNames={instrumentNames} />
                     <StylesBullet styleNames={styleNames} />
                 </ul>

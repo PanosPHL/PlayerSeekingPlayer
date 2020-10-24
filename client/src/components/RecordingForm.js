@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postAndAddRecording, putAndUpdateRecording } from '../store/recordings';
-import { setErrors } from '../store/errors';
+import { setErrors, clearErrors } from '../store/errors';
 import { toggleRecordingModal } from '../store/ui/profilePage';
-import RecordingFormErrors from './RecordingFormErrors';
+import Errors from './Errors';
 import recordingStyles from '../css-modules/Recordings.module.css';
 
 
@@ -14,6 +14,10 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
     const [description, setDescription] = useState(id ? recDescription : '');
 
     const errors = useSelector(state => state.errors);
+
+    useEffect(() => {
+        dispatch(clearErrors());
+    }, [title, url, description, dispatch]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,7 +43,10 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
     return (
         <>
         <h2 className={recordingStyles.modalFormTitle}>{ id ? "Edit Recording" : "Add Recording" }</h2>
-        { errors && errors.length ? <RecordingFormErrors errors={errors} /> : <></> }
+        { errors && errors.length ?
+        <Errors errors={errors}
+        className={recordingStyles.recordingErrors}
+        divStyle={id ? recordingStyles.editRecordingErrorWrapper : recordingStyles.addRecordingErrorWrapper} /> : <></> }
         <form className={ id ? recordingStyles.editRecordingForm : recordingStyles.addRecordingForm} method="" action="" onSubmit={handleSubmit}>
             <div className="form-control-group">
             <p>

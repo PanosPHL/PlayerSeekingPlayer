@@ -221,7 +221,7 @@
 
 .addRecordingForm {
     width: 80%;
-    margin: 0 auto;
+    margin: 8% auto 0 auto;
 }
 
 .editRecordingForm {
@@ -259,4 +259,32 @@
 
 .submitButton:focus {
     outline: none;
+}
+
+.recordingErrors {
+    width: 100%;
+    list-style: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+}
+
+.addRecordingErrorWrapper {
+    position: absolute;
+
+    top: 11%;
+    left: 16.8%;
+
+    width: 384px;
+}
+
+.editRecordingErrorWrapper {
+    position: absolute;
+
+    top: 14%;
+    left: 16.8%;
+
+    width: 384px;
 }

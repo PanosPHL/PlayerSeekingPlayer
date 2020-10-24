@@ -81,29 +81,34 @@
 }
 
 .aboutSectionHeader {
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
     color: rgba(0, 0, 0, 0.45);
-    margin-top: 2%;
     margin-bottom: 4%;
 }
 
 .overviewList {
     position: relative;
-    list-style-type: "\1D160";
-    list-style-position: inside;
-    font-size: 16px;
+    list-style: none;
+    text-align: center;
+    font-size: 22px;
     width: 90%;
-    margin: 0 20%;
+    margin: 0 auto;
 }
 
 .overviewList li {
-    line-height: 3;
+    line-height: 3.4;
+    color: rgba(0, 0, 0, 0.45);
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    background-color: rgb(255, 252, 252);
 }
 
-.bulletSpan {
-    position: absolute;
-    left: 50px;
+.overviewList li:hover {
+    filter: brightness(90%);
+
+    cursor: default;
 }
 
 .bioContent {
@@ -112,7 +117,7 @@
 
 .editButton {
     position: absolute;
-    top: -16px;
+    top: -6px;
     right: 0px;
 
     font-size: 30px;
