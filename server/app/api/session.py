@@ -1,12 +1,14 @@
 import os
+from sqlalchemy import between, and_
 from flask import Blueprint, make_response, request
 from flask_wtf.csrf import generate_csrf
 from flask_login import login_user, current_user, logout_user
 from datetime import timedelta
 from werkzeug.datastructures import MultiDict
-from app.models import User, Instrument, Style, Recording
+from app.models import User, Instrument, Style, Recording, profile_instruments
 from app.auth import login_manager
-from app.forms import LoginForm
+from app.forms import LoginForm, SearchForm
+from app.utils.distance import reverse_haversine
 
 session_routes = Blueprint("session", __name__)
 
@@ -71,3 +73,30 @@ def csrf():
     res = make_response()
     res.set_cookie("XSRF-TOKEN", generate_csrf())
     return res
+
+@session_routes.route('/search', methods=["PUT"])
+def get_search_results():
+    data = MultiDict(mapping=request.json)
+    form = SearchForm(data)
+    if form.validate():
+        data = request.json
+        print(data)
+        user = User.query.get(data["userId"])
+        user_dict = user.to_dict()
+
+        user_lat = user_dict["lat"]
+        user_lng = user_dict["lng"]
+        coords_dict = reverse_haversine(target_distance=data["radius"], lat=user_lat, lng=user_lng)
+
+        min_lat = coords_dict["min_lat"]
+        max_lat = coords_dict["max_lat"]
+        min_lng = coords_dict["min_lng"]
+        max_lng = coords_dict["max_lng"]
+
+        profiles = [profile.to_dict()["profile_id"] for profile in
+        profile_instruments.query.filter(profile_instruments.instrument_id.in_(data["instruments"]))]
+
+        return {"Hey": "mom"}
+
+    else:
+        return {"Hi": "mom"}

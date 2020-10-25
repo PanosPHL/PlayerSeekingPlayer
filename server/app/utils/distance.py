@@ -27,5 +27,3 @@ def reverse_haversine(target_distance, lat, lng):
         "min_lng": (min_lng * 180) / pi,
         "max_lng": (max_lng * 180) / pi
     }
-
-print(reverse_haversine(target_distance=10, lat=34.05223, lng=-118.24368))

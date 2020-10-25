@@ -4,12 +4,12 @@ import { addRecordings } from './recordings';
 import { addStyles } from './styles';
 
 import Cookie from 'js-cookie';
-const csrfToken = Cookie.get('XSRF-TOKEN');
 
 
 const LOGIN = 'session/LOGIN';
 export const LOGOUT = 'session/LOGOUT';
-const SET_RECORDING_FORM_ID = 'session/SET_RECORDING_FORM_ID'
+const SET_RECORDING_FORM_ID = 'session/SET_RECORDING_FORM_ID';
+const SET_SEARCH_RESULTS = 'session/SEARCH_RESULTS';
 
 const addUserToSession = (userId) => {
     return {
@@ -31,7 +31,15 @@ export const setRecordingFormId = (id) => {
     }
 }
 
+const setSearchResults = (searchResults) => {
+    return {
+        type: SET_SEARCH_RESULTS,
+        searchResults
+    }
+}
+
 export const login = (email, password) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
     return async dispatch => {
         const res = await fetch('/api/session/login', {
             method: "PUT",
@@ -52,6 +60,7 @@ export const login = (email, password) => {
 }
 
 export const logout = () => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
     return async dispatch => {
         const res = await fetch('/api/session/logout', {
             method: 'PUT',
@@ -70,6 +79,7 @@ export const logout = () => {
 }
 
 export const getSessionData = () => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
     return async dispatch => {
         const res = await fetch('/api/session/data');
 
@@ -86,10 +96,32 @@ export const getSessionData = () => {
     }
 }
 
+export const search = (firstName, lastName, radius, instruments, styles, userId) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
+    return async dispatch => {
+        const res = await fetch(`/api/session/search`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ firstName, lastName, radius, instruments, styles, userId })
+        });
+
+        res.data = await res.json();
+        console.log(res);
+        if (res.ok) {
+            dispatch(setSearchResults(res.data.searchResults));
+        }
+
+        return res;
+    }
+}
 
 const initialSessionState = {
     userId: null,
-    recordingFormId: null
+    recordingFormId: null,
+    searchResults: []
 };
 
 export default function sessionReducer(state = initialSessionState, action) {
@@ -103,6 +135,9 @@ export default function sessionReducer(state = initialSessionState, action) {
             return newState;
         case SET_RECORDING_FORM_ID:
             newState.recordingFormId = action.id;
+            return newState;
+        case SET_SEARCH_RESULTS:
+            newState.searchResults = action.searchResults;
             return newState;
         default:
             return state;

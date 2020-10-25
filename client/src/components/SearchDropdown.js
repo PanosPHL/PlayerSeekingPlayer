@@ -1,4 +1,6 @@
 import React, { useReducer } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { search } from '../store/session';
 import SearchInstruments from './SearchInstruments';
 import SearchStyles from './SearchStyles';
 import SearchContext from '../contexts/SearchContext';
@@ -53,14 +55,14 @@ function searchReducer(state, action) {
 }
 
 const SearchDropdown = ({ className }) => {
+    const dispatch = useDispatch();
     const [state, searchLocalDispatch] = useReducer(searchReducer, initialState);
+    const { userId } = useSelector(state => state.session);
 
-    const handleFirstNameChange = (e) => {
-        searchLocalDispatch({ type: UPDATE_FIRST_NAME, firstName: e.target.value })
-    }
-
-    const handleLastNameChange = (e) => {
-        searchLocalDispatch({ type: UPDATE_LAST_NAME, lastName: e.target.value })
+    const handleNameChange = (e) => {
+        const [firstName, lastName] = e.target.value.split(' ');
+        searchLocalDispatch({ type: UPDATE_FIRST_NAME, firstName });
+        searchLocalDispatch({ type: UPDATE_LAST_NAME, lastName });
     }
 
     const addInstrument = (e) => {
@@ -90,24 +92,26 @@ const SearchDropdown = ({ className }) => {
         removeStyle
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const res = await dispatch(search(
+            state.firstName, state.lastName, state.radius, state.instruments, state.styles, userId
+        ));
+        console.log(res);
+    }
+
     return (
         <SearchContext.Provider value={value}>
             <div className={navStyles.searchDropdownContainer}>
             <div className={navStyles.searchDropdownTriangle}>
             </div>
             <h3>Search</h3>
-                <form method="" action="">
+                <form method="" action="" onSubmit={handleSubmit}>
                     <div>
                         <p>
-                            <label>First Name*</label>
+                            <label>Name*</label>
                         </p>
-                        <input type='text' name="firstName" value={state.firstName} onChange={handleFirstNameChange} />
-                    </div>
-                    <div>
-                        <p>
-                            <label>Last Name*</label>
-                        </p>
-                        <input type='text' name="lastName" value={state.lastName} onChange={handleLastNameChange} />
+                        <input type='text' name="name" value={state.firstName} onChange={handleNameChange} />
                     </div>
                     <div>
                         <p>
