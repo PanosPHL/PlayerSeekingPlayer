@@ -1,4 +1,11 @@
 const TOGGLE_PROFILE_DROPDOWN = 'ui/TOGGLE_PROFILE_DROPDOWN';
+const TOGGLE_SEARCH_DROPDOWN = 'ui/TOGGLE_SEARCH_DROPDOWN';
+
+export const toggleSearchDropdown = () => {
+    return {
+        type: TOGGLE_SEARCH_DROPDOWN
+    }
+}
 
 export const toggleProfileDropdown = () => {
     return {
@@ -7,7 +14,8 @@ export const toggleProfileDropdown = () => {
 }
 
 const initialNavbarUIState = {
-    profileDropdown: false
+    profileDropdown: false,
+    searchDropdown: false
 }
 
 export default function navbarReducer(state = initialNavbarUIState, action) {
@@ -15,6 +23,9 @@ export default function navbarReducer(state = initialNavbarUIState, action) {
     switch (action.type) {
         case TOGGLE_PROFILE_DROPDOWN:
             newState.profileDropdown = !newState.profileDropdown;
+            return newState;
+        case TOGGLE_SEARCH_DROPDOWN:
+            newState.searchDropdown = !newState.searchDropdown;
             return newState;
         default:
             return state;

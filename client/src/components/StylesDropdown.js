@@ -13,7 +13,7 @@ const StylesDropdown = ({ styles, userStyles, className }) => {
                         <Checkbox name={`style-${i + 1}`}
                         value={style.id}
                         initCheck={includes}
-                        type="style"/>
+                        type="overviewStyle"/>
                     </li>
                 )
             }) : <></>}

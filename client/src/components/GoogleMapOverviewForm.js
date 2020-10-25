@@ -13,7 +13,7 @@ const GoogleMapOverviewForm = ({ initLocation, initLat, initLng }) => {
         UNSET_VALID_LOCATION
     },
     onLocationChange,
-    localDispatch } = useContext(OverviewFormContext);
+    overviewLocalDispatch } = useContext(OverviewFormContext);
 
     const containerStyle = {
         width: '384px',
@@ -60,7 +60,7 @@ const GoogleMapOverviewForm = ({ initLocation, initLat, initLng }) => {
 
     const handleInputChange = (e) => {
         setLocation(e.target.value);
-        localDispatch({ type: UNSET_VALID_LOCATION });
+        overviewLocalDispatch({ type: UNSET_VALID_LOCATION });
     }
 
     return (

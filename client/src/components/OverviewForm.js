@@ -72,7 +72,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
     }
 
     const dispatch = useDispatch();
-    const [state, localDispatch] = useReducer(overviewReducer, initialState);
+    const [state, overviewLocalDispatch] = useReducer(overviewReducer, initialState);
 
     useEffect(() => {
         dispatch(clearErrors());
@@ -81,7 +81,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
     const { instrumentDropdown, styleDropdown } = useSelector(state => state.ui.profilePage.overviewFormModal)
 
     const onLocationChange = (location, lat, lng) => {
-        localDispatch({
+        overviewLocalDispatch({
             type: SET_LOCATION,
             location,
             lat,
@@ -120,7 +120,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
             UNSET_VALID_LOCATION
         },
         onLocationChange,
-        localDispatch
+        overviewLocalDispatch
     }
 
     return (
@@ -132,7 +132,7 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
                         <p>
                             <label className="labels">Date of Birth</label>
                         </p>
-                        <Datepicker className="form-control" selected={state.DOB} onChange={date => localDispatch({ type: SET_DOB, DOB: date })} />
+                        <Datepicker className="form-control" selected={state.DOB} onChange={date => overviewLocalDispatch({ type: SET_DOB, DOB: date })} />
                     </div>
                     <div className={aboutStyles.dropdownContainer}>
                         <p style={{ position: 'relative' }}>

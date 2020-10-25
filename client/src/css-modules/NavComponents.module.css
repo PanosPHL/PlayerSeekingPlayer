@@ -22,7 +22,7 @@
     align-items: center;
 }
 
-.rightContainer {
+.profileContainer {
     position: relative;
     width: 4.2vw;
     display: flex;
@@ -103,6 +103,10 @@
 .logo {
     text-decoration: none;
     color: white;
+}
+
+.searchContainer {
+    position: relative;
 }
 
 @keyframes slideout {

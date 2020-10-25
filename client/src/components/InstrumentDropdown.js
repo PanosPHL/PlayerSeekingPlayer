@@ -13,7 +13,7 @@ const InstrumentDropdown = ({ instruments, userInstruments, className }) => {
                         <Checkbox name={`instrument-${i + 1}`}
                         value={instrument.id}
                         initCheck={includes}
-                        type="instrument"/>
+                        type="overviewInstrument"/>
                     </li>
                 )
             }) : <></>}
