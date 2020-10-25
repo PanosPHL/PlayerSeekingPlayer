@@ -5,7 +5,7 @@ from flask_wtf.csrf import generate_csrf
 from flask_login import login_user, current_user, logout_user
 from datetime import timedelta
 from werkzeug.datastructures import MultiDict
-from app.models import User, Instrument, Style, Recording, profile_instruments
+from app.models import User, Instrument, Style, Recording, profile_instruments, Profile
 from app.auth import login_manager
 from app.forms import LoginForm, SearchForm
 from app.utils.distance import reverse_haversine
@@ -93,10 +93,12 @@ def get_search_results():
         min_lng = coords_dict["min_lng"]
         max_lng = coords_dict["max_lng"]
 
-        profiles = [profile.to_dict()["profile_id"] for profile in
-        profile_instruments.query.filter(profile_instruments.instrument_id.in_(data["instruments"]))]
+        users = User.query.filter(and_(between(User.lat, min_lat, max_lat),
+        between(User.lng, min_lng, max_lng),
+        User.id != data["userId"],
+        )).all()
 
-        return {"Hey": "mom"}
+        return {"users": [user.to_dict() for user in users]}
 
     else:
         return {"Hi": "mom"}

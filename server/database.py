@@ -12,9 +12,12 @@ with app.app_context():
 
   # Demo user / profile generation
   demo = User(first_name = 'Kenny', last_name = 'Garrett', email = "demouser@demo.com", DOB = "1960-10-09", password="demo_password", lat = 34.05223, lng = -118.24368)
+  demo_2 = User(first_name = "Kenny", last_name = "Werner", email = "kennywerner@gmail.com", DOB = "1961-10-10", password="password", lat = 34.05223, lng = -118.24368)
   db.session.add(demo)
+  db.session.add(demo_2)
   db.session.commit()
   demo_profile = Profile(user_id = demo.to_dict()["id"], biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA")
+  demo_profile_2 = Profile(user_id = demo_2.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA")
 
   # Instrument / Style seed data
   alto_sax = Instrument(name="Alto Saxophone")
