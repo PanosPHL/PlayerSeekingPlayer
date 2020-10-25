@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Checkbox from './Checkbox';
-import OverviewFormContext from '../contexts/OverviewFormContext';
 import aboutStyles from '../css-modules/About.module.css';
 
 const InstrumentDropdown = ({ instruments, userInstruments, className }) => {
-    const { onInstrumentChange } = useContext(OverviewFormContext);
     return (
         <ul className={className}>
             {instruments && instruments.length ? instruments.map((instrument, i) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toggleBioModal } from '../store/ui/profilePage';
 import BioContext from '../contexts/BioContext';
 import BioEditButton from './BioEditButton';

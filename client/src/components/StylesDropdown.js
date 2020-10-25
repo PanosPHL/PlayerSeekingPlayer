@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Checkbox from './Checkbox';
-import OverviewFormContext from '../contexts/OverviewFormContext';
 import aboutStyles from '../css-modules/About.module.css';
 
 const StylesDropdown = ({ styles, userStyles, className }) => {
-    const { onStyleChange } = useContext(OverviewFormContext);
     return (
         <ul className={className}>
             {styles && styles.length ? styles.map((style, i) => {
