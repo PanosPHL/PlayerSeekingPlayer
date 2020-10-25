@@ -111,16 +111,34 @@ const OverviewForm = ({ initDOB, initLocation, initLat, initLng, instruments, st
         dispatch(toggleInstrumentDropdown());
     }
 
+    const addInstrument = (e) => {
+        overviewLocalDispatch({ type: ADD_INSTRUMENT, instrumentId: parseInt(e.target.value) });
+    }
+
+    const addStyle = (e) => {
+        overviewLocalDispatch({ type: ADD_STYLE, styleId: parseInt(e.target.value) });
+    }
+
+    const removeInstrument = (e) => {
+        overviewLocalDispatch({ type: REMOVE_INSTRUMENT, instrumentId: parseInt(e.target.value) });
+    }
+
+    const removeStyle = (e) => {
+        overviewLocalDispatch({ type: REMOVE_STYLE, styleId: parseInt(e.target.value) });
+    }
+
+    const unsetValidLocation = () => {
+        overviewLocalDispatch({ type: UNSET_VALID_LOCATION });
+    }
+
     const value = {
-        actionTypes: {
-            ADD_INSTRUMENT,
-            REMOVE_INSTRUMENT,
-            ADD_STYLE,
-            REMOVE_STYLE,
-            UNSET_VALID_LOCATION
-        },
         onLocationChange,
-        overviewLocalDispatch
+        overviewLocalDispatch,
+        addInstrument,
+        addStyle,
+        removeInstrument,
+        removeStyle,
+        unsetValidLocation
     }
 
     return (

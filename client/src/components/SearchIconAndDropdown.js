@@ -15,7 +15,7 @@ const SearchIconAndDropdown = () => {
 
     return (
         <div className={navStyles.searchContainer}>
-        <button onClick={handleSearchClick}>
+        <button className={navStyles.searchButton + " " + (searchDropdown ? navStyles.searchButtonActive : "")} onClick={handleSearchClick}>
             <i className="fas fa-search"></i>
         </button>
         { searchDropdown ? <SearchDropdown /> : <></> }

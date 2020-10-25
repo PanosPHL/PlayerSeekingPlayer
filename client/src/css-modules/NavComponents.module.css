@@ -6,6 +6,7 @@
 .navContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
     width: 90%;
     height: inherit;
@@ -105,8 +106,85 @@
     color: white;
 }
 
+.searchButton {
+    color: white;
+    background-color: rgb(76,80,149);
+
+    width: 2.8vw;
+    height: 2.8vw;
+
+    font-size: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    margin: 0 auto;
+}
+
+.searchButton:hover, .searchButton:active {
+    filter: brightness(90%);
+}
+
+.searchButton:focus {
+    outline: none;
+}
+
+.searchButtonActive {
+    filter: brightness(90%);
+
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+}
+
 .searchContainer {
     position: relative;
+}
+
+.searchDropdownContainer {
+    position: absolute;
+    background-color: rgb(255, 252, 252);
+
+    width: 24vw;
+    height: 36vh;
+
+    top: 116%;
+    left: 22%;
+
+    padding: 16%;
+
+    z-index: 2;
+
+    border-radius: 8px;
+
+    box-shadow: 0px 0px 2px rgba(0, 0, 0.2);
+}
+
+.searchDropdownTriangle {
+    position: absolute;
+
+    left: 32px;
+    top: -9.8px;
+
+    background-color: rgb(255, 252, 252);
+    transform: rotate(45deg);
+
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    height: 18px;
+    width: 18px;
+
+    z-index: 2;
+}
+
+.searchInstrumentDropdownContainer, .searchStyleDropdownContainer {
+    position: relative;
+}
+
+.searchInstrumentDropdown, .searchStyleDropdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    list-style: none;
 }
 
 @keyframes slideout {

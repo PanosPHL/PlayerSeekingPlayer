@@ -8,24 +8,23 @@ const Checkbox = ({ i, initCheck, type, name, value }) => {
     const [checked, setChecked] = useState(initCheck);
     const context = useContext(
         overviewRegex.test(type) ?
-        OverviewFormContext :
-        SearchContext
+        OverviewFormContext : SearchContext
     );
 
     const handleChange = (e) => {
         if (e.target.checked) {
             setChecked(true);
-            if (type === 'overviewInstrument') {
-                context.overviewLocalDispatch({ type: context.actionTypes.ADD_INSTRUMENT, instrumentId: parseInt(e.target.value) });
-            } else {
-                context.overviewLocalDispatch({ type: context.actionTypes.ADD_STYLE, styleId: parseInt(e.target.value) });
+            if (type === 'overviewInstrument' || type === 'searchInstrument') {
+                context.addInstrument(e);
+            } else if (type === 'overviewStyle' || type === 'searchStyle') {
+                context.addStyle(e);
             }
         } else {
             setChecked(false);
-            if (type === 'overviewInstrument') {
-                context.overviewLocalDispatch({ type: context.actionTypes.REMOVE_INSTRUMENT, instrumentId: parseInt(e.target.value) });
-            } else {
-                context.overviewLocalDispatch({ type: context.actionTypes.REMOVE_STYLE, styleId: parseInt(e.target.value) });
+            if (type === 'overviewInstrument' || type === 'searchInstrument') {
+                context.removeInstrument(e);
+            } else if (type === 'overviewStyle' || type === 'searchStyle') {
+                context.removeStyle(e);
             }
         }
     }

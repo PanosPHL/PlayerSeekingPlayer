@@ -2,11 +2,11 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Checkbox from './Checkbox';
 
-const SearchInstruments = () => {
+const SearchInstruments = ({ className }) => {
     const instruments = useSelector(state => Object.values(state.entities.instruments));
 
     return (
-        <ul>
+        <ul className={className}>
             {
                 instruments && instruments.length ?
                 instruments.map((instrument, i) => {
