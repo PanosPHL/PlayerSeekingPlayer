@@ -1,20 +1,26 @@
 from flask import Blueprint, jsonify, request, make_response
-from app.models import db, User, Profile
-from app.forms import SignUpForm
+from app.models import db, User, Profile, Instrument, Style
+from app.forms import SignUpForm, OverviewForm, BioForm
 from werkzeug.datastructures import MultiDict
+
+from app.utils.errors import format_errors
 
 user_routes = Blueprint('users', __name__)
 
 @user_routes.route('/')
 def index():
-  response = User.query.all()
-  print("user route______")
-  return { "users": [user.to_dict() for user in response] }
+  users = User.query.all()
+  users_list = list()
+  for user in users:
+    user_dict = user.to_dict()
+    profile = Profile.query.filter(Profile.user_id == user_dict["id"]).first()
+    user_dict["profileInfo"] = profile.to_dict()
+    users_list.append(user_dict)
+  return { "users": users_list }
 
 @user_routes.route('/', methods=["POST"])
 def signup_user():
   data = MultiDict(mapping=request.json)
-  print(data)
   form = SignUpForm(data)
   if form.validate():
     data = request.json
@@ -25,11 +31,43 @@ def signup_user():
     new_user_profile = Profile(user_id = new_user_dict["id"], biography = "", location = data["location"])
     db.session.add(new_user_profile)
     db.session.commit()
-    new_user_dict["profile_info"] = new_user_profile.to_dict()
     return new_user_dict
   else:
-    errors = []
-    for error in form.errors:
-      errors += form.errors[error]
-    res = make_response({ "errors": errors }, 401)
+    res = make_response({ "errors": format_errors(form.errors) }, 401)
+    return res
+
+@user_routes.route('/<int:user_id>/overview/', methods=["PUT"])
+def update_overview(user_id):
+  data = MultiDict(mapping=request.json)
+  form = OverviewForm(data)
+  if form.validate():
+    data = request.json
+    user = User.query.get(user_id)
+    user.DOB = data["date_of_birth"]
+    user.lat = data["lat"]
+    user.lng = data["lng"]
+
+    profile = Profile.query.filter(Profile.user_id == user_id).first()
+    profile.location = data["location"]
+    profile.instruments = db.session.query(Instrument).filter(Instrument.id.in_(data["instruments"])).all()
+    profile.styles = db.session.query(Style).filter(Style.id.in_(data["styles"])).all()
+
+    db.session.commit()
+    return user.to_dict()
+  else:
+    res = make_response({ "errors": format_errors(form.errors) }, 401)
+    return res
+
+@user_routes.route('/<int:user_id>/bio/', methods=["PUT"])
+def update_bio(user_id):
+  data = MultiDict(mapping=request.json)
+  form = BioForm(data)
+  if form.validate():
+    data = request.json
+    profile = Profile.query.filter(Profile.user_id == user_id).one()
+    profile.biography = data["bio"]
+    db.session.commit()
+    return profile.user.to_dict()
+  else:
+    res = make_response({ "errors": format_errors(form.errors) }, 401)
     return res

@@ -1,0 +1,448 @@
+/* About Section Styles */
+
+.aboutContainer {
+    width: 65%;
+    height: 55vh;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
+
+    margin: 4% auto 0 auto;
+
+    background-color: rgb(255, 252, 252);
+}
+
+.aboutHeaderContainer {
+    display: flex;
+    align-items: center;
+
+    grid-column: 1 / 6;
+    grid-row: 1 / 2;
+
+    height: 6vh;
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+    background-color: rgb(255, 252, 252);
+}
+
+.aboutHeader {
+    font-size: 30px;
+    margin-left: 7%;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.aboutSectionContainer {
+    grid-row: 2 / 7;
+    grid-column: 2 / 6;
+}
+
+.aboutSectionInnerContainer {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.aboutSelector {
+    grid-row: 2 / 7;
+    grid-column: 1 / 2;
+
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+
+    margin-top: -12%;
+
+    list-style: none;
+    text-align: center;
+}
+
+.aboutSelector li {
+    padding: 4% 0;
+
+    cursor: pointer;
+
+    background-color: rgb(255, 252, 252);
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+}
+
+.aboutSelector li:hover, .aboutSelector li:active {
+    filter: brightness(90%);
+}
+
+.aboutSelector li:active {
+    filter: brightness(80%);
+}
+
+.aboutSectionHeader {
+    font-size: 28px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.45);
+    margin-bottom: 4%;
+}
+
+.overviewList {
+    position: relative;
+    list-style: none;
+    text-align: center;
+    font-size: 22px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.overviewList li {
+    line-height: 3.4;
+    color: rgba(0, 0, 0, 0.45);
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    background-color: rgb(255, 252, 252);
+}
+
+.overviewList li:hover {
+    filter: brightness(95%);
+
+    cursor: default;
+}
+
+.bioContent {
+    font-size: 18px;
+}
+
+.editButton {
+    position: absolute;
+    top: -6px;
+    right: 0px;
+
+    font-size: 30px;
+    color: rgb(86, 83, 128);
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 50%;
+
+    width: 2.4vw;
+    height: 2.4vw;
+}
+
+.editButton:hover {
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:active {
+    transform: scale(1.1);
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:focus {
+    outline: none;
+}
+
+/* Overview Form and Modal Styles */
+
+.overviewFormModalContainer {
+        position: relative;
+
+        top: 50%;
+        left: 50%;
+
+        opacity: 100%;
+
+        transform: translate(-50%, -50%);
+
+        width: 30vw;
+        height: 76vh;
+
+        border-radius: 8px;
+
+        background-color: rgb(255, 252, 252);
+
+        animation-name: modal_entry;
+        animation-duration: 0.3s;
+}
+
+.closedInstrumentDropdown, .closedStyleDropdown {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    max-height: 0;
+
+    list-style: none;
+    overflow: hidden;
+    z-index: 2;
+
+    background-color: rgb(255, 252, 252);
+
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+
+    transition: 0.3s;
+}
+
+.openInstrumentDropdown, .openStyleDropdown {
+    position: absolute;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    height: auto;
+    max-height: 400px;
+
+    padding: 8px 0;
+
+    list-style: none;
+    overflow: hidden;
+    z-index: 2;
+
+    background-color: rgb(255, 252, 252);
+
+    border-radius: 4px;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+
+    transition: 0.3s;
+}
+
+.closedInstrumentDropdown, .openInstrumentDropdown {
+    left: 14%;
+    top: 24px;
+}
+
+.closedStyleDropdown, .openStyleDropdown {
+    left: 10%;
+    top: 26px;
+}
+
+.dropdownListItem {
+    display: block;
+    margin-right: 12px;
+    padding-left: 10px;
+}
+
+.downInstrumentTriangle {
+    position: absolute;
+    top: 1px;
+    left: 26%;
+
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.rightInstrumentTriangle {
+    position: absolute;
+    top: 1px;
+    left: 26%;
+
+    transform: rotate(0deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.downStyleTriangle {
+    position: absolute;
+    top: 1px;
+    left: 14.4%;
+
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.rightStyleTriangle {
+    position: absolute;
+    top: 1px;
+    left: 14.4%;
+
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+
+    transition-property: top, left, transform;
+    transition-duration: 0.3s;
+
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.dropdownContainer {
+    margin: 5% 0px;
+    position: relative;
+}
+
+.overviewFormContainer {
+    position: relative;
+    width: 384px;
+    margin: 0 auto;
+}
+
+.overviewSubmitButton {
+    position: absolute;
+    bottom: -7.6%;
+    right: -10%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.overviewForm {
+    margin-top: 14%;
+}
+
+.dropdownLabel {
+    margin-right: 8px;
+}
+
+.modalFormTitle {
+    padding-top: 6%;
+
+    color: rgba(39, 39, 39, 0.7);
+    vertical-align: center;
+    text-align: center;
+}
+
+.modalFormClose {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+
+    padding: 4px 8px 4px 8px;
+
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 4px;
+}
+
+.modalFormClose:hover {
+    filter: brightness(80%);
+}
+
+.modalFormClose:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.modalFormClose:focus {
+    outline: none;
+}
+
+.overviewErrors {
+    width: 100%;
+    list-style: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+}
+
+.overviewErrorWrapper {
+    position: absolute;
+
+    top: 8%;
+    left: 16.8%;
+
+    width: 384px;
+}
+
+/* Bio Form and Modal Styles */
+
+.bioFormModalContainer {
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+
+    opacity: 100%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 46vh;
+
+    border-radius: 8px;
+
+    background-color: rgb(255, 252, 252);
+
+    animation-name: modal_entry;
+    animation-duration: 0.3s;
+}
+
+.bioForm {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 2%;
+}
+
+.bioTextarea {
+    resize: none;
+    font-family: 'Lato';
+    font-size: 16px;
+}
+
+.bioModalFormClose {
+    top: 10%;
+    right: 10%;
+}
+
+.bioSubmitButton {
+    position: absolute;
+    bottom: 6%;
+    right: 9%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+@keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

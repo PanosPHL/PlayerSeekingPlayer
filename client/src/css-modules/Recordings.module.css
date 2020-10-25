@@ -1,0 +1,320 @@
+.recordingsContainer {
+    width: 65%;
+
+    border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
+
+    margin: 4% auto 0 auto;
+
+    background-color: rgb(255, 252, 252);
+}
+
+.recordingsHeaderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+
+    height: 6vh;
+
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+
+    background-color: rgb(255, 252, 252);
+}
+
+.recordingsHeader {
+    font-size: 30px;
+    margin-left: 7%;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.addRecordingButton {
+    margin-right: 8%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+
+    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.loading {
+    filter: blur(6px) brightness(90%);
+}
+
+.recordingHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recordingDescriptionContainer {
+    width: 36%;
+    height: 24vh;
+    margin: auto 0;
+}
+
+.recordingDescription {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 4%;
+}
+
+.recordingContainer {
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.firstRecording {
+    width: 100%;
+}
+
+.recordingContentContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.recordingInnerContainer {
+    width: 86%;
+    margin: 3% auto 3% auto;
+}
+
+.addRecording {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.addRecordingButton:focus {
+    outline: none;
+}
+
+.addRecordingButton:active {
+    transform: scale(1.1);
+    filter: brightness(0.9);
+}
+
+.recordingTitle {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.aboutRecordingHeader {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.editButton {
+    font-size: 30px;
+    color: rgb(86, 83, 128);
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 50%;
+
+    width: 2.4vw;
+    height: 2.4vw;
+}
+
+.editButton:hover {
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:active {
+    transform: scale(1.1);
+    background-color: rgba(0, 10, 104, 0.08);
+}
+
+.editButton:focus {
+    outline: none;
+}
+
+.addModalFormContainer {
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+
+    opacity: 100%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 56vh;
+
+    border-radius: 8px;
+
+    background-color: rgb(255, 252, 252);
+
+    animation-name: rec_modal;
+    animation-duration: 0.3s;
+}
+
+.editModalFormContainer {
+        position: relative;
+
+        top: 50%;
+        left: 50%;
+
+        opacity: 100%;
+
+        transform: translate(-50%, -50%);
+
+        width: 30vw;
+        height: 50vh;
+
+        border-radius: 8px;
+
+        background-color: rgb(255, 252, 252);
+
+        animation-name: rec_modal;
+        animation-duration: 0.3s;
+}
+
+@keyframes rec_modal { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
+
+.modalFormClose {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+
+    padding: 4px 8px 4px 8px;
+
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 4px;
+}
+
+.modalFormClose:hover {
+    filter: brightness(80%);
+}
+
+.modalFormClose:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.modalFormClose:focus {
+    outline: none;
+}
+
+.descriptionForm {
+    resize: none;
+    border: 2px solid rgba(53, 57, 80, 0.4);
+    border-radius: 4px;
+    background-color: rgba(121, 111, 255, 0.1);
+
+    margin-top: 2%;
+    font-size: 16px;
+    font-family: 'Lato';
+}
+
+.descriptionForm:focus {
+    outline: none;
+    background-color: none;
+    outline-color: rgb(59, 57, 92);
+}
+
+.addRecordingForm {
+    width: 80%;
+    margin: 8% auto 0 auto;
+}
+
+.editRecordingForm {
+    width: 80%;
+    margin: 10% auto 0 auto;
+}
+
+.modalFormTitle {
+    color: rgba(39, 39, 39, 0.7);
+    vertical-align: center;
+    text-align: center;
+    padding-top: 4%;
+}
+
+.submitButton {
+    margin-top: 14px;
+    margin-left: 76%;
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.submitButton:hover {
+    filter: brightness(80%);
+    transform: scale(1.02);
+}
+
+.submitButton:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.submitButton:focus {
+    outline: none;
+}
+
+.recordingErrors {
+    width: 100%;
+    list-style: none;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+}
+
+.addRecordingErrorWrapper {
+    position: absolute;
+
+    top: 11%;
+    left: 16.8%;
+
+    width: 384px;
+}
+
+.editRecordingErrorWrapper {
+    position: absolute;
+
+    top: 14%;
+    left: 16.8%;
+
+    width: 384px;
+}
+
+.recordingPlaceholderContainer {
+    height: 40vh;
+}
+
+.recordingPlaceholderText {
+    font-size: 48px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.45);
+    margin: 10% 0;
+}
+
+.deleteRecordingButton {
+    position: absolute;
+    bottom: 7.6%;
+    left: 10%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+
+    border: none;
+
+    border-radius: 4px;
+
+    width: 10%;
+    padding: 4px 0px;
+
+    font-size: 20px;
+
+}

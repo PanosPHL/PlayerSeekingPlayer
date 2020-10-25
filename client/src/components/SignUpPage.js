@@ -7,6 +7,7 @@ import { setErrors, clearErrors } from '../store/errors';
 import UserInfoSignUpForm from './UserInfoSignUpForm';
 import GoogleMapsSignUpForm from './GoogleMapSignUpForm';
 import AuthLeft from './AuthLeft';
+import Errors from './Errors';
 import SignUpContext from '../contexts/SignUpContext';
 import styles from '../css-modules/AuthPages.module.css';
 
@@ -40,7 +41,7 @@ const SignUpPage = ({ history }) => {
 
     useEffect(() => {
         dispatch(clearErrors());
-    }, [firstName, lastName, email, password, confirmPassword, dateOfBirth, location]);
+    }, [firstName, lastName, email, password, confirmPassword, dateOfBirth, location, dispatch]);
 
     const value = {
         values: {
@@ -79,9 +80,10 @@ const SignUpPage = ({ history }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await dispatch(signup(firstName, lastName, email, password, confirmPassword, dateOfBirth, location, lat, lng));
-        console.log(res);
+
         if (res.ok) {
-            history.replace('/');
+            history.replace(`/profiles/${res.data.id}`);
+            return;
         }
         dispatch(setErrors(res.data.errors));
     }
@@ -89,7 +91,7 @@ const SignUpPage = ({ history }) => {
     return (
         <>
             <SignUpContext.Provider value={value}>
-                <div style={{ display: "flex", width: "100vw", height: "100vh" }}>
+                <div className={styles.body} style={{ display: "flex", width: "100vw", height: "100vh" }}>
                     <AuthLeft />
                     <div className={styles.authRight}>
                         <div className={styles.signUpformContainer}>
@@ -98,14 +100,10 @@ const SignUpPage = ({ history }) => {
                             </div>
                             {
                                 errors.length ?
-                                <ul className={styles.authErrors}>
-                                    {errors.map((error, i) => {
-                                        return (
-                                            <li key={`error-${i + 1}`}>{error}</li>
-                                        )
-                                    })}
-                                </ul> :
-                                <></>
+                                <Errors
+                                errors={errors}
+                                className={styles.authErrors}/>
+                                : <></>
                             }
                             <div className={styles.contentContainer}>
                                 <div className={load ? styles.initialUserInfoOnscreen : userInfo ? styles.userInfoOnscreen : styles.userInfoOffscreen}>

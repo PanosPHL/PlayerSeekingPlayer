@@ -1,0 +1,130 @@
+.nav {
+    background-color: rgba(0, 7, 105, 0.7);
+    height: 6.6vh;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+    height: inherit;
+}
+
+.profileImage {
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.leftContainer {
+    display: flex;
+    align-items: center;
+}
+
+.rightContainer {
+    position: relative;
+    width: 4.2vw;
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.profileDropdownArrow {
+    font-size: 20px;
+    margin-left: 6%;
+}
+
+.inactive {
+    color: grey;
+    transition: color 0.1s;
+}
+
+.active {
+    color: white;
+    transition: color 0.2s;
+}
+
+.profileDropdown {
+    text-align: center;
+    list-style: none;
+    height: inherit;
+
+    animation-duration: 0.5s;
+    animation-name: dropdown;
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdownContainer {
+    position: absolute;
+    top: 7vh;
+    left: -3.6vw;
+
+    width: 10vw;
+    height: 8vh;
+
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+
+    animation-duration: 0.5s;
+    animation-name: dropdown;
+}
+
+.dropdownListItem {
+    padding-top: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 10vw;
+    height: 4vh;
+    transition: filter 0.2;
+
+    animation-duration: 0.5s;
+    animation-name: slideout;
+}
+
+.dropdownListItem:hover {
+    transition: filter 0.2s;
+    filter: brightness(80%);
+    cursor: pointer;
+}
+
+.dropdownLink {
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    text-decoration: none;
+    color: white;
+}
+
+@keyframes slideout {
+    from {
+        height: 0;
+        overflow: hidden;
+        margin-top: -10px;
+    }
+
+    to {
+        height: 4vh;
+    }
+}
+
+@keyframes dropdown {
+    from {
+        height: 0;
+        overflow: hidden;
+    }
+
+    to {
+        height: 8vh;
+        overflow: none;
+    }
+}

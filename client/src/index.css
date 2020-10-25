@@ -7,8 +7,20 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: 'Lato';
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
 .hidden {
     opacity: 0;
+}
+
+.actuallyHidden {
+    display: none;
 }
 
 .form-control {
@@ -32,4 +44,51 @@
 
 .login-form-control-group {
     margin-top: 10%;
+}
+
+body {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+body::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
+.labels {
+    font-size: 17px;
+    color: rgba(39, 39, 39, 0.7);
+    font-weight: 600;
+}
+
+.footer {
+    height: 18vh;
+    margin-top: 8%;
+
+    background-color: rgb(255, 252, 252);
+
+    border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.footerListContainer {
+    display: flex;
+    justify-content: center;
+    margin: 32px auto 0 auto;
+}
+
+.footerList {
+    list-style: none;
+    line-height: 2;
+    text-align: center;
+}
+
+.footerListHeader {
+    color: rgba(39, 39, 39, 0.7);
+}
+
+.footerListItem {
+    text-decoration: none;
+    color: rgba(1, 0, 70, 0.6);
 }

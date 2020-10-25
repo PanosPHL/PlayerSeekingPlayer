@@ -4,6 +4,7 @@ import { login } from '../store/session';
 import { setErrors, clearErrors } from '../store/errors';
 import { Link, withRouter } from 'react-router-dom';
 import AuthLeft from './AuthLeft';
+import Errors from './Errors';
 import authStyles from '../css-modules/AuthPages.module.css';
 
 const LogInPage = ({ history }) => {
@@ -15,21 +16,22 @@ const LogInPage = ({ history }) => {
 
     useEffect(() => {
         dispatch(clearErrors());
-    }, [email, password])
+    }, [email, password, dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await dispatch(login(email, password));
 
         if (res.ok) {
-            history.replace('/');
+            history.replace(`/profiles/${1}`);
+            return;
         }
 
         dispatch(setErrors(res.data.errors));
     }
 
     return (
-        <div style={{display: "flex", height: "100vh", width: "100vw"}}>
+        <div className={authStyles.body} style={{display: "flex", height: "100vh", width: "100vw"}}>
             <AuthLeft />
             <div className={authStyles.authRight}>
                 <div className={authStyles.loginFormContainer}>
@@ -38,28 +40,24 @@ const LogInPage = ({ history }) => {
                     </div>
                     {
                         errors.length ?
-                        <div className={authStyles.loginErrorWrapper}>
-                        <ul className={authStyles.loginErrors}>
-                            { errors.map((error, i) => {
-                                return (
-                                <li key={`error-${i + 1}`}>{error}</li>
-                                )
-                            })}
-                        </ul>
-                        </div> :
+                        <Errors
+                        errors={errors}
+                        divStyle={authStyles.loginErrorWrapper}
+                        className={authStyles.loginErrors}/>
+                         :
                         <></>
                     }
                     <div className={authStyles.loginFormWrapper}>
                     <form className={authStyles.loginForm} method="" action="" onSubmit={handleSubmit}>
                         <div className="login-form-control-group">
                         <p>
-                            <label className={authStyles.labels} htmlFor="email">Email</label>
+                            <label className="labels" htmlFor="email">Email</label>
                         </p>
                         <input className="form-control" name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
                         </div>
                         <div className="login-form-control-group">
                         <p>
-                            <label className={authStyles.labels} htmlFor="password">Password</label>
+                            <label className="labels" htmlFor="password">Password</label>
                         </p>
                         <input className="form-control" name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </div>
