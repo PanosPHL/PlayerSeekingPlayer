@@ -106,7 +106,7 @@
 }
 
 .overviewList li:hover {
-    filter: brightness(90%);
+    filter: brightness(95%);
 
     cursor: default;
 }

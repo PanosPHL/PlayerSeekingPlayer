@@ -302,11 +302,11 @@
 
 .deleteRecordingButton {
     position: absolute;
-    bottom: 7%;
+    bottom: 7.6%;
     left: 10%;
 
-    background-color: rgb(165, 0, 0);
-    color: rgb(47, 0, 0);
+    background-color: rgb(14, 0, 47);
+    color: white;
 
     border: none;
 
