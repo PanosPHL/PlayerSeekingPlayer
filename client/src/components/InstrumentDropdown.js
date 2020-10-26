@@ -11,7 +11,7 @@ const InstrumentDropdown = ({ instruments, userInstruments, className }) => {
                     <li className={aboutStyles.dropdownListItem} key={`instrument-${i + 1}`}>
                         <label className={aboutStyles.dropdownLabel} htmlFor={`instrument-${i + 1}`}>{instrument.name}</label>
                         <Checkbox name={`instrument-${i + 1}`}
-                        value={instrument.id}
+                        initValue={instrument.id}
                         initCheck={includes}
                         type="overviewInstrument"/>
                     </li>

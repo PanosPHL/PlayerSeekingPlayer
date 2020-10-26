@@ -2,10 +2,10 @@ import React, { useState, useContext } from 'react';
 import OverviewFormContext from '../contexts/OverviewFormContext';
 import SearchContext from '../contexts/SearchContext';
 
-const Checkbox = ({ i, initCheck, type, name, value }) => {
+const Checkbox = ({ i, initCheck, type, name, initValue }) => {
     const overviewRegex = /overview/;
 
-    const [checked, setChecked] = useState(initCheck);
+    const [checked, setChecked] = useState(initCheck || false);
     const context = useContext(
         overviewRegex.test(type) ?
         OverviewFormContext : SearchContext
@@ -30,7 +30,7 @@ const Checkbox = ({ i, initCheck, type, name, value }) => {
     }
 
     return (
-        <input type="checkbox" name={name} value={value} onChange={handleChange} checked={checked} />
+        <input type="checkbox" name={name} value={initValue} onChange={handleChange} checked={checked} />
     )
 }
 

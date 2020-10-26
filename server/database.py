@@ -51,11 +51,14 @@ with app.app_context():
 
   demo_profile.instruments.append(alto_sax)
   demo_profile.instruments.append(keyboard)
+  demo_profile_2.instruments.append(keyboard)
 
   demo_profile.styles.append(jazz)
   demo_profile.styles.append(funk)
+  demo_profile_2.styles.append(jazz)
 
   db.session.add(demo_profile)
+  db.session.add(demo_profile_2)
   db.session.add(run_for_cover)
   db.session.add(sing_a_song_of_song)
   db.session.add(night_and_day)

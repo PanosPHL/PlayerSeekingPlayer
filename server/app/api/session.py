@@ -5,9 +5,10 @@ from flask_wtf.csrf import generate_csrf
 from flask_login import login_user, current_user, logout_user
 from datetime import timedelta
 from werkzeug.datastructures import MultiDict
-from app.models import User, Instrument, Style, Recording, profile_instruments, Profile
+from app.models import db, User, Instrument, Style, Recording, profile_instruments, Profile, profile_styles
 from app.auth import login_manager
 from app.forms import LoginForm, SearchForm
+from app.utils.errors import format_errors
 from app.utils.distance import reverse_haversine
 
 session_routes = Blueprint("session", __name__)
@@ -25,10 +26,7 @@ def login():
             res = make_response({ "errors": ["Invalid credentials"] }, 401)
             return res
     else:
-        errors = []
-        for error in form.errors:
-            errors += form.errors[error]
-        res = make_response({ "errors": errors }, 401)
+        res = make_response({ "errors": format_errors(form.errors) }, 401)
         return res
 
 @session_routes.route('/logout', methods=["PUT"])
@@ -93,12 +91,16 @@ def get_search_results():
         min_lng = coords_dict["min_lng"]
         max_lng = coords_dict["max_lng"]
 
-        users = User.query.filter(and_(between(User.lat, min_lat, max_lat),
+        users = [user.to_dict()["id"] for user in User.query.filter(and_(between(User.lat, min_lat, max_lat),
         between(User.lng, min_lng, max_lng),
         User.id != data["userId"],
-        )).all()
+        )).all()]
 
-        return {"users": [user.to_dict() for user in users]}
+        profile_insts = db.session.query(profile_instruments.c.profile_id).filter(and_(profile_instruments.c.profile_id.in_(users), profile_instruments.c.instrument_id.in_(data["instruments"])))
+        profile_stls = db.session.query(profile_styles.c.profile_id).filter(and_(profile_styles.c.profile_id.in_(users), profile_styles.c.style_id.in_(data["styles"])))
+        profiles = profile_insts.intersect(profile_stls).all()
+
+        return { "searchResults": list(set([profile[0] for profile in profiles]))}
 
     else:
         return {"Hi": "mom"}

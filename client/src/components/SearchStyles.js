@@ -15,7 +15,7 @@ const SearchStyles = ({ className }) => {
                             <label>{style.name}</label>
                             <Checkbox
                             name={`style-${i + 1}`}
-                            value={style.id}
+                            initValue={style.id}
                             type="searchStyle"/>
                         </li>
                     )

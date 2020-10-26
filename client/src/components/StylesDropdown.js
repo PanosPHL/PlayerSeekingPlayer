@@ -11,7 +11,7 @@ const StylesDropdown = ({ styles, userStyles, className }) => {
                     <li className={aboutStyles.dropdownListItem} key={`style-${i + 1}`}>
                         <label className={aboutStyles.dropdownLabel} htmlFor={`style-${i + 1}`}>{style.name}</label>
                         <Checkbox name={`style-${i + 1}`}
-                        value={style.id}
+                        initValue={style.id}
                         initCheck={includes}
                         type="overviewStyle"/>
                     </li>

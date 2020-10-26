@@ -15,7 +15,7 @@ const SearchInstruments = ({ className }) => {
                             <label>{instrument.name}</label>
                             <Checkbox
                             name={`instrument-${i + 1}`}
-                            value={instrument.id}
+                            initValue={instrument.id}
                             type="searchInstrument"/>
                         </li>
                     )
