@@ -1,17 +1,17 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import { toggleOverviewModal } from '../store/ui/profilePage';
 import OverviewForm from './OverviewForm';
 import Errors from './Errors';
 import aboutStyles from '../css-modules/About.module.css';
 
-const OverviewFormModal = ({ location }) => {
+const OverviewFormModal = () => {
     const dispatch = useDispatch();
     const { overviewFormModal: { display: overviewFormModal } } = useSelector(state => state.ui.profilePage);
+    const { userId } = useSelector(state => state.session);
     const instruments = useSelector(state => Object.values(state.entities.instruments));
     const styles = useSelector(state => Object.values(state.entities.styles));
-    const user = useSelector(state => state.entities.users[parseInt(location.pathname.split('/')[2])]);
+    const user = useSelector(state => state.entities.users[userId]);
     const errors = useSelector(state => state.errors);
 
     const handleCloseClick = () => {
@@ -56,4 +56,4 @@ const OverviewFormModal = ({ location }) => {
     )
 }
 
-export default withRouter(OverviewFormModal);
+export default OverviewFormModal;

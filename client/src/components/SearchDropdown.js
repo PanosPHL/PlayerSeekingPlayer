@@ -1,6 +1,9 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { search } from '../store/session';
+import { toggleSearchDropdown } from '../store/ui/navbar';
+import { setErrors, clearErrors } from '../store/errors';
 import SearchInstruments from './SearchInstruments';
 import SearchStyles from './SearchStyles';
 import SearchContext from '../contexts/SearchContext';
@@ -54,10 +57,14 @@ function searchReducer(state, action) {
     }
 }
 
-const SearchDropdown = ({ className }) => {
+const SearchDropdown = ({ className, history }) => {
     const dispatch = useDispatch();
     const [state, searchLocalDispatch] = useReducer(searchReducer, initialState);
     const { userId } = useSelector(state => state.session);
+
+    useEffect(() => {
+        dispatch(clearErrors());
+    }, [state, dispatch]);
 
     const handleNameChange = (e) => {
         const [firstName, lastName] = e.target.value.split(' ');
@@ -97,7 +104,13 @@ const SearchDropdown = ({ className }) => {
         const res = await dispatch(search(
             state.firstName, state.lastName, state.radius, state.instruments, state.styles, userId
         ));
-        console.log(res);
+        if (res.ok) {
+            dispatch(toggleSearchDropdown());
+            history.push('/search');
+            return;
+        }
+
+        dispatch(setErrors(res.data.errors));
     }
 
     return (
@@ -144,4 +157,4 @@ const SearchDropdown = ({ className }) => {
     )
 }
 
-export default SearchDropdown;
+export default withRouter(SearchDropdown);

@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 
 
 const AuthRoute = ({ path, component }) => {
-    const userId = useSelector(state => state.session.userId);
+    const { userId } = useSelector(state => state.session);
 
     if (!userId) {
         return (

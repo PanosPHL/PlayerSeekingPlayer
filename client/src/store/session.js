@@ -79,7 +79,6 @@ export const logout = () => {
 }
 
 export const getSessionData = () => {
-    const csrfToken = Cookie.get('XSRF-TOKEN');
     return async dispatch => {
         const res = await fetch('/api/session/data');
 
@@ -105,7 +104,7 @@ export const search = (firstName, lastName, radius, instruments, styles, userId)
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrfToken
             },
-            body: JSON.stringify({ firstName, lastName, radius, instruments, styles, userId })
+            body: JSON.stringify({ firstName, lastName, radius, instruments, styles, userId, csrfToken })
         });
 
         res.data = await res.json();
