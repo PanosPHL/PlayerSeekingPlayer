@@ -1,5 +1,5 @@
 import os
-from sqlalchemy import between, and_
+from sqlalchemy import between, and_, func
 from flask import Blueprint, make_response, request
 from flask_wtf.csrf import generate_csrf
 from flask_login import login_user, current_user, logout_user
@@ -91,10 +91,18 @@ def get_search_results():
         min_lng = coords_dict["min_lng"]
         max_lng = coords_dict["max_lng"]
 
-        users = [user.to_dict()["id"] for user in User.query.filter(and_(between(User.lat, min_lat, max_lat),
-        between(User.lng, min_lng, max_lng),
-        User.id != data["userId"],
-        )).all()]
+        if data["firstName"] and data["lastName"]:
+            users = [user.to_dict()["id"] for user in User.query.filter(and_(between(User.lat, min_lat, max_lat),
+            between(User.lng, min_lng, max_lng),
+            User.id != data["userId"],
+            func.soundex(User.first_name) == func.soundex(data["firstName"] if data["firstName"] else ""),
+            func.soundex(User.last_name) == func.soundex(data["lastName"] if data["lastName"] else "")
+            )).all()]
+        else:
+            users = [user.to_dict()["id"] for user in User.query.filter(and_(between(User.lat, min_lat, max_lat),
+            between(User.lng, min_lng, max_lng),
+            User.id != data["userId"]
+            )).all()]
 
         profile_insts = db.session.query(profile_instruments.c.profile_id).filter(and_(profile_instruments.c.profile_id.in_(users), profile_instruments.c.instrument_id.in_(data["instruments"])))
         profile_stls = db.session.query(profile_styles.c.profile_id).filter(and_(profile_styles.c.profile_id.in_(users), profile_styles.c.style_id.in_(data["styles"])))

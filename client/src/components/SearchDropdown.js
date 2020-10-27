@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { search } from '../store/session';
@@ -61,12 +61,14 @@ const SearchDropdown = ({ className, history }) => {
     const dispatch = useDispatch();
     const [state, searchLocalDispatch] = useReducer(searchReducer, initialState);
     const { userId } = useSelector(state => state.session);
+    const [name, setName] = useState('');
 
     useEffect(() => {
         dispatch(clearErrors());
     }, [state, dispatch]);
 
     const handleNameChange = (e) => {
+        setName(e.target.value);
         const [firstName, lastName] = e.target.value.split(' ');
         searchLocalDispatch({ type: UPDATE_FIRST_NAME, firstName });
         searchLocalDispatch({ type: UPDATE_LAST_NAME, lastName });
@@ -124,7 +126,7 @@ const SearchDropdown = ({ className, history }) => {
                         <p>
                             <label>Name*</label>
                         </p>
-                        <input type='text' name="name" value={state.firstName} onChange={handleNameChange} />
+                        <input type='text' name="name" value={name} onChange={handleNameChange} />
                     </div>
                     <div>
                         <p>
