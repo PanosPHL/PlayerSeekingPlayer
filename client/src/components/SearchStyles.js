@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Checkbox from './Checkbox';
 
-const SearchStyles = ({ className }) => {
+const SearchStyles = ({ className, labelStyle, checkboxStyle }) => {
     const styles = useSelector(state => Object.values(state.entities.styles));
 
     return (
@@ -12,7 +12,7 @@ const SearchStyles = ({ className }) => {
                 styles.map((style, i) => {
                     return (
                         <li key={`style-${i + 1}`}>
-                            <label>{style.name}</label>
+                            <label className={labelStyle}>{style.name}</label>
                             <Checkbox
                             name={`style-${i + 1}`}
                             initValue={style.id}

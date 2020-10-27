@@ -7,7 +7,9 @@ import navStyles from '../css-modules/NavComponents.module.css';
 
 const SearchIconAndDropdown = () => {
     const dispatch = useDispatch();
-    const { searchDropdown } = useSelector(state => state.ui.navbar);
+    const { searchDropdown: {
+        display: searchDropdown
+    } } = useSelector(state => state.ui.navbar);
 
     const handleSearchClick = () => {
         dispatch(toggleSearchDropdown());

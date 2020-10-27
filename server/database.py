@@ -42,13 +42,13 @@ with app.app_context():
   jazz = Style(name="Jazz")
   funk = Style(name="Funk")
   classical = Style(name="Classical")
-  bluegress = Style(name="Bluegress")
+  bluegrass = Style(name="Bluegrass")
   country = Style(name="Country")
-  hiphop = Style(name="Hiphop")
+  hiphop = Style(name="Hip Hop")
 
 
   db.session.add(classical)
-  db.session.add(bluegress)
+  db.session.add(bluegrass)
   db.session.add(country)
   db.session.add(hiphop)
 

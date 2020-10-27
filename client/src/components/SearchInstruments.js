@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Checkbox from './Checkbox';
 
-const SearchInstruments = ({ className }) => {
+const SearchInstruments = ({ className, labelStyle, checkboxStyle }) => {
     const instruments = useSelector(state => Object.values(state.entities.instruments));
 
     return (
@@ -12,7 +12,7 @@ const SearchInstruments = ({ className }) => {
                 instruments.map((instrument, i) => {
                     return (
                         <li key={`instrument-${i + 1}`}>
-                            <label>{instrument.name}</label>
+                            <label className={labelStyle}>{instrument.name}</label>
                             <Checkbox
                             name={`instrument-${i + 1}`}
                             initValue={instrument.id}

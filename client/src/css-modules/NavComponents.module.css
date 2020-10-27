@@ -143,8 +143,8 @@
     position: absolute;
     background-color: rgb(255, 252, 252);
 
-    width: 24vw;
-    height: 36vh;
+    width: 22vw;
+    height: 44vh;
 
     top: 116%;
     left: 22%;
@@ -156,6 +156,11 @@
     border-radius: 8px;
 
     box-shadow: 0px 0px 2px rgba(0, 0, 0.2);
+
+    overflow: visible;
+
+    animation: openSearch;
+    animation-duration: 0.3s;
 }
 
 .searchDropdownTriangle {
@@ -174,17 +179,195 @@
     width: 18px;
 
     z-index: 2;
+
+    animation: openSearchTriangle;
+    animation-duration: 0.3s;
 }
 
 .searchInstrumentDropdownContainer, .searchStyleDropdownContainer {
     position: relative;
 }
 
-.searchInstrumentDropdown, .searchStyleDropdown {
+.closedLabel {
+    margin-top: 32px;
+    margin-left: 26%;
+
+    transition: 0.3s;
+}
+
+.openLabel {
+    margin-top: 0px;
+    margin-left: 26%;
+
+    transition: 0.3s;
+}
+
+.hiddenInstrumentDropdown, .hiddenStyleDropdown {
+    position: absolute;
+
+    top: 120%;
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
+    margin: 4px 0px;
+    padding: 2px;
+
     list-style: none;
+
+    max-height: 0px;
+    width: auto;
+    overflow: hidden;
+
+    z-index: 2;
+
+    border-radius: 4px;
+    background-color: rgb(255, 252, 252);
+
+    transition: all 0.3s;
+}
+
+.hiddenStyleDropdown {
+    left: 19%;
+}
+
+.searchInstrumentDropdown, .searchStyleDropdown {
+    position: absolute;
+
+    top: 120%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    margin: 4px 0px;
+    padding: 2px;
+
+    list-style: none;
+
+    max-height: 8vh;
+    height: auto;
+    width: auto;
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    background-color: rgb(255, 252, 252);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+
+    z-index: 3;
+
+    transition: all 0.3s;
+}
+
+.searchStyleDropdown {
+    left: 19%;
+}
+
+.rightStyleTriangle {
+    position: absolute;
+    transform: rotate(0deg);
+
+    left: 40%;
+
+    transition: all 0.3s;
+}
+
+.rightInstrumentTriangle {
+    position: absolute;
+    transform: rotate(0deg);
+
+    left: 52%;
+
+    transition: all 0.3s;
+}
+
+.downStyleTriangle {
+    position: absolute;
+    transform: rotate(90deg);
+
+    left: 40%;
+
+    transition: all 0.3s;
+}
+
+.downInstrumentTriangle {
+    position: absolute;
+    transform: rotate(90deg);
+
+    left: 52%;
+
+    transition: all 0.3s;
+}
+
+.searchForm {
+    width: 96%;
+    margin: 36px auto 0px auto;
+    height: 88%;
+}
+
+.checkboxLabel {
+    font-size: 14px;
+    margin-left: 6px;
+    margin-right: 4px;
+}
+
+.name {
+    width: 60%;
+    padding: 4px;
+    font-size: 14px;
+    margin-top: 2%;
+    border: 2px solid rgba(53, 57, 80, 0.4);
+    border-radius: 4px;
+    background-color: rgba(121, 111, 255, 0.1);
+}
+
+.name:focus {
+    background-color: none;
+    outline-color: rgb(59, 57, 92);
+}
+
+.submitSearch {
+    position: absolute;
+    left: 36%;
+    bottom: 2%;
+
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.distanceContainer {
+    margin: 24px 0px 0px 26%;
+}
+
+.nameContainer {
+    margin: 0px 0px 0px 26%;
+}
+
+.distanceDropdown {
+    margin-top: 12px;
+    width: 60%;
+    padding: 4px;
+    background-color: rgba(121, 111, 255, 0.1);
+    border-radius: 4px;
+}
+
+.distanceDropdown:focus {
+    background-color: none;
+    outline-color: 2px solid rgb(59, 57, 92);
+}
+
+.searchHeader {
+    position: absolute;
+    font-size: 24px;
+
+    color: rgba(39, 39, 39, 0.7);
+
+    left: 40%;
+    top: 2%;
 }
 
 @keyframes slideout {
@@ -208,5 +391,65 @@
     to {
         height: 8vh;
         overflow: none;
+    }
+}
+
+@keyframes openSearch {
+    from {
+        opacity: 0;
+        width: 0px;
+        height: 0px;
+        overflow: hidden;
+        box-shadow: none;
+    }
+
+    to {
+        opacity: 1;
+        box-shadow: 0px 0px 2px rgba(0, 0, 0.2);
+        height: 44vh;
+        width: 22vw;
+        overflow: visible;
+    }
+}
+
+@keyframes openSearchTriangle {
+    from {
+        position: absolute;
+
+        left: 32px;
+        top: -9.8px;
+
+        opacity: 0;
+
+        background-color: rgb(255, 252, 252);
+        transform: rotate(45deg);
+
+        border-left: 1px solid rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+        height: 0px;
+        width: 0px;
+
+        z-index: 2;
+    }
+
+    to {
+        position: absolute;
+
+        left: 32px;
+        top: -9.8px;
+
+        opacity: 1;
+
+        background-color: rgb(255, 252, 252);
+        transform: rotate(45deg);
+
+        border-left: 1px solid rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+        height: 18px;
+        width: 18px;
+
+        z-index: 2;
     }
 }
