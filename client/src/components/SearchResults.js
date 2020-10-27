@@ -4,22 +4,29 @@ import { withRouter } from 'react-router-dom';
 import UserSearch from './UserSearch';
 import UserSearchRecording from './UserSearchRecording';
 import SearchResultContext from '../contexts/SearchResultContext';
+import searchStyles from '../css-modules/Search.module.css';
 
 const SearchResults = (props) => {
     const searchResults = useSelector(state => state.session.searchResults);
     const [activeResult, setActiveResult] = useState(searchResults[0]);
 
     const value = {
-        setActiveResult
-    }
+        get: {
+            activeResult
+        },
+        set: {
+            setActiveResult
+        }
+    };
 
     return (
         <SearchResultContext.Provider value={value}>
-        <div style={{minHeight: "59vh"}}>
-            <div style={{height: "59vh", width: '70%', gridTemplateColumns: `repeat(${searchResults.length}, 10%)`, margin: "0 auto"}}>
+        <div className={searchStyles.pageContainer}>
+            <div className={searchStyles.innerPageContainer}>
+            <div className={searchStyles.resultContainer} style={{gridTemplateRows: `repeat(${searchResults.length}, 16%)`}}>
             {
                 searchResults.length ?
-                searchResults.map((id, i) => <UserSearch id={id} key={`user-${i + 1}`}/>) :
+                searchResults.map((id, i) => <UserSearch id={id} first={i === 0} last={i === searchResults.length - 1 && i > 5} key={`user-${i + 1}`}/>) :
                 <></>
             }
             </div>
@@ -27,6 +34,7 @@ const SearchResults = (props) => {
                 <UserSearchRecording userId={activeResult} />
             </div>
         </div>
+            </div>
         </SearchResultContext.Provider>
     )
 }
