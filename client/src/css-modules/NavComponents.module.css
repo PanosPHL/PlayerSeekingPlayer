@@ -366,8 +366,33 @@
 
     color: rgba(39, 39, 39, 0.7);
 
-    left: 40%;
+    left: 41%;
     top: 2%;
+}
+
+.searchFormClose {
+        position: absolute;
+        right: 4%;
+        top: 2.4%;
+
+        padding: 4px 8px 4px 8px;
+
+        background-color: rgb(255, 252, 252);
+        border: none;
+        border-radius: 4px;
+}
+
+.searchFormClose:hover {
+    filter: brightness(80%);
+}
+
+.searchFormClose:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.searchFormClose:focus {
+    outline: none;
 }
 
 @keyframes slideout {
@@ -396,7 +421,7 @@
 
 @keyframes openSearch {
     from {
-        opacity: 0;
+        opacity: 0.5;
         width: 0px;
         height: 0px;
         overflow: hidden;

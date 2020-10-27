@@ -125,12 +125,19 @@ const SearchDropdown = ({ className, history }) => {
         dispatch(setErrors(res.data.errors));
     }
 
+    const handleSearchClose = () => {
+        dispatch(toggleSearchDropdown());
+    }
+
     return (
         <SearchContext.Provider value={value}>
             <div className={navStyles.searchDropdownContainer}>
             <div className={navStyles.searchDropdownTriangle}>
             </div>
             <h3 className={navStyles.searchHeader}>Search</h3>
+            <button onClick={handleSearchClose} className={navStyles.searchFormClose}>
+            <i className="fas fa-times"></i>
+            </button>
                 <form className={navStyles.searchForm} method="" action="" onSubmit={handleSubmit}>
                     <div className={navStyles.nameContainer + " form-control-group"}>
                         <p>
