@@ -44,7 +44,7 @@ const Recording = ({ recording, i, isOwner }) => {
                     </div>
                     <div className={recordingStyles.recordingContentContainer}>
                         {youtubeRegex.test(url) ?
-                            <YouTubePlayer videoId={url.split('v=')[1]} i={i} width="640" height="360" /> :
+                            <YouTubePlayer videoId={url.split('v=')[1]} i={i} width="640" height="360" type="profile" /> :
                             <></>
                         }
                         <div className={recordingStyles.recordingDescriptionContainer}>

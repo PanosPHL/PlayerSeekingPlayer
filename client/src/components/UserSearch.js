@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import SearchResultContext from '../contexts/SearchResultContext';
 
 const UserSearch = ({ id }) => {
     const userInfo = useSelector(state => state.entities.users[id]);
@@ -14,9 +16,13 @@ const UserSearch = ({ id }) => {
         }) : null
     });
 
+    const { setActiveResult } = useContext(SearchResultContext);
+
     return (
-        <div>
+        <div onClick={() => setActiveResult(id)}>
+            <Link to={`/profiles/${id}`}>
             <h4>{userInfo.firstName + " " + userInfo.lastName}</h4>
+            </Link>
             <p>Instrument(s): {userInstruments.length === 3 ?
             userInstruments.slice(0, userInstruments.length - 1).join(', ') + ", and " + userInstruments[userInstruments.length - 1]
             : userInstruments.length === 2 ?

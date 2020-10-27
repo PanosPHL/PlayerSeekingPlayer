@@ -48,6 +48,7 @@ with app.app_context():
   run_for_cover = Recording(url='https://www.youtube.com/watch?v=rqqEHV-5F6E')
   sing_a_song_of_song = Recording(url='https://www.youtube.com/watch?v=pn8Cs-PZfX8')
   night_and_day = Recording(url='https://www.youtube.com/watch?v=UYCI_vJg2hw')
+  dolphin_dance = Recording(url='https://www.youtube.com/watch?v=oUYv172xFlQ')
 
   demo_profile.instruments.append(alto_sax)
   demo_profile.instruments.append(keyboard)
@@ -62,12 +63,17 @@ with app.app_context():
   db.session.add(run_for_cover)
   db.session.add(sing_a_song_of_song)
   db.session.add(night_and_day)
+  db.session.add(dolphin_dance)
   db.session.commit()
 
   demo_rfc = ProfileRecording(profile_id=demo_profile.to_dict()["id"], recording_id=run_for_cover.to_dict()["id"], title="Run for Cover with Marcus Miller", description="Playing Run for Cover live with Marcus Miller, Hiram Bullock, Poogie Bell, and Patches Stewart")
   demo_sas = ProfileRecording(profile_id=demo_profile.to_dict()["id"], recording_id=sing_a_song_of_song.to_dict()["id"], title="Sing A Song of Song", description='Track 4 off of my album "Songbook"')
   demo_nad = ProfileRecording(profile_id=demo_profile.to_dict()["id"], recording_id=night_and_day.to_dict()["id"], title="Night And Day", description='Track 2 off of my album "Triology"')
+
+  demo_2_dd = ProfileRecording(profile_id=demo_profile_2.to_dict()["id"], recording_id=dolphin_dance.to_dict()["id"], title="Dolphin Dance", description="Playing Dolphin Dance at the Berklee College of Music")
+
   db.session.add(demo_rfc)
   db.session.add(demo_sas)
   db.session.add(demo_nad)
+  db.session.add(demo_2_dd)
   db.session.commit()
