@@ -23,6 +23,8 @@ const SearchResults = (props) => {
         <SearchResultContext.Provider value={value}>
         <div className={searchStyles.pageContainer}>
             <div className={searchStyles.innerPageContainer}>
+                <div className={searchStyles.resultAndHeaderContainer}>
+                <h2 className={searchStyles.musiciansInAreaHeader}>Musicians in Your Area</h2>
             <div className={searchStyles.resultContainer} style={{gridTemplateRows: `repeat(${searchResults.length}, 16%)`}}>
             {
                 searchResults.length ?
@@ -30,7 +32,8 @@ const SearchResults = (props) => {
                 <></>
             }
             </div>
-            <div>
+                </div>
+            <div className={searchStyles.recordingContainerWrapper}>
                 <UserSearchRecording userId={activeResult} />
             </div>
         </div>

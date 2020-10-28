@@ -30,10 +30,10 @@ const UserSearch = ({ id, first, last }) => {
             <UserSearchImage userId={id}/>
             <div className={searchStyles.resultTextContainer}>
             <div className={searchStyles.nameAndLocation}>
-                <Link to={`/profiles/${id}`}>
+                <Link className={searchStyles.profileLink} to={`/profiles/${id}`}>
                     <h3>{userInfo.firstName + " " + userInfo.lastName}</h3>
                 </Link>
-                <h3>{userInfo.profileInfo.location.split(splitRegex)[0]}</h3>
+                <h3 className={searchStyles.searchResultCity}>{userInfo.profileInfo.location.split(splitRegex)[0]}</h3>
             </div>
             <p className={searchStyles.subText}>Instrument(s): {userInstruments.length === 3 ?
                 userInstruments.slice(0, userInstruments.length - 1).join(', ') + ", and " + userInstruments[userInstruments.length - 1]

@@ -4,7 +4,7 @@ load_dotenv()
 from app import app, db
 from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording
 
-from app.utils.biographies import kenny_garrett
+from app.utils.biographies import kenny_garrett, harry_mack
 
 with app.app_context():
   db.drop_all()
@@ -20,7 +20,7 @@ with app.app_context():
   db.session.commit()
   demo_profile = Profile(user_id = demo.to_dict()["id"], biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA")
   demo_profile_2 = Profile(user_id = demo_2.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA")
-  demo_profile_3 = Profile(user_id = demo_3.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA")
+  demo_profile_3 = Profile(user_id = demo_3.to_dict()["id"], biography = harry_mack(), location = "Los Angeles, CA 90012, USA")
 
   # Instrument / Style seed data
   alto_sax = Instrument(name="Alto Saxophone")

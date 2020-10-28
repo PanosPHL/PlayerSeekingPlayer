@@ -4,3 +4,10 @@ def kenny_garrett():
             Garrett joined the "Five Peace Band" of Chick Corea, John McLaughlin, Christian McBride and Brian Blade/Vinnie Colaiuta around 2008. The CD Five Peace Band – Live won a Grammy Award in 2010.
             In 2011, Garrett was presented with an Honorary Doctorate in Music from Berklee College of Music, Boston, Massachusetts.
             """
+
+def harry_mack():
+    return """Harry McKenzie (born February 17, 1990), known professionally as Harry Mack, is an American rapper and producer.
+    He is best known for his improvisational method of freestyle rap, creating original songs off of the top of his head by utilizing visual cues from his immediate surroundings, as well as from words and phrases provided by his audience around him.
+    His rise to fame was propelled by a series of his freestyle clips going viral on YouTube, numerous videos of his receiving millions of views across YouTube, Facebook, Reddit, and more.
+    He released his first official album, “Contents Under Pressure,” on January 18, 2019.
+    """
