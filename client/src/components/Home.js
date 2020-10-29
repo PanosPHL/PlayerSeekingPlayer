@@ -8,9 +8,11 @@ import RecordingFormModal from './RecordingFormModal';
 import Footer from './Footer';
 import OverviewFormModal from './OverviewFormModal';
 import BioFormModal from './BioFormModal';
+import SearchResults from './SearchResults';
 
 
-const Home = () => {
+const Home = ({ match }) => {
+    console.log(match.url);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -22,18 +24,17 @@ const Home = () => {
 
     return (
         <>
-        <TopBar />
-        <HomeRouter>
-        <BioFormModal />
-        <OverviewFormModal />
-        <RecordingFormModal />
-            <Switch>
-                <Route path='/profiles/:id'>
-                    <ProfilePage />
-                </Route>
-            </Switch>
-        </HomeRouter>
-        <Footer />
+            <BioFormModal />
+            <OverviewFormModal />
+            <RecordingFormModal />
+            <HomeRouter>
+                <TopBar />
+                <Switch>
+                    <Route path={`${match.url}profiles/:id`} component={ProfilePage} />
+                    <Route path={`${match.url}search`} component={SearchResults} />
+                </Switch>
+            </HomeRouter>
+            <Footer />
         </>
     )
 }

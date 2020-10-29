@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import RecordingContext from '../contexts/RecordingContext';
+import SearchRecordingContext from '../contexts/SearchRecordingContext';
 
 
-const YouTubePlayer = ({ videoId, i, height, width }) => {
+const YouTubePlayer = ({ videoId, i, height, width, type }) => {
     const {
         set: {
             setLoading
         }
-    } = useContext(RecordingContext);
+    } = useContext(type === 'profile' ? RecordingContext : SearchRecordingContext);
     const player = useRef(null);
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const YouTubePlayer = ({ videoId, i, height, width }) => {
         player.current = new window.YT.Player(`player-${i}`, {
             videoId: videoId,
             playerVars: {
-                origin: 'http://localhost:3000'
+                origin: process.env.NODE_ENV === 'production' ? 'https://player-seeking-player.herokuapp.com' : 'http://localhost:3000'
             },
             events: {
                 'onReady': onPlayerReady

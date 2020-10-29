@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, FloatField, SelectMultipleField, BooleanField
+from wtforms import StringField, PasswordField, FloatField, SelectMultipleField, BooleanField, IntegerField
 from wtforms.fields.html5 import EmailField, DateField, URLField
 from wtforms.validators import InputRequired, Email, EqualTo, URL, ValidationError
 import os
@@ -44,8 +44,8 @@ class RecordingForm(FlaskForm):
 
 class OverviewForm(FlaskForm):
     date_of_birth = StringField("Date of Birth", validators=[InputRequired("Enter a date of birth.")])
-    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6"])
-    styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5"])
+    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6", "7"])
+    styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5", "6"])
     location = StringField("Location", validators=[InputRequired("Please provide a location.")])
     validLocation = BooleanField("is_valid_location")
     lat = FloatField("Latitude", validators=[InputRequired("Please provide a latitude.")])
@@ -64,3 +64,10 @@ class OverviewForm(FlaskForm):
 
 class BioForm(FlaskForm):
     bio = StringField("Biography")
+
+class SearchForm(FlaskForm):
+    firstName = StringField("First Name")
+    lastName = StringField("Last Name")
+    radius = IntegerField("Radius", validators=[InputRequired("Please provide a mile radius to search within.")])
+    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6", "7"], validators=[InputRequired("Please provide at least one instrument.")])
+    styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5", "6"], validators=[InputRequired('Please provide at least one style.')])
