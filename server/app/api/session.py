@@ -69,7 +69,11 @@ def map_api_token():
 @session_routes.route('/csrf', methods=["GET"])
 def csrf():
     res = make_response()
-    res.set_cookie("XSRF-TOKEN", generate_csrf())
+    res.set_cookie("XSRF-TOKEN",
+        generate_csrf(),
+        secure=True if os.environ.get('FLASK_ENV') else False,
+        samesite='Strict' if os.environ.get('FLASK_ENV') else None,
+        httponly=True)
     return res
 
 @session_routes.route('/search', methods=["PUT"])
