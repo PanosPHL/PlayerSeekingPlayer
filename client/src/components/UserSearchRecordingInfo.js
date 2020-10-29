@@ -12,6 +12,9 @@ const UserSearchRecordingInfo = ({ name, bio }) => {
         }
     } = useContext(SearchRecordingContext);
 
+    const shortBio = bio.split(' ').slice(0, 56);
+    console.log(shortBio.length);
+
     return (
         <>
         <h3 className={searchStyles.moreAbout}>More About {name}</h3>
@@ -21,7 +24,9 @@ const UserSearchRecordingInfo = ({ name, bio }) => {
             className={searchStyles.openBio}>{bio}
             <span className={searchStyles.seeLess} onClick={() => setShowMore(false)}>See Less</span>
             </p> :
-            <p className={searchStyles.closedBio}>{bio.split(' ').slice(0, 56).join(' ') + '...'}<span className={searchStyles.seeMore} onClick={() => setShowMore(true)}>See More</span></p>
+            <p className={searchStyles.closedBio}>{shortBio.join(' ') + ( shortBio.length >= 56 ? '...' : '')}
+            { shortBio.length < 56 ? <></> : <span className={searchStyles.seeMore} onClick={() => setShowMore(true)}>See More</span> }
+            </p>
             }
         </>
     )

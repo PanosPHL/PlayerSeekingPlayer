@@ -11,3 +11,7 @@ def harry_mack():
     His rise to fame was propelled by a series of his freestyle clips going viral on YouTube, numerous videos of his receiving millions of views across YouTube, Facebook, Reddit, and more.
     He released his first official album, “Contents Under Pressure,” on January 18, 2019.
     """
+
+def mahalia():
+    return """Mahalia Burkmar (born 1 May 1998), known mononymously as Mahalia, is a Jamaican-British singer, songwriter and actress.
+    Mahalia has released a couple of EPs and two albums, Diary Of Me (2016) and Love and Compromise (2019). She acted in the film Brotherhood (2016)."""

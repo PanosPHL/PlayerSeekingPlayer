@@ -39,12 +39,12 @@
 
 .inactive {
     color: grey;
-    transition: color 0.1s;
+    transition: color 0.3s;
 }
 
 .active {
     color: white;
-    transition: color 0.2s;
+    transition: color 0.3s;
 }
 
 .profileDropdown {
@@ -52,7 +52,7 @@
     list-style: none;
     height: inherit;
 
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-name: dropdown;
 }
 
@@ -74,7 +74,7 @@
 
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-name: dropdown;
 }
 
@@ -86,7 +86,7 @@
     height: 4vh;
     transition: filter 0.2;
 
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-name: slideout;
 }
 
