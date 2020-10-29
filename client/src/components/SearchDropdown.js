@@ -71,18 +71,6 @@ const SearchDropdown = ({ className, history }) => {
         dispatch(clearErrors());
     }, [state, dispatch]);
 
-    useEffect(() => {
-        return () => {
-            if (instrumentDropdown) {
-                dispatch(toggleSearchInstrumentDropdown());
-            }
-
-            if (styleDropdown) {
-                dispatch(toggleSearchStyleDropdown());
-            }
-        }
-    }, []);
-
     const handleNameChange = (e) => {
         setName(e.target.value);
         const [firstName, lastName] = e.target.value.split(' ');
