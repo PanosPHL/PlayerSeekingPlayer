@@ -165,7 +165,7 @@ const SearchDropdown = ({ className, history }) => {
                         </select>
                     </div>
                     <div
-                    className={navStyles.searchInstrumentDropdownContainer + " " + "form-control-group"}>
+                    className={navStyles.searchInstrumentDropdownContainer + " form-control-group"}>
                         <p
                         className={instrumentDropdown ? navStyles.openLabel : navStyles.closedLabel}
                         onClick={toggleInstrumentDropdown}>
@@ -176,7 +176,7 @@ const SearchDropdown = ({ className, history }) => {
                         className={instrumentDropdown ? navStyles.searchInstrumentDropdown : navStyles.hiddenInstrumentDropdown}
                         labelStyle={navStyles.checkboxLabel} />
                     </div>
-                    <div className={navStyles.searchStyleDropdownContainer + " " + "form-control-group"}>
+                    <div className={navStyles.searchStyleDropdownContainer + " form-control-group"}>
                         <p
                         className={styleDropdown ? navStyles.openLabel : navStyles.closedLabel}
                         onClick={toggleStyleDropdown}>
