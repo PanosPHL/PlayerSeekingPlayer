@@ -111,4 +111,5 @@ def get_search_results():
         return { "searchResults": list(set([profile[0] for profile in profiles]))}
 
     else:
-        return {"Hi": "mom"}
+        res = make_response({ "errors": format_errors(form.errors) }, 401)
+        return res

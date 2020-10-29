@@ -267,7 +267,7 @@
     position: absolute;
     transform: rotate(0deg);
 
-    left: 40%;
+    left: 42%;
 
     transition: all 0.3s;
 }
@@ -276,7 +276,7 @@
     position: absolute;
     transform: rotate(0deg);
 
-    left: 52%;
+    left: 54%;
 
     transition: all 0.3s;
 }
@@ -285,7 +285,7 @@
     position: absolute;
     transform: rotate(90deg);
 
-    left: 40%;
+    left: 42%;
 
     transition: all 0.3s;
 }
@@ -294,14 +294,14 @@
     position: absolute;
     transform: rotate(90deg);
 
-    left: 52%;
+    left: 54%;
 
     transition: all 0.3s;
 }
 
 .searchForm {
     width: 96%;
-    margin: 36px auto 0px auto;
+    margin: 72px auto 0px auto;
     height: 88%;
 }
 
@@ -337,7 +337,7 @@
     color: white;
     border: none;
     border-radius: 6px;
-    padding: 8px;
+    padding: 6px;
     font-size: 14px;
 }
 
@@ -395,6 +395,28 @@
 
 .searchFormClose:focus {
     outline: none;
+}
+
+.requiredField {
+    position: absolute;
+    font-size: 12px;
+
+    bottom: 2%;
+    right: 8%;
+}
+
+.searchErrors {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 70%;
+    columns: 2;
+    list-style: none;
+    font-size: 10px;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+    border-radius: 6px;
+    padding: 1%;
 }
 
 @keyframes slideout {

@@ -68,6 +68,6 @@ class BioForm(FlaskForm):
 class SearchForm(FlaskForm):
     firstName = StringField("First Name")
     lastName = StringField("Last Name")
-    radius = IntegerField("Radius", validators=[InputRequired("Please provide a mile radius to search within")])
-    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6", "7"])
-    styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5", "6"])
+    radius = IntegerField("Radius", validators=[InputRequired("Please provide a mile radius to search within.")])
+    instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6", "7"], validators=[InputRequired("Please provide at least one instrument.")])
+    styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5", "6"], validators=[InputRequired('Please provide at least one style.')])

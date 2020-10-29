@@ -8,6 +8,7 @@ import { toggleSearchInstrumentDropdown, toggleSearchStyleDropdown } from '../st
 import SearchInstruments from './SearchInstruments';
 import SearchStyles from './SearchStyles';
 import SearchContext from '../contexts/SearchContext';
+import Errors from './Errors';
 import navStyles from '../css-modules/NavComponents.module.css';
 
 const initialState = {
@@ -63,6 +64,7 @@ const SearchDropdown = ({ className, history }) => {
     const [state, searchLocalDispatch] = useReducer(searchReducer, initialState);
     const { userId } = useSelector(state => state.session);
     const { instrumentDropdown, styleDropdown } = useSelector(state => state.ui.navbar.searchDropdown);
+    const errors = useSelector(state => state.errors);
     const [name, setName] = useState('');
 
     useEffect(() => {
@@ -138,16 +140,21 @@ const SearchDropdown = ({ className, history }) => {
             <button onClick={handleSearchClose} className={navStyles.searchFormClose}>
             <i className="fas fa-times"></i>
             </button>
+            {
+                errors && errors.length ?
+                <Errors errors={errors} className={navStyles.searchErrors}/>
+                : <></>
+            }
                 <form className={navStyles.searchForm} method="" action="" onSubmit={handleSubmit}>
                     <div className={navStyles.nameContainer + " form-control-group"}>
                         <p>
-                            <label className="labels">Name*</label>
+                            <label className="labels">Name</label>
                         </p>
                         <input className={navStyles.name} type='text' name="name" value={name} onChange={handleNameChange} />
                     </div>
                     <div className={navStyles.distanceContainer + " form-control-group"}>
                         <p>
-                            <label className="labels">Distance</label>
+                            <label className="labels">Distance<span style={{color: 'red'}}>*</span></label>
                         </p>
                         <select className={navStyles.distanceDropdown} onChange={updateRadius}>
                             <option value={5}>&lt; 5 mi</option>
@@ -162,7 +169,7 @@ const SearchDropdown = ({ className, history }) => {
                         <p
                         className={instrumentDropdown ? navStyles.openLabel : navStyles.closedLabel}
                         onClick={toggleInstrumentDropdown}>
-                            <label className="labels">Instruments <span
+                            <label className="labels">Instruments<span style={{color: 'red'}}>*</span> <span
                             className={instrumentDropdown ? navStyles.downInstrumentTriangle : navStyles.rightInstrumentTriangle}>&#9654;</span></label>
                         </p>
                         <SearchInstruments
@@ -173,7 +180,7 @@ const SearchDropdown = ({ className, history }) => {
                         <p
                         className={styleDropdown ? navStyles.openLabel : navStyles.closedLabel}
                         onClick={toggleStyleDropdown}>
-                            <label className="labels">Styles <span
+                            <label className="labels">Styles<span style={{color: 'red'}}>*</span> <span
                             className={styleDropdown ? navStyles.downStyleTriangle : navStyles.rightStyleTriangle}>&#9654;</span></label>
                         </p>
                         <SearchStyles
@@ -181,6 +188,7 @@ const SearchDropdown = ({ className, history }) => {
                         labelStyle={navStyles.checkboxLabel} />
                     </div>
                     <button className={navStyles.submitSearch} type="submit">Search for Player</button>
+                    <span className={navStyles.requiredField}><span style={{color: 'red'}}>*</span> Required field</span>
                 </form>
             </div>
         </SearchContext.Provider>
