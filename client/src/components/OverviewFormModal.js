@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toggleOverviewModal } from '../store/ui/profilePage';
 import OverviewForm from './OverviewForm';
 import Errors from './Errors';
+import ModalContainer from './ModalContainer';
 import aboutStyles from '../css-modules/About.module.css';
 
 const OverviewFormModal = () => {
@@ -21,14 +22,7 @@ const OverviewFormModal = () => {
 
     if (overviewFormModal) {
         return (
-            <div style={{
-                height: window.innerHeight,
-                width: "100%",
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
-                zIndex: "1", position: "absolute",
-                top: window.pageYOffset,
-                overflow: 'hidden'
-            }}>
+            <ModalContainer>
                 <div className={aboutStyles.overviewFormModalContainer}>
                     <button className={aboutStyles.modalFormClose} onClick={handleCloseClick}><i className="fas fa-times"></i></button>
                     { errors && errors.length ?
@@ -47,7 +41,7 @@ const OverviewFormModal = () => {
                     initLng={user ? user.lng : null}
                     userId={user ? user.id : null}/>
                 </div>
-            </div>
+            </ModalContainer>
         )
     }
 

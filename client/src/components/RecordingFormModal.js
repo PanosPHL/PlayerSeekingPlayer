@@ -4,6 +4,7 @@ import { setRecordingFormId } from '../store/session';
 import { toggleRecordingModal } from '../store/ui/profilePage';
 import { clearErrors } from '../store/errors';
 import RecordingForm from './RecordingForm';
+import ModalContainer from './ModalContainer';
 import recordingStyles from '../css-modules/Recordings.module.css';
 import { removeRecording } from '../store/recordings';
 
@@ -47,12 +48,7 @@ const RecordingFormModal = () => {
 
     if (recordingFormModal) {
         return (
-            <div style={{height: window.innerHeight,
-            width: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.3)",
-            zIndex: "1", position: "absolute",
-            top: window.pageYOffset,
-            overflow: 'hidden'}}>
+            <ModalContainer>
                 <div className={recordingFormId ? recordingStyles.editModalFormContainer : recordingStyles.addModalFormContainer}>
                     <button className={recordingStyles.modalFormClose} onClick={handleCloseClick}><i className="fas fa-times"></i></button>
                     <RecordingForm id={recordingFormId} recInfo={recInfo}/>
@@ -62,7 +58,7 @@ const RecordingFormModal = () => {
                     <></>
                     }
                 </div>
-            </div>
+            </ModalContainer>
         )
     }
 

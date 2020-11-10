@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleBioModal } from '../store/ui/profilePage';
+import ModalContainer from './ModalContainer';
 import BioForm from './BioForm';
 import aboutStyles from '../css-modules/About.module.css';
 
@@ -17,19 +18,12 @@ const BioFormModal = () => {
 
     if (bioModal) {
         return (
-            <div style={{
-                height: window.innerHeight,
-                width: "100%",
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
-                zIndex: "1", position: "absolute",
-                top: window.pageYOffset,
-                overflow: 'hidden'
-            }}>
+            <ModalContainer>
                 <div className={aboutStyles.bioFormModalContainer}>
                 <button className={aboutStyles.modalFormClose + ' ' + aboutStyles.bioModalFormClose} onClick={handleCloseClick}><i className="fas fa-times"></i></button>
                 <BioForm initBio={initBio} userId={userId}/>
                 </div>
-            </div>
+            </ModalContainer>
         )
     } else {
         return (
