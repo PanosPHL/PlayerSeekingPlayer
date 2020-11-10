@@ -3,7 +3,7 @@ import { GoogleMap, Autocomplete } from '@react-google-maps/api';
 import SignUpContext from '../contexts/SignUpContext';
 import styles from '../css-modules/AuthPages.module.css';
 
-const GoogleMapSignUpForm = ({ apiKey }) => {
+const GoogleMapSignUpForm = () => {
     const [map, setMap] = useState(null);
     const [center, setCenter] = useState(null);
     const [marker, setMarker] = useState(null);
