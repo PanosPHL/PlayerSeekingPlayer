@@ -143,9 +143,20 @@
 .bottomButton {
     font-size: 15px;
     font-weight: bold;
-    width: 24%;
-    height: 56%;
+    width: 80px;
+    height: 40px;
     padding: 12px 8px 12px 8px;
+    border: none;
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border-radius: 4px;
+}
+
+.demoButton {
+    font-size: 15px;
+    font-weight: bold;
+    width: 100px;
+    height: 40px;
     border: none;
     background-color: rgb(14, 0, 47);
     color: white;
@@ -208,13 +219,15 @@
 
 .loginSubmitWrapper {
     display: flex;
-    justify-content: center;
-    margin-top: 20%
+    justify-content: space-between;
+    align-items: center;
+    margin: 16% auto 0 auto;
+    width: 60%;
 }
 
 .loginBottomText {
     text-align: center;
-    margin-top: 12%;
+    margin-top: 14%;
     font-size: 14px;
 }
 

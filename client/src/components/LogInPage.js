@@ -23,7 +23,18 @@ const LogInPage = ({ history }) => {
         const res = await dispatch(login(email, password));
 
         if (res.ok) {
-            console.log(res);
+            history.replace(`/profiles/${res.data.id}`);
+            return;
+        }
+
+        dispatch(setErrors(res.data.errors));
+    }
+
+    const handleDemoUser = async (e) => {
+        e.preventDefault();
+        const res = await dispatch(login('demouser@demo.com', 'demo_password'));
+
+        if (res.ok) {
             history.replace(`/profiles/${res.data.id}`);
             return;
         }
@@ -64,6 +75,7 @@ const LogInPage = ({ history }) => {
                         </div>
                         <div className={authStyles.loginSubmitWrapper}>
                         <button className={authStyles.bottomButton} type="submit">Sign In</button>
+                        <button onClick={handleDemoUser} className={authStyles.demoButton}>Demo User</button>
                         </div>
                     </form>
                     </div>

@@ -12,7 +12,6 @@ import SearchResults from './SearchResults';
 
 
 const Home = ({ match }) => {
-    console.log(match.url);
     const dispatch = useDispatch();
 
     useEffect(() => {
