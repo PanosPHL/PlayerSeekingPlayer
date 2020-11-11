@@ -11,7 +11,11 @@ const Cropper = ({ src }) => {
             setCrop
         } } = useContext(ProfilePicFormContext);
     return (
-        <ReactCrop src={src} crop={crop} onImageLoaded={image => { picRef.current = image }} onChange={newCrop => setCrop(newCrop)} />
+        <ReactCrop src={src}
+        crop={crop}
+        onImageLoaded={image => { picRef.current = image }}
+        onChange={newCrop => setCrop(newCrop)}
+        imageStyle={{ width: '20vw' }}/>
     )
 }
 

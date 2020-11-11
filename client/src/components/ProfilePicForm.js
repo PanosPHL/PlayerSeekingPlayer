@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Cropper from './Cropper';
 import ProfilePicFormContext from '../contexts/ProfilePicFormContext';
 import 'react-image-crop/dist/ReactCrop.css';
+import styles from '../css-modules/ProfilePicForm.module.css';
 
 const ProfilePicForm = () => {
     const {
@@ -70,7 +71,7 @@ const ProfilePicForm = () => {
     }
 
     return (
-        <>
+        <div>
             <div>
                 <label>Upload Image</label>
                 <input onInput={handleInput} type='file' name='profile-pic' accept='image/png, image.jpeg' />
@@ -78,14 +79,18 @@ const ProfilePicForm = () => {
             {
                 pic ?
                     <>
-                        <form onSubmit={handleSubmit} method='' action=''>
+                        <form
+                        className={styles.picForm}
+                        onSubmit={handleSubmit}
+                        method=''
+                        action=''>
                             <Cropper src={pic} />
                             <button type='submit'>Submit</button>
                         </form>
                     </> :
                     <></>
             }
-        </>
+        </div>
     )
 }
 
