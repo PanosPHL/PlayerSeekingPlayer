@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
   profile = db.relationship("Profile", back_populates="user")
+  bands = db.relationship("Bands", back_populates="user")
 
   @property
   def password(self):
@@ -155,3 +156,23 @@ class Style(db.Model):
       "id": self.id,
       "name": self.name
     }
+
+
+class Band(db.Model):
+  __tablename__ = 'bands'
+
+  id = db.Column(db.Integer, primary_key=True, nullable=False)
+  name = db.Column(db.String(256), unique=True, nullable=False)
+  isPublic = db.Column(db.Boolean, nullable=False, default=True)
+  owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+
+  owner = db.relationship("User", back_populates="band")
+  users = db.relationship("UserBands", back_populates="band")
+
+
+class UserBands(db.Model):
+  __tablename__ = 'user_bands'
+
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True, nullable=False)
+  band_id = db.Column(db.Integer, db.ForeignKey('bands.id'), primary_key=True, nullable=False)
+  isConfirmed = db.Column(db.Boolean, nullable=False, default=False)
