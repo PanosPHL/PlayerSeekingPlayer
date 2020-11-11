@@ -13,7 +13,6 @@ const ProfilePicFormModal = () => {
     })
     const { pictures: { profilePicModal } } = useSelector(state => state.ui.profilePage);
     const [pic, setPic] = useState(null);
-    const [croppedPic, setCroppedPic] = useState(null);
     const picRef = useRef(null);
     const [crop, setCrop] = useState({ aspect: 1 / 1 });
 
@@ -24,14 +23,12 @@ const ProfilePicFormModal = () => {
     const value = {
         get: {
             crop,
-            croppedPic,
             pic,
             picRef,
             user
         },
         set: {
             setPic,
-            setCroppedPic,
             setCrop
         }
     };

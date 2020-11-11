@@ -6,6 +6,14 @@ const SIGNUP_USER = 'users/SIGNUP_USER';
 const SET_USERS = 'users/SET_USERS';
 const UPDATE_OVERVIEW = 'users/UPDATE_OVERVIEW';
 const UPDATE_BIO = 'users/UPDATE_BIO';
+const UPDATE_PROFILE_PICTURE = 'users/UPDATE_PROFILE_PICTURE';
+
+const updateProfilePicture = (profile) => {
+    return {
+        type: UPDATE_PROFILE_PICTURE,
+        profile
+    }
+}
 
 const updateBio = (userInfo) => {
     return {
@@ -122,6 +130,28 @@ export const putAndUpdateBio = (userId, bio) => {
     }
 }
 
+export const putAndUpdateProfilePic = (userId, imgData) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
+    return async dispatch => {
+        const res = await fetch(`/api/users/${userId}/profile_picture/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ img: imgData, csrfToken })
+        });
+
+        res.data = await res.json();
+
+        if (res.ok) {
+            dispatch(updateProfilePicture(res.data.profile));
+        }
+
+        return res;
+    }
+}
+
 export default function usersReducer(state = {}, action) {
     const newState = Object.assign({}, state);
     let newUser;
@@ -184,6 +214,13 @@ export default function usersReducer(state = {}, action) {
             newProfileInfo.recordings = newRecordings;
             newUser.profileInfo = newProfileInfo;
             newState[[action.userId]] = newUser;
+            return newState;
+        case UPDATE_PROFILE_PICTURE:
+            newUser = Object.assign({}, newState[[action.profile.user_id]]);
+            newProfileInfo = Object.assign({}, newUser.profileInfo);
+            newProfileInfo.profile_pic = action.profile.profile_pic;
+            newUser.profileInfo = newProfileInfo;
+            newState[[action.profile.user_id]] = newUser;
             return newState;
         default:
             return state;

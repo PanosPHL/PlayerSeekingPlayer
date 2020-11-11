@@ -1,10 +1,14 @@
 import React, { useContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { putAndUpdateProfilePic } from '../store/users';
 import Cropper from './Cropper';
 import ProfilePicFormContext from '../contexts/ProfilePicFormContext';
 import 'react-image-crop/dist/ReactCrop.css';
 import styles from '../css-modules/ProfilePicForm.module.css';
+import { toggleProfilePicForm } from '../store/ui/profilePage';
 
 const ProfilePicForm = () => {
+    const dispatch = useDispatch();
     const {
         get: {
             crop,
@@ -13,15 +17,17 @@ const ProfilePicForm = () => {
             user
         },
         set: {
-            setCroppedPic,
-            setPic
+            setPic,
+            setCrop
         } } = useContext(ProfilePicFormContext);
 
     useEffect(() => {
         return () => {
             setPic(null);
+            setCrop({ aspect: 1 / 1 });
+            document.body.classList.remove('noscroll');
         }
-    }, [setPic]);
+    }, [setPic, setCrop]);
 
     const handleInput = (event) => {
         const file = event.target.files[0];
@@ -66,7 +72,11 @@ const ProfilePicForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setCroppedPic(await getCroppedImg(picRef.current, crop));
+        const res = await dispatch(putAndUpdateProfilePic(user.id, await getCroppedImg(picRef.current, crop)));
+
+        if (res.ok) {
+            dispatch(toggleProfilePicForm());
+        }
     }
 
     return (

@@ -1,6 +1,10 @@
+import boto3
+import os
+import base64
+from secrets import token_urlsafe
 from flask import Blueprint, jsonify, request, make_response
 from app.models import db, User, Profile, Instrument, Style
-from app.forms import SignUpForm, OverviewForm, BioForm
+from app.forms import SignUpForm, OverviewForm, BioForm, ProfilePicForm
 from werkzeug.datastructures import MultiDict
 
 from app.utils.errors import format_errors
@@ -71,3 +75,26 @@ def update_bio(user_id):
   else:
     res = make_response({ "errors": format_errors(form.errors) }, 401)
     return res
+
+@user_routes.route('/<int:user_id>/profile_picture/', methods=["PUT"])
+def update_profile_picture(user_id):
+  data = MultiDict(mapping=request.json)
+  form = ProfilePicForm(data)
+  if form.validate():
+    data = request.json
+    s3 = boto3.client('s3', region_name=os.environ.get('AWS_REGION_NAME'), aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"), aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"))
+    file_name_with_extension = token_urlsafe(16) + '.png'
+    clean_bit64 = data["img"][22:]
+    imgData = base64.b64decode(clean_bit64)
+    bucket_name = os.environ.get('AWS_BUCKET_NAME')
+
+    s3.put_object(Bucket=bucket_name, Key=f"profile_pictures/{file_name_with_extension}", Body=imgData, ACL='public-read')
+    # obj = s3.Object(bucket_name, file_name_with_extension)
+    # obj.put(Body=imgData, ACL='public-read')
+    location = boto3.client('s3').get_bucket_location(Bucket=bucket_name)['LocationConstraint']
+    pic_location = f"https://{bucket_name}.s3-{location}.amazonaws.com/profile_pictures/{file_name_with_extension}"
+
+    profile = Profile.query.filter(Profile.user_id == user_id).one()
+    profile.profile_pic = pic_location
+    db.session.commit()
+    return { "profile": profile.to_dict() }

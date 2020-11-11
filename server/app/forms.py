@@ -71,3 +71,6 @@ class SearchForm(FlaskForm):
     radius = IntegerField("Radius", validators=[InputRequired("Please provide a mile radius to search within.")])
     instruments = SelectMultipleField("Instruments", choices=["1", "2", "3", "4", "5", "6", "7"], validators=[InputRequired("Please provide at least one instrument.")])
     styles = SelectMultipleField("Styles", choices=["1", "2", "3", "4", "5", "6"], validators=[InputRequired('Please provide at least one style.')])
+
+class ProfilePicForm(FlaskForm):
+    img = StringField("Image", validators=[InputRequired("Please crop your provided image")])
