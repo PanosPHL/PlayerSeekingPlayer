@@ -1,0 +1,20 @@
+.picFormModalContainer {
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+
+    opacity: 100%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 76vh;
+
+    border-radius: 8px;
+
+    background-color: rgb(255, 252, 252);
+
+    animation-name: modal_entry;
+    animation-duration: 0.3s;
+}

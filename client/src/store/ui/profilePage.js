@@ -8,6 +8,14 @@ const TOGGLE_INSTRUMENT_DROPDOWN = 'ui/TOGGLE_INSTRUMENT_DROPDOWN';
 const TOGGLE_STYLE_DROPDOWN = 'ui/TOGGLE_STYLE_DROPDOWN';
 const TOGGLE_BIO_MODAL = 'ui/TOGGLE_BIO_MODAL';
 const TOGGLE_PROFILE_PICTURE_BUTTON = 'ui/TOGGLE_PROFILE_PICTURE_BUTTON';
+const TOGGLE_PROFILE_PICTURE_FORM = 'ui/TOGGLE_PROFILE_PICTURE_FORM';
+
+export const toggleProfilePicForm = () => {
+    return {
+        type: TOGGLE_PROFILE_PICTURE_FORM
+    }
+}
+
 
 export const toggleProfilePicButton = () => {
     return {
@@ -151,6 +159,11 @@ export default function profilePageReducer(state = initialProfilePageUIState, ac
         case TOGGLE_PROFILE_PICTURE_BUTTON:
             newPictures = Object.assign({}, newState.pictures);
             newPictures.profilePicButton = !newPictures.profilePicButton;
+            newState.pictures = newPictures;
+            return newState;
+        case TOGGLE_PROFILE_PICTURE_FORM:
+            newPictures = Object.assign({}, newState.pictures);
+            newPictures.profilePicModal = !newPictures.profilePicModal;
             newState.pictures = newPictures;
             return newState;
         default:

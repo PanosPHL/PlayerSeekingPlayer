@@ -9,6 +9,7 @@ import Footer from './Footer';
 import OverviewFormModal from './OverviewFormModal';
 import BioFormModal from './BioFormModal';
 import SearchResults from './SearchResults';
+import ProfilePicFormModal from './ProfilePicFormModal';
 
 
 const Home = ({ match }) => {
@@ -25,6 +26,7 @@ const Home = ({ match }) => {
         <>
             <BioFormModal />
             <OverviewFormModal />
+            <ProfilePicFormModal />
             <RecordingFormModal />
             <HomeRouter>
                 <TopBar />
