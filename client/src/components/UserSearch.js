@@ -27,7 +27,7 @@ const UserSearch = ({ id, first, last }) => {
 
     return (
         <div className={searchStyles.userContainer + (first ? " " + searchStyles.firstUser : last ? " " + searchStyles.lastUser : "")} onClick={() => setActiveResult(id)}>
-            <UserSearchImage userId={id}/>
+            <UserSearchImage user={userInfo}/>
             <div className={searchStyles.resultTextContainer}>
             <div className={searchStyles.nameAndLocation}>
                 <Link className={searchStyles.profileLink} to={`/profiles/${id}`}>

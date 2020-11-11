@@ -10,6 +10,7 @@ import OverviewFormModal from './OverviewFormModal';
 import BioFormModal from './BioFormModal';
 import SearchResults from './SearchResults';
 import ProfilePicFormModal from './ProfilePicFormModal';
+import MyBands from './MyBands';
 
 
 const Home = ({ match }) => {
@@ -33,6 +34,7 @@ const Home = ({ match }) => {
                 <Switch>
                     <Route path={`${match.url}profiles/:id`} component={ProfilePage} />
                     <Route path={`${match.url}search`} component={SearchResults} />
+                    <Route path={`${match.url}my-bands`} component={MyBands} />
                 </Switch>
             </HomeRouter>
             <Footer />

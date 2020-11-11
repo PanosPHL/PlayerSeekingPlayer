@@ -30,4 +30,39 @@
     margin: 10% 0 0 0;
 }
 
+.fileUpload {
+    position: absolute;
+    width: 0.1px;
+    height: 0.1px;
+    z-index: 2;
+}
+
+.submitButton {
+    margin-top: 10%;
+}
+
+.uploadLabel, .submitButton {
+    display: block;
+    padding: 2% 4%;
+
+    border-radius: 8px;
+    border: 2px solid rgba(0, 0, 0, 0.15);
+
+    color: white;
+    font-size: 16.4px;
+
+    text-align: center;
+
+    background-color: #4C4F91;
+}
+
+.uploadLabel {
+    min-width: 7vw;
+}
+
+.uploadLabel:hover, .uploadLabel:active, .submitButton:hover, .submitButton:active {
+    filter: brightness(0.9);
+    transform: scale(1.04);
+}
+
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

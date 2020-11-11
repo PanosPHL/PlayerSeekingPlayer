@@ -1,39 +1,45 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { putAndUpdateProfilePic } from '../store/users';
+import { toggleProfilePicForm } from '../store/ui/profilePage';
 import Cropper from './Cropper';
 import ProfilePicFormContext from '../contexts/ProfilePicFormContext';
 import 'react-image-crop/dist/ReactCrop.css';
 import styles from '../css-modules/ProfilePicForm.module.css';
-import { toggleProfilePicForm } from '../store/ui/profilePage';
 
 const ProfilePicForm = () => {
     const dispatch = useDispatch();
+    const fileInput = useRef();
     const {
         get: {
             crop,
+            fileName,
             pic,
             picRef,
             user
         },
         set: {
-            setPic,
-            setCrop
+            setCrop,
+            setFileName,
+            setPic
         } } = useContext(ProfilePicFormContext);
 
     useEffect(() => {
         return () => {
             setPic(null);
             setCrop({ aspect: 1 / 1 });
+            setFileName('');
             document.body.classList.remove('noscroll');
         }
-    }, [setPic, setCrop]);
+    }, [setPic, setCrop, setFileName]);
 
     const handleInput = (event) => {
         const file = event.target.files[0];
         const nameSplit = file.name.split('.')[1].toLowerCase();
 
         if (nameSplit === 'png' || nameSplit === 'jpeg') {
+            setFileName(file.name);
+            setCrop({ aspect: 1 / 1 });
             setPic(URL.createObjectURL(file));
         }
     }
@@ -70,8 +76,15 @@ const ProfilePicForm = () => {
         });
     }
 
+    const handleLabelClick = () => {
+        fileInput.current.click();
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!crop.width && !crop.height) {
+            return;
+        }
         const res = await dispatch(putAndUpdateProfilePic(user.id, await getCroppedImg(picRef.current, crop)));
 
         if (res.ok) {
@@ -80,26 +93,34 @@ const ProfilePicForm = () => {
     }
 
     return (
-        <div>
+        <>
             <div>
-                <label>Upload Image</label>
-                <input onInput={handleInput} type='file' name='profile-pic' accept='image/png, image.jpeg' />
+                <label
+                className={styles.uploadLabel}
+                onClick={handleLabelClick}>{fileName || "Upload Image"}</label>
+                <input
+                    ref={fileInput}
+                    className={styles.fileUpload}
+                    onInput={handleInput}
+                    type='file'
+                    name='profile-pic'
+                    accept='image/png, image.jpeg' />
             </div>
             {
                 pic ?
-                    <>
+                    <div>
                         <form
-                        className={styles.picForm}
-                        onSubmit={handleSubmit}
-                        method=''
-                        action=''>
+                            className={styles.picForm}
+                            onSubmit={handleSubmit}
+                            method=''
+                            action=''>
                             <Cropper src={pic} />
-                            <button type='submit'>Submit</button>
+                            <button className={styles.submitButton} type='submit'>Submit</button>
                         </form>
-                    </> :
+                    </div> :
                     <></>
             }
-        </div>
+        </>
     )
 }
 

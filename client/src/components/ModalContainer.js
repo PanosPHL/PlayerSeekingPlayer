@@ -2,7 +2,10 @@ import React from 'react';
 
 const ModalContainer = (props) => {
     return (
-        <div style={{
+        <div
+        id='modal-container'
+        onClick={props.onClick || null}
+        style={{
             height: window.innerHeight,
             width: "100%",
             backgroundColor: "rgba(0, 0, 0, 0.3)",

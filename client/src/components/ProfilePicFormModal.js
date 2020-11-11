@@ -15,34 +15,38 @@ const ProfilePicFormModal = () => {
     const [pic, setPic] = useState(null);
     const picRef = useRef(null);
     const [crop, setCrop] = useState({ aspect: 1 / 1 });
+    const [fileName, setFileName] = useState('');
 
-    const handleCloseClick = () => {
-        dispatch(toggleProfilePicForm());
+    const handleCloseClick = (event) => {
+        if (event.target.id === 'modal-container') {
+            dispatch(toggleProfilePicForm());
+        }
     }
 
     const value = {
         get: {
             crop,
+            fileName,
             pic,
             picRef,
             user
         },
         set: {
-            setPic,
-            setCrop
+            setCrop,
+            setFileName,
+            setPic
         }
     };
 
     if (profilePicModal) {
         return (
-            <ModalContainer>
-                <ProfilePicFormContext.Provider value={value}>
-                <div className={styles.picFormModalContainer}>
-                    <button onClick={handleCloseClick}>X</button>
-                    <ProfilePicForm />
-                </div>
-                </ProfilePicFormContext.Provider>
-            </ModalContainer>
+            <ProfilePicFormContext.Provider value={value}>
+                <ModalContainer onClick={handleCloseClick}>
+                    <div id='pic-form-container' className={styles.picFormModalContainer}>
+                        <ProfilePicForm />
+                    </div>
+                </ModalContainer>
+            </ProfilePicFormContext.Provider>
         )
     }
 
