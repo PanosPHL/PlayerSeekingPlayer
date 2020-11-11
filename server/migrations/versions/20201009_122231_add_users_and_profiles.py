@@ -1,7 +1,7 @@
 """add_users_and_profiles
 
 Revision ID: 3e7fc4cf061f
-Revises: 
+Revises:
 Create Date: 2020-10-09 12:22:31.190240
 
 """
@@ -37,6 +37,7 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('biography', sa.Text(), nullable=True),
     sa.Column('location', sa.String(length=256), nullable=False),
+    sa.Column('profile_pic', sa.Text(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),

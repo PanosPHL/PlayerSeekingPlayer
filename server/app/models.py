@@ -86,6 +86,7 @@ class Profile(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
   biography = db.Column(db.Text)
   location = db.Column(db.String(256), nullable=False)
+  profile_pic = db.Column(db.Text)
   created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
@@ -100,6 +101,7 @@ class Profile(db.Model):
       "user_id": self.user_id,
       "biography": self.biography,
       "location": self.location,
+      'profile_pic': self.profile_pic,
       "instruments": [instrument.to_dict()["id"] for instrument in self.instruments],
       "recordings": self.get_recordings_info(self.recordings),
       "styles": [style.to_dict()["id"] for style in self.styles],

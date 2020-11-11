@@ -5,9 +5,8 @@ import { logout } from '../store/session';
 import navStyles from '../css-modules/NavComponents.module.css';
 
 
-const ProfileDropdown = ({ className, history }) => {
+const ProfileDropdown = ({ className, history, userId }) => {
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session.userId);
 
     const handleLogoutClick = async () => {
         const res = await dispatch(logout());

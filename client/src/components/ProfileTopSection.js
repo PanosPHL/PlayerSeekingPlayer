@@ -42,7 +42,7 @@ const ProfileTopSection = ({ userProfile, about, recordings }) => {
                 className={profStyles.pictureContainer}
                 onMouseEnter={() => {handlePicToggle('enter')}}
                 onMouseLeave={() => {handlePicToggle('exit')}}>
-                    <img className={profStyles.defaultProfilePicture} src='https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1218408229?b=1&k=6&m=1218408229&s=612x612&w=0&h=ljIOZzztvumhkaB5d9xLPuZ8cvckG527XCWZIKTCT0k=' alt='Profile' />
+                    <img className={profStyles.defaultProfilePicture} src={userProfile ? userProfile.profileInfo.profile_pic || '/images/default_profile_photo.jpg' : ''} alt='Profile' />
                     <div className={profStyles.defaultProfilePictureInnerBorder}></div>
                     { profilePicButton ?
                     <button onClick={handleCameraClick} className={profStyles.profilePicButton}><i className="fas fa-camera"></i></button> :

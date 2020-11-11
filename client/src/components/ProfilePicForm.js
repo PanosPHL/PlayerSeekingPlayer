@@ -53,15 +53,14 @@ const ProfilePicForm = () => {
         );
 
         return new Promise((resolve, reject) => {
-            canvas.toBlob(blob => {
-                if (!blob) {
-                    //reject(new Error('Canvas is empty'));
-                    console.error('Canvas is empty');
-                    return;
-                }
-                blob.name = user.firstName + '_' + user.lastName;
-                resolve(blob);
-            }, 'image/jpeg');
+            let imgBase64 = canvas.toDataURL('image/png', 1.0);
+
+            if (!imgBase64) {
+                console.error('Canvas is empty');
+                return;
+            }
+
+            resolve(imgBase64);
         });
     }
 
