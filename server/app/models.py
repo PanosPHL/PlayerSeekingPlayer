@@ -179,7 +179,7 @@ class Band(db.Model):
       "isPublic": self.isPublic,
       "ownerId": self.owner_id,
       "styleId": self.style_id,
-      "members": [user.to_dict()["id"] for user in self.users]
+      "members": [user.to_dict() for user in self.users]
     }
 
 
@@ -192,3 +192,9 @@ class UserBand(db.Model):
 
   user = db.relationship("User")
   band = db.relationship("Band")
+
+  def to_dict(self):
+    return {
+      "userId": self.user_id,
+      "bandId": self.band_id
+    }

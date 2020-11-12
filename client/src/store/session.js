@@ -2,6 +2,7 @@ import { addUsers } from './users';
 import { addInstruments } from './instruments';
 import { addRecordings } from './recordings';
 import { addStyles } from './styles';
+import { setBands } from './bands';
 
 import Cookie from 'js-cookie';
 
@@ -89,6 +90,7 @@ export const getSessionData = () => {
             dispatch(addInstruments(res.data.instruments));
             dispatch(addRecordings(res.data.recordings));
             dispatch(addStyles(res.data.styles));
+            dispatch(setBands(res.data.bands));
         }
 
         return res;
