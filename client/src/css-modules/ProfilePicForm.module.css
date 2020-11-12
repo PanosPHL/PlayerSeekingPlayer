@@ -46,7 +46,7 @@
     padding: 2% 4%;
 
     border-radius: 8px;
-    border: 2px solid rgba(0, 0, 0, 0.15);
+    border: none;
 
     color: white;
     font-size: 16.4px;
@@ -60,9 +60,10 @@
     min-width: 7vw;
 }
 
-.uploadLabel:hover, .uploadLabel:active, .submitButton:hover, .submitButton:active {
+.uploadLabel:hover, .uploadLabel:active, .submitButton:hover, .submitButton:active, .submitButton:focus {
     filter: brightness(0.9);
     transform: scale(1.04);
+    outline: none;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

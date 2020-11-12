@@ -1,0 +1,24 @@
+.pageContainer {
+    display: flex;
+
+
+    height: calc(100vh - 230px);
+}
+
+.sidebarContainer {
+    width: 18vw;
+    background-color: #FFFFFF;
+
+    box-shadow: 2px -1px 6px rgba(0, 0, 0, 0.3);
+
+    z-index: 0;
+}
+
+.contentContainer {
+    width: 82vw;
+    background-color: rgb(240, 242, 245);
+}
+
+.yourBandsContainer {
+    display: flex;
+}

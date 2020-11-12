@@ -11,6 +11,7 @@ import BioFormModal from './BioFormModal';
 import SearchResults from './SearchResults';
 import ProfilePicFormModal from './ProfilePicFormModal';
 import MyBands from './MyBands';
+import NewBandModal from './NewBandModal';
 
 
 const Home = ({ match }) => {
@@ -29,6 +30,7 @@ const Home = ({ match }) => {
             <OverviewFormModal />
             <ProfilePicFormModal />
             <RecordingFormModal />
+            <NewBandModal />
             <HomeRouter>
                 <TopBar />
                 <Switch>

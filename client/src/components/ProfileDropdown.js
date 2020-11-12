@@ -22,7 +22,7 @@ const ProfileDropdown = ({ className, history, userId }) => {
             <Link className={navStyles.dropdownLink} to={`/profiles/${userId}`}>
             <li className={navStyles.dropdownListItem}>My Profile</li>
             </Link>
-            <Link className={navStyles.dropdownLink} to='my-bands'>
+            <Link className={navStyles.dropdownLink} to='/my-bands'>
                 <li className={navStyles.dropdownListItem}>Bands</li>
             </Link>
             <li className={navStyles.dropdownListItem} onClick={handleLogoutClick}>Logout</li>

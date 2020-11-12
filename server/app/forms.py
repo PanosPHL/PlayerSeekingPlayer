@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, FloatField, SelectMultipleField, BooleanField, IntegerField
 from wtforms.fields.html5 import EmailField, DateField, URLField
-from wtforms.validators import InputRequired, Email, EqualTo, URL, ValidationError
+from wtforms.validators import InputRequired, Email, EqualTo, URL, ValidationError, NumberRange
 import os
 import requests
 import datetime
@@ -74,3 +74,9 @@ class SearchForm(FlaskForm):
 
 class ProfilePicForm(FlaskForm):
     img = StringField("Image", validators=[InputRequired("Please crop your provided image")])
+
+class BandForm(FlaskForm):
+    name = StringField("Name", validators=[InputRequired("Please give your new band a name")])
+    isPublic = BooleanField("Public?", validators=[InputRequired("Please specify whether your band should be public or private")])
+    owner = IntegerField("Owner", validators=[InputRequired("Please specify a band owner")])
+    style = IntegerField("Style", validators=[InputRequired("Please provide a style"), NumberRange(min=1, message="Please select a valid style")])

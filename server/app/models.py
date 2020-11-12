@@ -21,7 +21,8 @@ class User(db.Model, UserMixin):
   updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
   profile = db.relationship("Profile", back_populates="user")
-  bands = db.relationship("Bands", back_populates="user")
+  bands = db.relationship("UserBand", back_populates="user")
+  owned_band = db.relationship("Band", back_populates="owner")
 
   @property
   def password(self):
@@ -165,14 +166,29 @@ class Band(db.Model):
   name = db.Column(db.String(256), unique=True, nullable=False)
   isPublic = db.Column(db.Boolean, nullable=False, default=True)
   owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+  style_id = db.Column(db.Integer, db.ForeignKey("styles.id"), nullable=False)
 
-  owner = db.relationship("User", back_populates="band")
-  users = db.relationship("UserBands", back_populates="band")
+  style = db.relationship("Style")
+  owner = db.relationship("User", back_populates="owned_band")
+  users = db.relationship("UserBand", back_populates="band")
+
+  def to_dict(self):
+    return {
+      "id": self.id,
+      "name": self.name,
+      "isPublic": self.isPublic,
+      "ownerId": self.owner_id,
+      "styleId": self.style_id,
+      "members": [user.to_dict()["id"] for user in self.users]
+    }
 
 
-class UserBands(db.Model):
+class UserBand(db.Model):
   __tablename__ = 'user_bands'
 
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), primary_key=True, nullable=False)
   band_id = db.Column(db.Integer, db.ForeignKey('bands.id'), primary_key=True, nullable=False)
   isConfirmed = db.Column(db.Boolean, nullable=False, default=False)
+
+  user = db.relationship("User")
+  band = db.relationship("Band")
