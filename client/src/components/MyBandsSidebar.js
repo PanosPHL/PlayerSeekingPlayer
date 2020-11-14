@@ -1,14 +1,19 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { toggleNewBandModal } from '../store/ui/myBands';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleNewBandModal, toggleSidebarBandList } from '../store/ui/myBands';
 import bandStyles from '../css-modules/MyBands.module.css';
+import MyBandsSidebarList from './MyBandsSidebarList';
 
 const MyBandsSidebar = ({ ownedBands, memberBands }) => {
     const dispatch = useDispatch();
-
+    const { sidebarBandList } = useSelector(state => state.ui.myBands);
 
     const handleNewBandClick = () => {
         dispatch(toggleNewBandModal());
+    }
+
+    const handleListToggleClick = () => {
+        dispatch(toggleSidebarBandList())
     }
 
     return (
@@ -29,9 +34,12 @@ const MyBandsSidebar = ({ ownedBands, memberBands }) => {
                     "Join a Band!"
                     }</h3>
                 </div>
-                <button className={bandStyles.bandsBarCollapse}><i className="fas fa-chevron-up"></i></button>
+                <button onClick={handleListToggleClick}
+                className={sidebarBandList ? bandStyles.bandsBarCollapse : bandStyles.bandsBarExpand}>
+                    { sidebarBandList ? <i className="fas fa-chevron-up"></i> : <i className="fas fa-chevron-down"></i> }
+                </button>
                 </div>
-                <div></div>
+                { sidebarBandList && (ownedBands.length + memberBands.length) ? <MyBandsSidebarList bands={ownedBands.concat(memberBands)}/> : <></>}
                 <button
                 className={bandStyles.createBandButton}
                 onClick={handleNewBandClick}><span className={bandStyles.plus}><i className="fas fa-plus"></i></span> Create Band</button>

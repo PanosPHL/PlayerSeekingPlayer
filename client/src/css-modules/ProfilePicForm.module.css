@@ -46,22 +46,22 @@
     padding: 2% 4%;
 
     border-radius: 8px;
-    border: none;
+    border: 1px solid #a5a5a5;
 
-    color: white;
-    font-size: 16.4px;
+    color: black;
+    font-size: 18px;
 
     text-align: center;
 
-    background-color: #4C4F91;
+    background: linear-gradient(#ffede5,#fbf2ef);
 }
 
 .uploadLabel {
-    min-width: 7vw;
+    width: 200px;
 }
 
 .uploadLabel:hover, .uploadLabel:active, .submitButton:hover, .submitButton:active, .submitButton:focus {
-    filter: brightness(0.9);
+    filter: brightness(0.96);
     transform: scale(1.04);
     outline: none;
 }

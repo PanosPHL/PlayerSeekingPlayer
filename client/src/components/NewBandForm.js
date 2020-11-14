@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { postAndAddBand } from '../store/bands';
 import { toggleNewBandModal } from '../store/ui/myBands';
+import bandStyles from '../css-modules/MyBands.module.css';
 
 const NewBandForm = ({ bandId }) => {
     const dispatch = useDispatch();
@@ -14,13 +15,27 @@ const NewBandForm = ({ bandId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await dispatch(postAndAddBand(name, true, ownerId, styleId));
+
+        if (res.ok) {
+            dispatch(toggleNewBandModal());
+        }
     }
 
     return (
-            <form onSubmit={handleSubmit} method="" action="">
-                <button onClick={() => dispatch(toggleNewBandModal())}><i className="fas fa-times"></i></button>
-                <input type='text' value={name} onChange={(e) => setName(e.target.value)} />
-                <select onChange={(e) => setStyleId(Number(e.target.value))}>
+            <form className={bandStyles.newBandForm} onSubmit={handleSubmit} method="" action="">
+                <h2 className={bandStyles.modalFormTitle}>Create a Band</h2>
+                <button className={bandStyles.modalFormClose} onClick={() => dispatch(toggleNewBandModal())}><i className="fas fa-times"></i></button>
+                <div className={bandStyles.formControlGroup + " form-control-group"}>
+                <p>
+                <label className="labels" htmlFor="bandName">Band Name</label>
+                </p>
+                <input className="form-control" name="bandName" type='text' value={name} onChange={(e) => setName(e.target.value)} />
+                </div>
+                <div className={bandStyles.formControlGroup + " form-control-group"}>
+                <p>
+                    <label className="labels" htmlFor="bandStyle">Band style</label>
+                </p>
+                <select className="form-control" name="bandStyle" onChange={(e) => setStyleId(Number(e.target.value))}>
                     <option value="-1">Select a style</option>
                     {
                         styles.length ?
@@ -28,7 +43,8 @@ const NewBandForm = ({ bandId }) => {
                             <></>
                     }
                 </select>
-                <button type='submit'>Submit</button>
+                </div>
+                <button className={bandStyles.submitButton} type='submit'>Submit</button>
             </form>
     )
 }

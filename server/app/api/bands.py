@@ -16,7 +16,9 @@ def create_band():
         owner = User.query.get(data["owner"])
         new_band = Band(name=data["name"], isPublic=data["isPublic"], owner_id=data["owner"], style_id=data["style"])
         db.session.add(new_band)
-        new_user_ban = UserBand(user_id=data["owner"], band_id=new_band.to_dict()["id"])
+        db.session.commit()
+        new_user_band = UserBand(user_id=data["owner"], band_id=new_band.to_dict()["id"], isConfirmed=True)
+        db.session.add(new_user_band)
         db.session.commit()
         return { "band": new_band.to_dict() }
     else:

@@ -179,7 +179,7 @@ class Band(db.Model):
       "isPublic": self.isPublic,
       "ownerId": self.owner_id,
       "styleId": self.style_id,
-      "members": [user.to_dict() for user in self.users]
+      "members": [user.to_dict()["userId"] for user in self.users]
     }
 
 
