@@ -4,7 +4,7 @@ import ManageInvitationsForm from './ManageInvitationsForm';
 import ModalContainer from './ModalContainer';
 
 const ManageInvitationsModal = () => {
-    const { manageInvitationModal } = useSelector(state => state.ui.invitations);
+    const { manageInvitationModal } = useSelector(state => state.ui.uiInvitations);
     const ownedBands = useSelector(state => {
         const res = [];
         for (const band in state.entities.bands) {

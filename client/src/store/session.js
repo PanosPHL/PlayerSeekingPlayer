@@ -3,6 +3,7 @@ import { addInstruments } from './instruments';
 import { addRecordings } from './recordings';
 import { addStyles } from './styles';
 import { setBands } from './bands';
+import { addInvitations } from './invitations';
 
 import Cookie from 'js-cookie';
 
@@ -91,6 +92,7 @@ export const getSessionData = () => {
             dispatch(addRecordings(res.data.recordings));
             dispatch(addStyles(res.data.styles));
             dispatch(setBands(res.data.bands));
+            dispatch(addInvitations(res.data.invitations));
         }
 
         return res;

@@ -1,5 +1,5 @@
 from flask import Blueprint, request, make_response
-from app.models import db, Band, UserBand, User
+from app.models import db, Band, UserBand, User, Invitation
 from app.forms import BandForm, InvitationForm
 from werkzeug.datastructures import MultiDict
 
@@ -9,6 +9,7 @@ band_routes = Blueprint('bands', __name__)
 
 @band_routes.route('/', methods=["POST"])
 def create_band():
+    print(request.json)
     data = MultiDict(mapping=request.json)
     form = BandForm(data)
     if form.validate():
@@ -31,7 +32,16 @@ def manage_members(band_id):
     form = InvitationForm(data)
     if form.validate():
         data = request.json
-        print(data)
+        new_invitation = Invitation(sender_id=data["sender_id"], recipient_id=data["recipient_id"], band_id=data["band_id"], message=data["message"])
+        new_user_band = UserBand(user_id=data["recipient_id"], band_id=data["band_id"], isConfirmed=False)
+
+        db.session.add(new_invitation, new_user_band)
+        db.session.commit()
+
+        return {
+            "invitation": new_invitation.to_dict(),
+            "userBand": new_user_band.to_dict()
+            }
     else:
         r = make_response({ "errors": form.errors }, 401)
         return r

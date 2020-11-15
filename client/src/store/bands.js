@@ -1,7 +1,18 @@
+import { addInvitation } from './invitations';
+
 import Cookie from 'js-cookie';
 
 const ADD_BAND = 'bands/ADD_BAND';
 const SET_BANDS = 'bands/SET_BANDS';
+export const ADD_USER_TO_BAND = 'bands/ADD_USER_TO_BAND';
+
+const addUserToBand = ({ userId, bandId }) => {
+    return {
+        type: ADD_USER_TO_BAND,
+        userId,
+        bandId
+    }
+}
 
 const addBand = (band) => {
     return {
@@ -30,7 +41,7 @@ export const postAndAddBand = (name, isPublic = true, owner, style) => {
         });
 
         res.data = await res.json();
-
+        console.log(res);
         if (res.ok) {
             dispatch(addBand(res.data.band));
         }
@@ -52,9 +63,10 @@ export const putAndAddMember = (senderId, recipientId, bandId, message) => {
         });
 
         res.data = await res.json();
-        console.log(res);
-        if (res.ok) {
 
+        if (res.ok) {
+            dispatch(addUserToBand(res.data.userBand));
+            dispatch(addInvitation(res.data.invitation));
         }
 
         return res;
@@ -63,6 +75,7 @@ export const putAndAddMember = (senderId, recipientId, bandId, message) => {
 
 export default function bandReducer(state = {}, action) {
     const newState = Object.assign({}, state);
+    let newBand;
     switch(action.type) {
         case SET_BANDS:
             for (const band of action.bands) {
@@ -71,6 +84,11 @@ export default function bandReducer(state = {}, action) {
             return newState;
         case ADD_BAND:
             newState[action.band.id] = action.band;
+            return newState;
+        case ADD_USER_TO_BAND:
+            newBand = Object.assign({}, newState[action.bandId]);
+            newBand.pendingMembers = [...newBand.pendingMembers, Number(action.userId)];
+            newState[newBand.id] = newBand;
             return newState;
         default:
             return state;

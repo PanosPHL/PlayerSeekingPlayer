@@ -5,11 +5,12 @@ import thunk from 'redux-thunk'
 import bands from './bands';
 import errors from './errors';
 import instruments from './instruments';
+import invitations from './invitations';
 import recordings from './recordings';
 import session from './session';
 import users from './users';
 import styles from './styles';
-import invitations from './ui/invitations';
+import uiInvitations from './ui/invitations';
 import myBands from './ui/myBands';
 import navbar from './ui/navbar';
 import profilePage from './ui/profilePage';
@@ -22,13 +23,14 @@ let storeEnhancer;
 const entities = combineReducers({
     bands,
     instruments,
+    invitations,
     recordings,
     styles,
     users
 });
 
 const ui = combineReducers({
-    invitations,
+    uiInvitations,
     myBands,
     navbar,
     profilePage,

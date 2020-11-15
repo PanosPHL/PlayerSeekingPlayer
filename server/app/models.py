@@ -26,6 +26,8 @@ class User(db.Model, UserMixin):
     profile = db.relationship("Profile", back_populates="user")
     bands = db.relationship("UserBand", back_populates="user")
     owned_band = db.relationship("Band", back_populates="owner")
+    received_invitations = db.relationship("Invitation", back_populates="recipient", foreign_keys="Invitation.recipient_id")
+    sent_invitations = db.relationship("Invitation", back_populates="sender", foreign_keys="Invitation.sender_id")
 
     @property
     def password(self):
@@ -47,6 +49,8 @@ class User(db.Model, UserMixin):
             "dateOfBirth": self.DOB,
             "lat": self.lat,
             "lng": self.lng,
+            "receivedInvitations": [invitation.to_dict()["id"] for invitation in self.received_invitations],
+            "sentInvitations": [invitation.to_dict()["id"] for invitation in self.sent_invitations],
             "createdAt": self.created_at,
             "updatedAt": self.updated_at,
             "profileInfo": self.profile[0].to_dict() if self.profile else [],

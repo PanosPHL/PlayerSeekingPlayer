@@ -1,6 +1,7 @@
 import Cookie from 'js-cookie';
 import { login } from './session';
 import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING, DELETE_PROFILE_RECORDING } from './recordings';
+import { ADD_INVITATION } from './invitations';
 
 const SIGNUP_USER = 'users/SIGNUP_USER';
 const SET_USERS = 'users/SET_USERS';
@@ -157,6 +158,8 @@ export default function usersReducer(state = {}, action) {
     let newUser;
     let newProfileInfo;
     let newRecordings;
+    let newSender;
+    let newRecipient;
     switch (action.type) {
         case SIGNUP_USER:
             newState[action.user.id] = action.user;
@@ -221,6 +224,16 @@ export default function usersReducer(state = {}, action) {
             newProfileInfo.profile_pic = action.profile.profile_pic;
             newUser.profileInfo = newProfileInfo;
             newState[[action.profile.user_id]] = newUser;
+            return newState;
+        case ADD_INVITATION:
+            newSender = Object.assign({}, newState[action.invitation.senderId]);
+            newSender.sentInvitations = [...newSender.sentInvitations, action.invitation.id];
+            newRecipient = Object.assign({}, newState[action.invitation.recipientId]);
+            newRecipient.receivedInvitations = [...newSender.receivedInvitations, action.invitation.id];
+
+            newState[action.invitation.senderId] = newSender;
+            newState[action.invitation.recipientId] = newRecipient;
+
             return newState;
         default:
             return state;

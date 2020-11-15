@@ -7,7 +7,7 @@ import bandStyles from '../css-modules/MyBands.module.css';
 const NewBandForm = ({ bandId }) => {
     const dispatch = useDispatch();
     const band = useSelector(state => state.entities.bands[bandId]);
-    const ownerId = useSelector(state => state.session.userId);
+    const ownerId = useSelector(state => state.session.userId.toString());
     const styles = useSelector(state => Object.values(state.entities.styles));
     const [name, setName] = useState(band ? band.name : '');
     const [styleId, setStyleId] = useState(-1);
@@ -35,7 +35,7 @@ const NewBandForm = ({ bandId }) => {
                 <p>
                     <label className="labels" htmlFor="bandStyle">Band style</label>
                 </p>
-                <select className="form-control" name="bandStyle" onChange={(e) => setStyleId(Number(e.target.value))}>
+                <select className="form-control" name="bandStyle" onChange={(e) => setStyleId(e.target.value)}>
                     <option value="-1">Select a style</option>
                     {
                         styles.length ?
