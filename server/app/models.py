@@ -196,7 +196,7 @@ class Band(db.Model):
     owner_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     style_id = db.Column(db.Integer, db.ForeignKey("styles.id"), nullable=False)
 
-    __table_args__ = (db.UniqueConstraint("owner_id", "name"),)
+    __table_args__ = (db.UniqueConstraint("owner_id", "name", name="unique_name_per_owner"),)
 
     style = db.relationship("Style")
     owner = db.relationship("User", back_populates="owned_band")
@@ -216,12 +216,8 @@ class Band(db.Model):
 class UserBand(db.Model):
     __tablename__ = "user_bands"
 
-    user_id = db.Column(
-        db.Integer, db.ForeignKey("users.id"), primary_key=True, nullable=False
-    )
-    band_id = db.Column(
-        db.Integer, db.ForeignKey("bands.id"), primary_key=True, nullable=False
-    )
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), primary_key=True, nullable=False)
+    band_id = db.Column(db.Integer, db.ForeignKey("bands.id"), primary_key=True, nullable=False)
     isConfirmed = db.Column(db.Boolean, nullable=False, default=False)
 
     user = db.relationship("User")
@@ -242,7 +238,7 @@ class Invitation(db.Model):
     sender_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     recipient_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     band_id = db.Column(db.Integer, db.ForeignKey("bands.id"), nullable=False)
-    message = db.Column(db.Text, nullable=False)
+    message = db.Column(db.Text)
 
     sender = db.relationship("User", foreign_keys=[sender_id])
     recipient = db.relationship("User", foreign_keys=[recipient_id])

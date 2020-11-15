@@ -24,3 +24,7 @@ def create_band():
     else:
         r = make_response({ "errors": format_errors(form.errors) }, 401)
         return r
+
+@band_routes.route('/<int:band_id>/members', methods=["PUT"])
+def manage_members(band_id):
+    pass
