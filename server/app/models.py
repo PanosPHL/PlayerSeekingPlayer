@@ -55,49 +55,22 @@ class User(db.Model, UserMixin):
 
 profile_instruments = db.Table(
     "profile_instruments",
-    db.Column(
-        "profile_id",
-        db.Integer,
-        db.ForeignKey("profiles.id"),
-        primary_key=True,
-        nullable=False,
-    ),
-    db.Column(
-        "instrument_id",
-        db.Integer,
-        db.ForeignKey("instruments.id"),
-        primary_key=True,
-        nullable=False,
-    ),
+    db.Column("profile_id", db.Integer, db.ForeignKey("profiles.id"), primary_key=True, nullable=False),
+    db.Column("instrument_id", db.Integer, db.ForeignKey("instruments.id"), primary_key=True, nullable=False)
 )
 
 
 profile_styles = db.Table(
     "profile_styles",
-    db.Column(
-        "profile_id",
-        db.Integer,
-        db.ForeignKey("profiles.id"),
-        primary_key=True,
-        nullable=False,
-    ),
-    db.Column(
-        "style_id",
-        db.Integer,
-        db.ForeignKey("styles.id"),
-        primary_key=True,
-        nullable=False,
-    ),
+    db.Column("profile_id", db.Integer, db.ForeignKey("profiles.id"), primary_key=True, nullable=False),
+    db.Column("style_id", db.Integer, db.ForeignKey("styles.id"), primary_key=True, nullable=False)
 )
 
 
 class ProfileRecording(db.Model):
     __tablename__ = "profile_recordings"
-    profile_id = db.Column(db.Integer, db.ForeignKey(
-        "profiles.id"), primary_key=True)
-    recording_id = db.Column(
-        db.Integer, db.ForeignKey("recordings.id"), primary_key=True
-    )
+    profile_id = db.Column(db.Integer, db.ForeignKey("profiles.id"), primary_key=True)
+    recording_id = db.Column(db.Integer, db.ForeignKey("recordings.id"), primary_key=True)
     title = db.Column(db.String(256), unique=True, nullable=False)
     description = db.Column(db.Text)
 
@@ -122,9 +95,7 @@ class Profile(db.Model):
     location = db.Column(db.String(256), nullable=False)
     profile_pic = db.Column(db.Text)
     created_at = db.Column(db.DateTime, default=datetime.now, nullable=False)
-    updated_at = db.Column(
-        db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False
-    )
+    updated_at = db.Column(db.DateTime, default=datetime.now, onupdate=datetime.now, nullable=False)
 
     user = db.relationship("User", back_populates="profile")
     instruments = db.relationship("Instrument", secondary=profile_instruments)
@@ -138,9 +109,7 @@ class Profile(db.Model):
             "biography": self.biography,
             "location": self.location,
             "profile_pic": self.profile_pic,
-            "instruments": [
-                instrument.to_dict()["id"] for instrument in self.instruments
-            ],
+            "instruments": [instrument.to_dict()["id"] for instrument in self.instruments],
             "recordings": self.get_recordings_info(self.recordings),
             "styles": [style.to_dict()["id"] for style in self.styles],
             "createdAt": self.created_at,
@@ -209,8 +178,23 @@ class Band(db.Model):
             "isPublic": self.isPublic,
             "ownerId": self.owner_id,
             "styleId": self.style_id,
-            "members": [user.to_dict()["userId"] for user in self.users],
-        }
+            "members": self.confirmed_members(self.users),
+            "pendingMembers": self.pending_members(self.users)
+            }
+
+    def confirmed_members(self, users):
+        res = []
+        for user in users:
+            if user.isConfirmed:
+                res.append(user.to_dict()["userId"])
+        return res
+
+    def pending_members(self, users):
+        res = []
+        for user in users:
+            if not user.isConfirmed:
+                res.append(user.to_dict()["userId"])
+        return res
 
 
 class UserBand(db.Model):

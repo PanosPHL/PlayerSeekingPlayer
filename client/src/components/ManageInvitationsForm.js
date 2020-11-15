@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { putAndAddMember } from '../store/bands';
 import { toggleManageInvitationModal } from '../store/ui/invitations';
 
-const ManageInvitationsForm = ({ ownedBands }) => {
-const dispatch = useDispatch();
+const ManageInvitationsForm = ({ ownedBands, location }) => {
+  const recipientId = location.pathname.split('/')[2].toString();
+  const senderId = useSelector(state => state.session.userId.toString());
+  const dispatch = useDispatch();
   const [bandId, setBandId] = useState(-1);
   const [message, setMessage] = useState("");
 
   const handleBandIdChange = (e) => {
-    setBandId(Number(e.target.value));
+    setBandId(e.target.value);
   };
 
   const handleMessageChange = (e) => {
@@ -20,8 +24,9 @@ const dispatch = useDispatch();
       document.body.classList.remove('noscroll');
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
       e.preventDefault();
+      const res = await dispatch(putAndAddMember(senderId, recipientId, bandId, message));
   }
 
   return (
@@ -45,4 +50,4 @@ const dispatch = useDispatch();
   );
 };
 
-export default ManageInvitationsForm;
+export default withRouter(ManageInvitationsForm);

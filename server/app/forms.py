@@ -83,8 +83,8 @@ class SearchForm(FlaskForm):
     firstName = StringField("First Name")
     lastName = StringField("Last Name")
     radius = IntegerField("Radius", validators=[InputRequired("Please provide a mile radius to search within.")])
-    instruments = QuerySelectMultipleField("Instruments", validators=[InputRequired("Please provide at least one instrument")], get_label="Instruments", query_factory=get_instrument_choices, allow_blank=False)
-    styles = QuerySelectMultipleField("Styles", validators=[InputRequired("Please provide at least one style")], get_label="Styles", query_factory=get_style_choices, allow_blank=False)
+    instruments = QuerySelectMultipleField("Instruments", validators=[InputRequired("Please provide at least one instrument")], query_factory=get_instrument_choices, allow_blank=False)
+    styles = QuerySelectMultipleField("Styles", validators=[InputRequired("Please provide at least one style")],  query_factory=get_style_choices, allow_blank=False)
 
 class ProfilePicForm(FlaskForm):
     img = StringField("Image", validators=[InputRequired("Please crop your provided image")])

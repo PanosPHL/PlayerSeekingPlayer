@@ -9,7 +9,7 @@ const ManageInvitationsModal = () => {
         const res = [];
         for (const band in state.entities.bands) {
             if (state.entities.bands[band].ownerId === state.session.userId) {
-                res.push(band);
+                res.push(state.entities.bands[band]);
             }
         }
         return res;

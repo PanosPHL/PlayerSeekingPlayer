@@ -39,6 +39,28 @@ export const postAndAddBand = (name, isPublic = true, owner, style) => {
     }
 }
 
+export const putAndAddMember = (senderId, recipientId, bandId, message) => {
+    return async dispatch => {
+        const csrfToken = Cookie.get('XSRF-TOKEN');
+        const res = await fetch(`/api/bands/${bandId}/add_member`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ sender_id: senderId, recipient_id: recipientId, band_id: bandId, message, csrfToken})
+        });
+
+        res.data = await res.json();
+        console.log(res);
+        if (res.ok) {
+
+        }
+
+        return res;
+    }
+}
+
 export default function bandReducer(state = {}, action) {
     const newState = Object.assign({}, state);
     switch(action.type) {

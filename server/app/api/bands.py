@@ -1,6 +1,6 @@
 from flask import Blueprint, request, make_response
 from app.models import db, Band, UserBand, User
-from app.forms import BandForm
+from app.forms import BandForm, InvitationForm
 from werkzeug.datastructures import MultiDict
 
 from app.utils.errors import format_errors
@@ -25,6 +25,13 @@ def create_band():
         r = make_response({ "errors": format_errors(form.errors) }, 401)
         return r
 
-@band_routes.route('/<int:band_id>/members', methods=["PUT"])
+@band_routes.route('/<int:band_id>/add_member', methods=["PUT"])
 def manage_members(band_id):
-    pass
+    data = MultiDict(mapping=request.json)
+    form = InvitationForm(data)
+    if form.validate():
+        data = request.json
+        print(data)
+    else:
+        r = make_response({ "errors": form.errors }, 401)
+        return r

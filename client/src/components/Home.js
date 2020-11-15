@@ -27,13 +27,13 @@ const Home = ({ match }) => {
 
     return (
         <>
+            <HomeRouter>
             <BioFormModal />
             <OverviewFormModal />
             <ProfilePicFormModal />
             <RecordingFormModal />
             <NewBandModal />
             <ManageInvitationsModal />
-            <HomeRouter>
                 <TopBar />
                 <Switch>
                     <Route path={`${match.url}profiles/:id`} component={ProfilePage} />
