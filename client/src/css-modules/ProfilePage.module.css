@@ -113,9 +113,29 @@
 }
 
 .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 20%;
+
+    position: absolute;
+    bottom: 23%;
+    left: 27%;
+
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.nameAndButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 20%;
+
     position: absolute;
     bottom: 30%;
-    left: 28%;
+    left: 27%;
 
     color: rgba(0, 0, 0, 0.45);
 }

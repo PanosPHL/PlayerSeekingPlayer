@@ -2,9 +2,10 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { aboutOn, recordingsOn, toggleProfilePicButton, toggleProfilePicForm } from '../store/ui/profilePage';
 import profStyles from '../css-modules/ProfilePage.module.css';
+import ManageInvitationsButton from './ManageInvitationsButton';
 
 
-const ProfileTopSection = ({ userProfile, about, recordings }) => {
+const ProfileTopSection = ({ isOwner, userProfile, about, recordings }) => {
     const dispatch = useDispatch();
     const { pictures: { profilePicButton } } = useSelector(state => state.ui.profilePage);
 
@@ -49,8 +50,9 @@ const ProfileTopSection = ({ userProfile, about, recordings }) => {
                     <></> }
                 </div>
             </div>
-            <div className={profStyles.name}>
+            <div className={isOwner ? profStyles.name : profStyles.nameAndButton}>
                 <h1>{userProfile ? userProfile.firstName + ' ' + userProfile.lastName : ''}</h1>
+                { isOwner ? <></> : <ManageInvitationsButton />}
             </div>
             <div className={profStyles.toolbar}>
                 <div className={profStyles.buttonContainer}>

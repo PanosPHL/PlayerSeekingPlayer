@@ -12,6 +12,7 @@ import SearchResults from './SearchResults';
 import ProfilePicFormModal from './ProfilePicFormModal';
 import MyBands from './MyBands';
 import NewBandModal from './NewBandModal';
+import ManageInvitationsModal from './ManageInvitationsModal';
 
 
 const Home = ({ match }) => {
@@ -31,6 +32,7 @@ const Home = ({ match }) => {
             <ProfilePicFormModal />
             <RecordingFormModal />
             <NewBandModal />
+            <ManageInvitationsModal />
             <HomeRouter>
                 <TopBar />
                 <Switch>

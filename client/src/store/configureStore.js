@@ -9,10 +9,11 @@ import recordings from './recordings';
 import session from './session';
 import users from './users';
 import styles from './styles';
-import signUpForm from './ui/signUpForm';
+import invitations from './ui/invitations';
+import myBands from './ui/myBands';
 import navbar from './ui/navbar';
 import profilePage from './ui/profilePage';
-import myBands from './ui/myBands';
+import signUpForm from './ui/signUpForm';
 
 import { LOGOUT } from './session';
 
@@ -27,10 +28,11 @@ const entities = combineReducers({
 });
 
 const ui = combineReducers({
-    signUpForm,
+    invitations,
     myBands,
     navbar,
-    profilePage
+    profilePage,
+    signUpForm
 });
 
 const appReducer = combineReducers({
