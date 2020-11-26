@@ -13,6 +13,14 @@ const SET_RECORDING_FORM_ID = 'session/SET_RECORDING_FORM_ID';
 const SET_SEARCH_RESULTS = 'session/SEARCH_RESULTS';
 const RECEIVED_INVITATION_TYPE = 'session/RECEIVED_INVITATION_TYPE';
 const SENT_INVITATION_TYPE = 'session/SENT_INVITATION_TYPE';
+const SET_ACTIVE_INVITATION = 'session/SET_ACTIVE_INVITATION';
+
+export const setActiveInvitation = (invitationId) => {
+    return {
+        type: SET_ACTIVE_INVITATION,
+        invitationId
+    }
+}
 
 export const changeInvitationType = (invType) => {
     return {
@@ -132,7 +140,8 @@ const initialSessionState = {
     userId: null,
     recordingFormId: null,
     searchResults: [],
-    invitationType: 'received'
+    invitationType: 'received',
+    activeInvitation: null
 };
 
 export default function sessionReducer(state = initialSessionState, action) {
@@ -155,6 +164,9 @@ export default function sessionReducer(state = initialSessionState, action) {
             return newState;
         case SENT_INVITATION_TYPE:
             newState.invitationType = 'sent';
+            return newState;
+        case SET_ACTIVE_INVITATION:
+            newState.activeInvitation = action.invitationId;
             return newState;
         default:
             return state;

@@ -1,9 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { defaultInvitationMessage } from '../utils/defaultInvitationMessage';
 import invStyles from '../css-modules/MyInvitations.module.css';
+import { setActiveInvitation } from '../store/session';
 
 const MyInvitationRow = ({ invitation, invitationType }) => {
+    const dispatch = useDispatch();
     const otherUser = useSelector(state => {
         if (invitationType === 'received') {
             return state.entities.users[invitation.senderId];
@@ -12,8 +14,13 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
         }
     });
     const band = useSelector(state => state.entities.bands[invitation.bandId]);
+
+    const handleInvitationClick = () => {
+        dispatch(setActiveInvitation(invitation.id));
+    }
+
     return (
-        <div>
+        <div onClick={handleInvitationClick}>
             <div className={invStyles.userInfo}>
                 <img
                 className={invStyles.senderProfilePic}
@@ -28,7 +35,6 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
                         <div>
                         {defaultInvitationMessage(otherUser, band).split('').slice(0, 66).join('') + '...'}
                         </div>
-
                     }
                 </div>
             </div>

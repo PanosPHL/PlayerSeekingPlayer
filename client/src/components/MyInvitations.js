@@ -18,11 +18,13 @@ const MyInvitations = () => {
             })
         }
     });
+    const activeInvitation = useSelector(state => state.entities.invitations[state.session.activeInvitation]);
+    const invitationType = useSelector(state => state.session.invitationType);
 
     return (
         <div className={invStyles.pageContainer}>
             <MyInvitationsSidebar invitations={invitations} />
-            <MyInvitationsContent />
+            <MyInvitationsContent invitation={activeInvitation} invitationType={invitationType}/>
         </div>
     )
 }
