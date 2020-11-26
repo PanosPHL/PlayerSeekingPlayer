@@ -52,8 +52,29 @@
     width: 100%;
 }
 
-.topBarContainer {
-    height: 8vh;
+.topBarContainer, .bottomBarContainer {
+    height: 70px;
     background-color: #FFFCFC;
+}
+
+.topBarContainer {
     border-bottom: 1px solid #C5C3C3;
+}
+
+.bottomBarContainer {
+    border-top: 1px solid #C5C3C3;
+}
+
+.centerContainer {
+    height: 567px;
+}
+
+.senderProfilePic {
+    height: 70px;
+    border-radius: 50%;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
 }

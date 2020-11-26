@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { changeInvitationType } from '../store/session';
+import MyInvitationRow from './MyInvitationRow';
 import invStyles from '../css-modules/MyInvitations.module.css';
 
 const MyInvitationsSidebar = ({ invitations }) => {
@@ -28,7 +29,11 @@ const MyInvitationsSidebar = ({ invitations }) => {
                     className={invStyles.sidebarHeaderButton + (invitationType === 'sent' ? " " + invStyles.activeButton : '')}>Sent</button>
                 </div>
             </div>
-            <div></div>
+            <div>
+                {
+                    invitations.map((invitation) => <MyInvitationRow invitation={invitation} invitationType={invitationType} />)
+                }
+            </div>
         </div>
     )
 }

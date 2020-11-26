@@ -7,7 +7,7 @@ const UserSearchImage = ({ user }) => {
         <Link to={`/profiles/${user ? user.id : null}`}>
         <div className={searchStyles.pictureContainer}>
             <img className={searchStyles.picture}
-            src={user && user.profileInfo.profile_pic ? user.profileInfo.profile_pic : '/images/default_profile_photo.jpg'} alt='Profile' />
+            src={user && user.profileInfo.profilePic ? user.profileInfo.profilePic : '/images/default_profile_photo.jpg'} alt='Profile' />
             <div></div>
         </div>
         </Link>

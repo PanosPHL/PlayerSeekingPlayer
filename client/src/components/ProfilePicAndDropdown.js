@@ -10,7 +10,7 @@ const ProfilePicAndDropdown = ({ profileDropdown }) => {
 
     return (
         <div className={navStyles.profileContainer} onClick={handleProfileDropdownClick}>
-            <img className={navStyles.profileImage} src={user ? user.profileInfo.profile_pic || '/images/default_profile_photo.jpg' : ''} alt='Profile Placeholder' />
+            <img className={navStyles.profileImage} src={user ? user.profileInfo.profilePic || '/images/default_profile_photo.jpg' : ''} alt='Profile Placeholder' />
             <span className={navStyles.profileDropdownArrow + " " + (profileDropdown ? navStyles.active : navStyles.inactive)}>⯆</span>
             <ProfileDropdown userId={user ? user.id : null} className={profileDropdown ? navStyles.dropdownContainer : navStyles.hidden} />
         </div>

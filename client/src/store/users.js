@@ -221,7 +221,7 @@ export default function usersReducer(state = {}, action) {
         case UPDATE_PROFILE_PICTURE:
             newUser = Object.assign({}, newState[[action.profile.user_id]]);
             newProfileInfo = Object.assign({}, newUser.profileInfo);
-            newProfileInfo.profile_pic = action.profile.profile_pic;
+            newProfileInfo.profilePic = action.profile.profilePic;
             newUser.profileInfo = newProfileInfo;
             newState[[action.profile.user_id]] = newUser;
             return newState;

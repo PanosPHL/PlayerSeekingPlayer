@@ -112,7 +112,7 @@ class Profile(db.Model):
             "user_id": self.user_id,
             "biography": self.biography,
             "location": self.location,
-            "profile_pic": self.profile_pic,
+            "profilePic": self.profile_pic,
             "instruments": [instrument.to_dict()["id"] for instrument in self.instruments],
             "recordings": self.get_recordings_info(self.recordings),
             "styles": [style.to_dict()["id"] for style in self.styles],
