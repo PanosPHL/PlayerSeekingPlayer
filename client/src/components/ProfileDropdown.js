@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../store/session';
 import navStyles from '../css-modules/NavComponents.module.css';
 
@@ -24,6 +24,9 @@ const ProfileDropdown = ({ className, history, userId }) => {
             </Link>
             <Link className={navStyles.dropdownLink} to='/my-bands'>
                 <li className={navStyles.dropdownListItem}>Bands</li>
+            </Link>
+            <Link className={navStyles.dropdownLink} to='/my-invitations'>
+                <li className={navStyles.dropdownListItem}>My Invitations</li>
             </Link>
             <li className={navStyles.dropdownListItem} onClick={handleLogoutClick}>Logout</li>
         </ul>

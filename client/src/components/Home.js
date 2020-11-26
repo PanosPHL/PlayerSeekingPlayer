@@ -13,6 +13,7 @@ import ProfilePicFormModal from './ProfilePicFormModal';
 import MyBands from './MyBands';
 import NewBandModal from './NewBandModal';
 import ManageInvitationsModal from './ManageInvitationsModal';
+import MyInvitations from './MyInvitations';
 
 
 const Home = ({ match }) => {
@@ -39,6 +40,7 @@ const Home = ({ match }) => {
                     <Route path={`${match.url}profiles/:id`} component={ProfilePage} />
                     <Route path={`${match.url}search`} component={SearchResults} />
                     <Route path={`${match.url}my-bands`} component={MyBands} />
+                    <Route path={`${match.url}my-invitations`} component={MyInvitations} />
                 </Switch>
             </HomeRouter>
             <Footer />

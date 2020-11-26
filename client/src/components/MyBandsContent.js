@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import bandStyles from '../css-modules/MyBands.module.css';
 import MyBandsList from './MyBandsList';
 

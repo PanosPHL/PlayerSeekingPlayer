@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleProfilePicForm } from '../store/ui/profilePage'
 import ModalContainer from './ModalContainer';
