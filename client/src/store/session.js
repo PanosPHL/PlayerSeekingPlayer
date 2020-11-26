@@ -7,11 +7,18 @@ import { addInvitations } from './invitations';
 
 import Cookie from 'js-cookie';
 
-
 const LOGIN = 'session/LOGIN';
 export const LOGOUT = 'session/LOGOUT';
 const SET_RECORDING_FORM_ID = 'session/SET_RECORDING_FORM_ID';
 const SET_SEARCH_RESULTS = 'session/SEARCH_RESULTS';
+const RECEIVED_INVITATION_TYPE = 'session/RECEIVED_INVITATION_TYPE';
+const SENT_INVITATION_TYPE = 'session/SENT_INVITATION_TYPE';
+
+export const changeInvitationType = (invType) => {
+    return {
+        type: invType === 'received' ? RECEIVED_INVITATION_TYPE : SENT_INVITATION_TYPE,
+    }
+}
 
 const addUserToSession = (userId) => {
     return {
@@ -124,7 +131,8 @@ export const search = (firstName, lastName, radius, instruments, styles, userId)
 const initialSessionState = {
     userId: null,
     recordingFormId: null,
-    searchResults: []
+    searchResults: [],
+    invitationType: 'received'
 };
 
 export default function sessionReducer(state = initialSessionState, action) {
@@ -141,6 +149,12 @@ export default function sessionReducer(state = initialSessionState, action) {
             return newState;
         case SET_SEARCH_RESULTS:
             newState.searchResults = action.searchResults;
+            return newState;
+        case RECEIVED_INVITATION_TYPE:
+            newState.invitationType = 'received';
+            return newState;
+        case SENT_INVITATION_TYPE:
+            newState.invitationType = 'sent';
             return newState;
         default:
             return state;

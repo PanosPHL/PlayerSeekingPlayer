@@ -39,7 +39,7 @@
     border-radius: 4px;
 }
 
-.sidebarHeaderButton:hover, .sidebarHeaderButton:active, .sidebarHeaderButton:focus {
+.sidebarHeaderButton:hover, .sidebarHeaderButton:active, .sidebarHeaderButton:focus, .activeButton {
     filter: brightness(90%);
     outline: none;
 }
