@@ -1,11 +1,13 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setActiveInvitation } from '../store/session';
 import { defaultInvitationMessage } from '../utils/defaultInvitationMessage';
 import invStyles from '../css-modules/MyInvitations.module.css';
 import ReceivedInvitationButtons from './ReceivedInvitationButtons';
 import SentInvitationButtons from './SentInvitationButtons';
 
 const MyInvitationsContent = ({ invitation, invitationType }) => {
+    const dispatch = useDispatch();
     const otherUser = useSelector(state => {
         if (!state.session.activeInvitation) {
             return null;

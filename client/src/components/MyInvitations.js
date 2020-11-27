@@ -26,8 +26,10 @@ const MyInvitations = () => {
     useEffect(() => {
         if (invitations.length) {
             dispatch(setActiveInvitation(invitations[0].id));
+        } else {
+            dispatch(setActiveInvitation(null));
         }
-    }, [activeInvitation, invitations, dispatch])
+    }, [invitationType]);
 
     return (
         <div className={invStyles.pageContainer}>
