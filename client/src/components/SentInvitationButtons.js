@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import invStyles from '../css-modules/MyInvitations.module.css';
 
-const SentInvitationButtons = () => {
+const SentInvitationButtons = ({ disabled }) => {
     return (
         <div>
-            <button>Delete <i className="fas fa-trash"></i></button>
+            <button className={disabled ? invStyles.disabledButton : ''}>Delete <i className="fas fa-trash"></i></button>
         </div>
     )
 }

@@ -39,8 +39,8 @@ const MyInvitationsContent = ({ invitation, invitationType }) => {
             <div className={invStyles.bottomBarContainer}>
                 {
                 invitationType === 'received' ?
-                <ReceivedInvitationButtons /> :
-                <SentInvitationButtons />
+                <ReceivedInvitationButtons disabled={invitation ? false : true} /> :
+                <SentInvitationButtons disabled={invitation ? false : true} />
                 }
             </div>
         </div>
