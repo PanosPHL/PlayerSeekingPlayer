@@ -20,20 +20,20 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
     }
 
     return (
-        <div onClick={handleInvitationClick}>
+        <div className={invStyles.invitationRow} onClick={handleInvitationClick}>
             <div className={invStyles.userInfo}>
                 <img
                 className={invStyles.senderProfilePic}
                 src={otherUser.profileInfo.profilePic || '/images/default_profile_photo.jpg'}
                 alt={`${otherUser.firstName} ${otherUser.lastName}`} />
-                <div>
-                    <h3>{otherUser.firstName + " " + otherUser.lastName}</h3>
-                    <h4>{band.name}</h4>
+                <div className={invStyles.invitationRowTextContainer}>
+                    <h3 className={invStyles.invitationRowUser}>{otherUser.firstName + " " + otherUser.lastName}</h3>
+                    <h4 className={invStyles.invitationRowBand}>{band.name}</h4>
                     {
                         invitation.message ?
-                        <p>{invitation.message}</p> :
-                        <div>
-                        {defaultInvitationMessage(otherUser, band).split('').slice(0, 66).join('') + '...'}
+                        <p className={invStyles.invitationRowMessage}>{invitation.message}</p> :
+                        <div className={invStyles.invitationRowMessage}>
+                        {defaultInvitationMessage(otherUser, band).split('').slice(0, 65).join('') + '...'}
                         </div>
                     }
                 </div>

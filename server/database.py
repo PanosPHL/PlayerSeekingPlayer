@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app import app, db
-from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording
+from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording, Band, Invitation
 
 from app.utils.biographies import kenny_garrett, harry_mack, mahalia
 
@@ -61,6 +61,16 @@ with app.app_context():
   line_freestyle = Recording(url='https://www.youtube.com/watch?v=p_w3TNLXH3k')
   euphoria = Recording(url='https://www.youtube.com/watch?v=7C19ZGLuhlQ')
   missed_my_ex = Recording(url='https://www.youtube.com/watch?v=a7kT52xL-7g')
+
+  five_peace_band = Band(name="Five Peace Band", owner_id=1, style_id=1)
+
+  db.session.add(five_peace_band)
+
+  kenny_to_kenny = Invitation(sender_id=1, recipient_id=2, band_id=1, message="")
+
+  db.session.add(kenny_to_kenny)
+
+  db.session.commit()
 
   demo_profile.instruments.append(alto_sax)
   demo_profile.instruments.append(keyboard)

@@ -72,14 +72,59 @@
 .senderProfilePic {
     height: 70px;
     border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .userInfo {
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .disabledButton {
     filter: brightness(120%);
     pointer-events: none;
+}
+
+.invitationRowContainer {
+    padding: 8px;
+}
+
+.invitationRow {
+    border-radius: 4px;
+    margin: 4px 0;
+    background-color: white;
+    padding: 8px;
+}
+
+.invitationRow:hover {
+    filter: brightness(90%);
+}
+
+.invitationRow:active {
+    filter: brightness(80%);
+}
+
+.invitationRowUser, .invitationRowBand {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.invitationRowUser {
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.invitationRowBand {
+    font-size: 16px;
+}
+
+.invitationRowMessage {
+    margin-top: 4px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.invitationRowTextContainer {
+    margin-left: 8px;
 }

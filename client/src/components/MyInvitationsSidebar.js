@@ -29,7 +29,7 @@ const MyInvitationsSidebar = ({ invitations }) => {
                     className={invStyles.sidebarHeaderButton + (invitationType === 'sent' ? " " + invStyles.activeButton : '')}>Sent</button>
                 </div>
             </div>
-            <div>
+            <div className={invStyles.invitationRowContainer}>
                 {
                     invitations.map((invitation) => <MyInvitationRow invitation={invitation} invitationType={invitationType} />)
                 }
