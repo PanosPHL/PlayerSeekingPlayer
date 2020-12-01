@@ -18,7 +18,7 @@ def create_band():
         new_band = Band(name=data["name"], isPublic=data["isPublic"], owner_id=data["owner"], style_id=data["style"])
         db.session.add(new_band)
         db.session.commit()
-        new_user_band = UserBand(user_id=data["owner"], band_id=new_band.to_dict()["id"], isConfirmed=True)
+        new_user_band = UserBand(user_id=data["owner"], band_id=new_band.to_dict()["id"], is_confirmed=True)
         db.session.add(new_user_band)
         db.session.commit()
         return { "band": new_band.to_dict() }
@@ -33,7 +33,7 @@ def manage_members(band_id):
     if form.validate():
         data = request.json
         new_invitation = Invitation(sender_id=data["sender_id"], recipient_id=data["recipient_id"], band_id=data["band_id"], message=data["message"])
-        new_user_band = UserBand(user_id=data["recipient_id"], band_id=data["band_id"], isConfirmed=False)
+        new_user_band = UserBand(user_id=data["recipient_id"], band_id=data["band_id"], is_confirmed=False)
 
         db.session.add(new_invitation, new_user_band)
         db.session.commit()
