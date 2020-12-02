@@ -90,8 +90,13 @@
     width: 100%;
 }
 
-.disabledButton {
+.disabledReceivedButton {
     filter: brightness(600%);
+    pointer-events: none;
+}
+
+.disabledSentButton {
+    filter: brightness(200%);
     pointer-events: none;
 }
 

@@ -1,7 +1,7 @@
 import Cookie from 'js-cookie';
 import { login } from './session';
 import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING, DELETE_PROFILE_RECORDING } from './recordings';
-import { ADD_INVITATION } from './invitations';
+import { ADD_INVITATION, DELETE_INVITATION } from './invitations';
 
 const SIGNUP_USER = 'users/SIGNUP_USER';
 const SET_USERS = 'users/SET_USERS';
@@ -230,6 +230,19 @@ export default function usersReducer(state = {}, action) {
             newSender.sentInvitations = [...newSender.sentInvitations, action.invitation.id];
             newRecipient = Object.assign({}, newState[action.invitation.recipientId]);
             newRecipient.receivedInvitations = [...newSender.receivedInvitations, action.invitation.id];
+
+            newState[action.invitation.senderId] = newSender;
+            newState[action.invitation.recipientId] = newRecipient;
+
+            return newState;
+        case DELETE_INVITATION:
+            newSender = newState[action.invitation.senderId];
+            let slice = newSender.sentInvitations.indexOf(action.invitation.id);
+            newSender.sentInvitations = [...newSender.sentInvitations.slice(0, slice), ...newSender.sentInvitations.slice(slice + 1)];
+
+            newRecipient = newState[action.invitation.recipientId];
+            slice = newRecipient.receivedInvitations.indexOf(action.invitation.id);
+            newRecipient.receivedInvitations = [...newRecipient.receivedInvitations.slice(0, slice), ...newRecipient.receivedInvitations.slice(slice + 1)];
 
             newState[action.invitation.senderId] = newSender;
             newState[action.invitation.recipientId] = newRecipient;
