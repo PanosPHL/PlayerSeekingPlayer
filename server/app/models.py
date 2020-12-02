@@ -273,6 +273,7 @@ class Invitation(db.Model):
         "recipientId": self.recipient_id,
         "bandId": self.band_id,
         "message": self.message,
+        "status": self.status,
         "createdAt": self.created_at,
         "updatedAt": self.updated_at
       }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setActiveInvitation } from '../store/session';
-import { defaultInvitationMessage } from '../utils/defaultInvitationMessage';
+import { defaultInvitationMessage } from '../utils';
 import invStyles from '../css-modules/MyInvitations.module.css';
 import ReceivedInvitationButtons from './ReceivedInvitationButtons';
 import SentInvitationButtons from './SentInvitationButtons';
@@ -29,7 +29,16 @@ const MyInvitationsContent = ({ invitation, invitationType }) => {
 
     return (
         <div className={invStyles.contentContainer}>
-            <div className={invStyles.topBarContainer}></div>
+            <div className={invStyles.topBarContainer}>
+                <div className={invStyles.topBarPhotoAndName}>
+                    <img
+                    className={invStyles.invitationContentProfilePhoto}
+                    src={otherUser && otherUser.profileInfo.profilePic ? otherUser.profileInfo.profilePic : '/images/default_profile_photo.jpg'}
+                    alt={otherUser ? `${otherUser.firstName} ${otherUser.lastName}` : "No User"}/>
+                    <h2 className={invStyles.activeInvitationHeaderText}>{otherUser ? `${otherUser.firstName} ${otherUser.lastName}` : ""}</h2>
+                </div>
+                    <h2 className={invStyles.activeInvitationHeaderText}>{band ? band.name : ""}</h2>
+            </div>
             <div className={invStyles.centerContainer}>
             {
                 invitation && invitation.message ?

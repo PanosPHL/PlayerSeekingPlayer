@@ -10,6 +10,7 @@ from .api.user_routes import user_routes
 from .api.session import session_routes
 from .api.recordings import recording_routes
 from .api.bands import band_routes
+from .api.invitations import invitation_routes
 
 from .config import Config
 
@@ -19,6 +20,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(session_routes, url_prefix='/api/session')
 app.register_blueprint(recording_routes, url_prefix='/api/recordings')
 app.register_blueprint(band_routes, url_prefix='/api/bands')
+app.register_blueprint(invitation_routes, url_prefix='/api/invitations')
 db.init_app(app)
 Migrate(app, db)
 login_manager.init_app(app)
