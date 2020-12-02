@@ -236,11 +236,11 @@ export default function usersReducer(state = {}, action) {
 
             return newState;
         case DELETE_INVITATION:
-            newSender = newState[action.invitation.senderId];
+            newSender = Object.assign({}, newState[action.invitation.senderId]);
             let slice = newSender.sentInvitations.indexOf(action.invitation.id);
             newSender.sentInvitations = [...newSender.sentInvitations.slice(0, slice), ...newSender.sentInvitations.slice(slice + 1)];
 
-            newRecipient = newState[action.invitation.recipientId];
+            newRecipient = Object.assign({}, newState[action.invitation.recipientId]);
             slice = newRecipient.receivedInvitations.indexOf(action.invitation.id);
             newRecipient.receivedInvitations = [...newRecipient.receivedInvitations.slice(0, slice), ...newRecipient.receivedInvitations.slice(slice + 1)];
 

@@ -1,6 +1,6 @@
-import { addInvitation } from './invitations';
-
 import Cookie from 'js-cookie';
+import { addInvitation } from './invitations';
+import { ACCEPT_INVITATION, DECLINE_INVITATION } from './invitations';
 
 const ADD_BAND = 'bands/ADD_BAND';
 const SET_BANDS = 'bands/SET_BANDS';

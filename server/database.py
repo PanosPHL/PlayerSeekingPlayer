@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app import app, db
-from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording, Band, Invitation
+from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording, Band, Invitation, UserBand
 
 from app.utils.biographies import kenny_garrett, harry_mack, mahalia
 
@@ -63,12 +63,20 @@ with app.app_context():
   missed_my_ex = Recording(url='https://www.youtube.com/watch?v=a7kT52xL-7g')
 
   five_peace_band = Band(name="Five Peace Band", owner_id=1, style_id=1)
+  fpb_owner = UserBand(is_confirmed=True)
+  fpb_owner.user = demo
+  fpb_owner.band = five_peace_band
 
   db.session.add(five_peace_band)
+  db.session.add(fpb_owner)
 
   kenny_to_kenny = Invitation(sender_id=1, recipient_id=2, band_id=1, message="")
+  fpb_pending = UserBand(is_confirmed=False)
+  fpb_pending.user = demo_2
+  fpb_pending.band = five_peace_band
 
   db.session.add(kenny_to_kenny)
+  db.session.add(fpb_pending)
 
   db.session.commit()
 

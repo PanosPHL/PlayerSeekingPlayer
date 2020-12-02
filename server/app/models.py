@@ -207,24 +207,30 @@ class Band(db.Model):
             "isPublic": self.isPublic,
             "ownerId": self.owner_id,
             "styleId": self.style_id,
-            "members": self.confirmed_members(self.users),
-            "pendingMembers": self.pending_members(self.users),
+            "members": self.confirmed_members(),
+            "pendingMembers": self.pending_members(),
             "createdAt": self.created_at,
             "updatedAt": self.updated_at
             }
 
-    def confirmed_members(self, users):
+    def confirmed_members(self):
         res = []
-        for user in users:
-            if user.is_confirmed:
-                res.append(user.to_dict()["userId"])
+        print(self.users)
+        for user in self.users:
+            user_dict = user.to_dict()
+            print(user_dict)
+            if user_dict["isConfirmed"]:
+                res.append(user_dict["userId"])
         return res
 
-    def pending_members(self, users):
+    def pending_members(self):
         res = []
-        for user in users:
-            if not user.is_confirmed:
-                res.append(user.to_dict()["userId"])
+        print(self.users)
+        for user in self.users:
+            user_dict = user.to_dict()
+            print(user_dict)
+            if not user_dict["isConfirmed"]:
+                res.append(user_dict["userId"])
         return res
 
 
