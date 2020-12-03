@@ -31,13 +31,13 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
                     <h3 className={invStyles.invitationRowUser}>{otherUser.firstName + " " + otherUser.lastName}</h3>
                     <span
                     className={invStyles.invitationRowStatus + (invitation.status === "Pending" ? " " + invStyles.pendingStatus :
-                    invitation.status === "Accepted" ? " " + invStyles.acceptedStatus : invStyles.declinedStatus)}>{invitation.status}</span>
+                    invitation.status === "Accepted" ? " " + invStyles.acceptedStatus : " " + invStyles.declinedStatus)}>{invitation.status}</span>
                     </div>
                     <h4 className={invStyles.invitationRowBand}>{band.name}</h4>
                     {
                         invitation.message ?
                         <p className={invStyles.invitationRowMessage}>
-                            {invitation.message.slice(0, 62).join('') + '...'}
+                            {invitation.message.slice(0, 62) + '...'}
                             <span className={invStyles.invitationRowDate}>{"  " + invitationRowDate(invitation.createdAt)}</span>
                         </p> :
                         <div className={invStyles.invitationRowMessage}>

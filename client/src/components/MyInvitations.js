@@ -34,7 +34,7 @@ const MyInvitations = () => {
     return (
         <div className={invStyles.pageContainer}>
             <MyInvitationsSidebar invitations={invitations} />
-            <MyInvitationsContent invitation={activeInvitation} invitationType={invitationType}/>
+            <MyInvitationsContent invitation={activeInvitation} invitations={invitations} invitationType={invitationType}/>
         </div>
     )
 }

@@ -23,7 +23,7 @@ class User(db.Model, UserMixin):
 
     profile = db.relationship("Profile", back_populates="user")
     bands = db.relationship("UserBand", back_populates="user")
-    owned_band = db.relationship("Band", back_populates="owner")
+    owned_bands = db.relationship("Band", back_populates="owner")
     received_invitations = db.relationship("Invitation", back_populates="recipient", foreign_keys="Invitation.recipient_id")
     sent_invitations = db.relationship("Invitation", back_populates="sender", foreign_keys="Invitation.sender_id")
 
@@ -197,7 +197,7 @@ class Band(db.Model):
     __table_args__ = (db.UniqueConstraint("owner_id", "name", name="unique_name_per_owner"),)
 
     style = db.relationship("Style")
-    owner = db.relationship("User", back_populates="owned_band")
+    owner = db.relationship("User", back_populates="owned_bands")
     users = db.relationship("UserBand", back_populates="band")
 
     def to_dict(self):

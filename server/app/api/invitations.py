@@ -19,17 +19,18 @@ def update_invitation_status(invitation_id):
     invitation.status = data["status"]
 
     invitation_dict = invitation.to_dict()
-
-    user_band = UserBand.query.filter(UserBand.band_id == invitation_dict["band_id"], UserBand.user_id == invitation_dict["user_id"]).one()
-    user_band.is_confirmed = True
-
+    user_band = UserBand.query.filter(UserBand.band_id == invitation_dict["bandId"], UserBand.user_id == invitation_dict["recipientId"]).one()
     user_band_dict = user_band.to_dict()
 
-    db.session.commit()
+    if invitation_dict["status"] == "Accepted":
+        user_band.is_confirmed = True
+        db.session.commit()
+    else:
+        db.session.delete(user_band)
 
     return {
         "invitationId": invitation_dict["id"],
         "status": invitation_dict["status"],
-        "bandId": user_band_dict["band_id"],
-        "userId": user_band_dict["user_id"]
+        "bandId": user_band_dict["bandId"],
+        "userId": invitation_dict["recipientId"]
     }

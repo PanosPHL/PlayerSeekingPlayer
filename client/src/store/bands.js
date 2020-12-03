@@ -75,6 +75,7 @@ export const putAndAddMember = (senderId, recipientId, bandId, message) => {
 
 export default function bandReducer(state = {}, action) {
     const newState = Object.assign({}, state);
+    let slice;
     let newBand;
     switch(action.type) {
         case SET_BANDS:
@@ -90,6 +91,21 @@ export default function bandReducer(state = {}, action) {
             newBand.pendingMembers = [...newBand.pendingMembers, Number(action.userId)];
             newState[newBand.id] = newBand;
             return newState;
+        case ACCEPT_INVITATION:
+            newBand = Object.assign({}, newState[action.bandId]);
+            slice = newBand.pendingMembers.indexOf(action.userId);
+            newBand.pendingMembers = [...newBand.pendingMembers.slice(0, slice), ...newBand.pendingMembers.slice(slice + 1)];
+            newBand.members = [...newBand.members, Number(action.userId)];
+            newState[action.bandId] = newBand;
+
+            return newState;
+        case DECLINE_INVITATION:
+            newBand = Object.assign({}, newState[action.bandId]);
+            slice = newBand.pendingMembers.indexOf(action.userId);
+            newBand.pendingMembers = [...newBand.pendingMembers.slice(0, slice), ...newBand.pendingMembers.slice(slice + 1)];
+            newState[action.bandId] = newBand;
+
+            return newState
         default:
             return state;
     }

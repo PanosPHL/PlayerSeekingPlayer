@@ -62,24 +62,6 @@ with app.app_context():
   euphoria = Recording(url='https://www.youtube.com/watch?v=7C19ZGLuhlQ')
   missed_my_ex = Recording(url='https://www.youtube.com/watch?v=a7kT52xL-7g')
 
-  five_peace_band = Band(name="Five Peace Band", owner_id=1, style_id=1)
-  fpb_owner = UserBand(is_confirmed=True)
-  fpb_owner.user = demo
-  fpb_owner.band = five_peace_band
-
-  db.session.add(five_peace_band)
-  db.session.add(fpb_owner)
-
-  kenny_to_kenny = Invitation(sender_id=1, recipient_id=2, band_id=1, message="")
-  fpb_pending = UserBand(is_confirmed=False)
-  fpb_pending.user = demo_2
-  fpb_pending.band = five_peace_band
-
-  db.session.add(kenny_to_kenny)
-  db.session.add(fpb_pending)
-
-  db.session.commit()
-
   demo_profile.instruments.append(alto_sax)
   demo_profile.instruments.append(keyboard)
   demo_profile_2.instruments.append(keyboard)
@@ -107,6 +89,42 @@ with app.app_context():
   db.session.add(line_freestyle)
   db.session.add(euphoria)
   db.session.add(missed_my_ex)
+
+  db.session.commit()
+
+  five_peace_band = Band(name="Five Peace Band", owner_id=1, style_id=1)
+  fpb_owner = UserBand(is_confirmed=True)
+  five_peace_band.owner = demo
+  fpb_owner.user = demo
+  fpb_owner.band = five_peace_band
+
+  db.session.add(five_peace_band)
+  db.session.add(fpb_owner)
+
+  kenny_to_kenny = Invitation(sender_id=1, recipient_id=2, band_id=1, message="")
+  fpb_pending = UserBand(is_confirmed=False)
+  fpb_pending.user = demo_2
+  fpb_pending.band = five_peace_band
+
+  db.session.add(kenny_to_kenny)
+  db.session.add(fpb_pending)
+
+  atcq_tribute = Band(name="A Tribe Called Quest Tribute Group", owner_id=1, style_id=4)
+  atcq_owner = UserBand(is_confirmed=True)
+  atcq_tribute.owner = demo
+  atcq_owner.user = demo
+  atcq_owner.band = atcq_tribute
+
+  db.session.add(atcq_tribute)
+  db.session.add(atcq_owner)
+
+  kenny_to_harry = Invitation(sender_id=1, recipient_id=3, band_id=2, message="Hey Harry!\nWould love to collaborate with you on a tribute to A Tribe Called Quest.\nBest,\nKenny Garrett")
+  atcq_pending = UserBand(is_confirmed=False)
+  atcq_pending.user = demo_3
+  atcq_pending.band = atcq_tribute
+
+  db.session.add(kenny_to_harry)
+  db.session.add(atcq_pending)
 
   db.session.commit()
 

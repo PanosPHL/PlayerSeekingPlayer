@@ -1,13 +1,19 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { fetchAndDeleteInvitation } from '../store/invitations';
 import invStyles from '../css-modules/MyInvitations.module.css';
+import { setActiveInvitation } from '../store/session';
 
-const SentInvitationButtons = ({ disabled }) => {
+const SentInvitationButtons = ({ invitationId, disabled, invitations }) => {
     const dispatch = useDispatch()
-    const { activeInvitation } = useSelector(state => state.session);
     const handleDeleteClick = async () => {
-        await dispatch(fetchAndDeleteInvitation(activeInvitation));
+        const res = await dispatch(fetchAndDeleteInvitation(invitationId));
+
+        if (res.ok) {
+            if (invitations.length) {
+                dispatch(setActiveInvitation(invitations[0].id));
+            }
+        }
     }
     return (
         <div>

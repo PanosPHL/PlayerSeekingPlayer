@@ -6,7 +6,7 @@ const ADD_INVITATIONS = 'invitations/ADD_INVITATIONS';
 export const ADD_INVITATION = 'invitations/ADD_INVITATION';
 export const DELETE_INVITATION = 'invitations/DELETE_INVITATION';
 export const ACCEPT_INVITATION = 'invitations/ACCEPT_INVITATION';
-export const DECLINE_INVITATION = 'invitatoins/DECLINE_INVITATION';
+export const DECLINE_INVITATION = 'invitations/DECLINE_INVITATION';
 
 export const addInvitation = (invitation) => {
     return {
@@ -32,6 +32,7 @@ export const deleteInvitation = (invitation) => {
 export const updateInvitation = (invitationId, status, bandId, userId) => {
     return {
         type: status === 'Accepted' ? ACCEPT_INVITATION : DECLINE_INVITATION,
+        status,
         invitationId,
         bandId,
         userId
@@ -55,6 +56,8 @@ export const fetchAndDeleteInvitation = (invitationId) => {
             dispatch(setActiveInvitation(null));
             dispatch(deleteInvitation(res.data.invitation));
         }
+
+        return res;
     }
 }
 

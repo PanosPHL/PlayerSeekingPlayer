@@ -6,7 +6,7 @@ import invStyles from '../css-modules/MyInvitations.module.css';
 import ReceivedInvitationButtons from './ReceivedInvitationButtons';
 import SentInvitationButtons from './SentInvitationButtons';
 
-const MyInvitationsContent = ({ invitation, invitationType }) => {
+const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
     const dispatch = useDispatch();
     const otherUser = useSelector(state => {
         if (!state.session.activeInvitation) {
@@ -50,8 +50,8 @@ const MyInvitationsContent = ({ invitation, invitationType }) => {
             <div className={invStyles.bottomBarContainer}>
                 {
                 invitationType === 'received' ?
-                <ReceivedInvitationButtons disabled={invitation ? false : true} /> :
-                <SentInvitationButtons disabled={invitation ? false : true} />
+                <ReceivedInvitationButtons invitationId={invitation ? invitation.id : null} disabled={invitation ? false : true} /> :
+                <SentInvitationButtons invitations={invitations} invitationId={invitation ? invitation.id : null} disabled={invitation ? false : true} />
                 }
             </div>
         </div>
