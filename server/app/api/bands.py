@@ -29,7 +29,7 @@ def create_band():
 @band_routes.route('/<int:band_id>/', methods=["DELETE"])
 def delete_band(band_id):
     band = Band.query.get(band_id)
-    db.session.delete(band)
+    band.isPublic = False
     db.session.commit()
 
     return {

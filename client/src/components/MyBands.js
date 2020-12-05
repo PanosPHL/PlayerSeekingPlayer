@@ -5,8 +5,8 @@ import bandStyles from '../css-modules/MyBands.module.css';
 import MyBandsContent from './MyBandsContent';
 
 const MyBands = () => {
-    const ownedBands = useSelector(state => Object.values(state.entities.bands).filter((band) => state.session.userId === band.ownerId));
-    const memberBands = useSelector(state => Object.values(state.entities.bands).filter((band) => band.members.includes(state.session.userId) && band.ownerId !== state.session.userId));
+    const ownedBands = useSelector(state => Object.values(state.entities.bands).filter((band) => state.session.userId === band.ownerId && band.isPublic));
+    const memberBands = useSelector(state => Object.values(state.entities.bands).filter((band) => band.members.includes(state.session.userId) && band.ownerId !== state.session.userId && band.isPublic));
 
     return (
         <div className={bandStyles.pageContainer}>

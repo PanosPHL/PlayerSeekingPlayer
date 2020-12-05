@@ -5,6 +5,14 @@ import { ACCEPT_INVITATION, DECLINE_INVITATION } from './invitations';
 const ADD_BAND = 'bands/ADD_BAND';
 const SET_BANDS = 'bands/SET_BANDS';
 export const ADD_USER_TO_BAND = 'bands/ADD_USER_TO_BAND';
+const DELETE_BAND = 'bands/DELETE_BAND';
+
+const deleteBand = (bandId) => {
+    return {
+        type: DELETE_BAND,
+        bandId
+    }
+}
 
 const addUserToBand = ({ userId, bandId }) => {
     return {
@@ -73,6 +81,27 @@ export const putAndAddMember = (senderId, recipientId, bandId, message) => {
     }
 }
 
+export const delBand = (bandId) => {
+    return async dispatch => {
+        const csrfToken = Cookie.get('XSRF-TOKEN');
+        const res = await fetch(`/api/bands/${bandId}/`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            }
+        });
+
+        res.data = await res.json();
+
+        if (res.ok) {
+            dispatch(deleteBand(res.data.bandId));
+        }
+
+        return res;
+    }
+}
+
 export default function bandReducer(state = {}, action) {
     const newState = Object.assign({}, state);
     let slice;
@@ -106,6 +135,11 @@ export default function bandReducer(state = {}, action) {
             newState[action.bandId] = newBand;
 
             return newState
+        case DELETE_BAND:
+            newBand = Object.assign({}, newState[action.bandId]);
+            newBand.isPublic = false;
+            newState[action.bandId] = newBand;
+            return newState;
         default:
             return state;
     }
