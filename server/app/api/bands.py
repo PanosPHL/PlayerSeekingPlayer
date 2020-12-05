@@ -26,6 +26,16 @@ def create_band():
         r = make_response({ "errors": format_errors(form.errors) }, 401)
         return r
 
+@band_routes.route('/<int:band_id>/', methods=["DELETE"])
+def delete_band(band_id):
+    band = Band.query.get(band_id)
+    db.session.delete(band)
+    db.session.commit()
+
+    return {
+        "bandId": band_id
+    }
+
 @band_routes.route('/<int:band_id>/add_member', methods=["PUT"])
 def manage_members(band_id):
     data = MultiDict(mapping=request.json)
