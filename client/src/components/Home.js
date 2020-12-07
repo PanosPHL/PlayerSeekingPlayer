@@ -14,6 +14,7 @@ import MyBands from './MyBands';
 import NewBandModal from './NewBandModal';
 import ManageInvitationsModal from './ManageInvitationsModal';
 import MyInvitations from './MyInvitations';
+import EditBandFormModal from './EditBandFormModal';
 
 
 const Home = ({ match }) => {
@@ -35,6 +36,7 @@ const Home = ({ match }) => {
             <RecordingFormModal />
             <NewBandModal />
             <ManageInvitationsModal />
+            <EditBandFormModal />
                 <TopBar />
                 <Switch>
                     <Route path={`${match.url}profiles/:id`} component={ProfilePage} />

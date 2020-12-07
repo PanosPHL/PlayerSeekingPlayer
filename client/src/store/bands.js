@@ -6,6 +6,16 @@ const ADD_BAND = 'bands/ADD_BAND';
 const SET_BANDS = 'bands/SET_BANDS';
 export const ADD_USER_TO_BAND = 'bands/ADD_USER_TO_BAND';
 const DELETE_BAND = 'bands/DELETE_BAND';
+const REMOVE_USER_FROM_BAND = 'bands/REMOVE_USER_FROM_BAND';
+
+const removeUserFromBand = (userId, bandId, confirmed) => {
+    return {
+        type: REMOVE_USER_FROM_BAND,
+        userId,
+        bandId,
+        confirmed
+    }
+}
 
 const deleteBand = (bandId) => {
     return {
@@ -102,6 +112,25 @@ export const delBand = (bandId) => {
     }
 }
 
+export const fetchAndDeleteMember = (bandId, memberId, confirmed) => {
+    return async dispatch => {
+        const csrfToken = Cookie.get('XSRF-TOKEN');
+        const res = await fetch(`/api/bands/${bandId}/remove_member/${memberId}/`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            }
+        });
+
+        res.data = await res.json();
+
+        if (res.ok) {
+            dispatch(removeUserFromBand(memberId, bandId, confirmed))
+        }
+    }
+}
+
 export default function bandReducer(state = {}, action) {
     const newState = Object.assign({}, state);
     let slice;
@@ -138,6 +167,17 @@ export default function bandReducer(state = {}, action) {
         case DELETE_BAND:
             newBand = Object.assign({}, newState[action.bandId]);
             newBand.isPublic = false;
+            newState[action.bandId] = newBand;
+            return newState;
+        case REMOVE_USER_FROM_BAND:
+            newBand = Object.assign({}, newState[action.bandId]);
+            if (action.confirmed) {
+                slice = newBand.members.indexOf(action.userId);
+                newBand.members = [...newBand.members.slice(0, slice), ...newBand.members.slice(slice + 1)];
+            } else {
+                slice = newBand.pendingMembers.indexOf(action.userId);
+                newBand.pendingMembers = [...newBand.pendingMembers.slice(0, slice), ...newBand.pendingMembers.slice(slice + 1)];
+            }
             newState[action.bandId] = newBand;
             return newState;
         default:

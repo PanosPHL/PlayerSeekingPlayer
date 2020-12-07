@@ -36,7 +36,7 @@ def delete_band(band_id):
         "bandId": band_id
     }
 
-@band_routes.route('/<int:band_id>/add_member', methods=["PUT"])
+@band_routes.route('/<int:band_id>/add_member/', methods=["PUT"])
 def manage_members(band_id):
     data = MultiDict(mapping=request.json)
     form = InvitationForm(data)
@@ -55,3 +55,12 @@ def manage_members(band_id):
     else:
         r = make_response({ "errors": form.errors }, 401)
         return r
+
+@band_routes.route('/<int:band_id>/remove_member/<int:member_id>/', methods=["DELETE"])
+def remove_member(band_id, member_id):
+    user_band = UserBand.query.filter(UserBand.band_id == band_id, UserBand.user_id == member_id).one()
+    db.session.delete(user_band)
+    return {
+        "bandId": band_id,
+        "memberId": member_id
+    }

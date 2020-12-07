@@ -1,5 +1,6 @@
 const TOGGLE_NEW_BAND_MODAL = 'ui/myBands/TOGGLE_NEW_BAND_MODAL';
 const TOGGLE_SIDEBAR_BAND_LIST = 'ui/myBands/TOGGLE_SIDEBAR_BAND_LIST';
+const TOGGLE_EDIT_BAND_MODAL = 'ui/myBands/TOGGLE_EDIT_BAND_MODAL';
 
 export const toggleSidebarBandList = () => {
     return {
@@ -13,7 +14,14 @@ export const toggleNewBandModal = () => {
     }
 }
 
+export const toggleEditBandModal = () => {
+    return {
+        type: TOGGLE_EDIT_BAND_MODAL
+    }
+}
+
 const initialMyBandsState = {
+    editBandModal: false,
     newBandModal: false,
     sidebarBandList: true
 }
@@ -26,6 +34,9 @@ export default function bandReducer(state = initialMyBandsState, action) {
             return newState;
         case TOGGLE_SIDEBAR_BAND_LIST:
             newState.sidebarBandList = !newState.sidebarBandList;
+            return newState;
+        case TOGGLE_EDIT_BAND_MODAL:
+            newState.editBandModal = !newState.editBandModal;
             return newState;
         default:
             return state;

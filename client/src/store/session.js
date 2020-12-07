@@ -14,6 +14,14 @@ const SET_SEARCH_RESULTS = 'session/SEARCH_RESULTS';
 const RECEIVED_INVITATION_TYPE = 'session/RECEIVED_INVITATION_TYPE';
 const SENT_INVITATION_TYPE = 'session/SENT_INVITATION_TYPE';
 const SET_ACTIVE_INVITATION = 'session/SET_ACTIVE_INVITATION';
+const SET_BAND_FORM_ID = 'session/SET_BAND_FORM_ID';
+
+export const setBandFormId = (bandId) => {
+    return {
+        type: SET_BAND_FORM_ID,
+        bandId
+    }
+}
 
 export const setActiveInvitation = (invitationId) => {
     return {
@@ -141,7 +149,8 @@ const initialSessionState = {
     recordingFormId: null,
     searchResults: [],
     invitationType: 'received',
-    activeInvitation: null
+    activeInvitation: null,
+    bandFormId: null
 };
 
 export default function sessionReducer(state = initialSessionState, action) {
@@ -167,6 +176,9 @@ export default function sessionReducer(state = initialSessionState, action) {
             return newState;
         case SET_ACTIVE_INVITATION:
             newState.activeInvitation = action.invitationId;
+            return newState;
+        case SET_BAND_FORM_ID:
+            newState.bandFormId = action.bandId;
             return newState;
         default:
             return state;
