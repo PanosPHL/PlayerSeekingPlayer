@@ -33,7 +33,7 @@ const NewBandForm = ({ bandId }) => {
                 </div>
                 <div className={bandStyles.formControlGroup + " form-control-group"}>
                 <p>
-                    <label className="labels" htmlFor="bandStyle">Band style</label>
+                    <label className="labels" htmlFor="bandStyle">Band Style</label>
                 </p>
                 <select className="form-control" name="bandStyle" onChange={(e) => setStyleId(e.target.value)}>
                     <option value="-1">Select a style</option>

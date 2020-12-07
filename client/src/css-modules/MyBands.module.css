@@ -327,4 +327,30 @@
     margin: 4% auto;
 }
 
+.editBandForm {
+    display: flex;
+    flex-direction: column;
+
+    padding: 16px;
+
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+
+    opacity: 100%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 40vh;
+
+    border-radius: 8px;
+
+    background-color: rgb(255, 252, 252);
+
+    animation-name: modal_entry;
+    animation-duration: 0.3s;
+}
+
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

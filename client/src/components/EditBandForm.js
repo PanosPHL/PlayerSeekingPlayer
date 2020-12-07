@@ -4,6 +4,7 @@ import { setBandFormId } from '../store/session';
 import { toggleEditBandModal } from '../store/ui/myBands';
 import { putAndUpdateBandInfo } from '../store/bands';
 import BandFormMemberRow from './BandFormMemberRow';
+import bandStyles from '../css-modules/MyBands.module.css';
 
 const EditBandForm = () => {
     const dispatch = useDispatch();
@@ -29,10 +30,20 @@ const EditBandForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit} method="" action="">
+        <form className={bandStyles.editBandForm} onSubmit={handleSubmit} method="" action="">
+            <h2 className={bandStyles.modalFormTitle}>Edit Band</h2>
             <button onClick={handleCloseClick}>X</button>
-            <input name="bandName" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-            <select name="bandStyle" value={styleId} onChange={(e) => setStyleId(e.target.value)}>
+            <div>
+            <p>
+                <label className="labels" htmlFor="bandName">Band Name</label>
+            </p>
+            <input className="form-control" name="bandName" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div>
+            <p>
+                <label className="labels" htmlFor="bandStyle">Band Style</label>
+            </p>
+            <select className="form-control" name="bandStyle" value={styleId} onChange={(e) => setStyleId(e.target.value)}>
                     <option value="-1">Select a style</option>
                     {
                         styles.length ?
@@ -40,6 +51,7 @@ const EditBandForm = () => {
                             <></>
                     }
             </select>
+            </div>
             <div>
                 { members.map((member) => <BandFormMemberRow status="confirmed" band={band} member={member}/>) }
                 { pendingMembers.map((member) => <BandFormMemberRow status="pending" band={band} member={member} />) }
