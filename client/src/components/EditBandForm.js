@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector, connect } from 'react-redux';
 import { setBandFormId } from '../store/session';
 import { toggleEditBandModal } from '../store/ui/myBands';
+import { putAndUpdateBandInfo } from '../store/bands';
 import BandFormMemberRow from './BandFormMemberRow';
 
 const EditBandForm = () => {
@@ -12,18 +13,26 @@ const EditBandForm = () => {
     const pendingMembers = useSelector(state => state.entities.bands[state.session.bandFormId].pendingMembers.map((memberId) => state.entities.users[memberId]));
 
     const [name, setName] = useState(band ? band.name : '');
-    const [styleId, setStyleId] = useState();
+    const [styleId, setStyleId] = useState(band ? band.styleId : '-1');
 
     const handleCloseClick = () => {
         dispatch(toggleEditBandModal());
         dispatch(setBandFormId(null));
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const res = await dispatch(putAndUpdateBandInfo(band.id, name, styleId, `${band.ownerId}`));
+        if (res.ok) {
+            dispatch(toggleEditBandModal());
+        }
+    }
+
     return (
-        <form method="" action="">
-            <button onClick={() => dispatch(toggleEditBandModal())}>X</button>
+        <form onSubmit={handleSubmit} method="" action="">
+            <button onClick={handleCloseClick}>X</button>
             <input name="bandName" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-            <select name="bandStyle" onChange={(e) => setStyleId(e.target.value)}>
+            <select name="bandStyle" value={styleId} onChange={(e) => setStyleId(e.target.value)}>
                     <option value="-1">Select a style</option>
                     {
                         styles.length ?
@@ -35,6 +44,7 @@ const EditBandForm = () => {
                 { members.map((member) => <BandFormMemberRow status="confirmed" band={band} member={member}/>) }
                 { pendingMembers.map((member) => <BandFormMemberRow status="pending" band={band} member={member} />) }
             </div>
+            <button type="submit">Submit</button>
         </form>
     )
 }

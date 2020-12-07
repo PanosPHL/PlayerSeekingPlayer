@@ -92,7 +92,7 @@ with app.app_context():
 
   db.session.commit()
 
-  five_peace_band = Band(name="Five Peace Band", owner_id=1, style_id=1)
+  five_peace_band = Band(name="Five Peace Band", owner_id=1, style_id=2)
   fpb_owner = UserBand(is_confirmed=True)
   five_peace_band.owner = demo
   fpb_owner.user = demo

@@ -9,7 +9,6 @@ band_routes = Blueprint('bands', __name__)
 
 @band_routes.route('/', methods=["POST"])
 def create_band():
-    print(request.json)
     data = MultiDict(mapping=request.json)
     form = BandForm(data)
     if form.validate():
@@ -53,7 +52,7 @@ def manage_members(band_id):
             "userBand": new_user_band.to_dict()
             }
     else:
-        r = make_response({ "errors": form.errors }, 401)
+        r = make_response({ "errors": format_errors(form.errors) }, 401)
         return r
 
 @band_routes.route('/<int:band_id>/remove_member/<int:member_id>/', methods=["DELETE"])
@@ -64,3 +63,20 @@ def remove_member(band_id, member_id):
         "bandId": band_id,
         "memberId": member_id
     }
+
+@band_routes.route('/<int:band_id>/', methods=["PUT"])
+def update_band_info(band_id):
+    data = MultiDict(mapping=request.json)
+    form = BandForm(data)
+    if form.validate():
+        data = request.json
+        band = Band.query.get(band_id)
+        band.name = data["name"]
+        band.style_id = data["style"]
+        db.session.commit()
+        return {
+            "band": band.to_dict()
+        }
+    else:
+        r = make_response({ "errors": format_errors(form.errors) }, 401)
+        return r

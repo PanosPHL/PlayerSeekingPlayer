@@ -7,6 +7,14 @@ const SET_BANDS = 'bands/SET_BANDS';
 export const ADD_USER_TO_BAND = 'bands/ADD_USER_TO_BAND';
 const DELETE_BAND = 'bands/DELETE_BAND';
 const REMOVE_USER_FROM_BAND = 'bands/REMOVE_USER_FROM_BAND';
+const UPDATE_BAND_INFO = 'bands/UPDATE_BAND_INFO';
+
+const updateBandInfo = (band) => {
+    return {
+        type: UPDATE_BAND_INFO,
+        band
+    }
+}
 
 const removeUserFromBand = (userId, bandId, confirmed) => {
     return {
@@ -131,6 +139,29 @@ export const fetchAndDeleteMember = (bandId, memberId, confirmed) => {
     }
 }
 
+export const putAndUpdateBandInfo = (bandId, name, styleId, owner) => {
+    return async dispatch => {
+        const csrfToken = Cookie.get('XSRF-TOKEN');
+        const res = await fetch(`/api/bands/${bandId}/`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ name, style: styleId, csrfToken, owner, isPublic: true })
+        });
+
+        res.data = await res.json();
+
+        if (res.ok){
+            dispatch(updateBandInfo(res.data.band));
+        }
+
+        console.log(res);
+        return res;
+    }
+}
+
 export default function bandReducer(state = {}, action) {
     const newState = Object.assign({}, state);
     let slice;
@@ -179,6 +210,9 @@ export default function bandReducer(state = {}, action) {
                 newBand.pendingMembers = [...newBand.pendingMembers.slice(0, slice), ...newBand.pendingMembers.slice(slice + 1)];
             }
             newState[action.bandId] = newBand;
+            return newState;
+        case UPDATE_BAND_INFO:
+            newState[action.band.id] = action.band;
             return newState;
         default:
             return state;
