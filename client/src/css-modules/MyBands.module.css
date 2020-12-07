@@ -7,7 +7,7 @@
     width: 18vw;
     background-color: #FFFFFF;
 
-    padding: 16px 10px;
+    padding: 24px 10px 0px 10px;
 
     box-shadow: 2px -1px 4px rgba(0, 0, 0, 0.3);
 
@@ -17,6 +17,9 @@
 .contentContainer {
     width: 82vw;
     background-color: rgb(240, 242, 245);
+    padding: 28px 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 .yourBandsBar {
@@ -107,8 +110,7 @@
     border-radius: 4px;
 
     font-size: 20px;
-
-    margin-top: 4%;
+    margin-top: 12px;
 }
 
 .createBandButton:hover, .createBandButton:active {
@@ -207,9 +209,11 @@
 
 .bandListContainer {
     width: 50%;
-    margin: 0 auto;
+    margin: 0px auto;
+}
 
-    padding-top: 20px;
+.memberBandList {
+    margin-top: 2%;
 }
 
 .bandListHeader {
@@ -239,23 +243,88 @@
 
 .bandListCardButtonContainer {
     display: flex;
-    justify-content: space-between;
-    width: 22%;
-    height: 40%;
+    justify-content: space-around;
+    width: 32%;
+    height: 48%;
 }
 
 .bandListCardButton {
-    padding: 4px 4px 4px 4px;
-    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 90px;
+
+    color: #3d3d3d;
+
+    padding: 8px;
     border: none;
     border-radius: 4px;
 
-    font-size: 14px;
+    background-color: white;
+
+    font-size: 16px;
 }
 
-.bandListCardButton:hover {
+.editBandListCardButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 74px;
+
+    color: #3d3d3d;
+
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+
+    background-color: white;
+
+    font-size: 16px;
+}
+
+.editBandListCardButton:hover, .editBandListCardButton:focus, .bandListCardButton:hover, .bandListCardButton:focus {
+    outline: none;
     cursor: pointer;
     filter: brightness(0.94);
+}
+
+.sidebarBandList {
+    padding: 8px 16px;
+}
+
+.sidebarBandRow {
+    margin: 10px 0px 0px 0px;
+    padding: 16px 8px;
+    display: flex;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.sidebarBandRow:hover {
+    filter: brightness(90%);
+}
+
+.sidebarHeader {
+    margin-left: 8px;
+}
+
+.defaultBandList {
+    width: 64%;
+    padding: 30px 10px;
+
+    color: #3d3d3d;
+
+    background-color: white;
+    border-radius: 6px;
+
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+
+    text-align: center;
+    margin: 4% auto;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

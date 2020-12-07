@@ -19,7 +19,7 @@ const MyBandsSidebar = ({ ownedBands, memberBands }) => {
     return (
         <div className={bandStyles.sidebarContainer}>
             <div>
-            <h2>My Bands</h2>
+            <h2 className={bandStyles.sidebarHeader}>My Bands</h2>
             <div>
                 <div className={bandStyles.yourBandsBar}>
                 <div className={bandStyles.bandsBarNotesAndText}>

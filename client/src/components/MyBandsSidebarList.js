@@ -1,11 +1,12 @@
 import React from 'react';
+import bandStyles from '../css-modules/MyBands.module.css';
 
 const MyBandsSidebarList = ({ bands }) => {
     return (
-        <div>
+        <div className={bandStyles.sidebarBandList}>
             {
             bands.length ?
-            bands.map((band) => <div>{band.name}</div>) :
+            bands.map((band) => <div className={bandStyles.sidebarBandRow}><h4>{band.name}</h4></div>) :
             <></>
             }
         </div>

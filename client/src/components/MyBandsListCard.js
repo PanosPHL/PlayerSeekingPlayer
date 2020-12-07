@@ -28,7 +28,7 @@ const MyBandsListCard = ({ band, owned }) => {
                {
                owned ?
                <>
-               <button onClick={handleEditClick} className={bandStyles.bandListCardButton}><i className="fas fa-pencil-alt"></i> Edit</button>
+               <button onClick={handleEditClick} className={bandStyles.editBandListCardButton}><i className="fas fa-pencil-alt"></i> Edit</button>
                 <button onClick={handleDelClick} className={bandStyles.bandListCardButton}><i className="fas fa-trash-alt"></i> Delete</button>
                 </> :
                 <></>
