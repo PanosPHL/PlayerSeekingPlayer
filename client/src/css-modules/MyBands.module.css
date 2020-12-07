@@ -331,7 +331,7 @@
     display: flex;
     flex-direction: column;
 
-    padding: 16px;
+    padding: 16px 36px;
 
     position: relative;
 
@@ -343,7 +343,7 @@
     transform: translate(-50%, -50%);
 
     width: 30vw;
-    height: 40vh;
+    height: 64vh;
 
     border-radius: 8px;
 
@@ -352,5 +352,102 @@
     animation-name: modal_entry;
     animation-duration: 0.3s;
 }
+
+.bandFormMemberArea {
+    height: 240px;
+
+    margin: 10px 40px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-radius: 4px;
+
+    background-color: rgb(255, 252, 252);
+
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2) inset;
+
+}
+
+.bandFormMemberRow {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin: 10px 0px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bandFormMemberRowPic {
+    height: 40px;
+    margin-right: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.bandFormMemberRowPicAndInfo {
+    display: flex;
+}
+
+.bandFormMembersHeader {
+    margin-left: 40px;
+}
+
+.removeMemberButton {
+    background-color: white;
+    height: 22px;
+    padding: 2px 6px;
+    border: none;
+    border-radius: 2px;
+}
+
+.removeMemberButton:hover, .removeMemberButton:focus {
+    outline: none;
+    filter: brightness(90%);
+}
+
+.removeMemberButton:active {
+    transform: scale(1.04);
+    filter: brightness(86%);
+}
+
+.editSubmitButton {
+    margin-top: 2%;
+    width: 18%;
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.editSubmitContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 92%;
+}
+
+.bandFormContent {
+    margin-top: 3%;
+}
+
+.bandFormMemberRowName {
+    font-size: 16px;
+}
+
+.bandFormMemberRowInfo {
+    font-size: 12px;
+    color: #6A6969;
+}
+
+.editBandFormErrors {
+    position: absolute;
+}
+
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

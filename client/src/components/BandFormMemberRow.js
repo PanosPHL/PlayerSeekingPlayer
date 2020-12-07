@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchAndDeleteMember } from '../store/bands';
+import bandStyles from '../css-modules/MyBands.module.css';
 
 const BandFormMemberRow = ({ member, band, status }) => {
     const dispatch = useDispatch();
@@ -13,12 +14,16 @@ const BandFormMemberRow = ({ member, band, status }) => {
     }
 
     return (
-        <div>
-            <div>
-            <h5>{member.firstName + " " + member.lastName}</h5>
-            <span>{isOwner ? "(Owner)" : status === "confirmed" ? `(${instruments.map((instrument) => instrument.name).join(', ')})` : "(Pending)"}</span>
-            </div>
-            { !isOwner ? <button onClick={handleRemoveMemberClick}>X</button> : <></>}
+        <div className={bandStyles.bandFormMemberRow}>
+                <div className={bandStyles.bandFormMemberRowPicAndInfo}>
+                    <img className={bandStyles.bandFormMemberRowPic} src={member.profileInfo.profilePic || '/images/default_profile_photo.jpg'} />
+                    <div>
+                    <h5 className={bandStyles.bandFormMemberRowName}>{member.firstName + " " + member.lastName}</h5>
+                    <span className={bandStyles.bandFormMemberRowInfo}>{isOwner ? `Owner: ${instruments.map((instrument) => instrument.name).join(', ')}` : status === "confirmed" ? `${instruments.map((instrument) => instrument.name).join(', ')}`
+                    : `Pending Member: ${instruments.map((instrument) => instrument.name).join(', ')}`}</span>
+                    </div>
+                </div>
+            { !isOwner ? <button className={bandStyles.removeMemberButton} onClick={handleRemoveMemberClick}><i className="fas fa-times"></i></button> : <></>}
         </div>
     )
 }
