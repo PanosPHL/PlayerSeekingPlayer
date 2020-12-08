@@ -212,3 +212,30 @@
 .activeInvitationHeaderText {
     color: #444444;
 }
+
+.manageButton {
+    width: 60%;
+
+    padding: 8px 4px;
+
+    font-size: 14px;
+
+    background-color: #575a8fd5;
+    color: white;
+
+    border: none;
+    border-radius: 4px;
+}
+
+.manageButton:hover {
+    filter: brightness(90%);
+}
+
+.manageButton:active, .manageButton:focus {
+    outline: none;
+    filter: brightness(84%);
+}
+
+.manageButton:active {
+    transform: scale(1.04);
+}
