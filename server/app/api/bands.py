@@ -37,8 +37,10 @@ def delete_band(band_id):
 
 @band_routes.route('/<int:band_id>/add_member/', methods=["PUT"])
 def manage_members(band_id):
+    bands = Band.query.filter(Band.owner_id == request.json["sender_id"]).all()
     data = MultiDict(mapping=request.json)
     form = InvitationForm(data)
+    form.band_id.choices = [band.id for band in bands]
     if form.validate():
         data = request.json
         new_invitation = Invitation(sender_id=data["sender_id"], recipient_id=data["recipient_id"], band_id=data["band_id"], message=data["message"])

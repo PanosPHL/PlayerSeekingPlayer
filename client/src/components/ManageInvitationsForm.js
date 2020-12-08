@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { putAndAddMember } from '../store/bands';
 import { toggleManageInvitationModal } from '../store/ui/invitations';
+import invStyles from '../css-modules/MyInvitations.module.css';
+
 
 const ManageInvitationsForm = ({ ownedBands, location }) => {
   const recipientId = location.pathname.split('/')[2].toString();
   const senderId = useSelector(state => state.session.userId.toString());
   const dispatch = useDispatch();
-  const [bandId, setBandId] = useState(-1);
+  const [bandId, setBandId] = useState("0");
   const [message, setMessage] = useState("");
 
   const handleBandIdChange = (e) => {
@@ -29,9 +31,15 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} method="" action="">
-        <button onClick={handleCloseClick}>X</button>
-      <select onChange={handleBandIdChange}>
+    <form className={invStyles.manageInvitationForm} onSubmit={handleSubmit} method="" action="">
+      <h2>Send an Invitation</h2>
+      <button onClick={handleCloseClick}><i className="fas fa-times"></i></button>
+      <div>
+        <div className="form-control-group">
+          <p>
+            <label className="labels" htmlFor="bandName">Band</label>
+          </p>
+      <select className="form-control" onChange={handleBandIdChange}>
         <option value="-1">Select a Band</option>
         {ownedBands.length ? (
           ownedBands.map((band, i) => (
@@ -43,8 +51,15 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
           <></>
         )}
       </select>
-      <textarea onChange={handleMessageChange} value={message}/>
+        </div>
+        <div className="form-control-group">
+          <p>
+            <label htmlFor="message" className="labels">Message</label>
+          </p>
+      <textarea className="form-control" onChange={handleMessageChange} value={message}/>
+        </div>
       <button type='submit'>Send Invitation</button>
+      </div>
     </form>
   );
 };

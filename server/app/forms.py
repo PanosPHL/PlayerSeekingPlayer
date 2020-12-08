@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, FloatField, SelectMultipleField, BooleanField, IntegerField
+from wtforms import StringField, PasswordField, FloatField, SelectMultipleField, BooleanField, IntegerField, SelectField
 from wtforms.fields.html5 import EmailField, DateField, URLField
 from wtforms.validators import InputRequired, Email, EqualTo, URL, ValidationError, NumberRange
 from wtforms.ext.sqlalchemy.fields import QuerySelectField, QuerySelectMultipleField
@@ -98,5 +98,5 @@ class BandForm(FlaskForm):
 class InvitationForm(FlaskForm):
     sender_id = QuerySelectField("Recipient", validators=[InputRequired("Please provide a valid recipient")], query_factory=get_all_users, allow_blank=False)
     recipient_id = QuerySelectField("Recipient", validators=[InputRequired("Please provide a valid recipient")], query_factory=get_all_users, allow_blank=False)
-    band_id = QuerySelectField("Band", validators=[InputRequired("Please select a band")], query_factory=get_band_choices, allow_blank=False)
+    band_id = SelectField("Band", validators=[InputRequired("Please select a band")])
     message = StringField("Message")

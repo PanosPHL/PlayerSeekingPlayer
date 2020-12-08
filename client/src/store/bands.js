@@ -79,7 +79,7 @@ export const postAndAddBand = (name, isPublic = true, owner, style) => {
 export const putAndAddMember = (senderId, recipientId, bandId, message) => {
     return async dispatch => {
         const csrfToken = Cookie.get('XSRF-TOKEN');
-        const res = await fetch(`/api/bands/${bandId}/add_member`, {
+        const res = await fetch(`/api/bands/${bandId}/add_member/`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json',
