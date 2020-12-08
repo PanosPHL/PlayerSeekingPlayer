@@ -17,7 +17,7 @@ const EditBandForm = () => {
     const errors = useSelector(state => state.errors);
 
     const [name, setName] = useState(band ? band.name : '');
-    const [styleId, setStyleId] = useState(band ? `${band.styleId}` : '-1');
+    const [styleId, setStyleId] = useState(band ? `${band.styleId}` : '');
 
     const handleCloseClick = () => {
         dispatch(toggleEditBandModal());
@@ -44,7 +44,7 @@ const EditBandForm = () => {
             <h2 className={bandStyles.modalFormTitle}>Edit Band</h2>
             <button className={bandStyles.modalFormClose} onClick={handleCloseClick}><i className="fas fa-times"></i></button>
             {
-                errors.length ? <Errors errors={errors}/> : <></>
+                errors.length ? <Errors className={bandStyles.editBandErrorList} divStyle={bandStyles.editBandFormErrors} errors={errors}/> : <></>
             }
             <div className={bandStyles.bandFormContent}>
             <div className="form-control-group">
@@ -58,7 +58,7 @@ const EditBandForm = () => {
                 <label className="labels" htmlFor="bandStyle">Band Style</label>
             </p>
             <select className="form-control" name="bandStyle" value={styleId} onChange={(e) => setStyleId(`${e.target.value}`)}>
-                    <option value="-1">Select a style</option>
+                    <option value="">Select a style</option>
                     {
                         styles.length ?
                             styles.map((style, i) => <option key={`style-${i + 1}`} value={style.id}>{style.name}</option>) :

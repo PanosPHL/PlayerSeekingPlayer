@@ -433,7 +433,7 @@
 }
 
 .bandFormContent {
-    margin-top: 3%;
+    margin-top: 3.4%;
 }
 
 .bandFormMemberRowName {
@@ -447,7 +447,32 @@
 
 .editBandFormErrors {
     position: absolute;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+    width: 70%;
+    font-size: 14px;
+    border-radius: 4px;
+    right: 14.2%;
+    top: 9%;
 }
 
+.newBandFormErrors {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+    width: 70%;
+    font-size: 14px;
+    border-radius: 4px;
+    right: 14.2%;
+    top: 13.4%;
+}
+
+.editBandErrorList {
+    columns: 2;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 12px;
+}
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
