@@ -7,7 +7,6 @@ export const ManageInvitationsButton = () => {
 
     const handleClick = () => {
         dispatch(toggleManageInvitationModal());
-        document.body.classList.add('noscroll');
     }
 
     return (

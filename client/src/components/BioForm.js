@@ -19,7 +19,6 @@ const BioForm = ({ initBio, userId }) => {
 
         if (res.ok) {
             dispatch(toggleBioModal());
-            document.body.classList.remove('noscroll');
             return;
         }
 

@@ -10,7 +10,6 @@ const Bio = ({ userProfile, isOwner }) => {
 
     const handleEditClick = () => {
         dispatch(toggleBioModal());
-        document.body.classList.add('noscroll');
     }
 
     const value = {

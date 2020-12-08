@@ -35,7 +35,6 @@ const RecordingFormModal = () => {
         dispatch(toggleRecordingModal());
         dispatch(setRecordingFormId(null));
         dispatch(clearErrors());
-        document.body.classList.remove('noscroll');
     }
 
     const handleDeleteClick = () => {
@@ -43,7 +42,6 @@ const RecordingFormModal = () => {
         dispatch(toggleRecordingModal());
         dispatch(setRecordingFormId(null));
         dispatch(clearErrors());
-        document.body.classList.remove('noscroll');
     }
 
     if (recordingFormModal) {

@@ -25,7 +25,6 @@ const ProfileTopSection = ({ isOwner, userProfile, about, recordings }) => {
             dispatch(toggleProfilePicButton());
         }
         dispatch(toggleProfilePicForm());
-        document.body.classList.add('noscroll');
     }
 
     const handleAboutClick = () => {

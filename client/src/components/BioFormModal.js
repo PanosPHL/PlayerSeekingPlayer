@@ -13,7 +13,6 @@ const BioFormModal = () => {
 
     const handleCloseClick = () => {
         dispatch(toggleBioModal());
-        document.body.classList.remove('noscroll');
     }
 
     if (bioModal) {

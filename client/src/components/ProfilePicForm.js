@@ -29,7 +29,6 @@ const ProfilePicForm = () => {
             setPic(null);
             setCrop({ aspect: 1 / 1 });
             setFileName('');
-            document.body.classList.remove('noscroll');
         }
     }, [setPic, setCrop, setFileName]);
 

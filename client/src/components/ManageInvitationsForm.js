@@ -21,7 +21,6 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
 
   const handleCloseClick = () => {
       dispatch(toggleManageInvitationModal());
-      document.body.classList.remove('noscroll');
   }
 
   const handleSubmit = async (e) => {

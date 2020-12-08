@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const ModalContainer = (props) => {
+    useEffect(() => {
+        document.body.classList.add('noscroll');
+
+        return () => {
+            document.body.classList.remove('noscroll');
+        }
+    }, [])
+
     return (
         <div
         id='modal-container'

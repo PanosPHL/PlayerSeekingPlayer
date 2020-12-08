@@ -17,7 +17,6 @@ const OverviewFormModal = () => {
 
     const handleCloseClick = () => {
         dispatch(toggleOverviewModal());
-        document.body.classList.remove('noscroll');
     }
 
     if (overviewFormModal) {
