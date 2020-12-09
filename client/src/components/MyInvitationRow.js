@@ -13,6 +13,7 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
             return state.entities.users[invitation.recipientId];
         }
     });
+    const self = useSelector(state => state.entities.users[state.session.userId]);
     const band = useSelector(state => state.entities.bands[invitation.bandId]);
 
     const handleInvitationClick = () => {
@@ -41,7 +42,7 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
                             <span className={invStyles.invitationRowDate}>{"  " + invitationRowDate(invitation.createdAt)}</span>
                         </p> :
                         <div className={invStyles.invitationRowMessage}>
-                        {defaultInvitationMessage(otherUser, band).split('').slice(0, 62).join('') + '...'}
+                        {defaultInvitationMessage(otherUser, self, band, invitationType).split('').slice(0, 62).join('') + '...'}
                         <span className={invStyles.invitationRowDate}>{"  " + invitationRowDate(invitation.createdAt)}</span>
                         </div>
                     }

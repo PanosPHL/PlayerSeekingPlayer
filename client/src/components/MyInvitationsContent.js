@@ -8,6 +8,7 @@ import SentInvitationButtons from './SentInvitationButtons';
 
 const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
     const dispatch = useDispatch();
+    const self = useSelector(state => state.entities.users[state.session.userId]);
     const otherUser = useSelector(state => {
         if (!state.session.activeInvitation) {
             return null;
@@ -45,7 +46,7 @@ const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
                 invitation && invitation.message ?
                 invitation.message.split('\n').map((line) =><p>{line}</p>) :
                 otherUser ?
-                defaultInvitationMessage(otherUser, band).split('\n').map((line) => <p>{line}</p>) :
+                defaultInvitationMessage(otherUser, self, band, invitationType).split('\n').map((line) => <p>{line}</p>) :
             <p>You currently have no {invitationType} invitations!</p>}
                 </div>
             </div>

@@ -24,11 +24,11 @@ with app.app_context():
   db.session.add(demo_5)
   db.session.commit()
 
-  demo_profile = Profile(user_id = demo.to_dict()["id"], biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA")
-  demo_profile_2 = Profile(user_id = demo_2.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA")
-  demo_profile_3 = Profile(user_id = demo_3.to_dict()["id"], biography = harry_mack(), location = "Los Angeles, CA 90012, USA")
-  demo_profile_4 = Profile(user_id = demo_4.to_dict()["id"], biography = "Guitarist for the Texas-based metal band Polyphia. They released their album Muse in April 2015.", location = "Los Angeles, CA 90012, USA")
-  demo_profile_5 = Profile(user_id = demo_5.to_dict()["id"], biography = mahalia(), location = "Los Angeles, CA 90012, USA")
+  demo_profile = Profile(user_id = demo.to_dict()["id"], biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/ODMZyH-U9OnBQl5xVkvDSw.png")
+  demo_profile_2 = Profile(user_id = demo_2.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/xyNI80ijRwCnmaIhgkIC9w.png")
+  demo_profile_3 = Profile(user_id = demo_3.to_dict()["id"], biography = harry_mack(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/bfNsWUqh38DPbm483IlWbQ.png")
+  demo_profile_4 = Profile(user_id = demo_4.to_dict()["id"], biography = "Guitarist for the Texas-based metal band Polyphia. They released their album Muse in April 2015.", location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/koi7ODiaMW41atCTW44x6A.png")
+  demo_profile_5 = Profile(user_id = demo_5.to_dict()["id"], biography = mahalia(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/LaiIkNlrEiUKXf3y0FxOTg.png")
 
   # Instrument / Style seed data
   alto_sax = Instrument(name="Alto Saxophone")

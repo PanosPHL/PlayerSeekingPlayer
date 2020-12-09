@@ -36,7 +36,7 @@ const ProfilePicForm = () => {
         const file = event.target.files[0];
         const nameSplit = file.name.split('.')[1].toLowerCase();
 
-        if (nameSplit === 'png' || nameSplit === 'jpeg') {
+        if (nameSplit === 'png' || nameSplit === 'jpeg' || nameSplit === 'jpg') {
             setFileName(file.name);
             setCrop({ aspect: 1 / 1 });
             setPic(URL.createObjectURL(file));
@@ -103,7 +103,7 @@ const ProfilePicForm = () => {
                     onInput={handleInput}
                     type='file'
                     name='profile-pic'
-                    accept='image/png, image.jpeg' />
+                    accept='image/png, image/jpeg, image/jpg' />
             </div>
             {
                 pic ?
