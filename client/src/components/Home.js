@@ -9,10 +9,15 @@ import Footer from './Footer';
 import OverviewFormModal from './OverviewFormModal';
 import BioFormModal from './BioFormModal';
 import SearchResults from './SearchResults';
+import ProfilePicFormModal from './ProfilePicFormModal';
+import MyBands from './MyBands';
+import NewBandModal from './NewBandModal';
+import ManageInvitationsModal from './ManageInvitationsModal';
+import MyInvitations from './MyInvitations';
+import EditBandFormModal from './EditBandFormModal';
 
 
 const Home = ({ match }) => {
-    console.log(match.url);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -24,14 +29,20 @@ const Home = ({ match }) => {
 
     return (
         <>
+            <HomeRouter>
             <BioFormModal />
             <OverviewFormModal />
+            <ProfilePicFormModal />
             <RecordingFormModal />
-            <HomeRouter>
+            <NewBandModal />
+            <ManageInvitationsModal />
+            <EditBandFormModal />
                 <TopBar />
                 <Switch>
                     <Route path={`${match.url}profiles/:id`} component={ProfilePage} />
                     <Route path={`${match.url}search`} component={SearchResults} />
+                    <Route path={`${match.url}my-bands`} component={MyBands} />
+                    <Route path={`${match.url}my-invitations`} component={MyInvitations} />
                 </Switch>
             </HomeRouter>
             <Footer />

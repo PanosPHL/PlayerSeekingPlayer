@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import searchStyles from '../css-modules/Search.module.css';
 
-const UserSearchImage = ({ userId }) => {
+const UserSearchImage = ({ user }) => {
     return (
-        <Link to={`/profiles/${userId}`}>
+        <Link to={`/profiles/${user ? user.id : null}`}>
         <div className={searchStyles.pictureContainer}>
             <img className={searchStyles.picture}
-            src='https://media.istockphoto.com/vectors/profile-placeholder-image-gray-silhouette-no-photo-vector-id1218408229?b=1&k=6&m=1218408229&s=612x612&w=0&h=ljIOZzztvumhkaB5d9xLPuZ8cvckG527XCWZIKTCT0k=' alt='Profile' />
+            src={user && user.profileInfo.profilePic ? user.profileInfo.profilePic : '/images/default_profile_photo.jpg'} alt='Profile' />
             <div></div>
         </div>
         </Link>

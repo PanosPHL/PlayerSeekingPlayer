@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from app import app, db
-from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording
+from app.models import User, Profile, Instrument, Style, Recording, ProfileRecording, Band, Invitation, UserBand
 
 from app.utils.biographies import kenny_garrett, harry_mack, mahalia
 
@@ -24,11 +24,11 @@ with app.app_context():
   db.session.add(demo_5)
   db.session.commit()
 
-  demo_profile = Profile(user_id = demo.to_dict()["id"], biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA")
-  demo_profile_2 = Profile(user_id = demo_2.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA")
-  demo_profile_3 = Profile(user_id = demo_3.to_dict()["id"], biography = harry_mack(), location = "Los Angeles, CA 90012, USA")
-  demo_profile_4 = Profile(user_id = demo_4.to_dict()["id"], biography = "Guitarist for the Texas-based metal band Polyphia. They released their album Muse in April 2015.", location = "Los Angeles, CA 90012, USA")
-  demo_profile_5 = Profile(user_id = demo_5.to_dict()["id"], biography = mahalia(), location = "Los Angeles, CA 90012, USA")
+  demo_profile = Profile(user_id = demo.to_dict()["id"], biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/ODMZyH-U9OnBQl5xVkvDSw.png")
+  demo_profile_2 = Profile(user_id = demo_2.to_dict()["id"], biography = "", location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/xyNI80ijRwCnmaIhgkIC9w.png")
+  demo_profile_3 = Profile(user_id = demo_3.to_dict()["id"], biography = harry_mack(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/bfNsWUqh38DPbm483IlWbQ.png")
+  demo_profile_4 = Profile(user_id = demo_4.to_dict()["id"], biography = "Guitarist for the Texas-based metal band Polyphia. They released their album Muse in April 2015.", location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/koi7ODiaMW41atCTW44x6A.png")
+  demo_profile_5 = Profile(user_id = demo_5.to_dict()["id"], biography = mahalia(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/LaiIkNlrEiUKXf3y0FxOTg.png")
 
   # Instrument / Style seed data
   alto_sax = Instrument(name="Alto Saxophone")
@@ -89,6 +89,42 @@ with app.app_context():
   db.session.add(line_freestyle)
   db.session.add(euphoria)
   db.session.add(missed_my_ex)
+
+  db.session.commit()
+
+  five_peace_band = Band(name="Five Peace Band", owner_id=1, style_id=2)
+  fpb_owner = UserBand(is_confirmed=True)
+  five_peace_band.owner = demo
+  fpb_owner.user = demo
+  fpb_owner.band = five_peace_band
+
+  db.session.add(five_peace_band)
+  db.session.add(fpb_owner)
+
+  kenny_to_kenny = Invitation(sender_id=1, recipient_id=2, band_id=1, message="")
+  fpb_pending = UserBand(is_confirmed=False)
+  fpb_pending.user = demo_2
+  fpb_pending.band = five_peace_band
+
+  db.session.add(kenny_to_kenny)
+  db.session.add(fpb_pending)
+
+  atcq_tribute = Band(name="A Tribe Called Quest Tribute Group", owner_id=3, style_id=4)
+  atcq_owner = UserBand(is_confirmed=True)
+  atcq_tribute.owner = demo_3
+  atcq_owner.user = demo_3
+  atcq_owner.band = atcq_tribute
+
+  db.session.add(atcq_tribute)
+  db.session.add(atcq_owner)
+
+  harry_to_kenny = Invitation(sender_id=3, recipient_id=1, band_id=2, message="Hey Kenny!\nWould love to collaborate with you on a tribute to A Tribe Called Quest.\nBest,\nHarry Mack")
+  atcq_pending = UserBand(is_confirmed=False)
+  atcq_pending.user = demo
+  atcq_pending.band = atcq_tribute
+
+  db.session.add(harry_to_kenny)
+  db.session.add(atcq_pending)
 
   db.session.commit()
 

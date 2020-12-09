@@ -5,7 +5,7 @@ from flask_wtf.csrf import generate_csrf
 from flask_login import login_user, current_user, logout_user
 from datetime import timedelta
 from werkzeug.datastructures import MultiDict
-from app.models import db, User, Instrument, Style, Recording, profile_instruments, Profile, profile_styles
+from app.models import db, User, Instrument, Style, Recording, profile_instruments, Profile, profile_styles, Band, Invitation
 from app.auth import login_manager
 from app.forms import LoginForm, SearchForm
 from app.utils.errors import format_errors
@@ -42,10 +42,14 @@ def data():
     instruments = Instrument.query.all()
     styles = Style.query.all()
     recordings = Recording.query.all()
+    bands = Band.query.all()
+    invitations = Invitation.query.all()
     data_dict["users"] = list()
     data_dict["instruments"] = list()
     data_dict["styles"] = list()
     data_dict["recordings"] = list()
+    data_dict["bands"] = list()
+    data_dict["invitations"] = list()
     for user in users:
         user_dict = user.to_dict()
         profile = user.profile
@@ -60,6 +64,12 @@ def data():
     for recording in recordings:
         recording_dict = recording.to_dict()
         data_dict["recordings"].append(recording_dict)
+    for band in bands:
+        band_dict = band.to_dict()
+        data_dict["bands"].append(band_dict)
+    for invitation in invitations:
+        invitation_dict = invitation.to_dict()
+        data_dict["invitations"].append(invitation_dict)
     return data_dict
 
 @session_routes.route('/map-api-token', methods=["GET"])
@@ -70,10 +80,7 @@ def map_api_token():
 def csrf():
     res = make_response()
     res.set_cookie("XSRF-TOKEN",
-        generate_csrf(),
-        secure=True if os.environ.get('FLASK_ENV') else False,
-        samesite='Strict' if os.environ.get('FLASK_ENV') else None,
-        httponly=True)
+        generate_csrf())
     return res
 
 @session_routes.route('/search', methods=["PUT"])

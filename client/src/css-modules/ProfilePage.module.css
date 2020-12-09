@@ -18,9 +18,9 @@
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: 1fr;
 
-    background-image: url('https://i.ytimg.com/vi/wL6nstAo5cU/maxresdefault.jpg');
+    background-image: url('/images/default_cover_photo.jpg');
     background-repeat: no-repeat;
-    background-size: 90vw;
+    background-size: 1728px;
     background-position-y: -310px;
     background-position-x: -100px;
 
@@ -34,16 +34,18 @@
 
 .pictureContainer {
     position: relative;
-    grid-column: 2 / 4;
+    grid-column: 2 / 5;
+    margin-top: 51.5%;
 }
 
 .defaultProfilePicture {
-    margin-top: 120px;
-    height: 24vh;
+    height: 212px;
     border-radius: 50%;
     border: 6px solid white;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.6);
     z-index: 0;
+
+    box-sizing: content-box;
 }
 
 .defaultProfilePictureInnerBorder {
@@ -54,7 +56,7 @@
     border: 2px solid rgba(0, 7, 75, 0.2);
     transform: scale(0.94);
     z-index: 1;
-    top: 120px;
+    top: 0px;
 }
 
 .toolbar {
@@ -111,9 +113,60 @@
 }
 
 .name {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 20%;
+
     position: absolute;
-    bottom: 30%;
-    left: 28%;
+    bottom: 23%;
+    left: 27%;
 
     color: rgba(0, 0, 0, 0.45);
+}
+
+.nameAndButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 20%;
+
+    position: absolute;
+    bottom: 30%;
+    left: 27%;
+
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.profilePicButton {
+    position: absolute;
+
+    bottom: 20%;
+    right: 16%;
+
+    background-color: rgba(207, 207, 207, 0.3);
+    color: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 50%;
+
+    padding: 4px 6px;
+
+    z-index: 2;
+
+    font-size: 32px;
+}
+
+.profilePicButton:hover {
+    color: black;
+    background-color: rgba(207, 207, 207, 0.5);
+}
+
+.profilePicButton:active {
+    transform: scale(1.1);
+}
+
+.profilePicButton:focus {
+    outline: none;
 }

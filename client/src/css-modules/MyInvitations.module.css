@@ -1,0 +1,359 @@
+.pageContainer {
+    display: flex;
+    height: calc(100vh - 230px);
+}
+
+.sidebarContainer {
+    width: 22vw;
+    border-right: 1px solid #C5C3C3;
+}
+
+.sidebarHeaderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 12vh;
+    padding: 20px 24px;
+    border-bottom: 1px solid #C5C3C3;
+
+    background-color: #FFFCFC;
+}
+
+.sidebarHeaderButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 42%;
+    align-self: flex-end;
+}
+
+.sidebarHeaderButton {
+    font-size: 16px;
+
+    background-color: #FFFCFC;
+    color: #8F8F8F;
+
+    padding: 4px;
+
+    border: none;
+    border-radius: 4px;
+}
+
+.sidebarHeaderButton:hover, .sidebarHeaderButton:active, .sidebarHeaderButton:focus, .activeButton {
+    filter: brightness(90%);
+    outline: none;
+}
+
+.sidebarHeader {
+    text-align: center;
+}
+
+.contentContainer {
+    width: 100%;
+}
+
+.topBarContainer, .bottomBarContainer {
+    height: 70px;
+    background-color: #FFFCFC;
+}
+
+.topBarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 64px;
+    border-bottom: 1px solid #C5C3C3;
+}
+
+.bottomBarContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 64px;
+    align-items: center;
+    border-top: 1px solid #C5C3C3;
+}
+
+.centerContainer {
+    height: 567px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.senderProfilePic {
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.disabledReceivedButton {
+    filter: brightness(600%);
+    pointer-events: none;
+}
+
+.disabledSentButton {
+    filter: brightness(200%);
+    pointer-events: none;
+}
+
+.invitationRowContainer {
+    padding: 8px;
+}
+
+.invitationRow {
+    border-radius: 4px;
+    margin: 4px 0;
+    background-color: white;
+    padding: 8px;
+}
+
+.invitationRow:hover {
+    filter: brightness(90%);
+}
+
+.invitationRow:active {
+    filter: brightness(80%);
+}
+
+.invitationRowUser, .invitationRowBand {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.invitationRowUser {
+    font-size: 17px;
+    margin-bottom: 2px;
+}
+
+.invitationRowBand {
+    font-size: 15px;
+}
+
+.invitationRowMessage {
+    margin-top: 4px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.invitationRowTextContainer {
+    margin-left: 8px;
+}
+
+.invitationButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 14%;
+}
+
+.invitationButton {
+    font-size: 16px;
+    padding: 10px;
+
+    border: none;
+    border-radius: 4px;
+
+    color: white;
+}
+
+.acceptInvitationButton {
+    background-color: rgb(24, 78, 24);
+}
+
+.declineInvitationButton {
+    background-color: rgb(98, 23, 23);
+}
+
+.deleteInvitationButton {
+    background-color: rgb(104, 104, 104);
+}
+
+.invitationContentProfilePhoto {
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.topBarPhotoAndName {
+    display: flex;
+    align-items: center;
+}
+
+.invitationRowNameAndStatusContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invitationRowStatus {
+    font-size: 14px;
+}
+
+.invitationRowDate {
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.pendingStatus {
+    color: rgb(223, 197, 150);
+}
+
+.acceptedStatus {
+    color: rgb(153, 223, 150);
+}
+
+.declinedStatus {
+    color: rgb(223, 150, 150);
+}
+
+.activeInvitationHeaderText {
+    color: #444444;
+}
+
+.invitationMessage {
+    background-color: #f8f8f8;
+    max-width: 50%;
+    padding: 24px;
+}
+
+.invitationMessage > p {
+    padding: 5px 5px 10px 10px;
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+.manageButton {
+    width: 60%;
+
+    padding: 8px 4px;
+
+    font-size: 14px;
+
+    background-color: #575a8fd5;
+    color: white;
+
+    border: none;
+    border-radius: 4px;
+}
+
+.manageButton:hover {
+    filter: brightness(90%);
+}
+
+.manageButton:active, .manageButton:focus {
+    outline: none;
+    filter: brightness(84%);
+}
+
+.manageButton:active {
+    transform: scale(1.04);
+}
+
+.manageInvitationForm {
+    display: flex;
+    flex-direction: column;
+
+    padding: 16px 36px;
+
+    position: relative;
+
+    top: 50%;
+    left: 50%;
+
+    opacity: 100%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30vw;
+    height: 60vh;
+
+    border-radius: 8px;
+
+    background-color: rgb(255, 252, 252);
+
+    animation-name: modal_entry;
+    animation-duration: 0.3s;
+}
+
+.modalFormClose {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+
+    padding: 4px 8px 4px 8px;
+
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 4px;
+}
+
+.modalFormClose:hover {
+    filter: brightness(80%);
+}
+
+.modalFormClose:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.modalFormClose:focus {
+    outline: none;
+}
+
+.modalFormTitle {
+    color: rgba(39, 39, 39, 0.7);
+    vertical-align: center;
+    text-align: center;
+}
+
+.submitButton {
+    width: 24%;
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.submitContainer {
+    margin-top: 4%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formContent {
+    margin-top: 5%;
+}
+
+.formMessage {
+    font-family: "Helvetica";
+    font-size: 16px;
+    resize: none;
+}
+
+.errors {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+    width: 40%;
+    font-size: 14px;
+    border-radius: 4px;
+    right: 30%;
+    top: 10.6%;
+}
+
+.errorList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 4px 12px;
+}
+
+@keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

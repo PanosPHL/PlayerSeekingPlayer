@@ -12,7 +12,6 @@ const Recordings = ({ isOwner, userProfile, userRecordings, className }) => {
 
     const handleNewRecordingClick = () => {
         dispatch(toggleRecordingModal());
-        document.body.classList.add('noscroll');
     }
 
     const value = {

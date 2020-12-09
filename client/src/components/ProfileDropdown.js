@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../store/session';
 import navStyles from '../css-modules/NavComponents.module.css';
 
 
-const ProfileDropdown = ({ className, history }) => {
+const ProfileDropdown = ({ className, history, userId }) => {
     const dispatch = useDispatch();
-    const userId = useSelector(state => state.session.userId);
 
     const handleLogoutClick = async () => {
         const res = await dispatch(logout());
@@ -22,6 +21,12 @@ const ProfileDropdown = ({ className, history }) => {
         <ul className={navStyles.profileDropdown}>
             <Link className={navStyles.dropdownLink} to={`/profiles/${userId}`}>
             <li className={navStyles.dropdownListItem}>My Profile</li>
+            </Link>
+            <Link className={navStyles.dropdownLink} to='/my-bands'>
+                <li className={navStyles.dropdownListItem}>Bands</li>
+            </Link>
+            <Link className={navStyles.dropdownLink} to='/my-invitations'>
+                <li className={navStyles.dropdownListItem}>My Invitations</li>
             </Link>
             <li className={navStyles.dropdownListItem} onClick={handleLogoutClick}>Logout</li>
         </ul>

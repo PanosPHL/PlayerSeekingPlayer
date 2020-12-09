@@ -32,7 +32,6 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
 
         if (res.ok) {
             dispatch(toggleRecordingModal());
-            document.body.classList.remove('noscroll');
             return;
         }
 

@@ -1,11 +1,20 @@
 import Cookie from 'js-cookie';
 import { login } from './session';
 import { ADD_PROFILE_RECORDING, UPDATE_PROFILE_RECORDING, DELETE_PROFILE_RECORDING } from './recordings';
+import { ADD_INVITATION, DELETE_INVITATION } from './invitations';
 
 const SIGNUP_USER = 'users/SIGNUP_USER';
 const SET_USERS = 'users/SET_USERS';
 const UPDATE_OVERVIEW = 'users/UPDATE_OVERVIEW';
 const UPDATE_BIO = 'users/UPDATE_BIO';
+const UPDATE_PROFILE_PICTURE = 'users/UPDATE_PROFILE_PICTURE';
+
+const updateProfilePicture = (profile) => {
+    return {
+        type: UPDATE_PROFILE_PICTURE,
+        profile
+    }
+}
 
 const updateBio = (userInfo) => {
     return {
@@ -122,11 +131,35 @@ export const putAndUpdateBio = (userId, bio) => {
     }
 }
 
+export const putAndUpdateProfilePic = (userId, imgData) => {
+    const csrfToken = Cookie.get('XSRF-TOKEN');
+    return async dispatch => {
+        const res = await fetch(`/api/users/${userId}/profile_picture/`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({ img: imgData, csrfToken })
+        });
+
+        res.data = await res.json();
+
+        if (res.ok) {
+            dispatch(updateProfilePicture(res.data.profile));
+        }
+
+        return res;
+    }
+}
+
 export default function usersReducer(state = {}, action) {
     const newState = Object.assign({}, state);
     let newUser;
     let newProfileInfo;
     let newRecordings;
+    let newSender;
+    let newRecipient;
     switch (action.type) {
         case SIGNUP_USER:
             newState[action.user.id] = action.user;
@@ -184,6 +217,36 @@ export default function usersReducer(state = {}, action) {
             newProfileInfo.recordings = newRecordings;
             newUser.profileInfo = newProfileInfo;
             newState[[action.userId]] = newUser;
+            return newState;
+        case UPDATE_PROFILE_PICTURE:
+            newUser = Object.assign({}, newState[[action.profile.user_id]]);
+            newProfileInfo = Object.assign({}, newUser.profileInfo);
+            newProfileInfo.profilePic = action.profile.profilePic;
+            newUser.profileInfo = newProfileInfo;
+            newState[[action.profile.user_id]] = newUser;
+            return newState;
+        case ADD_INVITATION:
+            newSender = Object.assign({}, newState[action.invitation.senderId]);
+            newSender.sentInvitations = [...newSender.sentInvitations, action.invitation.id];
+            newRecipient = Object.assign({}, newState[action.invitation.recipientId]);
+            newRecipient.receivedInvitations = [...newSender.receivedInvitations, action.invitation.id];
+
+            newState[action.invitation.senderId] = newSender;
+            newState[action.invitation.recipientId] = newRecipient;
+
+            return newState;
+        case DELETE_INVITATION:
+            newSender = Object.assign({}, newState[action.invitation.senderId]);
+            let slice = newSender.sentInvitations.indexOf(action.invitation.id);
+            newSender.sentInvitations = [...newSender.sentInvitations.slice(0, slice), ...newSender.sentInvitations.slice(slice + 1)];
+
+            newRecipient = Object.assign({}, newState[action.invitation.recipientId]);
+            slice = newRecipient.receivedInvitations.indexOf(action.invitation.id);
+            newRecipient.receivedInvitations = [...newRecipient.receivedInvitations.slice(0, slice), ...newRecipient.receivedInvitations.slice(slice + 1)];
+
+            newState[action.invitation.senderId] = newSender;
+            newState[action.invitation.recipientId] = newRecipient;
+
             return newState;
         default:
             return state;
