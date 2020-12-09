@@ -40,12 +40,14 @@ const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
                     <h2 className={invStyles.activeInvitationHeaderText}>{band ? band.name : ""}</h2>
             </div>
             <div className={invStyles.centerContainer}>
+                <div className={invStyles.invitationMessage}>
             {
                 invitation && invitation.message ?
-                <p>{invitation.message}</p> :
+                invitation.message.split('\n').map((line) =><p>{line}</p>) :
                 otherUser ?
                 defaultInvitationMessage(otherUser, band).split('\n').map((line) => <p>{line}</p>) :
             <p>You currently have no {invitationType} invitations!</p>}
+                </div>
             </div>
             <div className={invStyles.bottomBarContainer}>
                 {

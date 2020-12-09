@@ -75,6 +75,9 @@
 
 .centerContainer {
     height: 567px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .senderProfilePic {
@@ -124,17 +127,17 @@
 }
 
 .invitationRowUser {
-    font-size: 18px;
+    font-size: 17px;
     margin-bottom: 2px;
 }
 
 .invitationRowBand {
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .invitationRowMessage {
     margin-top: 4px;
-    font-size: 14px;
+    font-size: 13px;
     color: rgba(0, 0, 0, 0.5);
 }
 
@@ -193,7 +196,7 @@
 }
 
 .invitationRowDate {
-    font-size: 12px;
+    font-size: 11px;
     color: rgba(0, 0, 0, 0.7);
 }
 
@@ -211,6 +214,18 @@
 
 .activeInvitationHeaderText {
     color: #444444;
+}
+
+.invitationMessage {
+    background-color: #f8f8f8;
+    max-width: 50%;
+    padding: 24px;
+}
+
+.invitationMessage > p {
+    padding: 5px 5px 10px 10px;
+    font-size: 22px;
+    line-height: 1.6;
 }
 
 .manageButton {
@@ -256,7 +271,7 @@
     transform: translate(-50%, -50%);
 
     width: 30vw;
-    height: 64vh;
+    height: 60vh;
 
     border-radius: 8px;
 
@@ -264,6 +279,81 @@
 
     animation-name: modal_entry;
     animation-duration: 0.3s;
+}
+
+.modalFormClose {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+
+    padding: 4px 8px 4px 8px;
+
+    background-color: rgb(255, 252, 252);
+    border: none;
+    border-radius: 4px;
+}
+
+.modalFormClose:hover {
+    filter: brightness(80%);
+}
+
+.modalFormClose:active {
+    filter: brightness(80%);
+    transform: scale(1.1);
+}
+
+.modalFormClose:focus {
+    outline: none;
+}
+
+.modalFormTitle {
+    color: rgba(39, 39, 39, 0.7);
+    vertical-align: center;
+    text-align: center;
+}
+
+.submitButton {
+    width: 24%;
+    background-color: rgb(14, 0, 47);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.submitContainer {
+    margin-top: 4%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formContent {
+    margin-top: 5%;
+}
+
+.formMessage {
+    font-family: "Helvetica";
+    font-size: 16px;
+    resize: none;
+}
+
+.errors {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.3);
+    color: darkred;
+    width: 40%;
+    font-size: 14px;
+    border-radius: 4px;
+    right: 30%;
+    top: 10.6%;
+}
+
+.errorList {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 4px 12px;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

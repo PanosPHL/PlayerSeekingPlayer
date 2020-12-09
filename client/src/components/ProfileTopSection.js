@@ -44,7 +44,7 @@ const ProfileTopSection = ({ isOwner, userProfile, about, recordings }) => {
                 onMouseLeave={() => {handlePicToggle('exit')}}>
                     <img className={profStyles.defaultProfilePicture} src={userProfile ? userProfile.profileInfo.profilePic || '/images/default_profile_photo.jpg' : ''} alt='Profile' />
                     <div className={profStyles.defaultProfilePictureInnerBorder}></div>
-                    { profilePicButton ?
+                    { profilePicButton && isOwner ?
                     <button onClick={handleCameraClick} className={profStyles.profilePicButton}><i className="fas fa-camera"></i></button> :
                     <></> }
                 </div>
