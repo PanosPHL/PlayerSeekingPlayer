@@ -109,21 +109,21 @@ with app.app_context():
   db.session.add(kenny_to_kenny)
   db.session.add(fpb_pending)
 
-  atcq_tribute = Band(name="A Tribe Called Quest Tribute Group", owner_id=1, style_id=4)
+  atcq_tribute = Band(name="A Tribe Called Quest Tribute Group", owner_id=3, style_id=4)
   atcq_owner = UserBand(is_confirmed=True)
-  atcq_tribute.owner = demo
-  atcq_owner.user = demo
+  atcq_tribute.owner = demo_3
+  atcq_owner.user = demo_3
   atcq_owner.band = atcq_tribute
 
   db.session.add(atcq_tribute)
   db.session.add(atcq_owner)
 
-  kenny_to_harry = Invitation(sender_id=1, recipient_id=3, band_id=2, message="Hey Harry!\nWould love to collaborate with you on a tribute to A Tribe Called Quest.\nBest,\nKenny Garrett")
+  harry_to_kenny = Invitation(sender_id=3, recipient_id=1, band_id=2, message="Hey Kenny!\nWould love to collaborate with you on a tribute to A Tribe Called Quest.\nBest,\nHarry Mack")
   atcq_pending = UserBand(is_confirmed=False)
-  atcq_pending.user = demo_3
+  atcq_pending.user = demo
   atcq_pending.band = atcq_tribute
 
-  db.session.add(kenny_to_harry)
+  db.session.add(harry_to_kenny)
   db.session.add(atcq_pending)
 
   db.session.commit()
