@@ -49,13 +49,13 @@ const EditBandForm = () => {
             <div className={bandStyles.bandFormContent}>
             <div className="form-control-group">
             <p>
-                <label className="labels" htmlFor="bandName">Band Name</label>
+                <label className="labels" htmlFor="bandName">Band Name<span className="redText">*</span></label>
             </p>
             <input className="form-control" name="bandName" type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div className="form-control-group">
             <p>
-                <label className="labels" htmlFor="bandStyle">Band Style</label>
+                <label className="labels" htmlFor="bandStyle">Band Style<span className="redText">*</span></label>
             </p>
             <select className="form-control" name="bandStyle" value={styleId} onChange={(e) => setStyleId(`${e.target.value}`)}>
                     <option value="">Select a style</option>
@@ -78,6 +78,7 @@ const EditBandForm = () => {
             <div className={bandStyles.editSubmitContainer}>
             <button className={bandStyles.editSubmitButton} type="submit">Submit</button>
             </div>
+            <span className={bandStyles.requiredText}><span className="redText">*</span> Required</span>
             </div>
         </form>
     )

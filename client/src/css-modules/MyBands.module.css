@@ -429,7 +429,10 @@
 .editSubmitContainer {
     display: flex;
     justify-content: flex-end;
-    width: 92%;
+    align-items: center;
+    width: 84%;
+
+    margin: 0 auto;
 }
 
 .bandFormContent {
@@ -473,6 +476,13 @@
     display: flex;
     justify-content: space-between;
     padding: 4px 12px;
+}
+
+.requiredText {
+    position: absolute;
+    font-size: 12px;
+
+    bottom: 2%;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

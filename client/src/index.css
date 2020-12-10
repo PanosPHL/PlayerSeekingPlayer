@@ -68,7 +68,7 @@ body::-webkit-scrollbar { /* WebKit */
 
     height: 18vh;
 
-    padding: 18px 0 24px 6.6%;
+    padding: 16px 0 24px 6.6%;
 
     background-color: rgb(255, 252, 252);
     border-top: 1px solid rgba(158, 158, 158, 0.6);
@@ -86,7 +86,7 @@ body::-webkit-scrollbar { /* WebKit */
     line-height: 1.6;
     margin-top: 6px;
 
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .footerListItem {
@@ -103,6 +103,10 @@ body::-webkit-scrollbar { /* WebKit */
 }
 
 .footerListHeader {
-    font-size: 16px;
+    font-size: 18px;
     color: rgba(0, 0, 0, 0.7);
+}
+
+.redText {
+    color: red;
 }
