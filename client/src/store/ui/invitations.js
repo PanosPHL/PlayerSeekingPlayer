@@ -6,7 +6,7 @@ export const toggleManageInvitationModal = () => {
     }
 }
 
-const initialInvitationUIState = {
+export const initialInvitationUIState = {
     manageInvitationModal: false
 }
 

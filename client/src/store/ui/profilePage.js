@@ -77,7 +77,7 @@ export const toggleBioModal = () => {
     }
 }
 
-const initialProfilePageUIState = {
+export const initialProfilePageUIState = {
     about: {
         display: true,
         overview: true,

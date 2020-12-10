@@ -78,7 +78,7 @@ const EditBandForm = () => {
             <div className={bandStyles.editSubmitContainer}>
             <button className={bandStyles.editSubmitButton} type="submit">Submit</button>
             </div>
-            <span className={bandStyles.requiredText}><span className="redText">*</span> Required</span>
+            <span className={bandStyles.requiredText}><span className="redText">*</span> Required field</span>
             </div>
         </form>
     )

@@ -36,7 +36,7 @@ export const changeInvitationType = (invType) => {
     }
 }
 
-const addUserToSession = (userId) => {
+export const addUserToSession = (userId) => {
     return {
         type: LOGIN,
         userId
@@ -144,7 +144,7 @@ export const search = (firstName, lastName, radius, instruments, styles, userId)
     }
 }
 
-const initialSessionState = {
+export const initialSessionState = {
     userId: null,
     recordingFormId: null,
     searchResults: [],

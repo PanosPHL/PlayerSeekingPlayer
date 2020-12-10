@@ -107,6 +107,7 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
           </button>
         </div>
       </div>
+      <span className={invStyles.requiredText}><span className="redText">*</span> Required field</span>
     </form>
   );
 };

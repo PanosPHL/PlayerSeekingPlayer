@@ -48,14 +48,14 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
         <form className={ id ? recordingStyles.editRecordingForm : recordingStyles.addRecordingForm} method="" action="" onSubmit={handleSubmit}>
             <div className="form-control-group">
             <p>
-                <label className="labels" htmlFor="title">Title</label>
+                <label className="labels" htmlFor="title">Title<span className="redText">*</span></label>
             </p>
             <input className="form-control" type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
             { id ? <></> :
             <div className="form-control-group">
             <p>
-                <label className="labels" htmlFor="url">URL</label>
+                <label className="labels" htmlFor="url">URL<span className="redText">*</span></label>
             </p>
             <input className="form-control" type="url" name="url" value={url} onChange={(e) => setUrl(e.target.value)} />
             </div> }
@@ -66,6 +66,7 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
             <textarea className={recordingStyles.descriptionForm} cols="55" rows="8" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
             <button className={recordingStyles.submitButton}>{id ? "Edit Recording" : "Add Recording"}</button>
+            <span className={recordingStyles.requiredText}><span className="redText">*</span> Required field</span>
         </form>
         </>
     )

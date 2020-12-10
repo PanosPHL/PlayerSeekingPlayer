@@ -316,5 +316,12 @@
     padding: 4px 0px;
 
     font-size: 20px;
+}
 
+.requiredText {
+    position: absolute;
+    font-size: 12px;
+
+    bottom: 3%;
+    left: 10.2%;
 }

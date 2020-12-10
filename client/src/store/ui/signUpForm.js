@@ -13,7 +13,7 @@ export const displayMap = () => {
     }
 }
 
-const initialSignUpFormUIState = {
+export const initialSignUpFormUIState = {
     userInfo: null,
     map: null
 }

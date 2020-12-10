@@ -20,7 +20,7 @@ export const toggleEditBandModal = () => {
     }
 }
 
-const initialMyBandsState = {
+export const initialMyBandsState = {
     editBandModal: false,
     newBandModal: false,
     sidebarBandList: true

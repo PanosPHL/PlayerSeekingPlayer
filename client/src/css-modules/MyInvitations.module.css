@@ -356,4 +356,12 @@
     padding: 4px 12px;
 }
 
+.requiredText {
+    position: absolute;
+    font-size: 12px;
+
+    bottom: 3%;
+    left: 10.2%;
+}
+
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
