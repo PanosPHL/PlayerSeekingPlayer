@@ -10,6 +10,7 @@ import navStyles from '../css-modules/NavComponents.module.css';
 const TopBar = () => {
     const dispatch = useDispatch();
     const { profileDropdown } = useSelector(state => state.ui.navbar);
+    const { userId } = useSelector(state => state.session);
 
     const handleProfileDropdownClick = () => {
         dispatch(toggleProfileDropdown());
@@ -24,7 +25,7 @@ const TopBar = () => {
         <div className={navStyles.nav}>
             <div className={navStyles.navContainer}>
             <div className={navStyles.leftContainer}>
-            <Link className={navStyles.logo} to='/'>
+            <Link className={navStyles.logo} to={`/profiles/${userId}`}>
             <h2>Player Seeking Player</h2>
             </Link>
             </div>

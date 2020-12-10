@@ -6,6 +6,11 @@ import { initialSignUpFormUIState } from '../store/ui/signUpForm';
 import { initialSessionState } from '../store/session';
 
 export const saveState = (state) => {
+    if (!state.session.userId) {
+        localStorage.clear();
+        return;
+    }
+
     state.session = initialSessionState;
 
     state.ui = {
