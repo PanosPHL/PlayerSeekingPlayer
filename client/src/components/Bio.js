@@ -22,7 +22,7 @@ const Bio = ({ userProfile, isOwner }) => {
             <BioEditButton isOwner={isOwner}/>
             <div className={aboutStyles.bio}>
                 <h3 className={aboutStyles.aboutSectionHeader}>Biography</h3>
-                <p className={aboutStyles.bioContent}>{userProfile ? userProfile.profileInfo.biography : ""}</p>
+                <div className={aboutStyles.bioContent}>{userProfile ? userProfile.profileInfo.biography.split('\n').map((line) => <p>{line}</p>) : ""}</div>
             </div>
         </div>
         </BioContext.Provider>

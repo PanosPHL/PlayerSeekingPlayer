@@ -86,7 +86,7 @@ body::-webkit-scrollbar { /* WebKit */
     line-height: 1.6;
     margin-top: 6px;
 
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .footerListItem {
@@ -103,7 +103,7 @@ body::-webkit-scrollbar { /* WebKit */
 }
 
 .footerListHeader {
-    font-size: 18px;
+    font-size: 16px;
     color: rgba(0, 0, 0, 0.7);
 }
 
