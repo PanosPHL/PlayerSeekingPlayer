@@ -204,9 +204,12 @@
 
 .descriptionForm {
     resize: none;
+    width: 100%;
     border: 2px solid rgba(53, 57, 80, 0.4);
     border-radius: 4px;
     background-color: rgba(121, 111, 255, 0.1);
+
+    padding: 8px 8px;
 
     margin-top: 2%;
     font-size: 16px;
@@ -226,7 +229,7 @@
 
 .editRecordingForm {
     width: 80%;
-    margin: 10% auto 0 auto;
+    margin: 8% auto 0 auto;
 }
 
 .modalFormTitle {
@@ -236,9 +239,23 @@
     padding-top: 4%;
 }
 
+.newSubmitContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.editSubmitContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
 .submitButton {
-    margin-top: 14px;
-    margin-left: 76%;
     background-color: rgb(14, 0, 47);
     color: white;
     border: none;
@@ -262,7 +279,8 @@
 }
 
 .recordingErrors {
-    width: 100%;
+    width: 60%;
+    margin: 0 auto;
     list-style: none;
     padding: 8px;
     border-radius: 4px;
@@ -301,10 +319,6 @@
 }
 
 .deleteRecordingButton {
-    position: absolute;
-    bottom: 7.6%;
-    left: 10%;
-
     background-color: rgb(14, 0, 47);
     color: white;
 
@@ -318,10 +332,11 @@
     font-size: 20px;
 }
 
-.requiredText {
-    position: absolute;
+.newRequiredText {
     font-size: 12px;
+}
 
-    bottom: 3%;
-    left: 10.2%;
+.editRequiredText {
+    font-size: 12px;
+    margin-top: 10px;
 }

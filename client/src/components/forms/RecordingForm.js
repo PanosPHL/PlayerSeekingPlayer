@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { postAndAddRecording, putAndUpdateRecording } from '../../store/recordings';
 import { setErrors, clearErrors } from '../../store/errors';
 import { toggleRecordingModal } from '../../store/ui/profilePage';
+import { setRecordingFormId } from '../../store/session';
+import { removeRecording } from '../../store/recordings';
 import Errors from '../universal/Errors';
 import recordingStyles from '../../css-modules/Recordings.module.css';
 
 
-const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, recURL } }) => {
+const RecordingForm = ({ id, userId, recInfo: { profileId, recTitle, recDescription, recURL } }) => {
     const dispatch = useDispatch();
     const [title, setTitle] = useState(id ? recTitle : '');
     const [url, setUrl] = useState(id ? recURL : '');
@@ -38,6 +40,13 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
         dispatch(setErrors(res.data.errors));
     }
 
+    const handleDeleteClick = () => {
+        dispatch(removeRecording(id, userId));
+        dispatch(toggleRecordingModal());
+        dispatch(setRecordingFormId(null));
+        dispatch(clearErrors());
+    }
+
     return (
         <>
         <h2 className={recordingStyles.modalFormTitle}>{ id ? "Edit Recording" : "Add Recording" }</h2>
@@ -50,23 +59,35 @@ const RecordingForm = ({ id, recInfo: { profileId, recTitle, recDescription, rec
             <p>
                 <label className="labels" htmlFor="title">Title<span className="redText">*</span></label>
             </p>
-            <input className="form-control" type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input placeholder="i.e. Mary Had A Little Lamb" className="form-control" type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
             { id ? <></> :
             <div className="form-control-group">
             <p>
                 <label className="labels" htmlFor="url">URL<span className="redText">*</span></label>
             </p>
-            <input className="form-control" type="url" name="url" value={url} onChange={(e) => setUrl(e.target.value)} />
+            <input placeholder="https://www.youtube.com/watch?v=o_oQ52sZCTE" className="form-control" type="url" name="url" value={url} onChange={(e) => setUrl(e.target.value)} />
             </div> }
             <div className="form-control-group">
             <p>
                 <label className="labels" htmlFor="description">Description</label>
             </p>
-            <textarea className={recordingStyles.descriptionForm} cols="55" rows="8" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+            <textarea placeholder="Add any additional context to your recording here!" className={recordingStyles.descriptionForm} rows="8" name="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
             </div>
-            <button className={recordingStyles.submitButton}>{id ? "Edit Recording" : "Add Recording"}</button>
-            <span className={recordingStyles.requiredText}><span className="redText">*</span> Required field</span>
+            {
+                id ?
+                <>
+                <div className={recordingStyles.editSubmitContainer}>
+                <button onClick={handleDeleteClick} className={recordingStyles.deleteRecordingButton}><i className="fas fa-trash-alt"></i></button>
+                <button type="submit" className={recordingStyles.submitButton}>{id ? "Edit Recording" : "Add Recording"}</button>
+                </div>
+                <span className={recordingStyles.editRequiredText}><span className="redText">*</span> Required field</span>
+                </> :
+                <div className={recordingStyles.newSubmitContainer}>
+                <span className={recordingStyles.newRequiredText}><span className="redText">*</span> Required field</span>
+                <button type="submit" className={recordingStyles.submitButton}>{id ? "Edit Recording" : "Add Recording"}</button>
+                </div>
+            }
         </form>
         </>
     )

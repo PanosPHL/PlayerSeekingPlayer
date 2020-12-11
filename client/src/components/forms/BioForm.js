@@ -31,7 +31,7 @@ const BioForm = ({ initBio, userId }) => {
                 <p>
                 <label className="labels">Bio</label>
                 </p>
-                <textarea className={aboutStyles.bioTextarea + " form-control"} rows="12" value={bio} onChange={(e) => setBio(e.target.value)} />
+                <textarea placeholder="Write anything you want other Player Seeking Player users to know about you!" className={aboutStyles.bioTextarea + " form-control"} rows="12" value={bio} onChange={(e) => setBio(e.target.value)} />
                 <button className={aboutStyles.bioSubmitButton} type="submit">Submit</button>
             </form>
     )

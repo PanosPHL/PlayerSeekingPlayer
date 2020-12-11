@@ -6,7 +6,6 @@ import { clearErrors } from '../../store/errors';
 import RecordingForm from '../forms/RecordingForm';
 import ModalContainer from './ModalContainer';
 import recordingStyles from '../../css-modules/Recordings.module.css';
-import { removeRecording } from '../../store/recordings';
 
 
 const RecordingFormModal = () => {
@@ -37,24 +36,12 @@ const RecordingFormModal = () => {
         dispatch(clearErrors());
     }
 
-    const handleDeleteClick = () => {
-        dispatch(removeRecording(recordingFormId, userId));
-        dispatch(toggleRecordingModal());
-        dispatch(setRecordingFormId(null));
-        dispatch(clearErrors());
-    }
-
     if (recordingFormModal) {
         return (
             <ModalContainer>
                 <div className={recordingFormId ? recordingStyles.editModalFormContainer : recordingStyles.addModalFormContainer}>
                     <button className={recordingStyles.modalFormClose} onClick={handleCloseClick}><i className="fas fa-times"></i></button>
-                    <RecordingForm id={recordingFormId} recInfo={recInfo}/>
-                    {
-                    recordingFormId ?
-                    <button onClick={handleDeleteClick} className={recordingStyles.deleteRecordingButton}><i className="fas fa-trash-alt"></i></button> :
-                    <></>
-                    }
+                    <RecordingForm id={recordingFormId} recInfo={recInfo} userId={userId}/>
                 </div>
             </ModalContainer>
         )
