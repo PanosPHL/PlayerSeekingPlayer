@@ -38,11 +38,12 @@ const NewBandForm = ({ bandId }) => {
                 {
                 errors.length ? <Errors className={bandStyles.editBandErrorList} divStyle={bandStyles.newBandFormErrors} errors={errors}/> : <></>
                 }
+                <div className={bandStyles.newBandFormContent}>
                 <div className={bandStyles.formControlGroup + " form-control-group"}>
                 <p>
                 <label className="labels" htmlFor="bandName">Band Name</label>
                 </p>
-                <input className="form-control" name="bandName" type='text' value={name} onChange={(e) => setName(e.target.value)} />
+                <input placeholder="i.e. The Rolling Stones" className="form-control" name="bandName" type='text' value={name} onChange={(e) => setName(e.target.value)} />
                 </div>
                 <div className={bandStyles.formControlGroup + " form-control-group"}>
                 <p>
@@ -58,6 +59,7 @@ const NewBandForm = ({ bandId }) => {
                 </select>
                 </div>
                 <button className={bandStyles.submitButton} type='submit'>Submit</button>
+                </div>
             </form>
     )
 }

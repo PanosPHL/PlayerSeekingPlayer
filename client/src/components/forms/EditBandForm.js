@@ -51,7 +51,7 @@ const EditBandForm = () => {
             <p>
                 <label className="labels" htmlFor="bandName">Band Name<span className="redText">*</span></label>
             </p>
-            <input className="form-control" name="bandName" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+            <input placeholder="i.e. The Rolling Stones" className="form-control" name="bandName" type="text" value={name} onChange={(e) => setName(e.target.value)} />
             </div>
             <div className="form-control-group">
             <p>
