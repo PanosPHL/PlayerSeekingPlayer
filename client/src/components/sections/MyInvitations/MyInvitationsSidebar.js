@@ -31,7 +31,7 @@ const MyInvitationsSidebar = ({ invitations }) => {
             </div>
             <div className={invStyles.invitationRowContainer}>
                 {
-                    invitations.map((invitation) => <MyInvitationRow invitation={invitation} invitationType={invitationType} />)
+                    invitations.map((invitation, i) => <MyInvitationRow key={`invitation-row-${i + 1}`} invitation={invitation} invitationType={invitationType} />)
                 }
             </div>
         </div>

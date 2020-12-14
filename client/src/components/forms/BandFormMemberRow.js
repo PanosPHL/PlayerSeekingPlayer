@@ -16,7 +16,7 @@ const BandFormMemberRow = ({ member, band, status }) => {
     return (
         <div className={bandStyles.bandFormMemberRow}>
                 <div className={bandStyles.bandFormMemberRowPicAndInfo}>
-                    <img className={bandStyles.bandFormMemberRowPic} src={member.profileInfo.profilePic || '/images/default_profile_photo.jpg'} />
+                    <img className={bandStyles.bandFormMemberRowPic} src={member.profileInfo.profilePic || '/images/default_profile_photo.jpg'} alt={`${member.firstName} ${member.lastName}`}/>
                     <div>
                     <h5 className={bandStyles.bandFormMemberRowName}>{member.firstName + " " + member.lastName}</h5>
                     <span className={bandStyles.bandFormMemberRowInfo}>{isOwner ? `Owner: ${instruments.map((instrument) => instrument.name).join(', ')}` : status === "confirmed" ? `${instruments.map((instrument) => instrument.name).join(', ')}`

@@ -8,7 +8,7 @@ import SentInvitationButtons from '../../buttons/SentInvitationButtons';
 const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
     const self = useSelector(state => state.entities.users[state.session.userId]);
     const otherUser = useSelector(state => {
-        if (!state.session.activeInvitation) {
+        if (!state.session.activeInvitation || !invitation) {
             return null;
         }
 
@@ -19,7 +19,7 @@ const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
         }
     });
     const band = useSelector(state => {
-        if (!state.session.activeInvitation) {
+        if (!state.session.activeInvitation || !invitation) {
             return null;
         } else {
             return state.entities.bands[invitation.bandId];
@@ -44,14 +44,14 @@ const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
                 invitation && invitation.message ?
                 invitation.message.split('\n').map((line) =><p>{line}</p>) :
                 otherUser ?
-                defaultInvitationMessage(otherUser, self, band, invitationType).split('\n').map((line) => <p>{line}</p>) :
+                defaultInvitationMessage(otherUser, self, band, invitationType).split('\n').map((line, i) => <p key={`line-${i + 1}`}>{line}</p>) :
             <p>You currently have no {invitationType} invitations!</p>}
                 </div>
             </div>
             <div className={invStyles.bottomBarContainer}>
                 {
                 invitationType === 'received' ?
-                <ReceivedInvitationButtons invitationId={invitation ? invitation.id : null} disabled={invitation ? false : true} /> :
+                <ReceivedInvitationButtons invitationId={invitation ? invitation.id : null} disabled={invitation && invitation.status !== "Accepted" ? false : true} /> :
                 <SentInvitationButtons invitations={invitations} invitationId={invitation ? invitation.id : null} disabled={invitation ? false : true} />
                 }
             </div>

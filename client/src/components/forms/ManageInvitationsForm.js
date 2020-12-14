@@ -41,10 +41,8 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
   };
 
   useEffect(() => {
-    if (errors.length) {
       dispatch(clearErrors());
-    }
-  }, [bandId]);
+  }, [bandId, dispatch]);
 
   return (
     <form

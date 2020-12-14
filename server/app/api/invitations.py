@@ -10,15 +10,17 @@ invitation_routes = Blueprint('invitations', __name__)
 def delete_invitation(invitation_id):
     invitation = Invitation.query.get(invitation_id)
     db.session.delete(invitation)
-    return { "invitation": invitation.to_dict() }
+    db.session.commit()
+
+    return { "invitationId": invitation.to_dict() }
 
 @invitation_routes.route("/<int:invitation_id>/", methods=["PUT"])
 def update_invitation_status(invitation_id):
     data = request.json
     invitation = Invitation.query.get(invitation_id)
     invitation.status = data["status"]
-
     invitation_dict = invitation.to_dict()
+
     user_band = UserBand.query.filter(UserBand.band_id == invitation_dict["bandId"], UserBand.user_id == invitation_dict["recipientId"]).one()
     user_band_dict = user_band.to_dict()
 

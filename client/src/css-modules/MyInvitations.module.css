@@ -94,7 +94,7 @@
 }
 
 .disabledReceivedButton {
-    filter: brightness(600%);
+    filter: brightness(480%);
     pointer-events: none;
 }
 
@@ -161,6 +161,10 @@
     color: white;
 }
 
+.invitationButton:focus {
+    outline: none;
+}
+
 .acceptInvitationButton {
     background-color: rgb(24, 78, 24);
 }
@@ -220,6 +224,8 @@
     background-color: #f8f8f8;
     max-width: 50%;
     padding: 24px;
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 }
 
 .invitationMessage > p {

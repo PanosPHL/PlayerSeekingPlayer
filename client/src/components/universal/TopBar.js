@@ -11,6 +11,7 @@ const TopBar = () => {
     const dispatch = useDispatch();
     const { profileDropdown } = useSelector(state => state.ui.navbar);
     const { userId } = useSelector(state => state.session);
+    const unansweredInvitations = useSelector(state => Object.values(state.entities.invitations).filter((invitation) => invitation.recipientId === state.session.userId && invitation.status === "Pending").length)
 
     const handleProfileDropdownClick = () => {
         dispatch(toggleProfileDropdown());
@@ -30,7 +31,7 @@ const TopBar = () => {
             </Link>
             </div>
             <SearchIconAndDropdown />
-            <ProfilePicAndDropdown profileDropdown={profileDropdown} />
+            <ProfilePicAndDropdown profileDropdown={profileDropdown} notifications={unansweredInvitations}/>
             </div>
         </div>
         </NavContext.Provider>

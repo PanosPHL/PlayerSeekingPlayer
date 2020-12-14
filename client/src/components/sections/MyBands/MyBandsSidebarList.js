@@ -6,7 +6,7 @@ const MyBandsSidebarList = ({ bands }) => {
         <div className={bandStyles.sidebarBandList}>
             {
             bands.length ?
-            bands.map((band) => <div className={bandStyles.sidebarBandRow}><h4>{band.name}</h4></div>) :
+            bands.map((band, i) => <div key={`sidebar-band-${i + 1}`} className={bandStyles.sidebarBandRow}><h4>{band.name}</h4></div>) :
             <></>
             }
         </div>

@@ -29,7 +29,7 @@ const MyInvitations = () => {
         } else {
             dispatch(setActiveInvitation(null));
         }
-    }, [invitationType, dispatch]);
+    }, [invitationType, dispatch, invitations.length]);
 
     return (
         <div className={invStyles.pageContainer}>

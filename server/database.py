@@ -17,7 +17,7 @@ with app.app_context():
   demo_4 = User(first_name = "Tim", last_name="Henson", email = "timhenson@gmail.com", DOB = "1993-11-19", password = "password", lat = 34.05223, lng = -118.24368)
   demo_5 = User(first_name = "Mahalia", last_name="Burkmar", email = "mahaliaburkmar@gmail.com", DOB = "1998-05-01", password = "password", lat = 34.05223, lng = -118.24368)
   demo_6 = User(first_name = "Charlie", last_name="Puth", email = "charlieputh@gmail.com", DOB = "1991-12-01", password = "password", lat = 34.05223, lng = -118.24368)
-  demo_7 = User(first_name = "Talib", last_name="Kweli", email = "talibkweli@gmail.com", DOB = "1975-10-03", lat = 34.05223, lng = -118.24368)
+  demo_7 = User(first_name = "Kamaal", last_name="Fareed", email = "qtiprapper@gmail.com", DOB = "1975-10-03", password = "password", lat = 34.05223, lng = -118.24368)
 
   demo_profile = Profile(biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/ODMZyH-U9OnBQl5xVkvDSw.png")
   demo_profile_2 = Profile(biography = "", location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/xyNI80ijRwCnmaIhgkIC9w.png")
@@ -25,6 +25,7 @@ with app.app_context():
   demo_profile_4 = Profile(biography = "Guitarist for the Texas-based metal band Polyphia. They released their album Muse in April 2015.", location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/koi7ODiaMW41atCTW44x6A.png")
   demo_profile_5 = Profile(biography = mahalia(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/LaiIkNlrEiUKXf3y0FxOTg.png")
   demo_profile_6 = Profile(biography = "", location = "Los Angeles, CA 90012, USA", profile_pic="")
+  demo_profile_7 = Profile(biography = "", location = "Los Angeles, CA 90012, USA", profile_pic="")
 
   demo_profile.user = demo
   demo_profile_2.user = demo_2
@@ -32,6 +33,7 @@ with app.app_context():
   demo_profile_4.user = demo_4
   demo_profile_5.user = demo_5
   demo_profile_6.user = demo_6
+  demo_profile_7.user = demo_7
 
   db.session.add(demo)
   db.session.add(demo_2)
@@ -39,6 +41,7 @@ with app.app_context():
   db.session.add(demo_4)
   db.session.add(demo_5)
   db.session.add(demo_6)
+  db.session.add(demo_7)
   db.session.commit()
 
   # Instrument / Style seed data
@@ -73,6 +76,7 @@ with app.app_context():
   euphoria = Recording(url='https://www.youtube.com/watch?v=7C19ZGLuhlQ')
   missed_my_ex = Recording(url='https://www.youtube.com/watch?v=a7kT52xL-7g')
   attention = Recording(url='https://www.youtube.com/watch?v=nfs8NYg7yQM')
+  abstractions = Recording(url='https://www.youtube.com/watch?v=_FIJ7TE5-Ss')
 
   demo_rfc = ProfileRecording(title="Run for Cover with Marcus Miller", description="Playing Run for Cover live with Marcus Miller, Hiram Bullock, Poogie Bell, and Patches Stewart")
   demo_sas = ProfileRecording(title="Sing A Song of Song", description='Track 4 off of my album "Songbook"')
@@ -82,6 +86,7 @@ with app.app_context():
   demo_4_eu = ProfileRecording(title="Euphoria - Polyphia", description="From our album Renaissance")
   demo_5_mme = ProfileRecording(title="I Wish I Missed My Ex", description='Track 2 off of my album "Love and Compromise"')
   demo_6_att = ProfileRecording(title="Attention", description="One of the singles which launched my career")
+  demo_7_abs = ProfileRecording(title="Abstractions ft. Kenny Garrett", description="""Kenny Garrett's feature on my album "Kamaal the Abstract\"""")
 
   demo_rfc.profile = demo_profile
   demo_sas.profile = demo_profile
@@ -91,6 +96,7 @@ with app.app_context():
   demo_4_eu.profile = demo_profile_4
   demo_5_mme.profile = demo_profile_5
   demo_6_att.profile = demo_profile_6
+  demo_7_abs.profile = demo_profile_7
 
   demo_rfc.recording = run_for_cover
   demo_sas.recording = sing_a_song_of_song
@@ -100,6 +106,7 @@ with app.app_context():
   demo_4_eu.recording = euphoria
   demo_5_mme.recording = missed_my_ex
   demo_6_att.recording = attention
+  demo_7_abs.recording = abstractions
 
   demo_profile.instruments.append(alto_sax)
   demo_profile.instruments.append(keyboard)
@@ -109,6 +116,7 @@ with app.app_context():
   demo_profile_5.instruments.append(vocals_and_rap)
   demo_profile_6.instruments.append(vocals_and_rap)
   demo_profile_6.instruments.append(keyboard)
+  demo_profile_7.instruments.append(vocals_and_rap)
 
   demo_profile.styles.append(jazz)
   demo_profile.styles.append(funk)
@@ -117,6 +125,7 @@ with app.app_context():
   demo_profile_4.styles.append(rock)
   demo_profile_5.styles.append(pop)
   demo_profile_6.styles.append(pop)
+  demo_profile_7.styles.append(hiphop)
 
   db.session.add(demo_profile)
   db.session.add(demo_profile_2)
@@ -124,6 +133,7 @@ with app.app_context():
   db.session.add(demo_profile_4)
   db.session.add(demo_profile_5)
   db.session.add(demo_profile_6)
+  db.session.add(demo_profile_7)
 
   db.session.add(run_for_cover)
   db.session.add(sing_a_song_of_song)
@@ -133,6 +143,7 @@ with app.app_context():
   db.session.add(euphoria)
   db.session.add(missed_my_ex)
   db.session.add(attention)
+  db.session.add(abstractions)
 
   db.session.add(demo_rfc)
   db.session.add(demo_sas)
@@ -141,8 +152,8 @@ with app.app_context():
   db.session.add(demo_3_lf)
   db.session.add(demo_4_eu)
   db.session.add(demo_5_mme)
-
-  db.session.commit()
+  db.session.add(demo_6_att)
+  db.session.add(demo_7_abs)
 
   five_peace_band = Band(name="Five Peace Band")
   five_peace_band.owner = demo
@@ -188,5 +199,29 @@ with app.app_context():
 
   db.session.add(harry_to_kenny)
   db.session.add(atcq_pending)
+
+  abstractions_band = Band(name='"Abstractions" Group')
+  abstractions_owner = UserBand(is_confirmed=True)
+
+  abstractions_band.owner = demo_7
+  abstractions_band.style = hiphop
+
+  abstractions_owner.user = demo_7
+  abstractions_owner.band = abstractions_band
+
+  db.session.add(abstractions_band)
+  db.session.add(abstractions_owner)
+
+  qtip_to_kenny = Invitation(message='Hey Kenny!\nLong time no chat. Would love to get you on my newest record, "Abstractions". Let me know what you think.\nBest,\nQ-Tip', status = "Accepted")
+  qtip_to_kenny.sender = demo_7
+  qtip_to_kenny.recipient = demo
+  qtip_to_kenny.band = abstractions_band
+
+  abs_kenny = UserBand(is_confirmed=True)
+  abs_kenny.user = demo
+  abs_kenny.band = abstractions_band
+
+  db.session.add(qtip_to_kenny)
+  db.session.add(abs_kenny)
 
   db.session.commit()
