@@ -17,7 +17,7 @@ with app.app_context():
   demo_4 = User(first_name = "Tim", last_name="Henson", email = "timhenson@gmail.com", DOB = "1993-11-19", password = "password", lat = 34.05223, lng = -118.24368)
   demo_5 = User(first_name = "Mahalia", last_name="Burkmar", email = "mahaliaburkmar@gmail.com", DOB = "1998-05-01", password = "password", lat = 34.05223, lng = -118.24368)
   demo_6 = User(first_name = "Charlie", last_name="Puth", email = "charlieputh@gmail.com", DOB = "1991-12-01", password = "password", lat = 34.05223, lng = -118.24368)
-  demo_7 = User(first_name = "Tablib", last_name="Kweli", email = "talibkweli@gmail.com", DOB = "1975-10-03", lat = 34.05223, lng = -118.24368)
+  demo_7 = User(first_name = "Talib", last_name="Kweli", email = "talibkweli@gmail.com", DOB = "1975-10-03", lat = 34.05223, lng = -118.24368)
 
   demo_profile = Profile(biography = kenny_garrett(), location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/ODMZyH-U9OnBQl5xVkvDSw.png")
   demo_profile_2 = Profile(biography = "", location = "Los Angeles, CA 90012, USA", profile_pic="https://player-seeking-player.s3-us-east-2.amazonaws.com/profile_pictures/xyNI80ijRwCnmaIhgkIC9w.png")
