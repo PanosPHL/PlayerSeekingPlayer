@@ -5,7 +5,7 @@ import { logout } from '../../store/session';
 import navStyles from '../../css-modules/NavComponents.module.css';
 
 
-const ProfileDropdown = ({ className, history, userId }) => {
+const ProfileDropdown = ({ className, history, userId, notifications }) => {
     const dispatch = useDispatch();
 
     const handleLogoutClick = async () => {
@@ -26,7 +26,9 @@ const ProfileDropdown = ({ className, history, userId }) => {
                 <li className={navStyles.dropdownListItem}>Bands</li>
             </Link>
             <Link className={navStyles.dropdownLink} to='/my-invitations'>
-                <li className={navStyles.dropdownListItem}>My Invitations</li>
+                <li className={navStyles.dropdownListItem}>My Invitations{
+                    notifications ? <><span> </span><span className={navStyles.dropdownNotificationNumber}>{notifications}</span></> : <></>
+                }</li>
             </Link>
             <li className={navStyles.dropdownListItem} onClick={handleLogoutClick}>Logout</li>
         </ul>
