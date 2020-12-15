@@ -47,6 +47,10 @@ const LogInPage = ({ history }) => {
             <AuthLeft />
             <div className={authStyles.authRight}>
                 <div className={authStyles.loginFormContainer}>
+                    <div className={authStyles.logoAndLearnMoreContainer}>
+                        <img className={authStyles.logo} src='/images/player-seeking-player-logo-black.png' alt='Player Seeking Player'/>
+                        <button className={authStyles.learnMore + " " + authStyles.bottomButton}><i className="far fa-question-circle"></i><span style={{ fontSize: "13px"}}>Learn More</span></button>
+                    </div>
                     <div className={authStyles.loginHeaderContainer}>
                         <h1 className={authStyles.signUpHeader}>Welcome back!</h1>
                     </div>

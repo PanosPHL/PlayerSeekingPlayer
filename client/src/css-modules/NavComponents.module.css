@@ -1,15 +1,11 @@
 .nav {
     background-color: rgba(0, 7, 105, 0.7);
     height: 6.6vh;
-}
-
-.navContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    width: 90%;
-    height: inherit;
+
+    padding: 0px 10% 0px 7%;
 }
 
 .profileImage {
@@ -102,8 +98,8 @@
 }
 
 .logo {
-    text-decoration: none;
-    color: white;
+    height: 150px;
+    margin-top: 12px;
 }
 
 .searchButton {
@@ -118,7 +114,7 @@
     border: none;
     border-radius: 50%;
 
-    margin: 0 auto;
+    margin-right: 180px;
 }
 
 .searchButton:hover, .searchButton:active {

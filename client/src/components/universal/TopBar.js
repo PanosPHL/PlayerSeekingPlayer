@@ -24,15 +24,13 @@ const TopBar = () => {
     return (
         <NavContext.Provider value={value}>
         <div className={navStyles.nav}>
-            <div className={navStyles.navContainer}>
             <div className={navStyles.leftContainer}>
-            <Link className={navStyles.logo} to={`/profiles/${userId}`}>
-            <h2>Player Seeking Player</h2>
+            <Link to={`/profiles/${userId}`}>
+            <img className={navStyles.logo} src='/images/player-seeking-player-logo-white.png' alt='Player Seeking Player'/>
             </Link>
             </div>
             <SearchIconAndDropdown />
             <ProfilePicAndDropdown profileDropdown={profileDropdown} notifications={unansweredInvitations}/>
-            </div>
         </div>
         </NavContext.Provider>
     )
