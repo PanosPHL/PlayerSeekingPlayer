@@ -228,17 +228,17 @@
     position: absolute;
 
     top: 120%;
+    left: 10%;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
-    margin: 4px 0px;
-    padding: 2px;
+    padding: 0px 8px;
 
     list-style: none;
 
     max-height: 0px;
-    width: 21vw;
+    width: auto;
     overflow: hidden;
 
     z-index: 2;
@@ -247,10 +247,6 @@
     background-color: rgb(255, 252, 252);
 
     transition: all 0.3s;
-}
-
-.hiddenStyleDropdown {
-    left: 19%;
 }
 
 .searchInstrumentDropdown {
@@ -286,12 +282,11 @@
     position: absolute;
 
     top: 120%;
+    left: 10%;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-
-    margin: 4px 0px;
-    padding: 2px;
+    padding: 8px;
 
     list-style: none;
 
