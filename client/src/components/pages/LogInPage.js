@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/session';
 import { setErrors, clearErrors } from '../../store/errors';
+import { toggleLearnMoreModal } from '../../store/ui/authPages';
 import { Link, withRouter } from 'react-router-dom';
 import AuthLeft from '../sections/AuthPages/AuthLeft';
 import Errors from '../universal/Errors';
@@ -42,6 +43,10 @@ const LogInPage = ({ history }) => {
         dispatch(setErrors(res.data.errors));
     }
 
+    const handleLearnMoreClick = () => {
+        dispatch(toggleLearnMoreModal());
+    }
+
     return (
         <div className={authStyles.body} style={{display: "flex", height: "100vh", width: "100vw"}}>
             <AuthLeft />
@@ -49,7 +54,7 @@ const LogInPage = ({ history }) => {
                 <div className={authStyles.loginFormContainer}>
                     <div className={authStyles.logoAndLearnMoreContainer}>
                         <img className={authStyles.logo} src='/images/player-seeking-player-logo-black.png' alt='Player Seeking Player'/>
-                        <button className={authStyles.learnMore + " " + authStyles.bottomButton}><i className="far fa-question-circle"></i><span style={{ fontSize: "13px"}}>Learn More</span></button>
+                        <button onClick={handleLearnMoreClick} className={authStyles.learnMore + " " + authStyles.bottomButton}><i className="far fa-question-circle"></i><span style={{ fontSize: "13px"}}>Learn More</span></button>
                     </div>
                     <div className={authStyles.loginHeaderContainer}>
                         <h1 className={authStyles.signUpHeader}>Welcome back!</h1>

@@ -15,7 +15,10 @@ session_routes = Blueprint("session", __name__)
 
 @session_routes.route('/', methods=["GET"])
 def get_current_user():
-    return { "userId": current_user.id }
+    try:
+        return { "userId": current_user.id }
+    except:
+        return { "userId": None }
 
 @session_routes.route('/login', methods=["PUT"])
 def login():

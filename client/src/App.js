@@ -7,6 +7,7 @@ import SignUpPage from './components/pages/SignUpPage';
 import LogInPage from './components/pages/LogInPage';
 import Home from './components/universal/Home';
 import { addUserToSession } from './store/session';
+import LearnMoreModal from './components/modals/LearnMoreModal';
 
 
 function App({ mapsApiKey }) {
@@ -29,6 +30,7 @@ function App({ mapsApiKey }) {
 
     return (
         <LoadScript googleMapsApiKey={mapsApiKey} libraries={["places"]}>
+        <LearnMoreModal />
         <BrowserRouter>
             <Switch>
                 <Route path='/login'>

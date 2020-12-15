@@ -4,6 +4,7 @@ import { initialNavbarUIState } from '../store/ui/navbar';
 import { initialProfilePageUIState } from '../store/ui/profilePage';
 import { initialSignUpFormUIState } from '../store/ui/signUpForm';
 import { initialSessionState } from '../store/session';
+import { initialAuthPagesUIState } from '../store/ui/authPages';
 
 export const saveState = (state) => {
     if (!state.session.userId) {
@@ -14,11 +15,12 @@ export const saveState = (state) => {
     state.session = initialSessionState;
 
     state.ui = {
-        uiInvitations: initialInvitationUIState,
+        authPages: initialAuthPagesUIState,
         myBands: initialMyBandsState,
         navbar: initialNavbarUIState,
         profilePage: initialProfilePageUIState,
-        signUpForm: initialSignUpFormUIState
+        signUpForm: initialSignUpFormUIState,
+        uiInvitations: initialInvitationUIState
     }
 
     try {

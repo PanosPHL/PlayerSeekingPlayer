@@ -15,6 +15,7 @@ import myBands from './ui/myBands';
 import navbar from './ui/navbar';
 import profilePage from './ui/profilePage';
 import signUpForm from './ui/signUpForm';
+import authPages from './ui/authPages';
 
 import { LOGOUT } from './session';
 
@@ -30,11 +31,12 @@ const entities = combineReducers({
 });
 
 const ui = combineReducers({
-    uiInvitations,
+    authPages,
     myBands,
     navbar,
     profilePage,
-    signUpForm
+    signUpForm,
+    uiInvitations
 });
 
 const appReducer = combineReducers({
