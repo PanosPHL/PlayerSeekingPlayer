@@ -133,9 +133,6 @@
 }
 
 .newBandForm {
-    display: flex;
-    flex-direction: column;
-
     padding: 16px;
 
     position: relative;
@@ -248,6 +245,13 @@
     height: 48%;
 }
 
+.bandListMemberCardButtonContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 32%;
+    height: 48%;
+}
+
 .bandListCardButton {
     display: flex;
     align-items: center;
@@ -284,7 +288,25 @@
     font-size: 16px;
 }
 
-.editBandListCardButton:hover, .editBandListCardButton:focus, .bandListCardButton:hover, .bandListCardButton:focus {
+.viewInfoListCardButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 120px;
+
+    color: #3d3d3d;
+
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+
+    background-color: white;
+
+    font-size: 16px;
+}
+
+.editBandListCardButton:hover, .editBandListCardButton:focus, .bandListCardButton:hover, .bandListCardButton:focus, .viewInfoListCardButton:hover, .viewInfoListCardButton:focus {
     outline: none;
     cursor: pointer;
     filter: brightness(0.94);
@@ -306,6 +328,7 @@
 
 .sidebarBandRow:hover {
     filter: brightness(90%);
+    cursor: pointer;
 }
 
 .sidebarHeader {
@@ -399,6 +422,7 @@
 
 .removeMemberButton {
     background-color: white;
+    color: red;
     height: 22px;
     padding: 2px 6px;
     border: none;
@@ -429,7 +453,10 @@
 .editSubmitContainer {
     display: flex;
     justify-content: flex-end;
-    width: 92%;
+    align-items: center;
+    width: 84%;
+
+    margin: 0 auto;
 }
 
 .bandFormContent {
@@ -464,7 +491,7 @@
     font-size: 14px;
     border-radius: 4px;
     right: 14.2%;
-    top: 13.4%;
+    top: 14.4%;
 }
 
 .editBandErrorList {
@@ -473,6 +500,24 @@
     display: flex;
     justify-content: space-between;
     padding: 4px 12px;
+}
+
+.requiredText {
+    position: absolute;
+    font-size: 12px;
+
+    bottom: 2%;
+    left: 14%;
+}
+
+.newBandFormContent {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

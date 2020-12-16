@@ -94,7 +94,7 @@
 }
 
 .disabledReceivedButton {
-    filter: brightness(600%);
+    filter: brightness(480%);
     pointer-events: none;
 }
 
@@ -116,6 +116,7 @@
 
 .invitationRow:hover {
     filter: brightness(90%);
+    cursor: pointer;
 }
 
 .invitationRow:active {
@@ -159,6 +160,18 @@
     border-radius: 4px;
 
     color: white;
+}
+
+.invitationButton:hover {
+    filter: brightness(80%);
+}
+
+.invitationButton:active {
+    transform: scale(1.04);
+}
+
+.invitationButton:focus {
+    outline: none;
 }
 
 .acceptInvitationButton {
@@ -220,6 +233,8 @@
     background-color: #f8f8f8;
     max-width: 50%;
     padding: 24px;
+    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 }
 
 .invitationMessage > p {
@@ -354,6 +369,14 @@
     display: flex;
     justify-content: center;
     padding: 4px 12px;
+}
+
+.requiredText {
+    position: absolute;
+    font-size: 12px;
+
+    bottom: 3%;
+    left: 10.2%;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

@@ -1,15 +1,11 @@
 .nav {
     background-color: rgba(0, 7, 105, 0.7);
     height: 6.6vh;
-}
-
-.navContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    width: 90%;
-    height: inherit;
+
+    padding: 0px 10% 0px 7%;
 }
 
 .profileImage {
@@ -102,8 +98,8 @@
 }
 
 .logo {
-    text-decoration: none;
-    color: white;
+    height: 150px;
+    margin-top: 12px;
 }
 
 .searchButton {
@@ -118,7 +114,7 @@
     border: none;
     border-radius: 50%;
 
-    margin: 0 auto;
+    margin-right: 180px;
 }
 
 .searchButton:hover, .searchButton:active {
@@ -147,7 +143,7 @@
     height: 44vh;
 
     top: 116%;
-    left: 22%;
+    left: 4%;
 
     padding: 16%;
 
@@ -202,16 +198,42 @@
     transition: 0.3s;
 }
 
-.hiddenInstrumentDropdown, .hiddenStyleDropdown {
+.hiddenInstrumentDropdown {
     position: absolute;
 
     top: 120%;
+    left: -10%;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
     margin: 4px 0px;
-    padding: 2px;
+    padding: 0px 8px;
+
+    list-style: none;
+
+    max-height: 0px;
+    width: 21vw;
+    overflow: hidden;
+
+    z-index: 2;
+
+    border-radius: 4px;
+    background-color: rgb(255, 252, 252);
+
+    transition: all 0.3s;
+}
+
+.hiddenStyleDropdown {
+    position: absolute;
+
+    top: 120%;
+    left: 10%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    padding: 0px 8px;
 
     list-style: none;
 
@@ -227,24 +249,48 @@
     transition: all 0.3s;
 }
 
-.hiddenStyleDropdown {
-    left: 19%;
-}
-
-.searchInstrumentDropdown, .searchStyleDropdown {
+.searchInstrumentDropdown {
     position: absolute;
 
     top: 120%;
+    left: -10%;
 
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 
     margin: 4px 0px;
-    padding: 2px;
+    padding: 8px;
 
     list-style: none;
 
-    max-height: 8vh;
+    max-height: 10vh;
+    height: auto;
+    width: 21vw;
+    overflow: hidden;
+
+    border-radius: 4px;
+
+    background-color: rgb(255, 252, 252);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+
+    z-index: 3;
+
+    transition: all 0.3s;
+}
+
+.searchStyleDropdown {
+    position: absolute;
+
+    top: 120%;
+    left: 10%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 8px;
+
+    list-style: none;
+
+    max-height: 10vh;
     height: auto;
     width: auto;
     overflow: hidden;
@@ -259,15 +305,11 @@
     transition: all 0.3s;
 }
 
-.searchStyleDropdown {
-    left: 19%;
-}
-
 .rightStyleTriangle {
     position: absolute;
     transform: rotate(0deg);
 
-    left: 42%;
+    left: 44%;
 
     transition: all 0.3s;
 }
@@ -276,7 +318,7 @@
     position: absolute;
     transform: rotate(0deg);
 
-    left: 54%;
+    left: 58%;
 
     transition: all 0.3s;
 }
@@ -285,7 +327,7 @@
     position: absolute;
     transform: rotate(90deg);
 
-    left: 42%;
+    left: 44%;
 
     transition: all 0.3s;
 }
@@ -294,7 +336,7 @@
     position: absolute;
     transform: rotate(90deg);
 
-    left: 54%;
+    left: 58%;
 
     transition: all 0.3s;
 }
@@ -417,6 +459,38 @@
     color: darkred;
     border-radius: 6px;
     padding: 1%;
+}
+
+.picNotificationNumber {
+    position: absolute;
+
+    bottom: 0%;
+    right: 43%;
+
+    color: white;
+    background-color: red;
+
+    padding: 2px 8px 5px 8px;
+    border-radius: 50%;
+
+    font-size: 14px;
+
+    transform: scale(.6);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.dropdownNotificationNumber {
+    color: white;
+    background-color: red;
+
+    padding: 1px 6px 3px 6px;
+    border-radius: 50%;
+
+    font-size: 12px;
+
+    text-align: center;
+    vertical-align: middle;
 }
 
 @keyframes slideout {

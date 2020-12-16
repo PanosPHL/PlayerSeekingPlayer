@@ -54,7 +54,7 @@ export const fetchAndDeleteInvitation = (invitationId) => {
 
         if (res.ok) {
             dispatch(setActiveInvitation(null));
-            dispatch(deleteInvitation(res.data.invitation));
+            dispatch(deleteInvitation(res.data.invitationId));
         }
 
         return res;

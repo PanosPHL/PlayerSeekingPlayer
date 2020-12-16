@@ -27,7 +27,7 @@ export const toggleProfileDropdown = () => {
     }
 }
 
-const initialNavbarUIState = {
+export const initialNavbarUIState = {
     profileDropdown: false,
     searchDropdown: {
         display: false,

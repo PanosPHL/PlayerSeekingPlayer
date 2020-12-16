@@ -13,12 +13,16 @@ def create_band():
     form = BandForm(data)
     if form.validate():
         data = request.json
-        owner = User.query.get(data["owner"])
         new_band = Band(name=data["name"], isPublic=data["isPublic"], owner_id=data["owner"], style_id=data["style"])
+        new_user_band = UserBand(is_confirmed=True)
+        owner = User.query.get(data["owner"])
+
+        new_user_band.band = new_band
+        new_user_band.user = owner
+
         db.session.add(new_band)
-        db.session.commit()
-        new_user_band = UserBand(user_id=data["owner"], band_id=new_band.to_dict()["id"], is_confirmed=True)
         db.session.add(new_user_band)
+
         db.session.commit()
         return { "band": new_band.to_dict() }
     else:
@@ -41,18 +45,26 @@ def manage_members(band_id):
     data = MultiDict(mapping=request.json)
     form = InvitationForm(data)
     form.band_id.choices = [band.id for band in bands]
+
     if form.validate():
         data = request.json
-        new_invitation = Invitation(sender_id=data["sender_id"], recipient_id=data["recipient_id"], band_id=data["band_id"], message=data["message"])
-        new_user_band = UserBand(user_id=data["recipient_id"], band_id=data["band_id"], is_confirmed=False)
 
-        db.session.add(new_invitation, new_user_band)
-        db.session.commit()
+        try:
+            prev_invitation = Invitation.query.filter(Invitation.recipient_id == data["recipient_id"], Invitation.band_id == data["band_id"]).one()
+            if prev_invitation:
+                r = make_response({ "errors": ["This user already has an active invitation to this band"] }, 401)
+                return r
+        except:
+            new_invitation = Invitation(sender_id=data["sender_id"], recipient_id=data["recipient_id"], band_id=data["band_id"], message=data["message"])
+            new_user_band = UserBand(user_id=data["recipient_id"], band_id=data["band_id"], is_confirmed=False)
 
-        return {
-            "invitation": new_invitation.to_dict(),
-            "userBand": new_user_band.to_dict()
-            }
+            db.session.add(new_invitation, new_user_band)
+            db.session.commit()
+
+            return {
+                "invitation": new_invitation.to_dict(),
+                "userBand": new_user_band.to_dict()
+                }
     else:
         r = make_response({ "errors": format_errors(form.errors) }, 401)
         return r
