@@ -116,6 +116,7 @@
 
 .invitationRow:hover {
     filter: brightness(90%);
+    cursor: pointer;
 }
 
 .invitationRow:active {
@@ -159,6 +160,14 @@
     border-radius: 4px;
 
     color: white;
+}
+
+.invitationButton:hover {
+    filter: brightness(80%);
+}
+
+.invitationButton:active {
+    transform: scale(1.04);
 }
 
 .invitationButton:focus {

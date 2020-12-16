@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAndDeleteMember } from '../../store/bands';
 import bandStyles from '../../css-modules/MyBands.module.css';
 
-const BandFormMemberRow = ({ member, band, status }) => {
+const BandFormMemberRow = ({ member, band, status, edit }) => {
     const dispatch = useDispatch();
     const isOwner = band && member ? band.ownerId === member.id : null;
     const instruments = useSelector(state => member.profileInfo.instruments.map((instrumentId) => state.entities.instruments[instrumentId]));
@@ -23,7 +23,7 @@ const BandFormMemberRow = ({ member, band, status }) => {
                     : `Pending Member: ${instruments.map((instrument) => instrument.name).join(', ')}`}</span>
                     </div>
                 </div>
-            { !isOwner ? <button className={bandStyles.removeMemberButton} onClick={handleRemoveMemberClick}><i className="fas fa-times"></i></button> : <></>}
+            { !isOwner && edit ? <button className={bandStyles.removeMemberButton} onClick={handleRemoveMemberClick}><i className="fas fa-times"></i></button> : <></>}
         </div>
     )
 }

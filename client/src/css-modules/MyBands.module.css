@@ -245,6 +245,13 @@
     height: 48%;
 }
 
+.bandListMemberCardButtonContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 32%;
+    height: 48%;
+}
+
 .bandListCardButton {
     display: flex;
     align-items: center;
@@ -281,7 +288,25 @@
     font-size: 16px;
 }
 
-.editBandListCardButton:hover, .editBandListCardButton:focus, .bandListCardButton:hover, .bandListCardButton:focus {
+.viewInfoListCardButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 120px;
+
+    color: #3d3d3d;
+
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+
+    background-color: white;
+
+    font-size: 16px;
+}
+
+.editBandListCardButton:hover, .editBandListCardButton:focus, .bandListCardButton:hover, .bandListCardButton:focus, .viewInfoListCardButton:hover, .viewInfoListCardButton:focus {
     outline: none;
     cursor: pointer;
     filter: brightness(0.94);
@@ -303,6 +328,7 @@
 
 .sidebarBandRow:hover {
     filter: brightness(90%);
+    cursor: pointer;
 }
 
 .sidebarHeader {
@@ -481,12 +507,17 @@
     font-size: 12px;
 
     bottom: 2%;
+    left: 14%;
 }
 
 .newBandFormContent {
     margin-top: 2%;
     display: flex;
     flex-direction: column;
+}
+
+.disabled {
+    pointer-events: none;
 }
 
 @keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }

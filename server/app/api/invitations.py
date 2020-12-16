@@ -9,6 +9,11 @@ invitation_routes = Blueprint('invitations', __name__)
 @invitation_routes.route("/<int:invitation_id>/", methods=["DELETE"])
 def delete_invitation(invitation_id):
     invitation = Invitation.query.get(invitation_id)
+
+    if invitation.status == "Pending":
+        user_band = UserBand.query.filter(UserBand.user_id == invitation.recipient_id, UserBand.band_id == invitation.band_id).one()
+        db.session.delete(user_band)
+
     db.session.delete(invitation)
     db.session.commit()
 

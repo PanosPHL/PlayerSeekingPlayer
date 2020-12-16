@@ -1,6 +1,6 @@
 import Cookie from 'js-cookie';
 import { addInvitation } from './invitations';
-import { ACCEPT_INVITATION, DECLINE_INVITATION } from './invitations';
+import { ACCEPT_INVITATION, DECLINE_INVITATION, DELETE_INVITATION } from './invitations';
 
 const ADD_BAND = 'bands/ADD_BAND';
 const SET_BANDS = 'bands/SET_BANDS';
@@ -195,6 +195,14 @@ export default function bandReducer(state = {}, action) {
             newState[action.bandId] = newBand;
 
             return newState
+        case DELETE_INVITATION:
+            if (action.invitation.status === "Pending") {
+                newBand = Object.assign({}, newState[action.invitation.bandId]);
+                slice = newBand.pendingMembers.indexOf(action.invitation.recipientId);
+                newBand.pendingMembers = [...newBand.pendingMembers.slice(0, slice), ...newBand.pendingMembers.slice(slice + 1)];
+                newState[action.invitation.bandId] = newBand;
+            }
+            return newState;
         case DELETE_BAND:
             newBand = Object.assign({}, newState[action.bandId]);
             newBand.isPublic = false;
