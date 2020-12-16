@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import RecordingContext from '../../contexts/RecordingContext';
 import SearchRecordingContext from '../../contexts/SearchRecordingContext';
+import LearnMoreContext from '../../contexts/LearnMoreContext';
 
 
 const YouTubePlayer = ({ videoId, i, height, width, type }) => {
@@ -8,7 +9,7 @@ const YouTubePlayer = ({ videoId, i, height, width, type }) => {
         set: {
             setLoading
         }
-    } = useContext(type === 'profile' ? RecordingContext : SearchRecordingContext);
+    } = useContext(type === 'profile' ? RecordingContext :  type === 'search' ? SearchRecordingContext : LearnMoreContext);
     const player = useRef(null);
 
     useEffect(() => {
