@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie';
-import { addInvitation } from './invitations';
+import { addInvitation, deleteInvitation } from './invitations';
 import { ACCEPT_INVITATION, DECLINE_INVITATION, DELETE_INVITATION } from './invitations';
 
 const ADD_BAND = 'bands/ADD_BAND';
@@ -67,7 +67,6 @@ export const postAndAddBand = (name, isPublic = true, owner, style) => {
         });
 
         res.data = await res.json();
-        console.log(res);
         if (res.ok) {
             dispatch(addBand(res.data.band));
         }
@@ -135,6 +134,10 @@ export const fetchAndDeleteMember = (bandId, memberId, confirmed) => {
 
         if (res.ok) {
             dispatch(removeUserFromBand(memberId, bandId, confirmed))
+
+            if (res.data.invitation) {
+                dispatch(deleteInvitation(res.data.invitation));
+            }
         }
     }
 }
@@ -156,8 +159,6 @@ export const putAndUpdateBandInfo = (bandId, name, styleId, owner) => {
         if (res.ok){
             dispatch(updateBandInfo(res.data.band));
         }
-
-        console.log(res);
         return res;
     }
 }

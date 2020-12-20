@@ -72,10 +72,18 @@ def manage_members(band_id):
 @band_routes.route('/<int:band_id>/remove_member/<int:member_id>/', methods=["DELETE"])
 def remove_member(band_id, member_id):
     user_band = UserBand.query.filter(UserBand.band_id == band_id, UserBand.user_id == member_id).one()
+    invitation = Invitation.query.filter(Invitation.band_id == band_id, Invitation.recipient_id == member_id).one()
+
+    if invitation.status == "Pending":
+        db.session.delete(invitation)
+
+
     db.session.delete(user_band)
+    db.session.commit()
     return {
         "bandId": band_id,
-        "memberId": member_id
+        "memberId": member_id,
+        "invitation": invitation.to_dict() if invitation.status == "Pending" else None
     }
 
 @band_routes.route('/<int:band_id>/', methods=["PUT"])

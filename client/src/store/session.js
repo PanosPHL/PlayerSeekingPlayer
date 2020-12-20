@@ -143,7 +143,6 @@ export const search = (firstName, lastName, radius, instruments, styles, userId)
         });
 
         res.data = await res.json();
-        console.log(res);
         if (res.ok) {
             dispatch(setSearchResults(res.data.searchResults));
         }

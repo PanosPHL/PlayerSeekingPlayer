@@ -13,7 +13,6 @@ const UserSearchRecordingInfo = ({ name, bio }) => {
     } = useContext(SearchRecordingContext);
 
     const shortBio = bio.split(' ').slice(0, 56);
-    console.log(shortBio.length);
 
     return (
         <>

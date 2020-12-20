@@ -27,7 +27,6 @@ const RecordingForm = ({ id, userId, recInfo: { profileId, recTitle, recDescript
 
         if (!id) {
             res = await dispatch(postAndAddRecording(profileId, url, title, description));
-            console.log(res);
         } else {
             res = await dispatch(putAndUpdateRecording(profileId, id, url, title, description));
         }
