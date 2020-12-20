@@ -139,7 +139,7 @@
     top: 50%;
     left: 50%;
 
-    opacity: 100%;
+    opacity: 1;
 
     transform: translate(-50%, -50%);
 
@@ -160,7 +160,7 @@
         top: 50%;
         left: 50%;
 
-        opacity: 100%;
+        opacity: 1;
 
         transform: translate(-50%, -50%);
 
@@ -175,7 +175,7 @@
         animation-duration: 0.3s;
 }
 
-@keyframes rec_modal { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
+@keyframes rec_modal { from { top: -100%; opacity: .2; } to { top: 50%; opacity: 1; } }
 
 .modalFormClose {
     position: absolute;

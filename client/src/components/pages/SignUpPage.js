@@ -96,7 +96,7 @@ const SignUpPage = ({ history }) => {
                     <div className={styles.authRight}>
                         <div className={styles.signUpformContainer}>
                             <div className={styles.signUpheaderContainer}>
-                                <img className={styles.logo} src='/images/player-seeking-player-logo-black.png' alt='Player Seeking Player'/>
+                                <img className={styles.logo} src='/static/images/player-seeking-player-logo-black.png' alt='Player Seeking Player'/>
                                 <button className={styles.learnMore + " " + styles.bottomButton}><i className="far fa-question-circle"></i><span style={{ fontSize: "13px"}}>Learn More</span></button>
                             </div>
                             <h1 className={styles.signUpHeader}>Sign Up</h1>

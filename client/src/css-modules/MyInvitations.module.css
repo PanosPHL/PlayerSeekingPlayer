@@ -281,7 +281,7 @@
     top: 50%;
     left: 50%;
 
-    opacity: 100%;
+    opacity: 1;
 
     transform: translate(-50%, -50%);
 
@@ -379,4 +379,4 @@
     left: 10.2%;
 }
 
-@keyframes modal_entry { from { top: -100%; opacity: 20%; } to { top: 50%; opacity: 100%; } }
+@keyframes modal_entry { from { top: -100%; opacity: .2; } to { top: 50%; opacity: 1; } }

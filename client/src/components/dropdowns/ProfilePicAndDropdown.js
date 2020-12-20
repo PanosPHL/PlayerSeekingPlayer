@@ -11,7 +11,7 @@ const ProfilePicAndDropdown = ({ profileDropdown, notifications }) => {
     return (
         <div className={navStyles.profileContainer} onClick={handleProfileDropdownClick}>
             <div styles={{ position: "relative" }}>
-            <img className={navStyles.profileImage} src={user ? user.profileInfo.profilePic || '/images/default_profile_photo.jpg' : ''} alt='Profile Placeholder' />
+            <img className={navStyles.profileImage} src={user ? user.profileInfo.profilePic || '/static/images/default_profile_photo.jpg' : ''} alt='Profile Placeholder' />
             {
                 notifications ? <span className={navStyles.picNotificationNumber}>{notifications}</span>
                 : <></>

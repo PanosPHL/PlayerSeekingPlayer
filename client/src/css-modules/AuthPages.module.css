@@ -178,7 +178,7 @@
 .leftContainer {
     width: 60vw;
     height: 100vh;
-    background-image: url("/images/auth_left_image.jpg");
+    background-image: url("/static/images/auth_left_image.jpg");
     filter: grayscale(90%);
 }
 
@@ -287,7 +287,7 @@
     top: 50%;
     left: 50%;
 
-    opacity: 100%;
+    opacity: 1;
 
     transform: translate(-50%, -50%);
 

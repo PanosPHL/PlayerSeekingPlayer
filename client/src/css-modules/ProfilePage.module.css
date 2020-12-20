@@ -18,7 +18,7 @@
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: 1fr;
 
-    background-image: url('/images/default_cover_photo.jpg');
+    background-image: url('/static/images/default_cover_photo.jpg');
     background-repeat: no-repeat;
     background-size: 1728px;
     background-position-y: -310px;

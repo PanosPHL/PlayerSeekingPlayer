@@ -32,7 +32,7 @@ const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
                 <div className={invStyles.topBarPhotoAndName}>
                     <img
                     className={invStyles.invitationContentProfilePhoto}
-                    src={otherUser && otherUser.profileInfo.profilePic ? otherUser.profileInfo.profilePic : '/images/default_profile_photo.jpg'}
+                    src={otherUser && otherUser.profileInfo.profilePic ? otherUser.profileInfo.profilePic : '/static/images/default_profile_photo.jpg'}
                     alt={otherUser ? `${otherUser.firstName} ${otherUser.lastName}` : "No User"}/>
                     <h2 className={invStyles.activeInvitationHeaderText}>{otherUser ? `${otherUser.firstName} ${otherUser.lastName}` : ""}</h2>
                 </div>

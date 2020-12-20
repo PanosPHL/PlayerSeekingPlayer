@@ -25,7 +25,7 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
             <div className={invStyles.userInfo}>
                 <img
                 className={invStyles.senderProfilePic}
-                src={otherUser.profileInfo.profilePic || '/images/default_profile_photo.jpg'}
+                src={otherUser.profileInfo.profilePic || '/static/images/default_profile_photo.jpg'}
                 alt={`${otherUser.firstName} ${otherUser.lastName}`} />
                 <div className={invStyles.invitationRowTextContainer}>
                     <div className={invStyles.invitationRowNameAndStatusContainer}>

@@ -26,7 +26,7 @@ const TopBar = () => {
         <div className={navStyles.nav}>
             <div className={navStyles.leftContainer}>
             <Link to={`/profiles/${userId}`}>
-            <img className={navStyles.logo} src='/images/player-seeking-player-logo-white.png' alt='Player Seeking Player'/>
+            <img className={navStyles.logo} src='/static/images/player-seeking-player-logo-white.png' alt='Player Seeking Player'/>
             </Link>
             </div>
             <SearchIconAndDropdown />
