@@ -88,7 +88,11 @@ Users can...
 
 For a look at what using <a href="https://player-seeking-player.herokuapp.com"><strong>Player Seeking Player</strong></a> is normally like, check out this video demonstration by its developer, Panayiotis Dimopoulos!
 
-[![Player Seeking Player Demo](https://img.youtube.com/vi/0M5tq9K65D8/0.jpg)](https://www.youtube.com/watch?v=0M5tq9K65D8)
+<div align="center">
+<a href="https://www.youtube.com/watch?v=0M5tq9K65D8">
+<img src="https://img.youtube.com/vi/0M5tq9K65D8/0.jpg" alt="Player Seeking Player Demo" />
+</a>
+</div>
 
 <h2 id="codesnippets">Code Snippets</h2>
 <hr></hr>
@@ -152,10 +156,31 @@ The **ProfilePicFormModal** component houses all of the state necessary to accom
 </div>
 <br/>
 
-The **ProfilePicForm** component renders what is being shown to the user. If there is no picture selected, it renders a label which when clicked on brings up a file input. If there is a picture selected it renders the custom **Cropper** component. The **ProfilePicForm** component also handles what happens when the form is submitted, which we'll revisit.
+The **ProfilePicForm** component renders what is being shown to the user. If there is no picture selected, it renders a label which when clicked on brings up a file input. If there is a picture selected it renders the custom **Cropper** component, which houses all of the logic for the **ReactCrop** component from the **react-image-crop** library.
 
 <div align='center'>
 <img src='./wiki/ProfilePicForm-component.PNG' />
+<img src='./wiki/Cropper-component.PNG' />
+</div>
+
+When the form in the **ProfilePicForm** is submitted, it first gets the picture rended within the crop before sending an AJAX request via Redux thunk. The **getCroppedImage** function uses a canvas DOM node with a 2d context to asynchronously redraw the image between the crop and convert it into a Data URL for a png with a base64 encoded string. That string is then sent as part of the Redux thunk's AJAX request to the backend to update the user's profile picture.
+
+<div align='center'>
+<img src='./wiki/getCroppedImage.PNG' />
+<img src='./wiki/ProfilePicForm-submit.png' />
+</div>
+
+Once the route has been hit on the Flask back end, the sever takes just the relevant string data from the base64 encoded image, decodes the string, and uploads it to an AWS bucket. On successful upload, the server queries the database for the corresponsing profile and updates the profile picture link to the newly uploaded image. The new profile data is then returned to the client.
+
+<div align='center'>
+<img src='./wiki/profile-picture-aws-upload.png' />
+</div>
+
+Finally, once the Redux thunk receives an okay response, it dispatches an action to update the user's profile picture which is handled by the **usersReducer**.
+
+<div align='center'>
+<img src='./wiki/profile-picture-redux-thunk.png' />
+<img src='./wiki/update-profile-picture.png' />
 </div>
 
 <h2 id="futurefeatures">Future Features</h2>
@@ -168,4 +193,5 @@ The **ProfilePicForm** component renders what is being shown to the user. If the
 
 <h2 id="credits">Credits</h2>
 
-- Placeholder
+- The **reverse_haversine** formula used in calculating minimum and maximum latitudes and longitudes for a mile radius is based off of this article: [http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates](http://janmatuschek.de/latitudelongitudeboundingcoordinates)
+- The **react-image-crop** library can be found here: [https://github.com/DominicTobias/react-image-crop](https://github.com/DominicTobias/react-image-crop)

@@ -82,11 +82,13 @@ def update_profile_picture(user_id):
   form = ProfilePicForm(data)
   if form.validate():
     data = request.json
-    s3 = boto3.client('s3', region_name=os.environ.get('AWS_REGION_NAME'), aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"), aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"))
+    s3 = boto3.client('s3', region_name=os.environ.get('AWS_REGION_NAME'),
+    aws_access_key_id=os.environ.get("AWS_ACCESS_KEY_ID"),
+    aws_secret_access_key=os.environ.get("AWS_SECRET_ACCESS_KEY"))
+
     file_name_with_extension = token_urlsafe(16) + '.png'
     clean_bit64 = data["img"][22:]
     imgData = base64.b64decode(clean_bit64)
-    print(imgData)
     bucket_name = os.environ.get('AWS_BUCKET_NAME')
 
     s3.put_object(Bucket=bucket_name, Key=f"profile_pictures/{file_name_with_extension}", Body=imgData, ACL='public-read')
