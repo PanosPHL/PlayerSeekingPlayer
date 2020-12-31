@@ -25,11 +25,13 @@ const SearchResults = (props) => {
         <div className={searchStyles.innerPageContainer}>
           <div className={searchStyles.resultAndHeaderContainer}>
             <h2 className={searchStyles.musiciansInAreaHeader}>
-              Musicians in Your Area
+              {searchResults.length ? 'Musicians in Your Area' : 'No Results'}
             </h2>
             <div
               className={
-                searchResults.length ? searchStyles.resultContainer : ''
+                searchResults.length
+                  ? searchStyles.resultContainer
+                  : searchStyles.emptyResultContainer
               }
               style={
                 searchResults.length
@@ -50,10 +52,12 @@ const SearchResults = (props) => {
                 ))
               ) : (
                 <>
-                  <h2>
+                  <h2 className={searchStyles.noResultMessage}>
                     Sorry, we couldn't find any users matching that criteria.
                   </h2>
-                  <h2>Remove the name and try again!</h2>
+                  <h2 className={searchStyles.noResultMessage}>
+                    Remove the name and try again!
+                  </h2>
                 </>
               )}
             </div>

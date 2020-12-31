@@ -97,7 +97,14 @@ const UserSearchRecording = ({ userId }) => {
   } else if (!userInfo) {
     return (
       <div className={searchStyles.searchRecordingContainer}>
-        <h3>We can't find any artists to show you recordings of!</h3>
+        <h3
+          style={{
+            color: 'rgba(0, 0, 0, 0.45)',
+            textAlign: 'center',
+          }}
+        >
+          We can't find any artists to show you recordings of!
+        </h3>
       </div>
     );
   } else {

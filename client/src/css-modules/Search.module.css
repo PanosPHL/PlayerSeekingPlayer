@@ -1,179 +1,201 @@
 .pageContainer {
-    min-height: 75vh;
+  min-height: 75vh;
 }
 
 .innerPageContainer {
-    display: flex;
-    width: 72%;
+  display: flex;
+  width: 72%;
 
-    justify-content: space-around;
+  justify-content: space-around;
 
-    margin: 1.4% auto;
+  margin: 1.4% auto;
 }
 
 .resultContainer {
-    display: grid;
-    min-height: 75vh;
-    width: 100%;
-    margin: 0 auto;
+  display: grid;
+  min-height: 75vh;
+  width: 100%;
+  margin: 0 auto;
 
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-    border-radius: 8px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
 
-    background-color: rgb(255, 252, 252);
+  background-color: rgb(255, 252, 252);
+}
+
+.emptyResultContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 75vh;
+  width: 100%;
+  margin: 0 auto;
+
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+
+  background-color: rgb(255, 252, 252);
 }
 
 .resultAndHeaderContainer {
-    width: 55%;
+  width: 55%;
 }
 
 .picture {
-    width: 3.6vw;
-    border-radius: 50%;
+  width: 3.6vw;
+  border-radius: 50%;
 
-    border: 2px rgba(0, 0, 0, 0.2) solid;
+  border: 2px rgba(0, 0, 0, 0.2) solid;
 }
 
 .pictureContainer {
-    margin-left: 0.8vw;
+  margin-left: 0.8vw;
 }
 
 .userContainer {
-    display: flex;
-    padding: 3%;
-    align-items: center;
+  display: flex;
+  padding: 3%;
+  align-items: center;
 
-    border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+  border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
 
-    background-color: rgb(255, 252, 252);
-    overflow: hidden;
+  background-color: rgb(255, 252, 252);
+  overflow: hidden;
 }
 
 .firstUser {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .lastUser {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .userContainer:hover {
-    filter: brightness(90%);
+  filter: brightness(90%);
 }
 
 .nameAndLocation {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .resultTextContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    width: 72%;
+  width: 72%;
 
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .subText {
-    margin-top: 1.2%;
+  margin-top: 1.2%;
 }
 
-.profileLink, .searchResultCity {
-    color: rgb(121, 122, 165);
-    text-decoration: none;
+.profileLink,
+.searchResultCity {
+  color: rgb(121, 122, 165);
+  text-decoration: none;
 }
 
 .checkOutHeader {
-    text-align: center;
-    font-size: 22px;
-    color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.45);
 
-    margin-bottom: 4%;
+  margin-bottom: 4%;
 }
 
 .musiciansInAreaHeader {
-    text-align: center;
-    font-size: 30px;
-    color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.45);
 
-    margin-bottom: 2%;
+  margin-bottom: 2%;
 }
 
 .searchRecordingContainer {
-    margin-top: 14%;
+  margin-top: 14%;
 
-    padding: 6% 8%;
+  padding: 6% 8%;
 
-    width: 100%;
-    border-radius: 6px;
+  width: 100%;
+  border-radius: 6px;
 
-    background-color: rgb(255, 252, 252);
+  background-color: rgb(255, 252, 252);
 
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .withBio {
-    min-height: 38vh;
+  min-height: 38vh;
 }
 
 .withoutBio {
-    min-height: 32vh;
+  min-height: 32vh;
 }
 
 .recordingContainer {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .recordingContainerWrapper {
-    width: 20vw;
+  width: 20vw;
 }
 
 .noBio {
-    margin-top: 4%;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.6);
+  margin-top: 4%;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .closedBio {
-    position: relative;
-    font-size: 14px;
-    max-height: 300px;
+  position: relative;
+  font-size: 14px;
+  max-height: 300px;
 
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .openBio {
-    position: relative;
-    font-size: 14px;
-    height: auto;
-    max-height: 500px;
+  position: relative;
+  font-size: 14px;
+  height: auto;
+  max-height: 500px;
 
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
 .moreAbout {
-    font-size: 16px;
-    margin: 4% 0;
-    color: rgba(0, 0, 0, 0.6);
+  font-size: 16px;
+  margin: 4% 0;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .seeMore {
-    margin-left: 2%;
-    color: rgb(0, 63, 165);
-    left: 56%;
+  margin-left: 2%;
+  color: rgb(0, 63, 165);
+  left: 56%;
 }
 
 .seeLess {
-    margin-left: 2%;
-    color: rgb(0, 63, 165);
-    left: 66%;
+  margin-left: 2%;
+  color: rgb(0, 63, 165);
+  left: 66%;
 }
 
-.seeMore:hover, .seeLess:hover {
-    cursor: pointer;
-    filter: brightness(40%);
-    transform: scale(1.1);
+.seeMore:hover,
+.seeLess:hover {
+  cursor: pointer;
+  filter: brightness(40%);
+  transform: scale(1.1);
+}
+
+.noResultMessage {
+  color: rgba(0, 0, 0, 0.45);
+  margin-bottom: 12px;
 }
