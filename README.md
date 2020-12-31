@@ -108,36 +108,36 @@ On Player Seeking Player, a user can search for other musicians based on their n
 
 The **SearchDropdown** component, which houses all of the information about a user's search query, uses a **useReducer** React hook to manage its complex state of what name is entered, what mile radius the user has chosen, and which instruments and styles the user is searching for as well.
 
-The **searchReducer** function is responsible for handling all of the logic for how the components state is altered based on user interaction with the dropdown.
+The **searchReducer** function is responsible for handling all of the logic for how the component's state is altered based on user interaction with the dropdown.
 
 <div align="center">
 <img width="720px" src="./wiki/SearchDropdown-component.png" />
 <img src="./wiki/searchReducer.PNG" />
 </div>
 
-When the user selects instruments and styles they want in their search query they do so with the help of the custom **Checkbox** component. The component renders a label and a checkbox. Then, based on the changing state of the checkbox it calls functions from the context it is consuming to dispatch actions to the **searchReducer** which manages the search query's state.
+When the user selects instruments and styles they want in their search query, they do so with the help of the custom **Checkbox** component. The component renders a label and a checkbox. Then, based on the changing state of the checkbox it calls functions from the context it is consuming which dispatch actions to the **searchReducer**. The **searchReducer** function then handles the adequate changes to the search query's state.
 
 <div align="center">
 <img src="./wiki/Checkbox-component.PNG" />
 </div>
 
-Next, when the user submits their search all of its the is passed into a Redux thunk. The thunk makes an AJAX request to the Flask backend and if the response is okay dispatches an action to the Redux store that updates the searchResults slice of the session state.
+Next, when the user submits their search all of the **SearchDropdown's state data** the is passed into a **Redux thunk**. The thunk makes an AJAX request to the Flask backend and if the response is okay, dispatches an action to the store that updates the searchResults slice of the session state.
 
 <div align="center">
 <img width="732px" src="./wiki/search-thunk.PNG" />
 <img src="./wiki/searchResults-redux.png" />
 </div>
 
-On the backend, once the route is hit by the request, the Flask server handles the interaction of searching the database. If the body of the request provided a **name**, add that to the database query. Otherwise, just search for musicians **within the mile radius** provided that are not the user that sent the request and play the **instruments** and **styles** that the user requested. The server returns the response of that query to the client.
+On the back end, once the route is hit, the Flask server handles the interaction of searching the database. If the body of the request provided a **name**, add that to the database query. Otherwise, just search for musicians **within the mile radius** provided that are **not the user that sent the request** and play the **instruments** and **styles** that the user requested. The server returns the response of that query to the client.
 
 <div align="center">
 <img src="./wiki/search-route.png" />
 </div>
 
-The **reverse_haversine** function handles the complexity of determining the minimum and maximum latitudes and longitudes of a given mile radius. The reason for using this function was to reduce the number of calls to the Google Maps API, as they can be quite expensive if used extensively enough. For more info on the application of this formula, visit the following link: sdflkdsjdslkfdjfs
+The **reverse_haversine** function handles the complexity of determining the **minimum and maximum latitudes and longitudes** of a given mile radius. The reason for using this function was to reduce the number of calls to the Google Maps API, as they can be quite expensive if used extensively enough. For more info on the application of this formula, visit the following link: [http://janmatuschek.de/LatitudeLongitudeBoundingCoordinates](http://janmatuschek.de/latitudelongitudeboundingcoordinates)
 
 <div align="center">
-<img src="./wiki/reverse_haversine.png" />
+<img src="./wiki/reverse_haversine.PNG" />
 </div>
 
 **Updating a Profile Picture**
@@ -149,28 +149,28 @@ On Player Seeking Player, a user can update their profile picture at any time on
 </div>
 <br/>
 
-The **ProfilePicFormModal** component houses all of the state necessary to accomplish updating the profile picture. It tracks the picture file currently being used, a ref for the image passed into the **Cropper** component (more on that to come), the actual crop itself with a default aspect ratio of 1:1, and the current fileName. It passes these values and functions that set these values into a context so nested components can access them.
+The **ProfilePicFormModal** component houses all of the state necessary to accomplish updating the profile picture. It tracks the picture file currently being used, a ref for the image passed into the **Cropper** component (more on that to come), the actual crop itself with a default aspect ratio of 1:1, and the current fileName. It passes these values and functions that set these values into **a context** so nested components can access them.
 
 <div align="center">
 <img src="./wiki/ProfilePicFormModal-component.PNG" />
 </div>
 <br/>
 
-The **ProfilePicForm** component renders what is being shown to the user. If there is no picture selected, it renders a label which when clicked on brings up a file input. If there is a picture selected it renders the custom **Cropper** component, which houses all of the logic for the **ReactCrop** component from the **react-image-crop** library.
+The **ProfilePicForm** component renders what is being shown to the user. If there is no picture selected, it renders a label which when clicked on brings up file input selector. If there is a picture selected it renders the custom **Cropper** component, which houses all of the logic for the **ReactCrop** component from the **react-image-crop** library.
 
 <div align='center'>
 <img src='./wiki/ProfilePicForm-component.PNG' />
 <img src='./wiki/Cropper-component.PNG' />
 </div>
 
-When the form in the **ProfilePicForm** is submitted, it first gets the picture rended within the crop before sending an AJAX request via Redux thunk. The **getCroppedImage** function uses a canvas DOM node with a 2d context to asynchronously redraw the image between the crop and convert it into a Data URL for a png with a base64 encoded string. That string is then sent as part of the Redux thunk's AJAX request to the backend to update the user's profile picture.
+When the form in the **ProfilePicForm** is submitted, it first gets the picture rended within the crop before sending an AJAX request via Redux thunk. The **getCroppedImage** function uses a **canvas DOM node with** a **2d context** to asynchronously redraw the image between the crop and convert it into a Data URL for a **png with a base64 encoded string**. That string is then sent as part of the Redux thunk's AJAX request to the backend to update the user's profile picture.
 
 <div align='center'>
 <img src='./wiki/getCroppedImage.PNG' />
 <img src='./wiki/ProfilePicForm-submit.png' />
 </div>
 
-Once the route has been hit on the Flask back end, the sever takes just the relevant string data from the base64 encoded image, decodes the string, and uploads it to an AWS bucket. On successful upload, the server queries the database for the corresponsing profile and updates the profile picture link to the newly uploaded image. The new profile data is then returned to the client.
+Once the route has been hit on the Flask back end, the sever takes just the relevant string data from the **base64 encoded image**, decodes the string, and **uploads it to an AWS S3 bucket**. On successful upload, the server queries the database for the corresponsing profile and updates the profile picture link to the newly uploaded image. The new profile data is then returned to the client.
 
 <div align='center'>
 <img src='./wiki/profile-picture-aws-upload.png' />
