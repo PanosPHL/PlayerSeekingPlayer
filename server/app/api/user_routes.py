@@ -86,11 +86,10 @@ def update_profile_picture(user_id):
     file_name_with_extension = token_urlsafe(16) + '.png'
     clean_bit64 = data["img"][22:]
     imgData = base64.b64decode(clean_bit64)
+    print(imgData)
     bucket_name = os.environ.get('AWS_BUCKET_NAME')
 
     s3.put_object(Bucket=bucket_name, Key=f"profile_pictures/{file_name_with_extension}", Body=imgData, ACL='public-read')
-    # obj = s3.Object(bucket_name, file_name_with_extension)
-    # obj.put(Body=imgData, ACL='public-read')
     location = boto3.client('s3').get_bucket_location(Bucket=bucket_name)['LocationConstraint']
     pic_location = f"https://{bucket_name}.s3-{location}.amazonaws.com/profile_pictures/{file_name_with_extension}"
 

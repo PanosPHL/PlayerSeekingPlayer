@@ -96,7 +96,6 @@ def get_search_results():
     form = SearchForm(data)
     if form.validate():
         data = request.json
-        print(data)
         user = User.query.get(data["userId"])
         user_dict = user.to_dict()
 
@@ -113,8 +112,14 @@ def get_search_results():
             users = [user.to_dict()["id"] for user in User.query.filter(and_(between(User.lat, min_lat, max_lat),
             between(User.lng, min_lng, max_lng),
             User.id != data["userId"],
-            func.soundex(User.first_name) == func.soundex(data["firstName"] if data["firstName"] else ""),
-            func.soundex(User.last_name) == func.soundex(data["lastName"] if data["lastName"] else "")
+            func.soundex(User.first_name) == func.soundex(data["firstName"]),
+            func.soundex(User.last_name) == func.soundex(data["lastName"])
+            )).all()]
+        elif data["firstName"]:
+            users = [user.to_dict()["id"] for user in User.query.filter(and_(between(User.lat, min_lat, max_lat),
+            between(User.lng, min_lng, max_lng),
+            User.id != data["userId"],
+            func.soundex(User.first_name) == func.soundex(data["firstName"])
             )).all()]
         else:
             users = [user.to_dict()["id"] for user in User.query.filter(and_(between(User.lat, min_lat, max_lat),
