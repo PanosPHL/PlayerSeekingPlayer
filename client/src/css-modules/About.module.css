@@ -17,19 +17,23 @@
 
 .aboutMainContent {
   display: flex;
-  height: 100%;
+  height: 89%;
 }
 
 .aboutSectionContainer {
-  margin-top: 24px;
+  position: relative;
   width: 100%;
+
+  overflow: hidden;
+
+  padding: 2% 6%;
 }
 
 .aboutHeaderContainer {
   display: flex;
   align-items: center;
 
-  height: 6vh;
+  height: 11%;
 
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -44,14 +48,9 @@
   color: rgba(0, 0, 0, 0.45);
 }
 
-.aboutSectionInnerContainer {
-  position: relative;
-  width: 70%;
-  margin: 0 auto;
-}
-
 .aboutSelector {
   width: 20%;
+  height: 100%;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 
   list-style: none;
@@ -81,7 +80,7 @@
   font-size: 28px;
   text-align: center;
   color: rgba(0, 0, 0, 0.45);
-  margin-bottom: 4%;
+  margin-bottom: 2%;
 }
 
 .overviewList {
@@ -89,8 +88,7 @@
   list-style: none;
   text-align: center;
   font-size: 22px;
-  width: 90%;
-  margin: 0 auto;
+  padding: 0 12%;
 }
 
 .overviewList li {
@@ -109,7 +107,22 @@
 }
 
 .bioContent {
+  height: 84%;
   font-size: 18px;
+  overflow-y: scroll;
+}
+
+.bioContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bioContent::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+}
+
+.bioContent:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(190, 190, 190);
 }
 
 .bioContent > p {
@@ -119,8 +132,8 @@
 
 .editButton {
   position: absolute;
-  top: -6px;
-  right: 0px;
+  right: 12%;
+  top: 4%;
 
   font-size: 30px;
   color: rgb(86, 83, 128);
