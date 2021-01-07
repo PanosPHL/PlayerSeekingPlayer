@@ -489,3 +489,21 @@
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 1440px), (max-height: 900px) {
+  .aboutHeader {
+    font-size: 28px;
+  }
+
+  .aboutSectionHeader {
+    font-size: 24px;
+  }
+
+  .bioContent {
+    font-size: 16px;
+  }
+
+  .overviewList {
+    font-size: 20px;
+  }
+}
