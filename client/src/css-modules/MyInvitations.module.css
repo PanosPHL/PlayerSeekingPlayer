@@ -1,382 +1,397 @@
 .pageContainer {
-    display: flex;
-    height: calc(100vh - 230px);
+  display: flex;
+  height: calc(100vh - 230px);
 }
 
 .sidebarContainer {
-    width: 22vw;
-    border-right: 1px solid #C5C3C3;
+  width: 22vw;
+  border-right: 1px solid #c5c3c3;
 }
 
 .sidebarHeaderContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    height: 12vh;
-    padding: 20px 24px;
-    border-bottom: 1px solid #C5C3C3;
+  height: 12vh;
+  padding: 20px 24px;
+  border-bottom: 1px solid #c5c3c3;
 
-    background-color: #FFFCFC;
+  background-color: #fffcfc;
 }
 
 .sidebarHeaderButtons {
-    display: flex;
-    justify-content: space-between;
-    width: 42%;
-    align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+  width: 42%;
+  align-self: flex-end;
 }
 
 .sidebarHeaderButton {
-    font-size: 16px;
+  font-size: 16px;
 
-    background-color: #FFFCFC;
-    color: #8F8F8F;
+  background-color: #fffcfc;
+  color: #8f8f8f;
 
-    padding: 4px;
+  padding: 4px;
 
-    border: none;
-    border-radius: 4px;
+  border: none;
+  border-radius: 4px;
 }
 
-.sidebarHeaderButton:hover, .sidebarHeaderButton:active, .sidebarHeaderButton:focus, .activeButton {
-    filter: brightness(90%);
-    outline: none;
+.sidebarHeaderButton:hover,
+.sidebarHeaderButton:active,
+.sidebarHeaderButton:focus,
+.activeButton {
+  filter: brightness(90%);
+  outline: none;
 }
 
 .sidebarHeader {
-    text-align: center;
+  text-align: center;
 }
 
 .contentContainer {
-    width: 100%;
+  width: 100%;
 }
 
-.topBarContainer, .bottomBarContainer {
-    height: 70px;
-    background-color: #FFFCFC;
+.topBarContainer,
+.bottomBarContainer {
+  height: 70px;
+  background-color: #fffcfc;
 }
 
 .topBarContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 64px;
-    border-bottom: 1px solid #C5C3C3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 64px;
+  border-bottom: 1px solid #c5c3c3;
 }
 
 .bottomBarContainer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0 64px;
-    align-items: center;
-    border-top: 1px solid #C5C3C3;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 64px;
+  align-items: center;
+  border-top: 1px solid #c5c3c3;
 }
 
 .centerContainer {
-    height: 567px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 567px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .senderProfilePic {
-    height: 70px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 70px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .userInfo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .disabledReceivedButton {
-    filter: brightness(480%);
-    pointer-events: none;
+  filter: brightness(480%);
+  pointer-events: none;
 }
 
 .disabledSentButton {
-    filter: brightness(200%);
-    pointer-events: none;
+  filter: brightness(200%);
+  pointer-events: none;
 }
 
 .invitationRowContainer {
-    padding: 8px;
+  padding: 8px;
 }
 
 .invitationRow {
-    border-radius: 4px;
-    margin: 4px 0;
-    background-color: white;
-    padding: 8px;
+  border-radius: 4px;
+  margin: 4px 0;
+  background-color: white;
+  padding: 8px;
 }
 
 .invitationRow:hover {
-    filter: brightness(90%);
-    cursor: pointer;
+  filter: brightness(90%);
+  cursor: pointer;
 }
 
 .invitationRow:active {
-    filter: brightness(80%);
+  filter: brightness(80%);
 }
 
-.invitationRowUser, .invitationRowBand {
-    color: rgba(0, 0, 0, 0.7);
+.invitationRowUser,
+.invitationRowBand {
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .invitationRowUser {
-    font-size: 17px;
-    margin-bottom: 2px;
+  font-size: 17px;
+  margin-bottom: 2px;
 }
 
 .invitationRowBand {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .invitationRowMessage {
-    margin-top: 4px;
-    font-size: 13px;
-    color: rgba(0, 0, 0, 0.5);
+  margin-top: 4px;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .invitationRowTextContainer {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 .invitationButtonContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 14%;
+  display: flex;
+  justify-content: space-between;
+  width: 14%;
 }
 
 .invitationButton {
-    font-size: 16px;
-    padding: 10px;
+  font-size: 16px;
+  padding: 10px;
 
-    border: none;
-    border-radius: 4px;
+  border: none;
+  border-radius: 4px;
 
-    color: white;
+  color: white;
 }
 
 .invitationButton:hover {
-    filter: brightness(80%);
+  filter: brightness(80%);
 }
 
 .invitationButton:active {
-    transform: scale(1.04);
+  transform: scale(1.04);
 }
 
 .invitationButton:focus {
-    outline: none;
+  outline: none;
 }
 
 .acceptInvitationButton {
-    background-color: rgb(24, 78, 24);
+  background-color: rgb(24, 78, 24);
 }
 
 .declineInvitationButton {
-    background-color: rgb(98, 23, 23);
+  background-color: rgb(98, 23, 23);
 }
 
 .deleteInvitationButton {
-    background-color: rgb(104, 104, 104);
+  background-color: rgb(104, 104, 104);
 }
 
 .invitationContentProfilePhoto {
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .topBarPhotoAndName {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .invitationRowNameAndStatusContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .invitationRowStatus {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .invitationRowDate {
-    font-size: 11px;
-    color: rgba(0, 0, 0, 0.7);
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .pendingStatus {
-    color: rgb(223, 197, 150);
+  color: rgb(223, 197, 150);
 }
 
 .acceptedStatus {
-    color: rgb(153, 223, 150);
+  color: rgb(153, 223, 150);
 }
 
 .declinedStatus {
-    color: rgb(223, 150, 150);
+  color: rgb(223, 150, 150);
 }
 
 .activeInvitationHeaderText {
-    color: #444444;
+  color: #444444;
 }
 
 .invitationMessage {
-    background-color: #f8f8f8;
-    max-width: 50%;
-    padding: 24px;
-    box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
+  background-color: #f8f8f8;
+  max-width: 50%;
+  padding: 24px;
+  box-shadow: 1px 3px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
 }
 
 .invitationMessage > p {
-    padding: 5px 5px 10px 10px;
-    font-size: 22px;
-    line-height: 1.6;
+  padding: 5px 5px 10px 10px;
+  font-size: 22px;
+  line-height: 1.6;
 }
 
 .manageButton {
-    width: 60%;
+  width: 60%;
 
-    padding: 8px 4px;
+  padding: 8px 4px;
 
-    font-size: 14px;
+  font-size: 14px;
 
-    background-color: #575a8fd5;
-    color: white;
+  background-color: #575a8fd5;
+  color: white;
 
-    border: none;
-    border-radius: 4px;
+  border: none;
+  border-radius: 4px;
 }
 
 .manageButton:hover {
-    filter: brightness(90%);
+  filter: brightness(90%);
 }
 
-.manageButton:active, .manageButton:focus {
-    outline: none;
-    filter: brightness(84%);
+.manageButton:active,
+.manageButton:focus {
+  outline: none;
+  filter: brightness(84%);
 }
 
 .manageButton:active {
-    transform: scale(1.04);
+  transform: scale(1.04);
 }
 
 .manageInvitationForm {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    padding: 16px 36px;
+  padding: 16px 36px;
 
-    position: relative;
+  position: relative;
 
-    top: 50%;
-    left: 50%;
+  top: 50%;
+  left: 50%;
 
-    opacity: 1;
+  opacity: 1;
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-    width: 30vw;
-    height: 60vh;
+  width: 30vw;
+  height: 60vh;
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    background-color: rgb(255, 252, 252);
+  background-color: rgb(255, 252, 252);
 
-    animation-name: modal_entry;
-    animation-duration: 0.3s;
+  animation-name: modal_entry;
+  animation-duration: 0.3s;
 }
 
 .modalFormClose {
-    position: absolute;
-    right: 4%;
-    top: 4%;
+  position: absolute;
+  right: 4%;
+  top: 4%;
 
-    padding: 4px 8px 4px 8px;
+  padding: 4px 8px 4px 8px;
 
-    background-color: rgb(255, 252, 252);
-    border: none;
-    border-radius: 4px;
+  background-color: rgb(255, 252, 252);
+  border: none;
+  border-radius: 4px;
 }
 
 .modalFormClose:hover {
-    filter: brightness(80%);
+  filter: brightness(80%);
 }
 
 .modalFormClose:active {
-    filter: brightness(80%);
-    transform: scale(1.1);
+  filter: brightness(80%);
+  transform: scale(1.1);
 }
 
 .modalFormClose:focus {
-    outline: none;
+  outline: none;
 }
 
 .modalFormTitle {
-    color: rgba(39, 39, 39, 0.7);
-    vertical-align: center;
-    text-align: center;
+  color: rgba(39, 39, 39, 0.7);
+  vertical-align: center;
+  text-align: center;
 }
 
 .submitButton {
-    width: 24%;
-    background-color: rgb(14, 0, 47);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 8px;
-    font-size: 14px;
+  width: 24%;
+  background-color: rgb(14, 0, 47);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
 }
 
 .submitContainer {
-    margin-top: 4%;
-    display: flex;
-    justify-content: flex-end;
+  margin-top: 4%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .formContent {
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .formMessage {
-    font-family: "Helvetica";
-    font-size: 16px;
-    resize: none;
+  font-family: 'Helvetica';
+  font-size: 16px;
+  resize: none;
 }
 
 .errors {
-    position: absolute;
-    background-color: rgba(255, 0, 0, 0.3);
-    color: darkred;
-    width: 40%;
-    font-size: 14px;
-    border-radius: 4px;
-    right: 30%;
-    top: 10.6%;
+  position: absolute;
+  background-color: rgba(255, 0, 0, 0.3);
+  color: darkred;
+  width: 40%;
+  font-size: 14px;
+  border-radius: 4px;
+  right: 30%;
+  top: 10.6%;
 }
 
 .errorList {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 4px 12px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 4px 12px;
 }
 
 .requiredText {
-    position: absolute;
-    font-size: 12px;
+  position: absolute;
+  font-size: 12px;
 
-    bottom: 3%;
-    left: 10.2%;
+  bottom: 3%;
+  left: 10.2%;
 }
 
-@keyframes modal_entry { from { top: -100%; opacity: .2; } to { top: 50%; opacity: 1; } }
+@keyframes modal_entry {
+  from {
+    top: -100%;
+    opacity: 0.2;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}

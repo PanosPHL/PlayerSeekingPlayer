@@ -44,45 +44,47 @@ const ProfileTopSection = ({ isOwner, userProfile, about, recordings }) => {
   return (
     <div className={profStyles.sectionContainer}>
       <div className={profStyles.defaultCoverPhoto}>
-        <div
-          className={profStyles.pictureContainer}
-          onMouseEnter={() => {
-            handlePicToggle('enter');
-          }}
-          onMouseLeave={() => {
-            handlePicToggle('exit');
-          }}
-        >
-          <img
-            className={profStyles.defaultProfilePicture}
-            src={
-              userProfile
-                ? userProfile.profileInfo.profilePic ||
-                  '/static/images/default_profile_photo.jpg'
-                : ''
-            }
-            alt="Profile"
-          />
-          <div className={profStyles.defaultProfilePictureInnerBorder}></div>
-          {profilePicButton && isOwner ? (
-            <button
-              onClick={handleCameraClick}
-              className={profStyles.profilePicButton}
-            >
-              <i className="fas fa-camera"></i>
-            </button>
-          ) : (
-            <></>
-          )}
+        <div className={profStyles.pictureAndNameContainer}>
+          <div
+            className={profStyles.pictureContainer}
+            onMouseEnter={() => {
+              handlePicToggle('enter');
+            }}
+            onMouseLeave={() => {
+              handlePicToggle('exit');
+            }}
+          >
+            <img
+              className={profStyles.defaultProfilePicture}
+              src={
+                userProfile
+                  ? userProfile.profileInfo.profilePic ||
+                    '/static/images/default_profile_photo.jpg'
+                  : ''
+              }
+              alt="Profile"
+            />
+            <div className={profStyles.defaultProfilePictureInnerBorder}></div>
+            {profilePicButton && isOwner ? (
+              <button
+                onClick={handleCameraClick}
+                className={profStyles.profilePicButton}
+              >
+                <i className="fas fa-camera"></i>
+              </button>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className={isOwner ? profStyles.name : profStyles.nameAndButton}>
+            <h1 style={{ marginBottom: '14px' }}>
+              {userProfile
+                ? userProfile.firstName + ' ' + userProfile.lastName
+                : ''}
+            </h1>
+            {isOwner ? <></> : <ManageInvitationsButton />}
+          </div>
         </div>
-      </div>
-      <div className={isOwner ? profStyles.name : profStyles.nameAndButton}>
-        <h1>
-          {userProfile
-            ? userProfile.firstName + ' ' + userProfile.lastName
-            : ''}
-        </h1>
-        {isOwner ? <></> : <ManageInvitationsButton />}
       </div>
       <div className={profStyles.toolbar}>
         <div className={profStyles.buttonContainer}>
