@@ -34,7 +34,7 @@ body {
 }
 
 .form-control:focus {
-  background-color: none;
+  background-color: initial;
   outline-color: rgb(59, 57, 92);
 }
 
