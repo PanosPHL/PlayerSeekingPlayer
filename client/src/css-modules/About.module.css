@@ -187,8 +187,9 @@
 
   transform: translate(-50%, -50%);
 
-  width: 30vw;
-  height: 76vh;
+  width: 26vw;
+  min-width: 446px;
+  height: 712px;
 
   border-radius: 8px;
 
@@ -258,6 +259,7 @@
   display: block;
   margin-right: 12px;
   padding-left: 10px;
+  background-color: rgb(255, 252, 252);
 }
 
 .downInstrumentTriangle {
@@ -356,20 +358,21 @@
 }
 
 .overviewSubmitButton {
-  position: absolute;
-  bottom: -7.6%;
-  right: -10%;
-
   background-color: rgb(14, 0, 47);
   color: white;
   border: none;
   border-radius: 6px;
   padding: 8px;
   font-size: 14px;
+  width: 18%;
+  align-self: flex-end;
+  margin-top: 12px;
 }
 
 .overviewForm {
-  margin-top: 14%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .dropdownLabel {
@@ -377,18 +380,11 @@
 }
 
 .modalFormTitle {
-  padding-top: 6%;
-
   color: rgba(39, 39, 39, 0.7);
-  vertical-align: center;
   text-align: center;
 }
 
 .modalFormClose {
-  position: absolute;
-  right: 4%;
-  top: 4%;
-
   padding: 4px 8px 4px 8px;
 
   background-color: rgb(255, 252, 252);
@@ -494,6 +490,15 @@
   border-radius: 6px;
   padding: 8px;
   font-size: 14px;
+}
+
+.titleAndButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 6%;
+  padding-left: 30%;
 }
 
 @keyframes modal_entry {
