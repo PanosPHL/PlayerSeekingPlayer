@@ -18,15 +18,30 @@
 .aboutMainContent {
   display: flex;
   height: 89%;
+  overflow: hidden;
 }
 
 .aboutSectionContainer {
   position: relative;
   width: 100%;
 
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   padding: 2% 6%;
+}
+
+.aboutSectionContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+.aboutSectionContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 4px;
+}
+
+.aboutSectionContainer:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(190, 190, 190);
 }
 
 .aboutHeaderContainer {
@@ -34,6 +49,9 @@
   align-items: center;
 
   height: 11%;
+  min-height: 47px;
+
+  padding: 0 5.2%;
 
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -44,7 +62,6 @@
 
 .aboutHeader {
   font-size: 30px;
-  margin-left: 7%;
   color: rgba(0, 0, 0, 0.45);
 }
 
@@ -504,6 +521,6 @@
   }
 
   .overviewList {
-    font-size: 20px;
+    font-size: 18px;
   }
 }

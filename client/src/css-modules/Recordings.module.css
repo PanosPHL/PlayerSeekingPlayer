@@ -1,342 +1,364 @@
 .recordingsContainer {
-    width: 65%;
+  width: 65%;
 
-    border-radius: 8px;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
 
-    margin: 4% auto 8% auto;
+  margin: 4% auto 8% auto;
 
-    background-color: rgb(255, 252, 252);
+  background-color: rgb(255, 252, 252);
 }
 
 .recordingsHeaderContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    grid-column: 1 / 4;
-    grid-row: 1 / 2;
+  height: 6vh;
+  min-height: 47px;
 
-    height: 6vh;
+  padding: 0 7%;
 
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 
-    background-color: rgb(255, 252, 252);
+  background-color: rgb(255, 252, 252);
 }
 
 .recordingsHeader {
-    font-size: 30px;
-    margin-left: 7%;
-    color: rgba(0, 0, 0, 0.45);
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .addRecordingButton {
-    margin-right: 8%;
+  background-color: rgb(14, 0, 47);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
 
-    background-color: rgb(14, 0, 47);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 8px;
-
-    box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 2px 0px 4px rgba(0, 0, 0, 0.4);
 }
 
 .loading {
-    filter: blur(6px) brightness(90%);
+  filter: blur(6px) brightness(90%);
 }
 
 .recordingHeaderContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .recordingDescriptionContainer {
-    width: 36%;
-    height: 24vh;
-    margin: auto 0;
+  width: 374px;
+  height: 24vh;
+  margin-left: 4%;
 }
 
 .recordingDescription {
-    width: 100%;
-    font-size: 18px;
-    margin-top: 4%;
+  width: 100%;
+  font-size: 18px;
+  margin-top: 16px;
 }
 
 .recordingContainer {
-    width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.3);
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  padding: 3% 10% 3% 7%;
 }
 
 .firstRecording {
-    width: 100%;
+  width: 100%;
+  padding: 3% 10% 3% 7%;
 }
 
 .recordingContentContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2%;
-}
-
-.recordingInnerContainer {
-    width: 86%;
-    margin: 3% auto 3% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2%;
 }
 
 .addRecording {
-    font-weight: bold;
-    font-size: 14px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .addRecordingButton:focus {
-    outline: none;
+  outline: none;
 }
 
 .addRecordingButton:active {
-    transform: scale(1.1);
-    filter: brightness(0.9);
+  transform: scale(1.1);
+  filter: brightness(0.9);
 }
 
 .recordingTitle {
-    font-size: 30px;
-    color: rgba(0, 0, 0, 0.45);
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .aboutRecordingHeader {
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.45);
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.45);
 }
 
 .editButton {
-    font-size: 30px;
-    color: rgb(86, 83, 128);
-    background-color: rgb(255, 252, 252);
-    border: none;
-    border-radius: 50%;
+  font-size: 30px;
+  color: rgb(86, 83, 128);
+  background-color: rgb(255, 252, 252);
+  border: none;
+  border-radius: 50%;
 
-    width: 2.4vw;
-    height: 2.4vw;
+  width: 2.4vw;
+  height: 2.4vw;
 }
 
 .editButton:hover {
-    background-color: rgba(0, 10, 104, 0.08);
+  background-color: rgba(0, 10, 104, 0.08);
 }
 
 .editButton:active {
-    transform: scale(1.1);
-    background-color: rgba(0, 10, 104, 0.08);
+  transform: scale(1.1);
+  background-color: rgba(0, 10, 104, 0.08);
 }
 
 .editButton:focus {
-    outline: none;
+  outline: none;
 }
 
 .addModalFormContainer {
-    position: relative;
+  position: relative;
 
-    top: 50%;
-    left: 50%;
+  top: 50%;
+  left: 50%;
 
-    opacity: 1;
+  opacity: 1;
 
-    transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-    width: 30vw;
-    height: 56vh;
+  width: 30vw;
+  height: 56vh;
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    background-color: rgb(255, 252, 252);
+  background-color: rgb(255, 252, 252);
 
-    animation-name: rec_modal;
-    animation-duration: 0.3s;
+  animation-name: rec_modal;
+  animation-duration: 0.3s;
 }
 
 .editModalFormContainer {
-        position: relative;
+  position: relative;
 
-        top: 50%;
-        left: 50%;
+  top: 50%;
+  left: 50%;
 
-        opacity: 1;
+  opacity: 1;
 
-        transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 
-        width: 30vw;
-        height: 50vh;
+  width: 30vw;
+  height: 50vh;
 
-        border-radius: 8px;
+  border-radius: 8px;
 
-        background-color: rgb(255, 252, 252);
+  background-color: rgb(255, 252, 252);
 
-        animation-name: rec_modal;
-        animation-duration: 0.3s;
+  animation-name: rec_modal;
+  animation-duration: 0.3s;
 }
 
-@keyframes rec_modal { from { top: -100%; opacity: .2; } to { top: 50%; opacity: 1; } }
+@keyframes rec_modal {
+  from {
+    top: -100%;
+    opacity: 0.2;
+  }
+  to {
+    top: 50%;
+    opacity: 1;
+  }
+}
 
 .modalFormClose {
-    position: absolute;
-    right: 4%;
-    top: 4%;
+  position: absolute;
+  right: 4%;
+  top: 4%;
 
-    padding: 4px 8px 4px 8px;
+  padding: 4px 8px 4px 8px;
 
-    background-color: rgb(255, 252, 252);
-    border: none;
-    border-radius: 4px;
+  background-color: rgb(255, 252, 252);
+  border: none;
+  border-radius: 4px;
 }
 
 .modalFormClose:hover {
-    filter: brightness(80%);
+  filter: brightness(80%);
 }
 
 .modalFormClose:active {
-    filter: brightness(80%);
-    transform: scale(1.1);
+  filter: brightness(80%);
+  transform: scale(1.1);
 }
 
 .modalFormClose:focus {
-    outline: none;
+  outline: none;
 }
 
 .descriptionForm {
-    resize: none;
-    width: 100%;
-    border: 2px solid rgba(53, 57, 80, 0.4);
-    border-radius: 4px;
-    background-color: rgba(121, 111, 255, 0.1);
+  resize: none;
+  width: 100%;
+  border: 2px solid rgba(53, 57, 80, 0.4);
+  border-radius: 4px;
+  background-color: rgba(121, 111, 255, 0.1);
 
-    padding: 8px 8px;
+  padding: 8px 8px;
 
-    margin-top: 2%;
-    font-size: 16px;
-    font-family: 'Lato';
+  margin-top: 2%;
+  font-size: 16px;
+  font-family: 'Lato';
 }
 
 .descriptionForm:focus {
-    outline: none;
-    background-color: none;
-    outline-color: rgb(59, 57, 92);
+  outline: none;
+  background-color: none;
+  outline-color: rgb(59, 57, 92);
 }
 
 .addRecordingForm {
-    width: 80%;
-    margin: 8% auto 0 auto;
+  width: 80%;
+  margin: 8% auto 0 auto;
 }
 
 .editRecordingForm {
-    width: 80%;
-    margin: 8% auto 0 auto;
+  width: 80%;
+  margin: 8% auto 0 auto;
 }
 
 .modalFormTitle {
-    color: rgba(39, 39, 39, 0.7);
-    vertical-align: center;
-    text-align: center;
-    padding-top: 4%;
+  color: rgba(39, 39, 39, 0.7);
+  vertical-align: center;
+  text-align: center;
+  padding-top: 4%;
 }
 
 .newSubmitContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 4px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
 }
 
 .editSubmitContainer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
 }
 
 .submitButton {
-    background-color: rgb(14, 0, 47);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 8px;
-    font-size: 14px;
+  background-color: rgb(14, 0, 47);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
 }
 
 .submitButton:hover {
-    filter: brightness(80%);
-    transform: scale(1.02);
+  filter: brightness(80%);
+  transform: scale(1.02);
 }
 
 .submitButton:active {
-    filter: brightness(80%);
-    transform: scale(1.1);
+  filter: brightness(80%);
+  transform: scale(1.1);
 }
 
 .submitButton:focus {
-    outline: none;
+  outline: none;
 }
 
 .recordingErrors {
-    width: 60%;
-    margin: 0 auto;
-    list-style: none;
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    background-color: rgba(255, 0, 0, 0.3);
-    color: darkred;
+  width: 60%;
+  margin: 0 auto;
+  list-style: none;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  background-color: rgba(255, 0, 0, 0.3);
+  color: darkred;
 }
 
 .addRecordingErrorWrapper {
-    position: absolute;
+  position: absolute;
 
-    top: 11%;
-    left: 16.8%;
+  top: 11%;
+  left: 16.8%;
 
-    width: 384px;
+  width: 384px;
 }
 
 .editRecordingErrorWrapper {
-    position: absolute;
+  position: absolute;
 
-    top: 14%;
-    left: 16.8%;
+  top: 14%;
+  left: 16.8%;
 
-    width: 384px;
+  width: 384px;
 }
 
 .recordingPlaceholderContainer {
-    height: 40vh;
+  height: 40vh;
 }
 
 .recordingPlaceholderText {
-    font-size: 48px;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.45);
-    margin: 10% 0;
+  font-size: 48px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.45);
+  margin: 10% 0;
 }
 
 .deleteRecordingButton {
-    background-color: rgb(14, 0, 47);
-    color: white;
+  background-color: rgb(14, 0, 47);
+  color: white;
 
-    border: none;
+  border: none;
 
-    border-radius: 4px;
+  border-radius: 4px;
 
-    width: 10%;
-    padding: 4px 0px;
+  width: 10%;
+  padding: 4px 0px;
 
-    font-size: 20px;
+  font-size: 20px;
 }
 
 .newRequiredText {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .editRequiredText {
-    font-size: 12px;
-    margin-top: 10px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 1440px), (max-height: 900px) {
+  .recordingTitle {
+    font-size: 26px;
+  }
+
+  .aboutRecordingHeader {
+    font-size: 18px;
+  }
+
+  .recordingDescription {
+    font-size: 16px;
+  }
+
+  .addRecordingButton {
+    padding: 4px;
+  }
 }
