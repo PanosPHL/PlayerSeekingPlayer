@@ -1,169 +1,570 @@
 .nav {
-    background-color: rgba(0, 7, 105, 0.7);
-    height: 6.6vh;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: rgba(0, 7, 105, 0.7);
+  height: 6.6vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-    padding: 0px 10% 0px 7%;
+  padding: 0px 10% 0px 7%;
 }
 
 .profileImage {
-    height: 48px;
-    border-radius: 50%;
-    border: 3px solid white;
+  height: 48px;
+  border-radius: 50%;
+  border: 3px solid white;
 }
 
 .leftContainer {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .profileContainer {
-    position: relative;
-    width: 4.2vw;
-    display: flex;
-    align-items: center;
+  position: relative;
+  width: 4.2vw;
+  display: flex;
+  align-items: center;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .profileDropdownArrow {
-    font-size: 20px;
-    margin-left: 6%;
+  font-size: 20px;
+  margin-left: 6%;
 }
 
 .inactive {
-    color: grey;
-    transition: color 0.3s;
+  color: grey;
+  transition: color 0.3s;
 }
 
 .active {
-    color: white;
-    transition: color 0.3s;
+  color: white;
+  transition: color 0.3s;
 }
 
 .profileDropdown {
-    text-align: center;
-    list-style: none;
-    height: inherit;
+  text-align: center;
+  list-style: none;
+  height: inherit;
 
-    animation-duration: 0.3s;
-    animation-name: dropdown;
+  animation-duration: 0.3s;
+  animation-name: dropdown;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .dropdownContainer {
-    position: absolute;
-    top: 7vh;
-    left: -3.6vw;
+  position: absolute;
+  top: 7vh;
+  left: -3.6vw;
 
-    width: 10vw;
-    height: 16vh;
+  width: 10vw;
+  height: 16vh;
 
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 
-    animation-duration: 0.3s;
-    animation-name: dropdown;
+  animation-duration: 0.3s;
+  animation-name: dropdown;
 }
 
 .dropdownListItem {
-    padding-top: 6px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background-color: white;
-    width: 10vw;
-    height: 4vh;
-    transition: filter 0.2;
+  padding-top: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 10vw;
+  height: 4vh;
+  transition: filter 0.2;
 
-    animation-duration: 0.3s;
-    animation-name: slideout;
+  animation-duration: 0.3s;
+  animation-name: slideout;
 }
 
 .dropdownListItem:hover {
-    transition: filter 0.2s;
-    filter: brightness(80%);
-    cursor: pointer;
+  transition: filter 0.2s;
+  filter: brightness(80%);
+  cursor: pointer;
 }
 
 .dropdownLink {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .logo {
-    height: 150px;
-    margin-top: 12px;
+  height: 150px;
+  margin-top: 12px;
 }
 
 .searchButton {
-    color: white;
-    background-color: rgb(76,80,149);
+  color: white;
+  background-color: rgb(76, 80, 149);
 
-    width: 2.8vw;
-    height: 2.8vw;
+  width: 2.8vw;
+  height: 2.8vw;
 
-    font-size: 36px;
+  font-size: 36px;
 
-    border: none;
-    border-radius: 50%;
+  border: none;
+  border-radius: 50%;
 
-    margin-right: 180px;
+  margin-right: 180px;
 }
 
-.searchButton:hover, .searchButton:active {
-    filter: brightness(90%);
+.searchButton:hover,
+.searchButton:active {
+  filter: brightness(90%);
 }
 
 .searchButton:focus {
-    outline: none;
+  outline: none;
 }
 
 .searchButtonActive {
-    filter: brightness(90%);
+  filter: brightness(90%);
 
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
 }
 
 .searchContainer {
-    position: relative;
+  position: relative;
 }
 
 .searchDropdownContainer {
-    position: absolute;
-    background-color: rgb(255, 252, 252);
+  position: absolute;
+  background-color: rgb(255, 252, 252);
 
-    width: 22vw;
-    height: 44vh;
+  width: 22vw;
+  height: 44vh;
 
-    top: 116%;
-    left: 4%;
+  top: 116%;
+  left: 4%;
 
-    padding: 16%;
+  padding: 16%;
 
-    z-index: 2;
+  z-index: 2;
 
-    border-radius: 8px;
+  border-radius: 8px;
 
-    box-shadow: 0px 0px 2px rgba(0, 0, 0.2);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0.2);
 
-    overflow: visible;
+  overflow: visible;
 
-    animation: openSearch;
-    animation-duration: 0.3s;
+  animation: openSearch;
+  animation-duration: 0.3s;
 }
 
 .searchDropdownTriangle {
+  position: absolute;
+
+  left: 32px;
+  top: -9.8px;
+
+  background-color: rgb(255, 252, 252);
+  transform: rotate(45deg);
+
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+  height: 18px;
+  width: 18px;
+
+  z-index: 2;
+
+  animation: openSearchTriangle;
+  animation-duration: 0.3s;
+}
+
+.searchInstrumentDropdownContainer,
+.searchStyleDropdownContainer {
+  position: relative;
+}
+
+.closedLabel {
+  margin-top: 32px;
+  margin-left: 26%;
+
+  transition: 0.3s;
+}
+
+.openLabel {
+  margin-top: 0px;
+  margin-left: 26%;
+
+  transition: 0.3s;
+}
+
+.hiddenInstrumentDropdown {
+  position: absolute;
+
+  top: 120%;
+  left: -10%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin: 4px 0px;
+  padding: 0px 8px;
+
+  list-style: none;
+
+  max-height: 0px;
+  width: 21vw;
+  overflow: hidden;
+
+  z-index: 2;
+
+  border-radius: 4px;
+  background-color: rgb(255, 252, 252);
+
+  transition: all 0.3s;
+}
+
+.hiddenStyleDropdown {
+  position: absolute;
+
+  top: 120%;
+  left: 10%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  padding: 0px 8px;
+
+  list-style: none;
+
+  max-height: 0px;
+  width: auto;
+  overflow: hidden;
+
+  z-index: 2;
+
+  border-radius: 4px;
+  background-color: rgb(255, 252, 252);
+
+  transition: all 0.3s;
+}
+
+.searchInstrumentDropdown {
+  position: absolute;
+
+  top: 120%;
+  left: -10%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin: 4px 0px;
+  padding: 8px;
+
+  list-style: none;
+
+  max-height: 10vh;
+  height: auto;
+  width: 21vw;
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background-color: rgb(255, 252, 252);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+
+  z-index: 3;
+
+  transition: all 0.3s;
+}
+
+.searchStyleDropdown {
+  position: absolute;
+
+  top: 120%;
+  left: 10%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 8px;
+
+  list-style: none;
+
+  max-height: 10vh;
+  height: auto;
+  width: auto;
+  overflow: hidden;
+
+  border-radius: 4px;
+
+  background-color: rgb(255, 252, 252);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+
+  z-index: 3;
+
+  transition: all 0.3s;
+}
+
+.rightStyleTriangle {
+  position: absolute;
+  transform: rotate(0deg);
+
+  left: 44%;
+
+  transition: all 0.3s;
+}
+
+.rightInstrumentTriangle {
+  position: absolute;
+  transform: rotate(0deg);
+
+  left: 58%;
+
+  transition: all 0.3s;
+}
+
+.downStyleTriangle {
+  position: absolute;
+  transform: rotate(90deg);
+
+  left: 44%;
+
+  transition: all 0.3s;
+}
+
+.downInstrumentTriangle {
+  position: absolute;
+  transform: rotate(90deg);
+
+  left: 58%;
+
+  transition: all 0.3s;
+}
+
+.searchForm {
+  width: 96%;
+  margin: 72px auto 0px auto;
+  height: 88%;
+}
+
+.checkboxLabel {
+  font-size: 14px;
+  margin-left: 6px;
+  margin-right: 4px;
+}
+
+.name {
+  width: 60%;
+  padding: 4px;
+  font-size: 14px;
+  margin-top: 2%;
+  border: 2px solid rgba(53, 57, 80, 0.4);
+  border-radius: 4px;
+  background-color: rgba(121, 111, 255, 0.1);
+}
+
+.name:focus {
+  background-color: none;
+  outline-color: rgb(59, 57, 92);
+}
+
+.submitSearch {
+  display: flex;
+
+  position: absolute;
+  left: 36%;
+  bottom: 2%;
+
+  background-color: rgb(14, 0, 47);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px;
+  font-size: 14px;
+}
+
+.distanceContainer {
+  margin: 24px 0px 0px 26%;
+}
+
+.nameContainer {
+  margin: 0px 0px 0px 26%;
+}
+
+.distanceDropdown {
+  margin-top: 12px;
+  width: 60%;
+  padding: 4px;
+  background-color: rgba(121, 111, 255, 0.1);
+  border-radius: 4px;
+}
+
+.distanceDropdown:focus {
+  background-color: none;
+  outline-color: 2px solid rgb(59, 57, 92);
+}
+
+.searchHeader {
+  position: absolute;
+  font-size: 24px;
+
+  color: rgba(39, 39, 39, 0.7);
+
+  left: 41%;
+  top: 2%;
+}
+
+.searchFormClose {
+  position: absolute;
+  right: 4%;
+  top: 2.4%;
+
+  padding: 4px 8px 4px 8px;
+
+  background-color: rgb(255, 252, 252);
+  border: none;
+  border-radius: 4px;
+}
+
+.searchFormClose:hover {
+  filter: brightness(80%);
+}
+
+.searchFormClose:active {
+  filter: brightness(80%);
+  transform: scale(1.1);
+}
+
+.searchFormClose:focus {
+  outline: none;
+}
+
+.requiredField {
+  position: absolute;
+  font-size: 12px;
+
+  bottom: 2%;
+  right: 8%;
+}
+
+.searchErrors {
+  position: absolute;
+  top: 10%;
+  left: 15%;
+  width: 70%;
+  columns: 2;
+  list-style: none;
+  font-size: 10px;
+  background-color: rgba(255, 0, 0, 0.3);
+  color: darkred;
+  border-radius: 6px;
+  padding: 1%;
+}
+
+.picNotificationNumber {
+  position: absolute;
+
+  bottom: 2px;
+  right: 0px;
+
+  color: white;
+  background-color: red;
+
+  padding: 2px 8px 5px 8px;
+  border-radius: 50%;
+
+  font-size: 14px;
+
+  transform: scale(0.6);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dropdownNotificationNumber {
+  color: white;
+  background-color: red;
+
+  padding: 1px 6px 3px 6px;
+  border-radius: 50%;
+
+  font-size: 12px;
+
+  text-align: center;
+  vertical-align: middle;
+}
+
+@keyframes slideout {
+  from {
+    height: 0;
+    overflow: hidden;
+    margin-top: -10px;
+  }
+
+  to {
+    height: 4vh;
+  }
+}
+
+@keyframes dropdown {
+  from {
+    height: 0;
+    overflow: hidden;
+  }
+
+  to {
+    height: 16vh;
+    overflow: none;
+  }
+}
+
+@keyframes openSearch {
+  from {
+    opacity: 0.5;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    box-shadow: none;
+  }
+
+  to {
+    opacity: 1;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0.2);
+    height: 44vh;
+    width: 22vw;
+    overflow: visible;
+  }
+}
+
+@keyframes openSearchTriangle {
+  from {
     position: absolute;
 
     left: 32px;
     top: -9.8px;
+
+    opacity: 0;
+
+    background-color: rgb(255, 252, 252);
+    transform: rotate(45deg);
+
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    height: 0px;
+    width: 0px;
+
+    z-index: 2;
+  }
+
+  to {
+    position: absolute;
+
+    left: 32px;
+    top: -9.8px;
+
+    opacity: 1;
 
     background-color: rgb(255, 252, 252);
     transform: rotate(45deg);
@@ -175,404 +576,5 @@
     width: 18px;
 
     z-index: 2;
-
-    animation: openSearchTriangle;
-    animation-duration: 0.3s;
-}
-
-.searchInstrumentDropdownContainer, .searchStyleDropdownContainer {
-    position: relative;
-}
-
-.closedLabel {
-    margin-top: 32px;
-    margin-left: 26%;
-
-    transition: 0.3s;
-}
-
-.openLabel {
-    margin-top: 0px;
-    margin-left: 26%;
-
-    transition: 0.3s;
-}
-
-.hiddenInstrumentDropdown {
-    position: absolute;
-
-    top: 120%;
-    left: -10%;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    margin: 4px 0px;
-    padding: 0px 8px;
-
-    list-style: none;
-
-    max-height: 0px;
-    width: 21vw;
-    overflow: hidden;
-
-    z-index: 2;
-
-    border-radius: 4px;
-    background-color: rgb(255, 252, 252);
-
-    transition: all 0.3s;
-}
-
-.hiddenStyleDropdown {
-    position: absolute;
-
-    top: 120%;
-    left: 10%;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    padding: 0px 8px;
-
-    list-style: none;
-
-    max-height: 0px;
-    width: auto;
-    overflow: hidden;
-
-    z-index: 2;
-
-    border-radius: 4px;
-    background-color: rgb(255, 252, 252);
-
-    transition: all 0.3s;
-}
-
-.searchInstrumentDropdown {
-    position: absolute;
-
-    top: 120%;
-    left: -10%;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-
-    margin: 4px 0px;
-    padding: 8px;
-
-    list-style: none;
-
-    max-height: 10vh;
-    height: auto;
-    width: 21vw;
-    overflow: hidden;
-
-    border-radius: 4px;
-
-    background-color: rgb(255, 252, 252);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
-
-    z-index: 3;
-
-    transition: all 0.3s;
-}
-
-.searchStyleDropdown {
-    position: absolute;
-
-    top: 120%;
-    left: 10%;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 8px;
-
-    list-style: none;
-
-    max-height: 10vh;
-    height: auto;
-    width: auto;
-    overflow: hidden;
-
-    border-radius: 4px;
-
-    background-color: rgb(255, 252, 252);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
-
-    z-index: 3;
-
-    transition: all 0.3s;
-}
-
-.rightStyleTriangle {
-    position: absolute;
-    transform: rotate(0deg);
-
-    left: 44%;
-
-    transition: all 0.3s;
-}
-
-.rightInstrumentTriangle {
-    position: absolute;
-    transform: rotate(0deg);
-
-    left: 58%;
-
-    transition: all 0.3s;
-}
-
-.downStyleTriangle {
-    position: absolute;
-    transform: rotate(90deg);
-
-    left: 44%;
-
-    transition: all 0.3s;
-}
-
-.downInstrumentTriangle {
-    position: absolute;
-    transform: rotate(90deg);
-
-    left: 58%;
-
-    transition: all 0.3s;
-}
-
-.searchForm {
-    width: 96%;
-    margin: 72px auto 0px auto;
-    height: 88%;
-}
-
-.checkboxLabel {
-    font-size: 14px;
-    margin-left: 6px;
-    margin-right: 4px;
-}
-
-.name {
-    width: 60%;
-    padding: 4px;
-    font-size: 14px;
-    margin-top: 2%;
-    border: 2px solid rgba(53, 57, 80, 0.4);
-    border-radius: 4px;
-    background-color: rgba(121, 111, 255, 0.1);
-}
-
-.name:focus {
-    background-color: none;
-    outline-color: rgb(59, 57, 92);
-}
-
-.submitSearch {
-    display: flex;
-
-    position: absolute;
-    left: 36%;
-    bottom: 2%;
-
-    background-color: rgb(14, 0, 47);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 6px;
-    font-size: 14px;
-}
-
-.distanceContainer {
-    margin: 24px 0px 0px 26%;
-}
-
-.nameContainer {
-    margin: 0px 0px 0px 26%;
-}
-
-.distanceDropdown {
-    margin-top: 12px;
-    width: 60%;
-    padding: 4px;
-    background-color: rgba(121, 111, 255, 0.1);
-    border-radius: 4px;
-}
-
-.distanceDropdown:focus {
-    background-color: none;
-    outline-color: 2px solid rgb(59, 57, 92);
-}
-
-.searchHeader {
-    position: absolute;
-    font-size: 24px;
-
-    color: rgba(39, 39, 39, 0.7);
-
-    left: 41%;
-    top: 2%;
-}
-
-.searchFormClose {
-        position: absolute;
-        right: 4%;
-        top: 2.4%;
-
-        padding: 4px 8px 4px 8px;
-
-        background-color: rgb(255, 252, 252);
-        border: none;
-        border-radius: 4px;
-}
-
-.searchFormClose:hover {
-    filter: brightness(80%);
-}
-
-.searchFormClose:active {
-    filter: brightness(80%);
-    transform: scale(1.1);
-}
-
-.searchFormClose:focus {
-    outline: none;
-}
-
-.requiredField {
-    position: absolute;
-    font-size: 12px;
-
-    bottom: 2%;
-    right: 8%;
-}
-
-.searchErrors {
-    position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 70%;
-    columns: 2;
-    list-style: none;
-    font-size: 10px;
-    background-color: rgba(255, 0, 0, 0.3);
-    color: darkred;
-    border-radius: 6px;
-    padding: 1%;
-}
-
-.picNotificationNumber {
-    position: absolute;
-
-    bottom: 0%;
-    right: 43%;
-
-    color: white;
-    background-color: red;
-
-    padding: 2px 8px 5px 8px;
-    border-radius: 50%;
-
-    font-size: 14px;
-
-    transform: scale(.6);
-    text-align: center;
-    vertical-align: middle;
-}
-
-.dropdownNotificationNumber {
-    color: white;
-    background-color: red;
-
-    padding: 1px 6px 3px 6px;
-    border-radius: 50%;
-
-    font-size: 12px;
-
-    text-align: center;
-    vertical-align: middle;
-}
-
-@keyframes slideout {
-    from {
-        height: 0;
-        overflow: hidden;
-        margin-top: -10px;
-    }
-
-    to {
-        height: 4vh;
-    }
-}
-
-@keyframes dropdown {
-    from {
-        height: 0;
-        overflow: hidden;
-    }
-
-    to {
-        height: 16vh;
-        overflow: none;
-    }
-}
-
-@keyframes openSearch {
-    from {
-        opacity: 0.5;
-        width: 0px;
-        height: 0px;
-        overflow: hidden;
-        box-shadow: none;
-    }
-
-    to {
-        opacity: 1;
-        box-shadow: 0px 0px 2px rgba(0, 0, 0.2);
-        height: 44vh;
-        width: 22vw;
-        overflow: visible;
-    }
-}
-
-@keyframes openSearchTriangle {
-    from {
-        position: absolute;
-
-        left: 32px;
-        top: -9.8px;
-
-        opacity: 0;
-
-        background-color: rgb(255, 252, 252);
-        transform: rotate(45deg);
-
-        border-left: 1px solid rgba(0, 0, 0, 0.2);
-        border-top: 1px solid rgba(0, 0, 0, 0.2);
-
-        height: 0px;
-        width: 0px;
-
-        z-index: 2;
-    }
-
-    to {
-        position: absolute;
-
-        left: 32px;
-        top: -9.8px;
-
-        opacity: 1;
-
-        background-color: rgb(255, 252, 252);
-        transform: rotate(45deg);
-
-        border-left: 1px solid rgba(0, 0, 0, 0.2);
-        border-top: 1px solid rgba(0, 0, 0, 0.2);
-
-        height: 18px;
-        width: 18px;
-
-        z-index: 2;
-    }
+  }
 }
