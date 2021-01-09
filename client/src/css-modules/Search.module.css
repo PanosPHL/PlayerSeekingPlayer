@@ -5,15 +5,14 @@
 .innerPageContainer {
   display: flex;
   width: 72%;
-
-  justify-content: space-around;
+  min-width: 954px;
 
   margin: 1.4% auto;
 }
 
 .resultContainer {
   display: grid;
-  min-height: 75vh;
+  min-height: 628px;
   width: 100%;
   margin: 0 auto;
 
@@ -40,6 +39,7 @@
 
 .resultAndHeaderContainer {
   width: 55%;
+  min-height: 664px;
 }
 
 .picture {
@@ -119,12 +119,12 @@
 }
 
 .searchRecordingContainer {
-  margin-top: 14%;
-
   padding: 6% 8%;
 
   width: 100%;
   border-radius: 6px;
+
+  min-height: 416px;
 
   background-color: rgb(255, 252, 252);
 
@@ -144,7 +144,9 @@
 }
 
 .recordingContainerWrapper {
-  width: 20vw;
+  width: 384px;
+  margin-left: 8vw;
+  margin-top: calc(42px + 2%);
 }
 
 .noBio {
