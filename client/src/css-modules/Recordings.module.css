@@ -111,8 +111,8 @@
   border: none;
   border-radius: 50%;
 
-  width: 2.4vw;
-  height: 2.4vw;
+  width: 48px;
+  height: 48px;
 }
 
 .editButton:hover {
@@ -138,8 +138,12 @@
 
   transform: translate(-50%, -50%);
 
+  padding: 0 3%;
+
   width: 30vw;
   height: 56vh;
+  min-height: 508px;
+  min-width: 492px;
 
   border-radius: 8px;
 
@@ -181,11 +185,16 @@
   }
 }
 
-.modalFormClose {
-  position: absolute;
-  right: 4%;
-  top: 4%;
+.titleAndButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  padding-top: 4%;
+  padding-left: 31%;
+}
+
+.modalFormClose {
   padding: 4px 8px 4px 8px;
 
   background-color: rgb(255, 252, 252);
@@ -227,8 +236,8 @@
 }
 
 .addRecordingForm {
-  width: 80%;
-  margin: 8% auto 0 auto;
+  width: 100%;
+  margin: 10% auto 0 auto;
 }
 
 .editRecordingForm {
@@ -240,7 +249,6 @@
   color: rgba(39, 39, 39, 0.7);
   vertical-align: center;
   text-align: center;
-  padding-top: 4%;
 }
 
 .newSubmitContainer {
@@ -248,7 +256,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 4px;
+  margin-top: 8px;
 }
 
 .editSubmitContainer {
@@ -295,11 +303,10 @@
 
 .addRecordingErrorWrapper {
   position: absolute;
-
-  top: 11%;
-  left: 16.8%;
-
-  width: 384px;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  top: 10%;
 }
 
 .editRecordingErrorWrapper {

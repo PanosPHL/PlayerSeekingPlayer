@@ -20,6 +20,7 @@ const ModalContainer = (props) => {
         zIndex: '2',
         position: 'absolute',
         overflow: 'hidden',
+        top: window.pageYOffset,
       }}
     >
       {props.children}
