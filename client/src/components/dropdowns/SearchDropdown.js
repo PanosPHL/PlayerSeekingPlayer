@@ -165,13 +165,15 @@ const SearchDropdown = ({ history }) => {
     <SearchContext.Provider value={value}>
       <div className={navStyles.searchDropdownContainer}>
         <div className={navStyles.searchDropdownTriangle}></div>
-        <h3 className={navStyles.searchHeader}>Search</h3>
-        <button
-          onClick={handleSearchClose}
-          className={navStyles.searchFormClose}
-        >
-          <i className="fas fa-times"></i>
-        </button>
+        <div className={navStyles.titleAndButtonContainer}>
+          <h3 className={navStyles.searchHeader}>Search</h3>
+          <button
+            onClick={handleSearchClose}
+            className={navStyles.searchFormClose}
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
         {errors && errors.length ? (
           <Errors errors={errors} className={navStyles.searchErrors} />
         ) : (
@@ -183,7 +185,7 @@ const SearchDropdown = ({ history }) => {
           action=""
           onSubmit={handleSubmit}
         >
-          <div className={navStyles.nameContainer + ' form-control-group'}>
+          <div className={navStyles.nameContainer}>
             <p>
               <label className="labels">Name</label>
             </p>
@@ -195,7 +197,13 @@ const SearchDropdown = ({ history }) => {
               onChange={handleNameChange}
             />
           </div>
-          <div className={navStyles.distanceContainer + ' form-control-group'}>
+          <div
+            className={
+              navStyles.distanceContainer +
+              ' ' +
+              navStyles.searchFormControlGroup
+            }
+          >
             <p>
               <label className="labels">
                 Distance<span style={{ color: 'red' }}>*</span>
@@ -212,12 +220,7 @@ const SearchDropdown = ({ history }) => {
               <option value={25}>&lt; 25 mi</option>
             </select>
           </div>
-          <div
-            className={
-              navStyles.searchInstrumentDropdownContainer +
-              ' form-control-group'
-            }
-          >
+          <div className={navStyles.searchInstrumentDropdownContainer}>
             <p
               className={
                 instrumentDropdown ? navStyles.openLabel : navStyles.closedLabel
@@ -246,11 +249,7 @@ const SearchDropdown = ({ history }) => {
               labelStyle={navStyles.checkboxLabel}
             />
           </div>
-          <div
-            className={
-              navStyles.searchStyleDropdownContainer + ' form-control-group'
-            }
-          >
+          <div className={navStyles.searchStyleDropdownContainer}>
             <p
               className={
                 styleDropdown ? navStyles.openLabel : navStyles.closedLabel
@@ -279,12 +278,14 @@ const SearchDropdown = ({ history }) => {
               labelStyle={navStyles.checkboxLabel}
             />
           </div>
-          <button className={navStyles.submitSearch} type="submit">
-            Search for Player
-          </button>
-          <span className={navStyles.requiredField}>
-            <span style={{ color: 'red' }}>*</span> Required field
-          </span>
+          <div className={navStyles.submitContainer}>
+            <button className={navStyles.submitSearch} type="submit">
+              Search for Player
+            </button>
+            <span className={navStyles.requiredField}>
+              <span style={{ color: 'red' }}>*</span> Required field
+            </span>
+          </div>
         </form>
       </div>
     </SearchContext.Provider>

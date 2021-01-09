@@ -150,12 +150,14 @@
   background-color: rgb(255, 252, 252);
 
   width: 22vw;
+  min-width: 388px;
   height: 44vh;
+  min-height: 340px;
 
   top: 116%;
   left: 4%;
 
-  padding: 16%;
+  padding: 2% 16%;
 
   z-index: 2;
 
@@ -193,12 +195,11 @@
 .searchInstrumentDropdownContainer,
 .searchStyleDropdownContainer {
   position: relative;
+  width: 100%;
 }
 
 .closedLabel {
-  margin-top: 32px;
-  margin-left: 26%;
-
+  width: 100%;
   transition: 0.3s;
 }
 
@@ -353,9 +354,13 @@
 }
 
 .searchForm {
-  width: 96%;
-  margin: 72px auto 0px auto;
-  height: 88%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 82%;
+  margin: 12% auto 0px auto;
+  padding: 0 12%;
+  justify-content: space-between;
 }
 
 .checkboxLabel {
@@ -365,7 +370,7 @@
 }
 
 .name {
-  width: 60%;
+  width: 100%;
   padding: 4px;
   font-size: 14px;
   margin-top: 2%;
@@ -379,32 +384,29 @@
   outline-color: rgb(59, 57, 92);
 }
 
+.nameContainer {
+  width: 100%;
+}
+
+.distanceContainer {
+  width: 100%;
+}
+
 .submitSearch {
-  display: flex;
-
-  position: absolute;
-  left: 36%;
-  bottom: 2%;
-
+  grid-column: 2 / 3;
   background-color: rgb(14, 0, 47);
+  justify-self: center;
   color: white;
   border: none;
   border-radius: 6px;
   padding: 6px;
   font-size: 14px;
-}
-
-.distanceContainer {
-  margin: 24px 0px 0px 26%;
-}
-
-.nameContainer {
-  margin: 0px 0px 0px 26%;
+  width: 122px;
 }
 
 .distanceDropdown {
   margin-top: 12px;
-  width: 60%;
+  width: 100%;
   padding: 4px;
   background-color: rgba(121, 111, 255, 0.1);
   border-radius: 4px;
@@ -416,25 +418,27 @@
 }
 
 .searchHeader {
-  position: absolute;
+  grid-column: 2 / 3;
+  justify-self: center;
   font-size: 24px;
 
   color: rgba(39, 39, 39, 0.7);
-
-  left: 41%;
-  top: 2%;
 }
 
 .searchFormClose {
-  position: absolute;
-  right: 4%;
-  top: 2.4%;
-
+  grid-column: 3 / 4;
+  justify-self: end;
+  align-self: end;
   padding: 4px 8px 4px 8px;
 
   background-color: rgb(255, 252, 252);
   border: none;
   border-radius: 4px;
+}
+
+.titleAndButtonContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .searchFormClose:hover {
@@ -451,11 +455,16 @@
 }
 
 .requiredField {
-  position: absolute;
+  justify-self: end;
+  align-self: end;
+  grid-column: 3 / 4;
   font-size: 12px;
+}
 
-  bottom: 2%;
-  right: 8%;
+.submitContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 140%;
 }
 
 .searchErrors {
