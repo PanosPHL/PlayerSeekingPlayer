@@ -17,6 +17,7 @@
 
 .contentContainer {
   width: 82vw;
+  min-width: 956px;
   background-color: rgb(240, 242, 245);
   padding: 28px 0px;
   display: flex;
@@ -139,7 +140,7 @@
 }
 
 .newBandForm {
-  padding: 16px;
+  padding: 16px 4%;
 
   position: relative;
 
@@ -151,7 +152,10 @@
   transform: translate(-50%, -50%);
 
   width: 30vw;
+  min-width: 474px;
   height: 40vh;
+  min-height: 316px;
+  max-height: 372px;
 
   border-radius: 8px;
 
@@ -162,11 +166,14 @@
 }
 
 .modalFormClose {
-  position: absolute;
-  right: 4%;
-  top: 4%;
+  grid-column: 3 / 4;
 
   padding: 4px 8px 4px 8px;
+
+  justify-self: end;
+  align-self: center;
+
+  width: 24px;
 
   background-color: rgb(255, 252, 252);
   border: none;
@@ -187,15 +194,15 @@
 }
 
 .modalFormTitle {
+  grid-column: 2 / 3;
+  min-width: 152px;
+  justify-self: center;
   color: rgba(39, 39, 39, 0.7);
-  vertical-align: center;
   text-align: center;
 }
 
 .formControlGroup {
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 6%;
+  margin-top: 24px;
 }
 
 .submitButton {
@@ -365,7 +372,7 @@
   display: flex;
   flex-direction: column;
 
-  padding: 16px 36px;
+  padding: 16px 3%;
 
   position: relative;
 
@@ -376,7 +383,7 @@
 
   transform: translate(-50%, -50%);
 
-  width: 30vw;
+  width: 576px;
   height: 64vh;
 
   border-radius: 8px;
@@ -385,6 +392,11 @@
 
   animation-name: modal_entry;
   animation-duration: 0.3s;
+}
+
+.titleAndButtonContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .bandFormMemberArea {
@@ -523,7 +535,7 @@
 }
 
 .newBandFormContent {
-  margin-top: 4%;
+  margin-top: 6%;
   display: flex;
   flex-direction: column;
 }
