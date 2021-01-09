@@ -152,7 +152,7 @@
   width: 22vw;
   min-width: 388px;
   height: 44vh;
-  min-height: 340px;
+  min-height: 386px;
 
   top: 116%;
   left: 4%;
@@ -208,7 +208,7 @@
   position: absolute;
 
   top: 120%;
-  left: -10%;
+  right: -136px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -219,7 +219,7 @@
   list-style: none;
 
   max-height: 0px;
-  width: 21vw;
+  width: 402px;
   overflow: hidden;
 
   z-index: 2;
@@ -234,7 +234,7 @@
   position: absolute;
 
   top: 120%;
-  left: 10%;
+  right: -74px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -244,7 +244,7 @@
   list-style: none;
 
   max-height: 0px;
-  width: auto;
+  width: 246px;
   overflow: hidden;
 
   z-index: 2;
@@ -259,7 +259,7 @@
   position: absolute;
 
   top: 120%;
-  left: -10%;
+  right: -136px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -271,7 +271,7 @@
 
   max-height: 10vh;
   height: auto;
-  width: 21vw;
+  width: 402px;
   overflow: hidden;
 
   border-radius: 4px;
@@ -288,7 +288,7 @@
   position: absolute;
 
   top: 120%;
-  left: 10%;
+  right: -74px;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -298,7 +298,7 @@
 
   max-height: 10vh;
   height: auto;
-  width: auto;
+  width: 246px;
   overflow: hidden;
 
   border-radius: 4px;
