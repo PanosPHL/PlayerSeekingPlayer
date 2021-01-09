@@ -221,12 +221,7 @@ const SearchDropdown = ({ history }) => {
             </select>
           </div>
           <div className={navStyles.searchInstrumentDropdownContainer}>
-            <p
-              className={
-                instrumentDropdown ? navStyles.openLabel : navStyles.closedLabel
-              }
-              onClick={toggleInstrumentDropdown}
-            >
+            <p onClick={toggleInstrumentDropdown}>
               <label className="labels">
                 Instruments<span style={{ color: 'red' }}>*</span>{' '}
                 <span
@@ -250,12 +245,7 @@ const SearchDropdown = ({ history }) => {
             />
           </div>
           <div className={navStyles.searchStyleDropdownContainer}>
-            <p
-              className={
-                styleDropdown ? navStyles.openLabel : navStyles.closedLabel
-              }
-              onClick={toggleStyleDropdown}
-            >
+            <p onClick={toggleStyleDropdown}>
               <label className="labels">
                 Styles<span style={{ color: 'red' }}>*</span>{' '}
                 <span

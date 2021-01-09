@@ -192,22 +192,16 @@
   animation-duration: 0.3s;
 }
 
-.searchInstrumentDropdownContainer,
+.searchInstrumentDropdownContainer {
+  position: relative;
+  width: 54%;
+  align-self: center;
+}
+
 .searchStyleDropdownContainer {
   position: relative;
-  width: 100%;
-}
-
-.closedLabel {
-  width: 100%;
-  transition: 0.3s;
-}
-
-.openLabel {
-  margin-top: 0px;
-  margin-left: 26%;
-
-  transition: 0.3s;
+  width: 38%;
+  align-self: center;
 }
 
 .hiddenInstrumentDropdown {
@@ -321,7 +315,7 @@
   position: absolute;
   transform: rotate(0deg);
 
-  left: 44%;
+  left: 80%;
 
   transition: all 0.3s;
 }
@@ -329,8 +323,7 @@
 .rightInstrumentTriangle {
   position: absolute;
   transform: rotate(0deg);
-
-  left: 58%;
+  left: 82%;
 
   transition: all 0.3s;
 }
@@ -339,7 +332,7 @@
   position: absolute;
   transform: rotate(90deg);
 
-  left: 44%;
+  left: 80%;
 
   transition: all 0.3s;
 }
@@ -348,7 +341,7 @@
   position: absolute;
   transform: rotate(90deg);
 
-  left: 58%;
+  left: 82%;
 
   transition: all 0.3s;
 }
