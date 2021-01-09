@@ -90,7 +90,7 @@ class ProfilePicForm(FlaskForm):
     img = StringField("Image", validators=[InputRequired("Please crop your provided image")])
 
 class BandForm(FlaskForm):
-    name = StringField("Name", validators=[InputRequired("Please give your new band a name")])
+    name = StringField("Name", validators=[InputRequired("Please give your band a name")])
     isPublic = BooleanField("Public?", validators=[InputRequired("Please specify whether your band should be public or private")])
     owner = QuerySelectField("Owner", validators=[InputRequired("Please specify a band owner")], query_factory=get_all_users, allow_blank=False)
     style = QuerySelectField("Style", validators=[InputRequired("Please provide a style")], query_factory=get_style_choices, allow_blank=False)

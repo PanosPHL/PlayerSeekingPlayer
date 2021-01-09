@@ -195,7 +195,7 @@
 
 .modalFormTitle {
   grid-column: 2 / 3;
-  min-width: 152px;
+  min-width: 252px;
   justify-self: center;
   color: rgba(39, 39, 39, 0.7);
   text-align: center;
@@ -384,7 +384,7 @@
   transform: translate(-50%, -50%);
 
   width: 576px;
-  height: 600px;
+  height: 606px;
 
   border-radius: 8px;
 
@@ -478,11 +478,11 @@
   align-items: center;
   width: 80%;
 
-  margin: 4% auto 0 auto;
+  margin: 0 auto 0 auto;
 }
 
 .bandFormContent {
-  margin-top: 4%;
+  margin-top: 6%;
 }
 
 .bandFormMemberRowName {
@@ -496,13 +496,13 @@
 
 .editBandFormErrors {
   position: absolute;
-  background-color: rgba(255, 0, 0, 0.3);
-  color: darkred;
-  width: 70%;
+  width: 100%;
   font-size: 14px;
   border-radius: 4px;
-  right: 14.2%;
-  top: 9%;
+  display: flex;
+  justify-content: center;
+  left: 0%;
+  top: 8%;
 }
 
 .newBandFormErrors {
