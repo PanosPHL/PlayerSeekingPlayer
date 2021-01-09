@@ -461,9 +461,6 @@
 }
 
 .searchErrors {
-  position: absolute;
-  top: 10%;
-  left: 15%;
   width: 70%;
   columns: 2;
   list-style: none;
@@ -472,6 +469,15 @@
   color: darkred;
   border-radius: 6px;
   padding: 1%;
+}
+
+.searchErrorWrapper {
+  width: 100%;
+  position: absolute;
+  top: 10%;
+  left: 2%;
+  display: flex;
+  justify-content: center;
 }
 
 .picNotificationNumber {

@@ -175,7 +175,11 @@ const SearchDropdown = ({ history }) => {
           </button>
         </div>
         {errors && errors.length ? (
-          <Errors errors={errors} className={navStyles.searchErrors} />
+          <Errors
+            errors={errors}
+            className={navStyles.searchErrors}
+            divStyle={navStyles.searchErrorWrapper}
+          />
         ) : (
           <></>
         )}
