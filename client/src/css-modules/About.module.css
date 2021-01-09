@@ -491,6 +491,7 @@
 
 .bioModalFormClose {
   grid-column: 3 / 4;
+  align-self: flex-end;
   justify-self: end;
   padding: 4px 8px 4px 8px;
 

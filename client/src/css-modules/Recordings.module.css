@@ -163,8 +163,12 @@
 
   transform: translate(-50%, -50%);
 
-  width: 30vw;
-  height: 50vh;
+  width: 26vw;
+  min-width: 440px;
+  height: 48vh;
+  min-height: 430px;
+
+  padding: 0 3%;
 
   border-radius: 8px;
 
@@ -194,7 +198,17 @@
   padding-left: 31%;
 }
 
+.editTitleAndButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 4%;
+  padding-left: 27.5%;
+}
+
 .modalFormClose {
+  align-self: flex-end;
   padding: 4px 8px 4px 8px;
 
   background-color: rgb(255, 252, 252);
@@ -241,8 +255,8 @@
 }
 
 .editRecordingForm {
-  width: 80%;
-  margin: 8% auto 0 auto;
+  width: 100%;
+  margin-top: 10%;
 }
 
 .modalFormTitle {
@@ -301,7 +315,8 @@
   color: darkred;
 }
 
-.addRecordingErrorWrapper {
+.addRecordingErrorWrapper,
+.editRecordingErrorWrapper {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -310,12 +325,7 @@
 }
 
 .editRecordingErrorWrapper {
-  position: absolute;
-
-  top: 14%;
-  left: 16.8%;
-
-  width: 384px;
+  top: 12%;
 }
 
 .recordingPlaceholderContainer {
@@ -348,8 +358,9 @@
 }
 
 .editRequiredText {
+  display: block;
   font-size: 12px;
-  margin-top: 10px;
+  margin-top: 14px;
 }
 
 @media screen and (max-width: 1440px), (max-height: 900px) {

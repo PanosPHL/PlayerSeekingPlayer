@@ -64,7 +64,7 @@ const RecordingForm = ({
 
   return (
     <>
-      <div className={recordingStyles.titleAndButtonContainer}>
+      <div className={recordingStyles.editTitleAndButtonContainer}>
         <h2 className={recordingStyles.modalFormTitle}>
           {id ? 'Edit Recording' : 'Add Recording'}
         </h2>
