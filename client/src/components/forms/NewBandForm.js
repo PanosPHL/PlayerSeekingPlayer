@@ -32,12 +32,7 @@ const NewBandForm = ({ bandId }) => {
   };
 
   return (
-    <form
-      className={bandStyles.newBandForm}
-      onSubmit={handleSubmit}
-      method=""
-      action=""
-    >
+    <form className={bandStyles.newBandForm} onSubmit={handleSubmit}>
       <div className={bandStyles.titleAndButtonContainer}>
         <h2 className={bandStyles.modalFormTitle}>Create a Band</h2>
         <button

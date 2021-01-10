@@ -56,7 +56,9 @@ const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
       <div className={invStyles.centerContainer}>
         <div className={invStyles.invitationMessage}>
           {invitation && invitation.message ? (
-            invitation.message.split('\n').map((line) => <p>{line}</p>)
+            invitation.message
+              .split('\n')
+              .map((line, i) => <p key={`line-${i + 1}`}>{line}</p>)
           ) : otherUser ? (
             defaultInvitationMessage(otherUser, self, band, invitationType)
               .split('\n')

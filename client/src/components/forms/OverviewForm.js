@@ -201,12 +201,7 @@ const OverviewForm = ({
             <i className="fas fa-times"></i>
           </button>
         </div>
-        <form
-          className={aboutStyles.overviewForm}
-          method=""
-          action=""
-          onSubmit={handleSubmit}
-        >
+        <form className={aboutStyles.overviewForm} onSubmit={handleSubmit}>
           <div className="form-control-group">
             <p>
               <label className="labels">Date of Birth</label>

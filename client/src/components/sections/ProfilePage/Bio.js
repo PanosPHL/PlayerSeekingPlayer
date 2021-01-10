@@ -24,7 +24,7 @@ const Bio = ({ userProfile, isOwner }) => {
         {userProfile
           ? userProfile.profileInfo.biography
               .split('\n')
-              .map((line) => <p>{line}</p>)
+              .map((line, i) => <p key={`line-${i + 1}`}>{line}</p>)
           : ''}
       </div>
     </BioContext.Provider>

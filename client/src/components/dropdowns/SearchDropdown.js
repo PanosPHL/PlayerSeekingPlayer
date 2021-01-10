@@ -185,12 +185,7 @@ const SearchDropdown = () => {
         ) : (
           <></>
         )}
-        <form
-          className={navStyles.searchForm}
-          method=""
-          action=""
-          onSubmit={handleSubmit}
-        >
+        <form className={navStyles.searchForm} onSubmit={handleSubmit}>
           <div className={navStyles.nameContainer}>
             <p>
               <label className="labels">Name</label>

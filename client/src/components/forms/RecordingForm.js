@@ -94,8 +94,6 @@ const RecordingForm = ({
             ? recordingStyles.editRecordingForm
             : recordingStyles.addRecordingForm
         }
-        method=""
-        action=""
         onSubmit={handleSubmit}
       >
         <div className="form-control-group">

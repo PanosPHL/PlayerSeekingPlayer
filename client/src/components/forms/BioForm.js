@@ -30,12 +30,7 @@ const BioForm = ({ initBio, userId }) => {
   };
 
   return (
-    <form
-      className={aboutStyles.bioForm}
-      method=""
-      action=""
-      onSubmit={handleSubmit}
-    >
+    <form className={aboutStyles.bioForm} onSubmit={handleSubmit}>
       <div className={aboutStyles.bioTitleAndButtonContainer}>
         <h2 className={aboutStyles.bioModalFormTitle}>Edit Bio</h2>
         <button
