@@ -135,7 +135,9 @@ const SignUpPage = () => {
               </div>
               <h1 className={styles.signUpHeader}>Sign Up</h1>
               {errors.length ? (
-                <Errors errors={errors} className={styles.authErrors} />
+                <div className={styles.authErrorWrapper}>
+                  <Errors errors={errors} className={styles.authErrors} />
+                </div>
               ) : (
                 <></>
               )}

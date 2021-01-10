@@ -48,6 +48,7 @@
   overflow: hidden;
   width: 476px;
   height: 85vh;
+  min-height: 750px;
   border-radius: 4px;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
 }
@@ -111,7 +112,7 @@
 }
 
 .mapOnscreen {
-  margin-top: 30%;
+  margin-top: 22%;
   margin-left: 3%;
   transition: transform 0.3s, margin-left 0.3s;
 }
@@ -129,7 +130,7 @@
 }
 
 .mapOffscreen {
-  margin-top: 30%;
+  margin-top: 22%;
   margin-left: 3%;
   transform: translateX(500px);
   transition: transform 0.3s, margin-left 0.3s;
@@ -190,18 +191,23 @@
   align-items: center;
 }
 
-.authErrors {
+.authErrorWrapper {
   position: absolute;
-  top: 12.4%;
-  left: 2.4%;
-  width: 96%;
-  columns: 2;
+  display: flex;
+  justify-content: center;
+  left: 15%;
+  top: 11.4%;
+}
+
+.authErrors {
+  width: 85%;
+  columns: 3;
   list-style: none;
-  font-size: 12px;
+  font-size: 10px;
   background-color: rgba(255, 0, 0, 0.3);
   color: darkred;
   border-radius: 6px;
-  padding: 1%;
+  padding: 4px;
 }
 
 .authErrors li {
