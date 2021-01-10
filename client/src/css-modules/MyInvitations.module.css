@@ -1,20 +1,21 @@
 .pageContainer {
   display: flex;
   height: calc(100vh - 230px);
+  min-height: 528px;
 }
 
 .sidebarContainer {
   width: 22vw;
+  min-width: 342px;
   border-right: 1px solid #c5c3c3;
 }
 
 .sidebarHeaderContainer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 
-  height: 12vh;
-  padding: 20px 24px;
+  height: 100px;
+  padding: 24px;
   border-bottom: 1px solid #c5c3c3;
 
   background-color: #fffcfc;
@@ -25,6 +26,7 @@
   justify-content: space-between;
   width: 42%;
   align-self: flex-end;
+  margin-top: 10px;
 }
 
 .sidebarHeaderButton {
@@ -52,7 +54,10 @@
 }
 
 .contentContainer {
+  min-width: 914px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .topBarContainer,
@@ -78,7 +83,9 @@
 }
 
 .centerContainer {
-  height: 567px;
+  height: 60vh;
+  min-height: 403px;
+  padding: 0 64px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -153,8 +160,8 @@
 
 .invitationButtonContainer {
   display: flex;
-  justify-content: space-between;
-  width: 14%;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 .invitationButton {
@@ -185,6 +192,7 @@
 
 .declineInvitationButton {
   background-color: rgb(98, 23, 23);
+  margin-left: 12px;
 }
 
 .deleteInvitationButton {

@@ -59,7 +59,7 @@ const ProfileTopSection = ({ isOwner, userProfile, about, recordings }) => {
               src={
                 userProfile
                   ? userProfile.profileInfo.profilePic ||
-                    '/static/images/default_profile_photo.jpg'
+                    '/images/default_profile_photo.jpg'
                   : ''
               }
               alt="Profile"

@@ -21,7 +21,7 @@ const ProfilePicAndDropdown = ({ profileDropdown, notifications }) => {
           src={
             user
               ? user.profileInfo.profilePic ||
-                '/static/images/default_profile_photo.jpg'
+                '/images/default_profile_photo.jpg'
               : ''
           }
           alt="Profile Placeholder"

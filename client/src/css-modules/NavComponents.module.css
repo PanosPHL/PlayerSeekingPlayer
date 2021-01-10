@@ -2,6 +2,8 @@
   background-color: rgba(0, 7, 105, 0.7);
   height: 6.6vh;
   min-height: 52px;
+  min-width: 1260px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -597,5 +599,11 @@
     width: 18px;
 
     z-index: 2;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .nav {
+    padding: 0 179px 0 88px;
   }
 }

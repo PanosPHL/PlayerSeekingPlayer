@@ -74,7 +74,7 @@ body::-webkit-scrollbar {
 
   height: 18vh;
 
-  padding: 16px 0 24px 6.6%;
+  padding: 1% 0 0 18%;
 
   background-color: rgb(255, 252, 252);
   border-top: 1px solid rgba(158, 158, 158, 0.6);
@@ -117,6 +117,50 @@ body::-webkit-scrollbar {
   color: red;
 }
 
+.profileFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 18%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.bandFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 18%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.invitationFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 18%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.searchFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 14%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
 @media screen and (max-height: 900px) {
   .labels {
     font-size: 16px;
@@ -124,5 +168,35 @@ body::-webkit-scrollbar {
 
   .form-control {
     font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1830px) {
+  .footer {
+    padding: 18px 0 0 330px;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .profileFooter {
+    padding: 13px 0px 0px 226px;
+  }
+}
+
+@media screen and (max-width: 1842px) {
+  .bandFooter {
+    padding: 19px 0px 0px 332px;
+  }
+}
+
+@media screen and (max-width: 1892px) {
+  .invitationFooter {
+    padding: 19px 0px 0px 340px;
+  }
+}
+
+@media screen and (max-width: 1308px) {
+  .searchFooter {
+    padding: 13px 0px 0px 184px;
   }
 }
