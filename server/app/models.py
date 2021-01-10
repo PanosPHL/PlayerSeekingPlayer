@@ -215,20 +215,16 @@ class Band(db.Model):
 
     def confirmed_members(self):
         res = []
-        print(self.users)
         for user in self.users:
             user_dict = user.to_dict()
-            print(user_dict)
             if user_dict["isConfirmed"]:
                 res.append(user_dict["userId"])
         return res
 
     def pending_members(self):
         res = []
-        print(self.users)
         for user in self.users:
             user_dict = user.to_dict()
-            print(user_dict)
             if not user_dict["isConfirmed"]:
                 res.append(user_dict["userId"])
         return res

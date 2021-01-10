@@ -48,12 +48,7 @@ const ManageInvitationsForm = ({ ownedBands }) => {
   }, [bandId, dispatch]);
 
   return (
-    <form
-      className={invStyles.manageInvitationForm}
-      onSubmit={handleSubmit}
-      method=""
-      action=""
-    >
+    <form className={invStyles.manageInvitationForm} onSubmit={handleSubmit}>
       <h2 className={invStyles.modalFormTitle}>
         Send {recipient.firstName} an Invitation
       </h2>

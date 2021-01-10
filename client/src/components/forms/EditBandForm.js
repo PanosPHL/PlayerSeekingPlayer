@@ -60,12 +60,7 @@ const EditBandForm = () => {
   }, []);
 
   return (
-    <form
-      className={bandStyles.editBandForm}
-      onSubmit={handleSubmit}
-      method=""
-      action=""
-    >
+    <form className={bandStyles.editBandForm} onSubmit={handleSubmit}>
       <div className={bandStyles.titleAndButtonContainer}>
         <h2 className={bandStyles.modalFormTitle}>
           {edit ? 'Edit Band' : band.name}
@@ -135,20 +130,22 @@ const EditBandForm = () => {
             </label>
           </p>
           <div className={bandStyles.bandFormMemberArea}>
-            {members.map((member) => (
+            {members.map((member, i) => (
               <BandFormMemberRow
                 edit={edit}
                 status="confirmed"
                 band={band}
                 member={member}
+                key={`confirmed-member-${i + 1}`}
               />
             ))}
-            {pendingMembers.map((member) => (
+            {pendingMembers.map((member, i) => (
               <BandFormMemberRow
                 edit={edit}
                 status="pending"
                 band={band}
                 member={member}
+                key={`pending-member-${i + 1}`}
               />
             ))}
           </div>

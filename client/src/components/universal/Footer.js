@@ -3,7 +3,6 @@ import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const location = useLocation();
-  console.log(location);
   const [footerClassName, setFooterClassName] = useState('footer');
   const profRegex = /\/profiles\/\d+/;
   const bandRegex = /\/my-bands/;

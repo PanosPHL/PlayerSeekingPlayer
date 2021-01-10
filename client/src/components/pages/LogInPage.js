@@ -83,12 +83,7 @@ const LogInPage = () => {
             <></>
           )}
           <div className={authStyles.loginFormWrapper}>
-            <form
-              className={authStyles.loginForm}
-              method=""
-              action=""
-              onSubmit={handleSubmit}
-            >
+            <form className={authStyles.loginForm} onSubmit={handleSubmit}>
               <div className="login-form-control-group">
                 <p>
                   <label className="labels" htmlFor="email">
