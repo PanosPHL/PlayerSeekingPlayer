@@ -25,7 +25,8 @@ const BandFormMemberRow = ({ member, band, status, edit }) => {
         <img
           className={bandStyles.bandFormMemberRowPic}
           src={
-            member.profileInfo.profilePic || '/images/default_profile_photo.jpg'
+            member.profileInfo.profilePic ||
+            '/static/images/default_profile_photo.jpg'
           }
           alt={`${member.firstName} ${member.lastName}`}
         />

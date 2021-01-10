@@ -27,7 +27,7 @@
   margin: 0 auto;
   padding: 0 10%;
 
-  background-image: url('/images/default_cover_photo.jpg');
+  background-image: url('/static/images/default_cover_photo.jpg');
   background-repeat: no-repeat;
   background-size: 1728px;
   background-position-y: -310px;

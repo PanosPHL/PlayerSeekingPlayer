@@ -35,7 +35,7 @@ const TopBar = () => {
           <Link to={`/profiles/${userId}`}>
             <img
               className={navStyles.logo}
-              src="/images/player-seeking-player-logo-white.png"
+              src="/static/images/player-seeking-player-logo-white.png"
               alt="Player Seeking Player"
             />
           </Link>

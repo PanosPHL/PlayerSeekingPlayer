@@ -29,7 +29,7 @@ const MyInvitationRow = ({ invitation, invitationType }) => {
           className={invStyles.senderProfilePic}
           src={
             otherUser.profileInfo.profilePic ||
-            '/images/default_profile_photo.jpg'
+            '/static/images/default_profile_photo.jpg'
           }
           alt={`${otherUser.firstName} ${otherUser.lastName}`}
         />

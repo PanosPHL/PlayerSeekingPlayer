@@ -37,7 +37,7 @@ const MyInvitationsContent = ({ invitation, invitationType, invitations }) => {
             src={
               otherUser && otherUser.profileInfo.profilePic
                 ? otherUser.profileInfo.profilePic
-                : '/images/default_profile_photo.jpg'
+                : '/static/images/default_profile_photo.jpg'
             }
             alt={
               otherUser

@@ -11,7 +11,7 @@ const UserSearchImage = ({ user }) => {
           src={
             user && user.profileInfo.profilePic
               ? user.profileInfo.profilePic
-              : '/images/default_profile_photo.jpg'
+              : '/static/images/default_profile_photo.jpg'
           }
           alt="Profile"
         />

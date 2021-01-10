@@ -123,7 +123,7 @@ const SignUpPage = () => {
               <div className={styles.signUpheaderContainer}>
                 <img
                   className={styles.logo}
-                  src="/images/player-seeking-player-logo-black.png"
+                  src="/static/images/player-seeking-player-logo-black.png"
                   alt="Player Seeking Player"
                 />
                 <button

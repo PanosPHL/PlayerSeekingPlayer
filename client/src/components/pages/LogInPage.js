@@ -59,7 +59,7 @@ const LogInPage = () => {
           <div className={authStyles.logoAndLearnMoreContainer}>
             <img
               className={authStyles.logo}
-              src="/images/player-seeking-player-logo-black.png"
+              src="/static/images/player-seeking-player-logo-black.png"
               alt="Player Seeking Player"
             />
             <button
