@@ -96,7 +96,7 @@ const UserSearchRecording = ({ userId }) => {
     );
   } else if (!userInfo) {
     return (
-      <div className={searchStyles.searchRecordingContainer}>
+      <div className={searchStyles.noSearchRecordingContainer}>
         <h3
           style={{
             color: 'rgba(0, 0, 0, 0.45)',

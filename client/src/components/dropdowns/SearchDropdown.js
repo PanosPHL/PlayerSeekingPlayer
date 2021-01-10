@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { search } from '../../store/session';
 import {
   toggleSearchDropdown,
@@ -68,8 +68,10 @@ function searchReducer(state, action) {
   }
 }
 
-const SearchDropdown = ({ history }) => {
+const SearchDropdown = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [state, searchLocalDispatch] = useReducer(searchReducer, initialState);
   const { userId } = useSelector((state) => state.session);
   const { instrumentDropdown, styleDropdown } = useSelector(
@@ -165,15 +167,21 @@ const SearchDropdown = ({ history }) => {
     <SearchContext.Provider value={value}>
       <div className={navStyles.searchDropdownContainer}>
         <div className={navStyles.searchDropdownTriangle}></div>
-        <h3 className={navStyles.searchHeader}>Search</h3>
-        <button
-          onClick={handleSearchClose}
-          className={navStyles.searchFormClose}
-        >
-          <i className="fas fa-times"></i>
-        </button>
+        <div className={navStyles.titleAndButtonContainer}>
+          <h3 className={navStyles.searchHeader}>Search</h3>
+          <button
+            onClick={handleSearchClose}
+            className={navStyles.searchFormClose}
+          >
+            <i className="fas fa-times"></i>
+          </button>
+        </div>
         {errors && errors.length ? (
-          <Errors errors={errors} className={navStyles.searchErrors} />
+          <Errors
+            errors={errors}
+            className={navStyles.searchErrors}
+            divStyle={navStyles.searchErrorWrapper}
+          />
         ) : (
           <></>
         )}
@@ -183,7 +191,7 @@ const SearchDropdown = ({ history }) => {
           action=""
           onSubmit={handleSubmit}
         >
-          <div className={navStyles.nameContainer + ' form-control-group'}>
+          <div className={navStyles.nameContainer}>
             <p>
               <label className="labels">Name</label>
             </p>
@@ -195,7 +203,13 @@ const SearchDropdown = ({ history }) => {
               onChange={handleNameChange}
             />
           </div>
-          <div className={navStyles.distanceContainer + ' form-control-group'}>
+          <div
+            className={
+              navStyles.distanceContainer +
+              ' ' +
+              navStyles.searchFormControlGroup
+            }
+          >
             <p>
               <label className="labels">
                 Distance<span style={{ color: 'red' }}>*</span>
@@ -212,18 +226,8 @@ const SearchDropdown = ({ history }) => {
               <option value={25}>&lt; 25 mi</option>
             </select>
           </div>
-          <div
-            className={
-              navStyles.searchInstrumentDropdownContainer +
-              ' form-control-group'
-            }
-          >
-            <p
-              className={
-                instrumentDropdown ? navStyles.openLabel : navStyles.closedLabel
-              }
-              onClick={toggleInstrumentDropdown}
-            >
+          <div className={navStyles.searchInstrumentDropdownContainer}>
+            <p onClick={toggleInstrumentDropdown}>
               <label className="labels">
                 Instruments<span style={{ color: 'red' }}>*</span>{' '}
                 <span
@@ -246,17 +250,8 @@ const SearchDropdown = ({ history }) => {
               labelStyle={navStyles.checkboxLabel}
             />
           </div>
-          <div
-            className={
-              navStyles.searchStyleDropdownContainer + ' form-control-group'
-            }
-          >
-            <p
-              className={
-                styleDropdown ? navStyles.openLabel : navStyles.closedLabel
-              }
-              onClick={toggleStyleDropdown}
-            >
+          <div className={navStyles.searchStyleDropdownContainer}>
+            <p onClick={toggleStyleDropdown}>
               <label className="labels">
                 Styles<span style={{ color: 'red' }}>*</span>{' '}
                 <span
@@ -279,16 +274,18 @@ const SearchDropdown = ({ history }) => {
               labelStyle={navStyles.checkboxLabel}
             />
           </div>
-          <button className={navStyles.submitSearch} type="submit">
-            Search for Player
-          </button>
-          <span className={navStyles.requiredField}>
-            <span style={{ color: 'red' }}>*</span> Required field
-          </span>
+          <div className={navStyles.submitContainer}>
+            <button className={navStyles.submitSearch} type="submit">
+              Search for Player
+            </button>
+            <span className={navStyles.requiredField}>
+              <span style={{ color: 'red' }}>*</span> Required field
+            </span>
+          </div>
         </form>
       </div>
     </SearchContext.Provider>
   );
 };
 
-export default withRouter(SearchDropdown);
+export default SearchDropdown;

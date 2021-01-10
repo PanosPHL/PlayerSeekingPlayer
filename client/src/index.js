@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Cookie from 'js-cookie';
 import store from './store/setup';
@@ -14,16 +15,18 @@ if (process.env.NODE_ENV !== 'production') {
 let mapsApiKey;
 
 fetch('/api/session/map-api-token')
-    .then(res => res.json())
-    .then(data => mapsApiKey = data['api_key'])
-    .then(() => fetch('/api/session/csrf'))
-    .then(() => {
-      ReactDOM.render(
-        <React.StrictMode>
+  .then((res) => res.json())
+  .then((data) => (mapsApiKey = data['api_key']))
+  .then(() => fetch('/api/session/csrf'))
+  .then(() => {
+    ReactDOM.render(
+      <React.StrictMode>
+        <Router>
           <Provider store={store}>
-          <App mapsApiKey={mapsApiKey}/>
+            <App mapsApiKey={mapsApiKey} />
           </Provider>
-        </React.StrictMode>,
-        document.getElementById('root')
-      );
-    });
+        </Router>
+      </React.StrictMode>,
+      document.getElementById('root')
+    );
+  });

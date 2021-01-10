@@ -6,7 +6,7 @@ import UserSearchRecording from '../sections/Search/UserSearchRecording';
 import SearchResultContext from '../../contexts/SearchResultContext';
 import searchStyles from '../../css-modules/Search.module.css';
 
-const SearchResults = (props) => {
+const SearchResults = () => {
   const searchResults = useSelector((state) => state.session.searchResults);
   const [activeResult, setActiveResult] = useState(searchResults[0]);
 
@@ -71,4 +71,4 @@ const SearchResults = (props) => {
   );
 };
 
-export default withRouter(SearchResults);
+export default SearchResults;

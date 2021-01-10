@@ -2,111 +2,201 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 body {
-    font-family: 'Lato';
+  font-family: 'Lato';
 }
 
 .noscroll {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .hidden {
-    opacity: 0;
+  opacity: 0;
 }
 
 .actuallyHidden {
-    display: none;
+  display: none;
 }
 
 .form-control {
-    width: 100%;
-    padding: 2%;
-    font-size: 16px;
-    margin-top: 2%;
-    border: 2px solid rgba(53, 57, 80, 0.4);
-    border-radius: 4px;
-    background-color: rgba(121, 111, 255, 0.1);
+  width: 100%;
+  padding: 2%;
+  font-size: 16px;
+  margin-top: 2%;
+  border: 2px solid rgba(53, 57, 80, 0.4);
+  border-radius: 4px;
+  background-color: rgba(121, 111, 255, 0.1);
 }
 
 .form-control:focus {
-    background-color: none;
-    outline-color: rgb(59, 57, 92);
+  background-color: initial;
+  outline-color: rgb(59, 57, 92);
 }
 
 .form-control-group {
-    margin-top: 4%;
+  margin-top: 4%;
 }
 
 .login-form-control-group {
-    margin-top: 10%;
+  margin-top: 10%;
 }
 
 body {
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
 }
 
-body::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+body::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 .labels {
-    font-size: 17px;
-    color: rgba(39, 39, 39, 0.7);
-    font-weight: 600;
+  font-size: 17px;
+  color: rgba(39, 39, 39, 0.7);
+  font-weight: 600;
 }
 
 .footer {
-    display: flex;
+  display: flex;
 
-    height: 18vh;
+  height: 18vh;
 
-    padding: 16px 0 24px 6.6%;
+  padding: 1% 0 0 18%;
 
-    background-color: rgb(255, 252, 252);
-    border-top: 1px solid rgba(158, 158, 158, 0.6);
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
 }
 
 .footerListContainer {
-    margin-left: 12%;
+  margin-left: 12%;
 
-    color: black;
-    text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 .footerList {
-    list-style: none;
-    line-height: 1.6;
-    margin-top: 6px;
+  list-style: none;
+  line-height: 1.6;
+  margin-top: 6px;
 
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .footerListItem {
-    text-decoration: none;
-    color: rgba(1, 0, 70, 0.6);
+  text-decoration: none;
+  color: rgba(1, 0, 70, 0.6);
 
-    transition: 0.2s;
+  transition: 0.2s;
 }
 
 .footerListItem:hover {
-    color: rgba(1, 0, 70, 0.75);
+  color: rgba(1, 0, 70, 0.75);
 
-    transition: 0.2s;
+  transition: 0.2s;
 }
 
 .footerListHeader {
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.7);
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 .redText {
-    color: red;
+  color: red;
+}
+
+.profileFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 18%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.bandFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 18%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.invitationFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 18%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+.searchFooter {
+  display: flex;
+
+  height: 18vh;
+
+  padding: 1% 0 0 14%;
+
+  background-color: rgb(255, 252, 252);
+  border-top: 1px solid rgba(158, 158, 158, 0.6);
+}
+
+@media screen and (max-height: 900px) {
+  .labels {
+    font-size: 16px;
+  }
+
+  .form-control {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 1830px) {
+  .footer {
+    padding: 18px 0 0 330px;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .profileFooter {
+    padding: 13px 0px 0px 226px;
+  }
+}
+
+@media screen and (max-width: 1842px) {
+  .bandFooter {
+    padding: 19px 0px 0px 332px;
+  }
+}
+
+@media screen and (max-width: 1892px) {
+  .invitationFooter {
+    padding: 19px 0px 0px 340px;
+  }
+}
+
+@media screen and (max-width: 1308px) {
+  .searchFooter {
+    padding: 13px 0px 0px 184px;
+  }
 }

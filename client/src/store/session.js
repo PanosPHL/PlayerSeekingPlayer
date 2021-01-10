@@ -160,10 +160,8 @@ export const search = (
 
     res.data = await res.json();
     if (res.ok) {
-      debugger;
       dispatch(setSearchResults(res.data.searchResults));
     }
-    debugger;
     return res;
   };
 };

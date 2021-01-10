@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as HomeRouter, Switch, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter as HomeRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getSessionData } from '../../store/session'
+import { getSessionData } from '../../store/session';
 import ProfilePage from '../pages/ProfilePage';
 import TopBar from './TopBar';
 import RecordingFormModal from '../modals/RecordingFormModal';
@@ -16,38 +16,35 @@ import ManageInvitationsModal from '../modals/ManageInvitationsModal';
 import MyInvitations from '../pages/MyInvitations';
 import EditBandFormModal from '../modals/EditBandFormModal';
 
+const Home = () => {
+  const dispatch = useDispatch();
 
-const Home = ({ match }) => {
-    const dispatch = useDispatch();
+  useEffect(() => {
+    const getData = async () => {
+      await dispatch(getSessionData());
+    };
+    getData();
+  }, [dispatch]);
 
-    useEffect(() => {
-        const getData = async () => {
-            await dispatch(getSessionData());
-        }
-        getData();
-    }, [dispatch])
+  return (
+    <>
+      <BioFormModal />
+      <OverviewFormModal />
+      <ProfilePicFormModal />
+      <RecordingFormModal />
+      <NewBandModal />
+      <ManageInvitationsModal />
+      <EditBandFormModal />
+      <TopBar />
+      <Switch>
+        <Route path={`/profiles/:id`} component={ProfilePage} />
+        <Route path={`/search`} component={SearchResults} />
+        <Route path={`/my-bands`} component={MyBands} />
+        <Route path={`/my-invitations`} component={MyInvitations} />
+      </Switch>
+      <Footer />
+    </>
+  );
+};
 
-    return (
-        <>
-            <HomeRouter>
-            <BioFormModal />
-            <OverviewFormModal />
-            <ProfilePicFormModal />
-            <RecordingFormModal />
-            <NewBandModal />
-            <ManageInvitationsModal />
-            <EditBandFormModal />
-                <TopBar />
-                <Switch>
-                    <Route path={`${match.url}profiles/:id`} component={ProfilePage} />
-                    <Route path={`${match.url}search`} component={SearchResults} />
-                    <Route path={`${match.url}my-bands`} component={MyBands} />
-                    <Route path={`${match.url}my-invitations`} component={MyInvitations} />
-                </Switch>
-            </HomeRouter>
-            <Footer />
-        </>
-    )
-}
-
-export default withRouter(Home);
+export default Home;
