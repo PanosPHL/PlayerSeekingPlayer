@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { displayUserInfoForm, displayMap } from '../../store/ui/signUpForm';
 import { signup } from '../../store/users';
 import { setErrors, clearErrors } from '../../store/errors';
@@ -11,7 +11,8 @@ import Errors from '../universal/Errors';
 import SignUpContext from '../../contexts/SignUpContext';
 import styles from '../../css-modules/AuthPages.module.css';
 
-const SignUpPage = ({ history }) => {
+const SignUpPage = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { userInfo, map } = useSelector((state) => state.ui.signUpForm);
   const errors = useSelector((state) => state.errors);
@@ -211,4 +212,4 @@ const SignUpPage = ({ history }) => {
   );
 };
 
-export default withRouter(SignUpPage);
+export default SignUpPage;

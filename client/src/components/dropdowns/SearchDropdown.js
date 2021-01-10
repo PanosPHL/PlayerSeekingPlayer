@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { search } from '../../store/session';
 import {
   toggleSearchDropdown,
@@ -68,8 +68,10 @@ function searchReducer(state, action) {
   }
 }
 
-const SearchDropdown = ({ history }) => {
+const SearchDropdown = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [state, searchLocalDispatch] = useReducer(searchReducer, initialState);
   const { userId } = useSelector((state) => state.session);
   const { instrumentDropdown, styleDropdown } = useSelector(
@@ -286,4 +288,4 @@ const SearchDropdown = ({ history }) => {
   );
 };
 
-export default withRouter(SearchDropdown);
+export default SearchDropdown;

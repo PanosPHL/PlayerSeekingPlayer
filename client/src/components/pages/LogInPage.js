@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../store/session';
 import { setErrors, clearErrors } from '../../store/errors';
 import { toggleLearnMoreModal } from '../../store/ui/authPages';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import AuthLeft from '../sections/AuthPages/AuthLeft';
 import Errors from '../universal/Errors';
 import authStyles from '../../css-modules/AuthPages.module.css';
 
-const LogInPage = ({ history }) => {
+const LogInPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const errors = useSelector((state) => state.errors);
 
   const [email, setEmail] = useState('');
@@ -142,4 +143,4 @@ const LogInPage = ({ history }) => {
   );
 };
 
-export default withRouter(LogInPage);
+export default LogInPage;

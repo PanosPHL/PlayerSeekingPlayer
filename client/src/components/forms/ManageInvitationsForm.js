@@ -1,20 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { putAndAddMember } from "../../store/bands";
-import { setErrors, clearErrors } from "../../store/errors";
-import { toggleManageInvitationModal } from "../../store/ui/invitations";
-import Errors from "../universal/Errors";
-import invStyles from "../../css-modules/MyInvitations.module.css";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
+import { putAndAddMember } from '../../store/bands';
+import { setErrors, clearErrors } from '../../store/errors';
+import { toggleManageInvitationModal } from '../../store/ui/invitations';
+import Errors from '../universal/Errors';
+import invStyles from '../../css-modules/MyInvitations.module.css';
 
-const ManageInvitationsForm = ({ ownedBands, location }) => {
-  const recipientId = location.pathname.split("/")[2].toString();
+const ManageInvitationsForm = ({ ownedBands }) => {
+  const location = useLocation();
+  const recipientId = location.pathname.split('/')[2].toString();
   const dispatch = useDispatch();
   const senderId = useSelector((state) => state.session.userId.toString());
   const recipient = useSelector((state) => state.entities.users[recipientId]);
   const errors = useSelector((state) => state.errors);
-  const [bandId, setBandId] = useState("0");
-  const [message, setMessage] = useState("");
+  const [bandId, setBandId] = useState('0');
+  const [message, setMessage] = useState('');
 
   const handleBandIdChange = (e) => {
     setBandId(e.target.value);
@@ -30,7 +31,9 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await dispatch(putAndAddMember(senderId, recipientId, bandId, message));
+    const res = await dispatch(
+      putAndAddMember(senderId, recipientId, bandId, message)
+    );
 
     if (res.ok) {
       dispatch(toggleManageInvitationModal());
@@ -41,7 +44,7 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
   };
 
   useEffect(() => {
-      dispatch(clearErrors());
+    dispatch(clearErrors());
   }, [bandId, dispatch]);
 
   return (
@@ -94,7 +97,7 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
           </p>
           <textarea
             rows="14"
-            className={"form-control " + invStyles.formMessage}
+            className={'form-control ' + invStyles.formMessage}
             onChange={handleMessageChange}
             value={message}
           />
@@ -105,9 +108,11 @@ const ManageInvitationsForm = ({ ownedBands, location }) => {
           </button>
         </div>
       </div>
-      <span className={invStyles.requiredText}><span className="redText">*</span> Required field</span>
+      <span className={invStyles.requiredText}>
+        <span className="redText">*</span> Required field
+      </span>
     </form>
   );
 };
 
-export default withRouter(ManageInvitationsForm);
+export default ManageInvitationsForm;

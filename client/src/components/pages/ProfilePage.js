@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import ProfileTopSection from '../sections/ProfilePage/ProfileTopSection';
 import ProfileContent from '../sections/ProfilePage/ProfileContent';
 import profStyles from '../../css-modules/ProfilePage.module.css';
 
-const ProfilePage = ({ match }) => {
+const ProfilePage = () => {
+  const match = useRouteMatch();
   const isOwner = useSelector(
     (state) => state.session.userId === parseInt(match.params.id)
   );
@@ -55,4 +56,4 @@ const ProfilePage = ({ match }) => {
   );
 };
 
-export default withRouter(ProfilePage);
+export default ProfilePage;
