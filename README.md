@@ -21,10 +21,10 @@
 
 <h2 id="about">About</h2>
 <hr></hr>
-<a class="logoLink" href="https://player-seeking-player.herokuapp.com"><strong>Player Seeking Player</strong></a> is a fullstack video / notetaking application built in <strong>React / Redux, Flask, Python, and PostgreSQL</strong> that aims to <em><strong>ease the difficulty of networking with local musicians</strong></em> in the COVID-19 era. This project was built completely in <strong>Vanilla CSS</strong> to cultivate the skill of building a fluid UI from the ground up
+<a class="logoLink" href="https://player-seeking-player.herokuapp.com"><strong>Player Seeking Player</strong></a> is a full-stack application built in <strong>React / Redux, Flask, Python, and PostgreSQL</strong> that aims to <em><strong>ease the difficulty of networking with local musicians</strong></em> in the COVID-19 era. This project was built completely in <strong>Vanilla CSS</strong> to cultivate the skill of building a fluid UI from the ground up
 <br/><br/>
 
-It is a social media application which allows users to <em><strong>post recordings</strong></em>, <em><strong>search for other users by instrument and preferred styles</em></strong>, and <em><strong>create bands</strong></em> all in the interest of managing the networking and collaboration of local musicians. It is my hope that it will help hobbyist and professional musicians alike manage their musical endeavors.
+Player Seeking Player is a social media application which allows users to <em><strong>post recordings</strong></em>, <em><strong>search for other users by instrument and preferred styles</em></strong>, and <em><strong>create bands</strong></em> all in the interest of managing the networking and collaboration of local musicians. It is my hope that it will help hobbyist and professional musicians alike manage their musical endeavors.
 
 <h2 id="featuresanddemo">Features And Demo</h2>
 <hr></hr>
